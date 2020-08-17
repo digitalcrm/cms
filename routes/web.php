@@ -15,13 +15,15 @@
 
         Route::get('/dashboard','SuperAdminController@index')->name('dashboard');
 
-        Route::group(['middleware' => ['role:superadmin']], function () {
+        // Route::group(['middleware' => ['role:superadmin|admin','permission:user-create|all-users']], function () {
+            # user create only by superADMIN and admin
 
-            Route::get('auth/create', 'SuperAdminController@create')->name('auth.create')->middleware(['role:superadmin']);
+            Route::get('auth/create', 'SuperAdminController@create')->name('auth.create')->middleware('permission:user-create');
 
-            Route::post('auth/create', 'SuperAdminController@store')->name('auth.store')->middleware(['role:superadmin']);
-        });
+            Route::post('auth/create', 'SuperAdminController@store')->name('auth.store');
 
-        Route::get('/all-users','SuperAdminController@getAllUsers')->name('all-users');
+            Route::get('/all-users','SuperAdminController@getAllUsers')->name('all-users')->middleware('permission:all-users');
+        // });
+
 
     });

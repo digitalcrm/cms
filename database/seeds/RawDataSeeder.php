@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RawDataSeeder extends Seeder
 {
@@ -13,10 +14,19 @@ class RawDataSeeder extends Seeder
     public function run()
     {
 
+        // create roles
         $role1 = Role::create(['name' => 'superadmin']);
         $role2 = Role::create(['name' => 'admin']);
         $role3 = Role::create(['name' => 'user']);
-        $role4 = Role::create(['name' => 'editor']);
-        $role5 = Role::create(['name' => 'writer']);
+        // create permissions
+        Permission::create(['name' => 'user-create']);
+        Permission::create(['name' => 'all-users']);
+
+
+        $role2->givePermissionTo('user-create');
+        $role2->givePermissionTo('all-users');
+
+        // $role1->givePermissionTo('user-create');
+        // $role1->givePermissionTo('all-users');
     }
 }
