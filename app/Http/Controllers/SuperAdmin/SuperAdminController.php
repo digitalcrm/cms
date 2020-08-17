@@ -48,6 +48,7 @@ class SuperAdminController extends Controller
     public function getAllUsers() {
 
         $roles = Role::all()->pluck('name');
+
         $query = User::with('roles');
 
         if (request('roles')) {
@@ -56,6 +57,7 @@ class SuperAdminController extends Controller
             $allUsers = $query->when($userRole, function ($query, $userRole){
                 $query->withRolesFilter($userRole);
             })->get();
+
         } else {
             $allUsers = $query->withoutSuperAdmin()->get();
         }
