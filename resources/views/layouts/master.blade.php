@@ -22,11 +22,12 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-    @include('includes.nav')
+    @include('includes.common.nav')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-    @include('includes.sidebar')
+
+    @include('includes.superadmin.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -39,7 +40,7 @@
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  @include('includes.footer')
+  @include('includes.common.footer')
 </div>
 <!-- ./wrapper -->
 

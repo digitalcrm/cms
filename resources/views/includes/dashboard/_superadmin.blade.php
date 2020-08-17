@@ -1,4 +1,9 @@
+@extends('layouts.master')
+
+@section('content')
    <!-- Content Header (Page header) -->
+   @include('includes.pop-up-messages.message')
+
    <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -80,4 +85,6 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->
+
+  @endsection
 

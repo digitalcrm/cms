@@ -1,14 +1,13 @@
-@extends('layouts.master')
+    @role('superadmin')
 
-@section('content')
+    @include('includes.dashboard._superadmin')
 
-        @include('includes.pop-up-messages.message')
+    @elserole('admin')
 
-        @role('superadmin')
-        @include('includes.dashboard._superadmin')
-        @elserole('admin')
-        @include('includes.dashboard._admin')
-        @else
-        @include('includes.dashboard._others')
-        @endrole
-@endsection
+    @include('includes.dashboard._admin')
+
+    @else
+
+    @include('includes.dashboard._others')
+
+    @endrole
