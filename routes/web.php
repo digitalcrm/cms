@@ -11,9 +11,17 @@
 
     // Route::get('/home', 'HomeController@index')->name('home');
 
+    Route::group(['namespace' => 'SuperAdmin'], function () {
 
-    Route::get('/dashboard','SuperAdmin\SuperAdminController@index')->name('dashboard');
+        Route::get('/dashboard','SuperAdminController@index')->name('dashboard');
 
-    Route::get('superadmin/auth/create', 'SuperAdmin\SuperAdminController@create')->name('auth.create');
+        Route::group(['middleware' => ['role:superadmin']], function () {
 
-    Route::post('superadmin/auth/create', 'SuperAdmin\SuperAdminController@store')->name('auth.store');
+            Route::get('auth/create', 'SuperAdminController@create')->name('auth.create')->middleware(['role:superadmin']);
+
+            Route::post('auth/create', 'SuperAdminController@store')->name('auth.store')->middleware(['role:superadmin']);
+        });
+
+        Route::get('/all-users','SuperAdminController@getAllUsers')->name('all-users');
+
+    });

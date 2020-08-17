@@ -13,8 +13,8 @@ try {
     require('bootstrap');
 } catch (e) {}
 
-    // AdminLTE code here.
-    require('admin-lte');
+// AdminLTE code here.
+require('admin-lte');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

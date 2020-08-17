@@ -37,4 +37,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scopeWithoutSuperAdmin($query) {
+        return $query->where('id','!=',1);
+    }
+
+    public function scopeWithRolesFilter($query, $userRole)
+    {
+        return $query->whereHas('roles', function ($query) use ($userRole) {
+            $query->where('name', $userRole);
+        });
+    }
 }
