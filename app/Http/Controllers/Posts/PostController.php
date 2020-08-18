@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Posts;
 
 use App\Tag;
 use App\Post;
+use App\User;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PostStoreRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PostStoreRequest;
 
 class PostController extends Controller
 {
@@ -104,7 +105,15 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('cms.posts.show',compact('post'));
+        // dd(auth()->user()->id);
+        if (auth()->user()->hasRole('superadmin')) {
+            return view('cms.posts.show',compact('post'));
+
+        } elseif (auth()->user()->hasRole('user')) {
+
+            abort_if((Auth::id() != $post->user_id), 403);
+                return view('cms.posts.show',compact('post'));
+        }
     }
 
     /**
@@ -120,7 +129,14 @@ class PostController extends Controller
 
         $post->load('tags');
 
-        return view('cms.posts.edit',compact('categories','tags','post'));
+        if (auth()->user()->hasRole('superadmin')) {
+
+            return view('cms.posts.edit',compact('categories','tags','post'));
+
+        } elseif(auth()->user()->hasRole('user')) {
+            abort_if((Auth::id() != $post->user_id), 403);
+            return view('cms.posts.edit',compact('categories','tags','post'));
+        }
     }
 
     /**
