@@ -11,11 +11,11 @@ class CategoryController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    //     $this->middleware('permission:category-list')->only('index');
-    //     $this->middleware('permission:category-create')->only('create');
-    //     $this->middleware('permission:category-view')->only('view');
-    //     $this->middleware('permission:category-edit')->only('edit');
-    //     $this->middleware('permission:category-delete')->only('destroy');
+        $this->middleware('permission:category-list')->only('index');
+        $this->middleware('permission:category-create')->only('create');
+        $this->middleware('permission:category-view')->only('view');
+        $this->middleware('permission:category-edit')->only('edit');
+        $this->middleware('permission:category-delete')->only('destroy');
     }
     /**
      * Display a listing of the resource.

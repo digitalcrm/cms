@@ -102,6 +102,7 @@
                                 <p>List Post</p>
                             </a>
                         </li>
+                        @can('category-list')
                         <li class="nav-item">
                             <a href="{{route('category.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -110,6 +111,8 @@
                                 </p>
                             </a>
                         </li>
+                        @endcan
+                        @can('tag-list')
                         <li class="nav-item">
                             <a href="{{route('tag.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -118,6 +121,7 @@
                                 </p>
                             </a>
                         </li>
+                        @endcan
                     </li>
                     </ul>
 

@@ -48,11 +48,18 @@ class RawDataSeeder extends Seeder
         # Give permission to roles
         // $role2->givePermissionTo('user-create');
         // $role2->givePermissionTo('all-users');
-        // $role3->givePermissionTo('edit-post');
-        // $role3->givePermissionTo('delete-post');
-        // $role3->givePermissionTo('list-post');
-        // $role3->givePermissionTo('create-post');
-        // $role3->givePermissionTo('view-post');
+
+        // $role3->givePermissionTo('category-list');
+        // $role3->givePermissionTo('category-create');
+        // $role3->givePermissionTo('category-edit');
+        // $role3->givePermissionTo('category-view');
+        // $role3->givePermissionTo('category-delete');
+
+        // $role3->givePermissionTo('tag-list');
+        // $role3->givePermissionTo('tag-create');
+        // $role3->givePermissionTo('tag-edit');
+        // $role3->givePermissionTo('tag-view');
+        // $role3->givePermissionTo('tag-delete');
 
     }
 }

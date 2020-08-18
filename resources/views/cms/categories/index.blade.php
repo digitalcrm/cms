@@ -30,7 +30,9 @@
                         </a>
 
                         @endforeach --}}
+                        @can('category-create')
                         <a type="button" class="btn btn-success float-right" href="{{route('category.create')}}">Create New</a>
+                        @endcan
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
