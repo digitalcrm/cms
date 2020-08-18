@@ -24,6 +24,9 @@
 
             Route::get('/all-users','SuperAdminController@getAllUsers')->name('all-users')->middleware('permission:all-users');
         });
+    });
 
+    Route::group(['namespace' => 'Posts'], function () {
+        Route::resource('posts', 'PostController');
 
     });
