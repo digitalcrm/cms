@@ -9,6 +9,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\PostStoreRequest;
 
 class PostController extends Controller
@@ -105,16 +106,15 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        // dd(auth()->user()->id);
-        if (auth()->user()->hasRole('superadmin')) {
-
+        // if (auth()->user()->hasRole('superadmin')) {
+        //     return view('cms.posts.show',compact('post'));
+        // } elseif (auth()->user()->hasRole('user')) {
+        //     abort_if((Auth::id() != $post->user_id), 403);
+        //         return view('cms.posts.show',compact('post'));
+        // }
+        Gate::authorize('view', $post);
             return view('cms.posts.show',compact('post'));
 
-        } elseif (auth()->user()->hasRole('user')) {
-
-            abort_if((Auth::id() != $post->user_id), 403);
-                return view('cms.posts.show',compact('post'));
-        }
     }
 
     /**
@@ -127,18 +127,17 @@ class PostController extends Controller
     {
         $tags = Tag::get(['id','name']);
         $categories = Category::get(['id','name']);
-
         $post->load('tags');
 
-        if (auth()->user()->hasRole('superadmin')) {
+        // if (auth()->user()->hasRole('superadmin')) {
+        //     return view('cms.posts.edit',compact('categories','tags','post'));
+        // } elseif(auth()->user()->hasRole('user')) {
+        //     abort_if((Auth::id() != $post->user_id), 403);
+        //     return view('cms.posts.edit',compact('categories','tags','post'));
+        // }
 
+        Gate::authorize('update', $post);
             return view('cms.posts.edit',compact('categories','tags','post'));
-
-        } elseif(auth()->user()->hasRole('user')) {
-
-            abort_if((Auth::id() != $post->user_id), 403);
-            return view('cms.posts.edit',compact('categories','tags','post'));
-        }
     }
 
     /**
@@ -197,6 +196,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        Gate::authorize('delete', $post);
+
         $post->delete();
 
         return redirect(route('posts.index'))->with('message','Posts deleted succesfully');
