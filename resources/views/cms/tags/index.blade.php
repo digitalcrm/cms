@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Category</h1>
+                <h1 class="m-0 text-dark">Tag</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -30,7 +30,7 @@
                         </a>
 
                         @endforeach --}}
-                        <a type="button" class="btn btn-success float-right" href="{{route('category.create')}}">Create New</a>
+                        <a type="button" class="btn btn-success float-right" href="{{route('tag.create')}}">Create New</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -39,36 +39,34 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Created_at</th>
-                                    {{-- <th>Edit</th>
-                                        <th>Delete</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($allCategory as $cat)
+                                    @forelse($allTag as $tag)
                                     <tr>
                                         <td>
-                                            {{ $cat->name ?? '' }}<br>
+                                            {{ $tag->name ?? '' }}<br>
 
-                                            @can('category-edit')
-                                            <small><a href="{{route('category.edit',$cat->id)}}">Edit</a></small>
+                                            @can('tag-edit')
+                                            <small><a href="{{route('tag.edit',$tag->id)}}">Edit</a></small>
                                             @endcan
 
-                                            @can('category-view')
-                                            <small><a href="{{route('category.show',$cat->id)}}">View</a></small>
+                                            @can('tag-view')
+                                            <small><a href="{{route('tag.show',$tag->id)}}">View</a></small>
                                             @endcan
 
-                                            @can('category-delete')
+                                            @can('tag-delete')
                                             <small>
                                                 <a href="" type="submit" role="button"
                                                 onclick="event.preventDefault();
                                                 if(confirm('Are you sure!')){
-                                                    $('#form-delete-{{$cat->id}}').submit();
+                                                    $('#form-delete-{{$tag->id}}').submit();
                                                 }
                                                 ">
                                                 Delete
                                             </a>
                                         </small>
-                                        <form style="display:none" id="form-delete-{{$cat->id}}" action="{{route('category.destroy',$cat->id)}}" method="POST">
+                                        <form style="display:none" id="form-delete-{{$tag->id}}" action="{{route('tag.destroy',$tag->id)}}" method="POST">
                                             @csrf
                                             @method('delete')
                                         </form>
@@ -76,12 +74,12 @@
                                         @endcan
 
                                     </td>
-                                    <td>{{ $cat->created_at->diffForHumans() ?? '' }}</td>
+                                    <td>{{ $tag->created_at->diffForHumans() ?? '' }}</td>
                                 </tr>
                                 @empty
                                 <tr>
                                     <td class="text-center" colspan="7">
-                                        {{("No Category Available")}}
+                                        {{("No Tag Available")}}
                                     </td>
                                 </tr>
 
