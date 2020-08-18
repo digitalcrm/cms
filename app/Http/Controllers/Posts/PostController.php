@@ -107,6 +107,7 @@ class PostController extends Controller
     {
         // dd(auth()->user()->id);
         if (auth()->user()->hasRole('superadmin')) {
+
             return view('cms.posts.show',compact('post'));
 
         } elseif (auth()->user()->hasRole('user')) {
@@ -134,6 +135,7 @@ class PostController extends Controller
             return view('cms.posts.edit',compact('categories','tags','post'));
 
         } elseif(auth()->user()->hasRole('user')) {
+
             abort_if((Auth::id() != $post->user_id), 403);
             return view('cms.posts.edit',compact('categories','tags','post'));
         }
