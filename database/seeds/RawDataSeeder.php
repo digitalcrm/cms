@@ -18,6 +18,7 @@ class RawDataSeeder extends Seeder
         // $role1 = Role::create(['name' => 'superadmin']);
         // $role2 = Role::create(['name' => 'admin']);
         // $role3 = Role::create(['name' => 'user']);
+        // $role2 = Role::find(2);
         // $role3 = Role::find(3);
 
         # Permission For User create
@@ -48,6 +49,8 @@ class RawDataSeeder extends Seeder
         # Give permission to roles
         // $role2->givePermissionTo('user-create');
         // $role2->givePermissionTo('all-users');
+
+        // $role2->givePermissionTo('list-post');
 
         // $role3->givePermissionTo('category-list');
         // $role3->givePermissionTo('category-create');

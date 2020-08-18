@@ -90,18 +90,24 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @can('create-post')
                         <li class="nav-item">
                             <a href="{{route('posts.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Post</p>
                             </a>
                         </li>
+                        @endcan
+
+                        @can('list-post')
                         <li class="nav-item">
                             <a href="{{route('posts.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List Post</p>
                             </a>
                         </li>
+                        @endcan
+
                         @can('category-list')
                         <li class="nav-item">
                             <a href="{{route('category.index')}}" class="nav-link">

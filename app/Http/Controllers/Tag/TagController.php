@@ -11,11 +11,11 @@ class TagController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    //     $this->middleware('permission:tag-list')->only('index');
-    //     $this->middleware('permission:tag-create')->only('create');
-    //     $this->middleware('permission:tag-view')->only('view');
-    //     $this->middleware('permission:tag-edit')->only('edit');
-    //     $this->middleware('permission:tag-delete')->only('destroy');
+        $this->middleware('permission:tag-list')->only('index');
+        $this->middleware('permission:tag-create')->only('create');
+        $this->middleware('permission:tag-view')->only('view');
+        $this->middleware('permission:tag-edit')->only('edit');
+        $this->middleware('permission:tag-delete')->only('destroy');
     }
     /**
      * Display a listing of the resource.
