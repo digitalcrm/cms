@@ -13,7 +13,6 @@ class SuperAdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->middleware(['role:superadmin|admin','permission:user-create|all-users']);
     }
 
     public function index() {
@@ -41,7 +40,7 @@ class SuperAdminController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $input->assignRole(2); // 2 is for assign Role Admin
+        $input->assignRole(2); // Role(2) => Admin Role(3) => User
 
         return redirect()->back()->with('status','Admin ' .$input['name']. ' created successfully');
     }

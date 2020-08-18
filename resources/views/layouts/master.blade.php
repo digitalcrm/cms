@@ -9,7 +9,6 @@
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <!-- Styles -->
@@ -41,6 +40,8 @@
 </div>
 <!-- ./wrapper -->
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
+{{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
+<script src="{{ mix('js/all.min.js') }}"></script>
 </body>
 </html>

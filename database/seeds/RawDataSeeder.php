@@ -22,11 +22,8 @@ class RawDataSeeder extends Seeder
         Permission::create(['name' => 'user-create']);
         Permission::create(['name' => 'all-users']);
 
-
-        $role2->givePermissionTo('user-create');
+        // Give permission to role
+        // $role2->givePermissionTo('user-create');
         $role2->givePermissionTo('all-users');
-
-        // $role1->givePermissionTo('user-create');
-        // $role1->givePermissionTo('all-users');
     }
 }
