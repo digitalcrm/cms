@@ -26,7 +26,14 @@
         });
     });
 
-    // Route::group(['namespace' => 'Posts','middleware' =>'role:user|superadmin'], function () {
     Route::group(['namespace' => 'Posts'], function () {
         Route::resource('posts', 'PostController');
+    });
+
+    Route::group(['namespace' => 'Category'], function () {
+        Route::resource('category', 'CategoryController');
+    });
+
+    Route::group(['namespace' => 'Tag'], function () {
+        Route::resource('tag', 'TagController');
     });

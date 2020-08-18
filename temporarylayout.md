@@ -34,3 +34,24 @@
     <li>post-view</li>
     <li>post-delete</li>
     </ul>
+## Category
+    **permision**
+    <ul>
+    <li>category-list</li>
+    <li>category-create</li>
+    <li>category-edit</li>
+    <li>category-view</li>
+    <li>category-delete</li>
+    </ul>
+## Tag
+    **permision**
+    <ul>
+    <li>tag-list</li>
+    <li>tag-create</li>
+    <li>tag-edit</li>
+    <li>tag-view</li>
+    <li>tag-delete</li>
+    </ul>
+
+=====================================
+Tommorow Role Management Setup => Give permission to roles
