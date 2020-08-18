@@ -26,7 +26,7 @@
         });
     });
 
+    // Route::group(['namespace' => 'Posts','middleware' =>'role:user|superadmin'], function () {
     Route::group(['namespace' => 'Posts'], function () {
         Route::resource('posts', 'PostController');
-
     });

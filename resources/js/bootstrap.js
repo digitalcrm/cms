@@ -14,7 +14,9 @@ try {
 
     // AdminLTE code here.
     require('admin-lte');
-} catch (e) {}
+} catch (e) {
+    console.log(e);
+}
 
 
 /**

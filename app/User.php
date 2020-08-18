@@ -48,4 +48,8 @@ class User extends Authenticatable
             $query->where('name', $userRole);
         });
     }
+
+    public function posts() {
+        return $this->hasMany( Post::class );
+    }
 }

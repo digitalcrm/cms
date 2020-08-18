@@ -12,14 +12,16 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps();
 
-mix.scripts([
-    'node_modules/plugins/jquery/jquery.min.js',
-    'node_modules/plugins/bootstrap/js/bootstrap.bundle.min.js',
-    'node_modules/plugins/datatables/jquery.dataTables.min.js',
-    'node_modules/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js',
-    'node_modules/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js',
-    'node_modules/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js',
-    // other scripts
-], 'public/js/all.min.js');
+// mix.scripts([
+//     // 'node_modules/plugins/jquery/jquery.min.js',
+//     'node_modules/plugins/bootstrap/js/bootstrap.bundle.min.js',
+//     'node_modules/plugins/datatables/jquery.dataTables.min.js',
+//     'node_modules/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js',
+//     'node_modules/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js',
+//     'node_modules/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js',
+//     'node_modules/admin-lte/plugins/select2/js/select2.full.min.js',
+//     // other scripts
+// ], 'public/js/all.min.js');
