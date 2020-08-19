@@ -107,12 +107,4 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
-<script>
-    $(function () {
-        $("#example1").DataTable({
-            "responsive": true,
-            "autoWidth": false,
-        });
-    });
-</script>
 @endsection

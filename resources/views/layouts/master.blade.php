@@ -40,10 +40,11 @@
   @include('includes.common.footer')
 </div>
 <!-- ./wrapper -->
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
-<script src="{{ mix('js/popper.js') }}"></script>
 
-{{-- <script src="{{ mix('js/all.min.js') }}"></script> --}}
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+
+<script src="{{ mix('js/popper.js') }}"></script>
 </body>
 </html>
