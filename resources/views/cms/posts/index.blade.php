@@ -8,6 +8,9 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark">Posts</h1>
+                {{-- <button type="button" class="btn btn-success swalDefaultSuccess">
+                    Launch Success Toast
+                  </button> --}}
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -28,8 +31,10 @@
                             class="btn btn-sm btn-outline-secondary mr-1 {{ request('roles') == $role ? 'active' : '' }}">
                             {{ $role }}
                         </a>
-
                         @endforeach --}}
+                        @can('create-post')
+                        <a href="{{route('posts.create')}}" class="btn btn-success float-right">Add New</a>
+                        @endcan
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -107,12 +112,4 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
-{{-- <script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true,
-        "autoWidth": false,
-      });
-    });
-</script> --}}
 @endsection

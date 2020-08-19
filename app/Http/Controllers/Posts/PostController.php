@@ -95,7 +95,7 @@ class PostController extends Controller
 
         // }
 
-        return redirect(route('posts.index'))->with('message','post created successfully');
+        return redirect(route('posts.index'))->withMessage('post 😊 created successfully');
     }
 
     /**
@@ -185,7 +185,7 @@ class PostController extends Controller
 
         $post->tags()->sync(request('tags'));
 
-        return redirect(route('posts.index'))->with('message','Posts updated succesfully');
+        return redirect(route('posts.index'))->withInfo('Posts updated succesfully');
     }
 
     /**

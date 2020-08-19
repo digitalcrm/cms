@@ -1,50 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'CRM-Role-Management') }}</title>
 
-  <!-- Fonts -->
-  <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    </head>
+    <body class="hold-transition sidebar-mini">
 
-  <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
+        <div class="wrapper">
 
-  <!-- Navbar -->
-    @include('includes.common.nav')
-  <!-- /.navbar -->
+            @include('includes.common.nav')
 
-  <!-- Main Sidebar Container -->
+            @include('includes.sidebar')
 
-    {{-- @include('includes.superadmin.sidebar') --}}
-    @include('includes.sidebar')
+            <div class="content-wrapper">
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    @include('includes.pop-up-messages.message')
+                @yield('content')
+            </div>
 
-    @yield('content')
-  </div>
-  <!-- /.content-wrapper -->
+            <!-- Control Sidebar -->
+                @include('includes.control-sidebar')
+            <!-- /.control-sidebar -->
 
-  <!-- Control Sidebar -->
-    @include('includes.control-sidebar')
-  <!-- /.control-sidebar -->
+            @include('includes.common.footer')
 
-  <!-- Main Footer -->
-  @include('includes.common.footer')
-</div>
-<!-- ./wrapper -->
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+        </div>
 
-<script src="{{ mix('js/popper.js') }}"></script>
-</body>
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ mix('js/popper.js') }}"></script>
+
+        @include('includes.pop-up-messages.message')
+    </body>
+
 </html>
