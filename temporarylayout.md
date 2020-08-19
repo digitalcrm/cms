@@ -53,5 +53,15 @@
     <li>tag-delete</li>
     </ul>
 
-=====================================
-Tommorow Role Management Setup => Give permission to roles
+================================================================================
+Pending Work
+1. Role management (Role with having permission/Permission)*
+2. SweetAlert add for message*
+3. CMS Part complete
+    3.1 photo add in post
+    3.2 subcategory add
+4. Additional Features add
+    4.1 save as draft post
+    4.2 views count post
+    4.3 
+

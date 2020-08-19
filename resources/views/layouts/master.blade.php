@@ -28,6 +28,8 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    @include('includes.pop-up-messages.message')
+
     @yield('content')
   </div>
   <!-- /.content-wrapper -->
@@ -40,8 +42,6 @@
   @include('includes.common.footer')
 </div>
 <!-- ./wrapper -->
-
-
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 

@@ -63,7 +63,7 @@
 
                             <div class="form-group">
                                 <label>Tags</label>
-                                <select class="select2bs4" name="tags[]" multiple="multiple" data-placeholder="Select tag"
+                                <select class="select2bs4" name="tags[]" multiple="multiple" data-placeholder="Select a Tag"
                                         style="width: 100%;">
                                   <option value="0">Select tags</option>
                                     @foreach ($tags as $tag)

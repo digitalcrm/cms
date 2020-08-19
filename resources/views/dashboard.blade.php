@@ -1,3 +1,7 @@
+@extends('layouts.master')
+
+@section('content')
+
     @role('superadmin')
 
     @include('includes.dashboard._superadmin')
@@ -11,3 +15,5 @@
     @include('includes.dashboard._others')
 
     @endrole
+
+@endsection
