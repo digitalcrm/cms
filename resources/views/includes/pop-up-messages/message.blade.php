@@ -30,7 +30,12 @@
             toast: true,
             position: 'top-left',
             showConfirmButton: false,
-            timer: 3000
+            timer: 5000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
         });
         if (message) {
             Toast.fire({
