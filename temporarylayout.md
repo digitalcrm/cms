@@ -55,14 +55,12 @@
 
 ================================================================================
 Pending Work
-1. Role management (Role with having permission/Permission)*
+1. Role management (Role with having permission/Permission)=>done
 2. SweetAlert add for message => done
+
 3. CMS Part complete
-    3.1 photo add in post
-    3.2 subcategory add
+    3.1 photo add in post* =>tommorow
+    3.2 subcategory add* =>tommorow
 4. Additional Features add
     4.1 save as draft post
     4.2 views count post
-    4.3 
-================================================================================
-Permision

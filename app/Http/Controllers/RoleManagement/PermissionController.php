@@ -45,7 +45,7 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:permissions|max:50',
+            'name' => 'required|unique:permissions,name|max:50',
         ]);
 
         // Permission::create($validatedData);
@@ -87,7 +87,7 @@ class PermissionController extends Controller
     public function update(Request $request, Permission $permission)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:permissions|max:50',
+            'name' => 'required|unique:permissions,name,'.$permission->id.'|max:50',
         ]);
 
         $permission->update($validatedData);

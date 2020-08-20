@@ -21,8 +21,9 @@ $('#datepicker').datepicker();
 
 //Datatable
 $("#example1").DataTable({
-    "responsive": true,
-    "autoWidth": false,
+    'responsive': true,
+    'autoWidth': false,
+    'ordering': false,
   });
 
 //Initialize Select2 Elements

@@ -34,6 +34,19 @@
                                     <small class="form-text text-red">{{ $message }}</small>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <label>Permissions</label>
+                                <select class="" name="permission[]" multiple="multiple" data-placeholder="Select a Permission"
+                                        style="width: 100%;">
+                                  {{-- <option value="0">Select Permission</option> --}}
+                                    @foreach ($permissions as $permission)
+                                        <option value="{{$permission->id}}">{{$permission->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('permission')
+                                    <small class="form-text text-red">{{ $message }}</small>
+                                @enderror
+                            </div>
 
                             <a name="" id="" class="btn btn-info" href="{{url()->previous()}}" role="button">Cancel</a>
                             <button type="submit" class="btn btn-primary float-right">Create</button>

@@ -24,7 +24,7 @@ class RoleController extends Controller
     public function index()
     {
         // $allRole = Role::all();
-        $allRole = Role::with('permissions')->latest()->get(['id','name','created_at']);
+        $allRole = Role::with('permissions')->get();
 
         return view('role_management.role.index',compact('allRole'));
     }
@@ -36,7 +36,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('role_management.role.create');
+        $permissions = Permission::get();
+        return view('role_management.role.create',compact('permissions'));
     }
 
     /**
@@ -49,9 +50,12 @@ class RoleController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|unique:roles|max:50',
+            'permission' => 'exists:permissions,id'
         ]);
+        // dd(request('permission'));
+        $role = Role::create($validatedData);
 
-        Role::create($validatedData);
+        $role->syncPermissions($request->permission);
 
         return redirect(route('role.index'))->withMessage('Role created successfully');
     }
@@ -75,7 +79,11 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('role_management.role.edit',compact('role'));
+        $allPermissions = Permission::pluck('name','id');
+
+        $role->load('permissions');
+
+        return view('role_management.role.edit',compact('role','allPermissions'));
     }
 
     /**
@@ -88,10 +96,13 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:roles|max:50',
+            'name' => 'required|unique:roles,name,'.$role->id.'|max:50',
+            'permission' => 'exists:permissions,id'
         ]);
 
         $role->update($validatedData);
+
+        $role->syncPermissions(request('permission'));
 
         return redirect(route('role.index'))->withInfo('Role updated successfully');
     }

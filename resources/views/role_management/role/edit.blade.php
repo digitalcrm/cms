@@ -40,6 +40,24 @@
                                     <small class="form-text text-red">{{ $message }}</small>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <label>Permissions</label>
+                                <select class="" name="permission[]" multiple="multiple" data-placeholder="Select a Permission"
+                                        style="width: 100%;">
+                                  {{-- <option value="0">Select Permission</option> --}}
+                                    @foreach ($allPermissions as $id => $name)
+                                        <option value="{{ $id }}" {{ $role->permissions->contains($id) ? 'selected' : '' }}>
+                                            {{$name}}
+                                        </option>
+                                        {{-- <option value="{{$allpermission->id}}" {{ $role->permissions->contains($allpermission->id) ? 'selected' : ''}}>
+                                            {{$allpermission->name}}
+                                        </option> --}}
+                                    @endforeach
+                                </select>
+                                @error('permission')
+                                    <small class="form-text text-red">{{ $message }}</small>
+                                @enderror
+                            </div>
 
                             <a name="" id="" class="btn btn-light" href="{{url()->previous()}}" role="button">Cancel</a>
                             <button type="submit" class="btn btn-primary float-right">Update</button>

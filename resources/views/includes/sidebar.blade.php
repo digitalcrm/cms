@@ -23,7 +23,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 {{-- User Management --}}
-                @hasanyrole('superadmin|admin')
+                {{-- @hasanyrole('superadmin|admin') --}}
+                @can('all-users')
                 <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -53,7 +54,8 @@
 
                     </ul>
                 </li>
-                @endhasanyrole
+                @endcan
+                {{-- @endhasanyrole --}}
 
                 {{--Role Management  --}}
                 @hasrole('superadmin')
@@ -83,6 +85,7 @@
                 @endhasrole
 
                 {{-- CMS --}}
+                @can('list-post')
                 <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -131,8 +134,7 @@
                         </li>
                         @endcan
                     </li>
-                    </ul>
-
+                @endcan
                 {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
