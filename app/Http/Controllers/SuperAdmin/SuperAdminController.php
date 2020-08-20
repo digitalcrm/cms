@@ -15,9 +15,12 @@ class SuperAdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function index() {
-        $roles = Role::get();
-        return view('dashboard',compact('roles'));
+    public function index()
+    {
+        foreach (auth()->user()->getRoleNames() as $role) {
+           $roleName = ucfirst($role);
+        }
+        return view('dashboard',compact('roleName'));
     }
 
     public function create()
