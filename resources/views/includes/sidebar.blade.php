@@ -56,6 +56,7 @@
                 @endhasanyrole
 
                 {{--Role Management  --}}
+                @hasrole('superadmin')
                 <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -79,6 +80,7 @@
                         </li>
                     </ul>
                 </li>
+                @endhasrole
 
                 {{-- CMS --}}
                 <li class="nav-item has-treeview menu-close">
