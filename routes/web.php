@@ -37,3 +37,8 @@
     Route::group(['namespace' => 'Tag'], function () {
         Route::resource('tag', 'TagController');
     });
+
+    Route::group(['namespace' => 'RoleManagement'], function () {
+        Route::resource('permission', 'PermissionController');
+        Route::resource('role', 'RoleController');
+    });

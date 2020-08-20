@@ -56,7 +56,7 @@
 ================================================================================
 Pending Work
 1. Role management (Role with having permission/Permission)*
-2. SweetAlert add for message*
+2. SweetAlert add for message => done
 3. CMS Part complete
     3.1 photo add in post
     3.2 subcategory add
@@ -64,4 +64,5 @@ Pending Work
     4.1 save as draft post
     4.2 views count post
     4.3 
-
+================================================================================
+Permision
