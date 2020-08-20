@@ -32,9 +32,8 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>role_has_Permission</th>
                                     <th>Created_at</th>
-                                    {{-- <th>Edit</th>
-                                        <th>Delete</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,12 +69,28 @@
                                         {{-- @endcan --}}
 
                                     </td>
+                                    <td>
+                                        @forelse($role->getPermissionNames() as $rolepermission)
+                                            <label class="badge badge-success">{{$rolepermission}}</label>
+                                        @empty
+                                        @if($role->name == 'superadmin')
+                                            <label class="badge badge-info">
+                                                {{__('SuperAdmin has all permission')}}
+                                            </label>
+                                            @else
+                                                <label class="badge badge-warning">
+                                                    {{__('No Permissions are assign')}}
+                                                </label>
+                                            @endif
+                                        @endforelse
+                                    </td>
+
                                     <td>{{ $role->created_at->diffForHumans() ?? '' }}</td>
                                 </tr>
                                 @empty
                                 <tr>
                                     <td class="text-center" colspan="7">
-                                        {{("No Permission Available")}}
+                                        {{("No Role Available")}}
                                     </td>
                                 </tr>
 

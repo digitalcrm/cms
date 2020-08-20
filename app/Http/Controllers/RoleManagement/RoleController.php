@@ -4,6 +4,8 @@ namespace App\Http\Controllers\RoleManagement;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -21,7 +23,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $allRole = Role::all();
+        // $allRole = Role::all();
+        $allRole = Role::with('permissions')->latest()->get(['id','name','created_at']);
 
         return view('role_management.role.index',compact('allRole'));
     }

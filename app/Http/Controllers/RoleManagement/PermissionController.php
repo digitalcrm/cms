@@ -48,7 +48,9 @@ class PermissionController extends Controller
             'name' => 'required|unique:permissions|max:50',
         ]);
 
-        Permission::create($validatedData);
+        // Permission::create($validatedData);
+        $permission = Permission::make($validatedData);
+        $permission->saveOrFail();
 
         return redirect(route('permission.index'))->withMessage('Permission created successfully');
     }

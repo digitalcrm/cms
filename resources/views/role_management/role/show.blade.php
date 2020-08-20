@@ -30,24 +30,36 @@
                                 <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">
                                     Role Name
                                 </a>
-                                <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">
+                                {{-- <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">
                                     Created_at
-                                </a>
-                                {{-- <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">
-                                    Other details
                                 </a> --}}
+                                <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">
+                                    Permissions
+                                </a>
                             </div>
                         </nav>
                         <div class="tab-content p-3" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab">
                                 {{$role->name}}
                             </div>
-                            <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
+                            {{-- <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
                                 {{$role->created_at->diffForHumans()}}
-                            </div>
-                            {{-- <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">
-                                {{$post->created_at->diffForHumans()}}
                             </div> --}}
+                            <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">
+                                @forelse($role->getPermissionNames() as $rolepermission)
+                                    <label class="badge badge-success">{{$rolepermission}}</label>
+                                @empty
+                                @if($role->name == 'superadmin')
+                                    <label class="badge badge-info">
+                                        {{__('SuperAdmin has all permission')}}
+                                    </label>
+                                    @else
+                                        <label class="badge badge-warning">
+                                            {{__('No Permissions are assign')}}
+                                        </label>
+                                    @endif
+                                @endforelse
+                            </div>
                         </div>
                     </div>
                 </div>
