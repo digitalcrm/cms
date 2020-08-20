@@ -52,4 +52,12 @@ class User extends Authenticatable
     public function posts() {
         return $this->hasMany( Post::class );
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function ($user){
+            $user->assignRole(3);
+        });
+    }
 }
