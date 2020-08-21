@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use InvalidArgumentException;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SuperAdminController extends Controller
@@ -54,16 +55,16 @@ class SuperAdminController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $input->assignRole(2); // Role(2) => Admin Role(3) => User
+        // $input->assignRole(2); // Role(2) => Admin Role(3) => User
 
         return redirect()->back()->with('status','Admin ' .$input['name']. ' created successfully');
     }
 
     public function getAllUsers() {
 
-        $roles = Role::all()->pluck('name');
+        $roles = Role::has('users')->pluck('name');
 
-        $query = User::with('roles');
+        $query = User::query()->has('roles');
 
         if (request('roles')) {
             $userRole = request('roles');

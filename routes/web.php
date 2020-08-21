@@ -20,7 +20,7 @@
 
             Route::get('auth/create', 'SuperAdminController@create')->name('auth.create')->middleware('permission:user-create');
 
-            Route::post('auth/create', 'SuperAdminController@store')->name('auth.store');
+            Route::post('auth/create', 'SuperAdminController@store')->name('auth.store')->middleware('permission:user-create');
 
             Route::get('/all-users','SuperAdminController@getAllUsers')->name('all-users')->middleware('permission:all-users');
         });

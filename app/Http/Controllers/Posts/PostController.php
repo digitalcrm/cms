@@ -32,18 +32,18 @@ class PostController extends Controller
     public function index()
     {
         // dd(auth()->user()->hasRole('superadmin'));
-        // $query = Post::with('user');
+        $query = Post::query();
 
         if(auth()->user()->hasRole('superadmin')) {
-            $allPosts = Post::has('user')->latest()->get();
+            $allPosts = $query->has('user')->latest()->get();
 
         } elseif (auth()->user()->hasRole('admin')) {
-            $allPosts = Post::whereHas('user', function($query){
+            $allPosts = $query->whereHas('user', function($query){
                 $query->where('user_id','!=',1);
             })->latest()->get();
 
         } else {
-            $allPosts = Post::whereHas('user', function($query){
+            $allPosts = $query->whereHas('user', function($query){
                 $query->where('user_id',auth()->user()->id);
             })->latest()->get();
         }

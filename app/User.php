@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -38,6 +39,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $with = ['roles', 'permissions'];
+
     public function scopeWithoutSuperAdmin($query) {
         return $query->where('id','!=',1);
     }
@@ -56,8 +59,17 @@ class User extends Authenticatable
     protected static function boot()
     {
         parent::boot();
+
         static::created(function ($user){
-            $user->assignRole(3);
+            # Here condition check if user is logged in and create a User model then assign role otherwise else condition
+            if (Auth::check()) {
+                $user->assignRole(2); # Role 2 Admin
+
+            } else {
+                $user->assignRole(3); # Role 3 User default registration
+
+            }
+
         });
     }
 }
