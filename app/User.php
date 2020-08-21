@@ -39,16 +39,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $with = ['roles', 'permissions'];
+    protected $with = ['roles'];
 
-    public function scopeWithoutSuperAdmin($query) {
-        return $query->where('id','!=',1);
-    }
+    // public function scopeWithoutSuperAdmin($query) {
+    //     return $query->where('id','!=',1);
+    // }
 
     public function scopeWithRolesFilter($query, $userRole)
     {
         return $query->whereHas('roles', function ($query) use ($userRole) {
             $query->where('name', $userRole);
+        });
+    }
+
+    public function scopeGet_All_User_WithDoesntHave_SuperAdmin_Role($query) {
+        return  $query->whereDoesntHave('roles', function ($query) {
+            $query->where('id', 1);
         });
     }
 

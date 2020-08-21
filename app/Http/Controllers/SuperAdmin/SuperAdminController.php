@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use InvalidArgumentException;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -74,7 +75,9 @@ class SuperAdminController extends Controller
             })->get();
 
         } else {
-            $allUsers = $query->withoutSuperAdmin()->get();
+            // $allUsers = $query->withoutSuperAdmin()->get();
+
+            $allUsers = $query->get_All_User_WithDoesntHave_SuperAdmin_Role()->get();
         }
         return view('users.lists',compact('allUsers','roles'));
     }
