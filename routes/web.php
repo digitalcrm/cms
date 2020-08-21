@@ -32,7 +32,7 @@
 
     Route::group(['namespace' => 'Category'], function () {
         Route::resource('category', 'CategoryController');
-        Route::resource('sub-category', 'SubCategoryController');
+        Route::resource('subcategory', 'SubCategoryController');
     });
 
     Route::group(['namespace' => 'Tag'], function () {

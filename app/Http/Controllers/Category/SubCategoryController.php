@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers\Category;
 
+use App\Category;
 use App\Http\Controllers\Controller;
-use App\SubCategory;
+use App\Http\Requests\SubcategoryRequest;
+use App\Subcategory;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:subcategory-list')->only('index');
+        $this->middleware('permission:subcategory-create')->only('create');
+        $this->middleware('permission:subcategory-view')->only('view');
+        $this->middleware('permission:subcategory-edit')->only('edit');
+        $this->middleware('permission:subcategory-delete')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +26,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $allSubcategory = Subcategory::get();
+        return view('cms.subcategories.index',compact('allSubcategory'));
     }
 
     /**
@@ -25,7 +37,9 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        //
+        $parentCategory = Category::get()->pluck('name','id');
+
+        return view('cms.subcategories.create',compact('parentCategory'));
     }
 
     /**
@@ -34,53 +48,64 @@ class SubCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubcategoryRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        Subcategory::create($validatedData);
+
+        return redirect(route('subcategory.index'))->withMessage('sub category created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\SubCategory  $subCategory
+     * @param  \App\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function show(SubCategory $subCategory)
+    public function show(Subcategory $subcategory)
     {
-        //
+        return view('cms.subcategories.view',compact('subcategory'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SubCategory  $subCategory
+     * @param  \App\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubCategory $subCategory)
+    public function edit(Subcategory $subcategory)
     {
-        //
+        $parentCategory = Category::get()->pluck('name','id');
+        return view('cms.subcategories.edit',compact('subcategory','parentCategory'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SubCategory  $subCategory
+     * @param  \App\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubCategory $subCategory)
+    public function update(SubcategoryRequest $request, Subcategory $subcategory)
     {
-        //
+        $validatedData = $request->validated();
+
+        $subcategory->update($validatedData);
+
+        return redirect(route('subcategory.index'))->withInfo('sub category updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SubCategory  $subCategory
+     * @param  \App\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubCategory $subCategory)
+    public function destroy(Subcategory $subcategory)
     {
-        //
+        $subcategory->delete();
+
+        return redirect(route('subcategory.index'))->withMessage('sub category deleted successfully');
     }
 }

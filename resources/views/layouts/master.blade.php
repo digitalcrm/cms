@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @livewireStyles
     </head>
     <body class="hold-transition sidebar-mini">
 
@@ -39,6 +40,8 @@
         <script src="{{ mix('js/popper.js') }}"></script>
 
         @include('includes.pop-up-messages.message')
+
+        @livewireScripts
     </body>
 
 </html>
