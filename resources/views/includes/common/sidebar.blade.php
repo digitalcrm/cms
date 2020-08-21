@@ -123,7 +123,7 @@
                             </a>
                         </li>
                         @endcan
-                        @can('subcategory-list')
+                        @can('subcategory-lists')
                         <li class="nav-item">
                             <a href="{{route('subcategory.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>

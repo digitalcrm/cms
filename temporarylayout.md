@@ -59,8 +59,11 @@ Pending Work
 2. SweetAlert add for message => done
 
 3. CMS Part complete
-    subcategory add*
+    subcategory add => done
+
+    Main part Imp => do tommorow
+    category with dependent subcategory*
     post active/inactive*
-    view count
     image upload*
+    view count
 

@@ -13,7 +13,7 @@ class SubCategoryController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('permission:subcategory-list')->only('index');
+        $this->middleware('permission:subcategory-lists')->only('index');
         $this->middleware('permission:subcategory-create')->only('create');
         $this->middleware('permission:subcategory-view')->only('view');
         $this->middleware('permission:subcategory-edit')->only('edit');

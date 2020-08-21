@@ -32,6 +32,7 @@
 
     Route::group(['namespace' => 'Category'], function () {
         Route::resource('category', 'CategoryController');
+
         Route::resource('subcategory', 'SubCategoryController');
     });
 
