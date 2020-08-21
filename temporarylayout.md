@@ -59,8 +59,8 @@ Pending Work
 2. SweetAlert add for message => done
 
 3. CMS Part complete
-    3.1 photo add in post* =>tommorow
-    3.2 subcategory add* =>tommorow
-4. Additional Features add
-    4.1 save as draft post
-    4.2 views count post
+    subcategory add*
+    post active/inactive*
+    view count
+    image upload*
+
