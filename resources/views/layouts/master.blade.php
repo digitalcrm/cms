@@ -19,7 +19,7 @@
 
             @include('includes.common.nav')
 
-            @include('includes.sidebar')
+            @include('includes.common.sidebar')
 
             <div class="content-wrapper">
 
@@ -27,7 +27,7 @@
             </div>
 
             <!-- Control Sidebar -->
-                @include('includes.control-sidebar')
+                @include('includes.common.control-sidebar')
             <!-- /.control-sidebar -->
 
             @include('includes.common.footer')

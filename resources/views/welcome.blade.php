@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -96,5 +99,6 @@
                 </div>
             </div>
         </div>
+        @include('includes.pop-up-messages.message')
     </body>
 </html>

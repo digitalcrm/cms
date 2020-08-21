@@ -25,6 +25,7 @@
         var message = "{{session('message')}}";
         var information = "{{session('info')}}";
         var errors = "{{ $errors->any() }}";
+        var viewerror = "{{ session('error') }}";
 
         const Toast = Swal.mixin({
             toast: true,
@@ -52,6 +53,12 @@
                 icon: 'info',
                 title: information
             })
+        } else if(viewerror) {
+            Toast.fire({
+                icon: 'error',
+                title: viewerror
+            })
+
         }
     });
 </script>

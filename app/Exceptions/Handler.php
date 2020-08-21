@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Support\Str;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +51,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        $message = $exception->getMessage();
+
+        if ($exception instanceof \InvalidArgumentException && \Str::startsWith($message, 'View') && \Str::endsWith($message, 'not found.')) {
+
+            return redirect()->back()->withError($message);
+        }
+
         return parent::render($request, $exception);
     }
 }

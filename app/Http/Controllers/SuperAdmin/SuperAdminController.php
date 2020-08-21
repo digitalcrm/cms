@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\User;
 use Illuminate\Http\Request;
+use InvalidArgumentException;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -20,6 +21,16 @@ class SuperAdminController extends Controller
         foreach (auth()->user()->getRoleNames() as $role) {
            $roleName = ucfirst($role);
         }
+            /*
+            try {
+
+                return view('dashboard1',compact('roleName'));
+                } catch (InvalidArgumentException $e) {
+
+                return back()->withErrors('View Not Found ')->withInput();
+                }
+                */
+
         return view('dashboard',compact('roleName'));
     }
 
