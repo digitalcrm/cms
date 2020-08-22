@@ -9,7 +9,7 @@ class Post extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['user_id','category_id','title','slug','body'];
+    protected $fillable = ['user_id','category_id','title','slug','body','subcategory_id'];
 
     protected $with = ['user'];
 

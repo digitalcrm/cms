@@ -13,7 +13,7 @@ class Dependentsubcategorydropdown extends Component
     public $subcategory;
     public $event;
 
-    public function mount($category = null, $subcategory = null, $event = null) {
+    public function mount($category = null, $subcategory = null) {
         $this->category = $category;
         $this->subcategory = $subcategory;
     }
