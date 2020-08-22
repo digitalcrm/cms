@@ -39,7 +39,8 @@
                                     <small class="form-text text-red">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="form-group">
+
+                            {{-- <div class="form-group">
                                 <label for="category_id">Category</label>
                                 <select class="form-control @error('category_id') is-invalid @enderror" name="category_id" id="category">
                                     <option value="0">Select Category</option>
@@ -50,7 +51,9 @@
                                 @error('category_id')
                                 <small class="form-text text-red">{{ $message }}</small>
                                 @enderror
-                            </div>
+                            </div> --}}
+
+                            @livewire('dependentsubcategorydropdown')
 
                             <div class="form-group">
                                 <label>Tags</label>

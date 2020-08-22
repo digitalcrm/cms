@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\PostStoreRequest;
+use App\Subcategory;
 
 class PostController extends Controller
 {
@@ -59,8 +60,8 @@ class PostController extends Controller
     public function create()
     {
         return view('cms.posts.create',[
-            'categories' => Category::get(['id','name']),
             'tags' => Tag::get(['id','name']),
+            // 'subcategories' => Subcategory::where('category_id',1)->get(),
         ]);
     }
 
@@ -73,7 +74,7 @@ class PostController extends Controller
     public function store(PostStoreRequest $request)
     {
         $input = $request->validated();
-
+        // dd($input);
         $posts = auth()->user()->posts()->create($input);
 
         $posts->tags()->attach(request('tags'));
