@@ -18,6 +18,11 @@ class Post extends Model
         return $this->belongsTo( Category::class );
     }
 
+    public function subcategory()
+    {
+        return $this->belongsTo( Subcategory::class );
+    }
+
     public function tags()
     {
         return $this->belongsToMany( Tag::class );

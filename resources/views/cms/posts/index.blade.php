@@ -43,6 +43,8 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Author</th>
+                                    <th>Category</th>
+                                    <th>Subcategory</th>
                                     <th>Created_at</th>
                                     {{-- <th>Edit</th>
                                         <th>Delete</th> --}}
@@ -82,6 +84,8 @@
 
                                     </td>
                                     <td>{{ $post->user->name ?? '' }}</td>
+                                    <td>{{ $post->category->name ?? '' }}</td>
+                                    <td>{{ $post->subcategory->name ?? '' }}</td>
                                     <td>{{ $post->created_at ?? '' }}</td>
                                     {{-- <td>
                                         <a href="{{route('posts.edit', $post->id)}}">Edit</a>

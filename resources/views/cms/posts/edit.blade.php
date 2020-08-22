@@ -61,7 +61,10 @@
                                 @enderror
                             </div> --}}
 
-                            @livewire('dependentsubcategorydropdown')
+                            @livewire('dependentsubcategorydropdown', [
+                                'category'=>old('category_id',$post->category_id),
+                                'subcategory'=>old('subcategory_id',$post->subcategory_id)
+                            ])
 
                             <div class="form-group">
                                 <label>Tags</label>

@@ -127,7 +127,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $tags = Tag::get(['id','name']);
-        $categories = Category::get(['id','name']);
+        // $categories = Category::get(['id','name']);
         $post->load('tags');
 
         // if (auth()->user()->hasRole('superadmin')) {
@@ -138,7 +138,7 @@ class PostController extends Controller
         // }
 
         Gate::authorize('update', $post);
-            return view('cms.posts.edit',compact('categories','tags','post'));
+            return view('cms.posts.edit',compact('tags','post'));
     }
 
     /**
