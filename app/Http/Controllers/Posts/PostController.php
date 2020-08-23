@@ -102,6 +102,7 @@ class PostController extends Controller
         //     abort_if((Auth::id() != $post->user_id), 403);
         //         return view('cms.posts.show',compact('post'));
         // }
+        dd($post->featured_image->getUrl());
         Gate::authorize('view', $post);
             return view('cms.posts.show',compact('post'));
 
