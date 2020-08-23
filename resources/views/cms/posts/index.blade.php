@@ -54,9 +54,9 @@
                                     @forelse($allPosts as $post)
                                     <tr>
                                         <td>
-                                            {{-- @if($post->featured_image) --}}
-                                                <img src="{{ asset($post->featured_image->getUrl()) }}" alt="">
-                                            {{-- @endif --}}
+                                            @if($post->featured_image)
+                                                <img src="{{ $post->featured_image->getUrl('post-thumb') }}" alt="">
+                                            @endif
 
                                             {{ $post->title ?? '' }}<br>
 
