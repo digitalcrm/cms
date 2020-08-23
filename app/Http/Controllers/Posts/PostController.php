@@ -48,7 +48,6 @@ class PostController extends Controller
                 $query->where('user_id',auth()->user()->id);
             })->latest()->get();
         }
-
         return view('cms.posts.index',compact('allPosts'));
     }
 
@@ -79,22 +78,12 @@ class PostController extends Controller
 
         $posts->tags()->attach(request('tags'));
 
-        // if($request->hasFile('path')){
+        if($request->hasFile('featuredimage')){
 
-        //     $originalname = $request->path->getClientOriginalName();
+            $posts->addMedia($request->featuredimage)
+                    ->toMediaCollection('posts');
 
-        //     $extension = $request->path->extension();
-
-        //     $uploadpath = $request->path->storeAs('media', $originalname, 'public');//filepath=>media/filename.png
-
-        //     $photo = Photo::create(['file'=> $originalname]);
-
-        //     // $input['photo_id'] = $photo->id;
-        //     $posts->photo()->associate($photo->id);
-
-        //     $posts->save();
-
-        // }
+        }
 
         return redirect(route('posts.index'))->withMessage('post 😊 created successfully');
     }
@@ -150,41 +139,24 @@ class PostController extends Controller
      */
     public function update(PostStoreRequest $request, Post $post)
     {
+        // dd($request->input('featuredimage', false));
         $input = $request->validated();
-
-        // if($request->hasFile('path')){
-
-        //     $originalname = $request->path->getClientOriginalName();
-
-        //     $extension = $request->path->extension();
-
-        //     $uploadpath = $request->path->storeAs('media', $originalname, 'public');//filepath=>media/filename.png
-
-        //     if ($post->photo_id != Null) {//if their is already photo then update it
-
-        //         $post->photo->update([
-
-        //             'file'=>$originalname
-
-        //             ]);
-        //     } else { //if no photo then associate and create
-
-        //         $post->photo()->associate(
-
-        //             Photo::create([
-        //                 'file' => $originalname
-        //             ])
-
-        //         );
-        //     }
-
-        //     $post->save();
-
-        // }
 
         $post->update($input);
 
         $post->tags()->sync(request('tags'));
+
+        if($request->hasFile('featuredimage')){
+            $post->addMedia($request->featuredimage)->toMediaCollection('posts');
+        }
+
+        // if ($request->input('featuredimage', false)) {
+        //     if (!$post->featured_image || $request->input('featuredimage') !== $post->featured_image->file_name) {
+        //         $post->addMedia($request->featuredimage)->toMediaCollection('posts');
+        //     }
+        // } elseif ($post->featured_image) { // y tab run hoga jab post k pass phele se image hai but upload nhi kiya to delete
+        //     $post->featured_image->delete();
+        // }
 
         return redirect(route('posts.index'))->withInfo('Posts updated succesfully');
     }

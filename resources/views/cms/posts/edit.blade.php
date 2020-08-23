@@ -82,16 +82,16 @@
                                 @enderror
                               </div>
 
-                            {{-- <div class="form-group">
-                                <label for="path">PostImage</label>
-                                <input id="path" class="form-control-file @error('path') is-invalid @enderror" type="file" name="path" aria-describedby="fileHelp">
+                            <div class="form-group">
+                                <label for="featuredimage">PostImage</label>
+                                <input id="featuredimage" class="form-control-file @error('featuredimage') is-invalid @enderror" type="file" name="featuredimage" aria-describedby="fileHelp">
                                 <small id="fileHelp" class="form-text text-muted">
                                     Please upload a valid image file. Size of image should not be more than 2MB.
                                 </small>
-                                @error('path')
+                                @error('featuredimage')
                                 <small class="form-text text-red">{{ $message }}</small>
                                 @enderror
-                            </div> --}}
+                            </div>
 
                             <div class="form-group">
                                 <label for="body">Description</label>
