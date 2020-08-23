@@ -62,8 +62,8 @@ Pending Work
     subcategory add => done
 
     Main part Imp => do tommorow
-    category with dependent subcategory*
+    category with dependent subcategory =>done
     post active/inactive*
-    image upload*
+    image upload => 
     view count
 
