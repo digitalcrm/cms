@@ -25,14 +25,29 @@
 
 @endsection
 
+
+# Role List
+    ### superadmin
+    ### admin
+    ### user
+
+
+# Permissions Lists
+## Users
+    **users**
+    <ul>
+    <li>user-create</li>
+    <li>all-users</li>
+    </ul>
+
 ## Posts
     **permision**
     <ul>
-    <li>post-list</li>
-    <li>post-create</li>
-    <li>post-edit</li>
-    <li>post-view</li>
-    <li>post-delete</li>
+    <li>list-post</li>
+    <li>create-post</li>
+    <li>edit-post</li>
+    <li>view-post</li>
+    <li>delete-post</li>
     </ul>
 ## Category
     **permision**
@@ -52,18 +67,51 @@
     <li>tag-view</li>
     <li>tag-delete</li>
     </ul>
+## Tag
+    **subcategory**
+    <ul>
+    <li>subcategory-lists</li>
+    <li>subcategory-create</li>
+    <li>subcategory-edit</li>
+    <li>subcategory-view</li>
+    <li>subcategory-delete</li>
+    </ul>
 
 ================================================================================
 Pending Work
-1. Role management (Role with having permission/Permission)=>done
-2. SweetAlert add for message => done
 
-3. CMS Part complete
-    subcategory add => done
+# Dashboard Section
+    # User Datatable
+        confirm mail
+        active/inactive => middleware check web (isActive column)
+        profile pic
+    # Post
+        draft => column add
+=================================================================================    
+# Front Side section
+    # Landing Page
+        body part => [all post
+        ]
+        side part => [cat list
+                      tag list
+                      archive*
+        ]
 
-    Main part Imp => do tommorow
-    category with dependent subcategory =>done
-    post active/inactive*
-    image upload => 
-    view count
+    # Internal page
+        main content having[
+            category, tag, author, created_at, post_views
+        ]
+    
+    # Landing && Internal common part => 
+            [ 
+                Search Field (Livewire apply) OR 
+                save search keyword*.
+            ]
 
+# challenging task
+    priority_wise_sort
+        # save post => [auth_user]
+        # like dislike => last_end
+        # print post => not mandatory
+===================================================================================
+# Note=> * means after major part done then do this.

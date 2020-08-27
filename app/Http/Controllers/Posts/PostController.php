@@ -62,16 +62,6 @@ class PostController extends Controller
         //     $allPosts = $query->has('user')->latest()->get();
 
         // } else {
-
-        //     $allPosts = $query->when(request('filterBy') == 'inactivepost', function($post) {
-        //         // $post->has('user')->Inactive();
-        //         $post->has('user')->whereUserId(auth()->user()->id)->Inactive();
-        //     })->latest()->get();
-
-        //     $allPosts = $query->when(request('filterBy') == 'activepost', function($post) {
-        //         $post->has('user')->whereUserId(auth()->user()->id)->Isactive();
-        //     })->latest()->get();
-
         //     $allPosts = $query->whereHas('user', function($query){
         //         $query->where('user_id',auth()->user()->id);
         //     })->latest()->get();
