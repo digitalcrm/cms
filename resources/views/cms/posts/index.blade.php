@@ -25,13 +25,23 @@
                 <!-- /.card -->
                 <div class="card">
                     <div class="card-header">
-                        {{-- @foreach ($roles as $role)
-                            <a
-                            href="{{ route('all-users',['roles'=> $role]) }}"
-                            class="btn btn-sm btn-outline-secondary mr-1 {{ request('roles') == $role ? 'active' : '' }}">
-                            {{ $role }}
+
+                        <a
+                            href="{{ route('posts.index') }}"
+                            class="btn btn-sm btn-outline-secondary mr-1 allclass">
+                            All
                         </a>
-                        @endforeach --}}
+                        <a
+                            href="{{ route('posts.index',['filterByactive'=> 'active']) }}"
+                            class="btn btn-sm btn-outline-secondary mr-1 activeclass {{ request('filterByactive') == 'active' ? 'active' : '' }}">
+                            Active
+                        </a>
+                        <a
+                            href="{{ route('posts.index',['filterByinactive'=> 'inactive']) }}"
+                            class="btn btn-sm btn-outline-secondary mr-1 inactiveclass {{ request('filterByinactive') == 'inactive' ? 'active' : '' }}">
+                            Inactive
+                        </a>
+
                         @can('create-post')
                         <a href="{{route('posts.create')}}" class="btn btn-success float-right">Add New</a>
                         @endcan
@@ -46,8 +56,7 @@
                                     <th>Category</th>
                                     <th>Subcategory</th>
                                     <th>Created_at</th>
-                                    {{-- <th>Edit</th>
-                                        <th>Delete</th> --}}
+                                    <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,7 +69,7 @@
 
                                             {{ $post->title ?? '' }}<br>
 
-                                            @can('edit-post')
+                                            {{-- @can('edit-post')
                                             <small><a href="{{route('posts.edit',$post->id)}}">Edit</a></small>
                                             @endcan
 
@@ -84,19 +93,98 @@
                                             @method('delete')
                                         </form>
 
-                                        @endcan
+                                        @endcan --}}
 
                                     </td>
                                     <td>{{ $post->user->name ?? '' }}</td>
                                     <td>{{ $post->category->name ?? '' }}</td>
                                     <td>{{ $post->subcategory->name ?? '' }}</td>
                                     <td>{{ $post->created_at ?? '' }}</td>
-                                    {{-- <td>
-                                        <a href="{{route('posts.edit', $post->id)}}">Edit</a>
-                                    </td>
                                     <td>
-                                        <a href="{{route('posts.delete', $post->id)}}">Delete</a>
-                                    </td> --}}
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-sm-left dropdown-menu-lg-right">
+                                                {{-- edit permission start --}}
+                                                @can('edit-post')
+                                                {{-- <small> --}}
+                                                    <a
+                                                    class="dropdown-item"
+                                                    href="{{route('posts.edit',$post->id)}}">
+                                                    <i class="far fa-edit"></i>
+                                                    </a>
+                                                {{-- </small> --}}
+
+                                                {{-- <small> --}}
+                                                    <a
+                                                    data-toggle="tooltip"
+                                                    data-placement="top"
+                                                    title="{{($post->isactive === 1) ? 'click for inactive the post' : 'click for active the post'}}"
+                                                    class="dropdown-item"
+                                                    href=""
+                                                    type="submit"
+                                                    onclick="event.preventDefault();
+                                                    if(confirm('Are you sure!')){
+                                                        $('#post-status-{{$post->id}}').submit();
+                                                    }">
+                                                        {!!
+                                                            ($post->isactive == 1) ?
+                                                                '<i class="fas fa-toggle-on" style="color: green"></i>' :
+                                                                '<i class="fas fa-toggle-off" style="color: red"></i>'
+                                                        !!}
+                                                    </a>
+                                                {{-- </small> --}}
+                                                <form
+                                                style="display: none"
+                                                method="post"
+                                                id="post-status-{{$post->id}}"
+                                                action="{{route('posts.status',$post->id)}}"
+                                                >
+                                                @csrf
+                                                @method('put')
+                                                </form>
+
+
+                                                @endcan
+                                                {{-- edit permission end --}}
+
+
+                                                @can('view-post')
+                                                {{-- <small> --}}
+                                                    <a
+                                                    class="dropdown-item"
+                                                    href="{{route('posts.show',$post->id)}}">
+                                                        <i class="far fa-eye"></i>
+                                                    </a>
+                                                {{-- </small> --}}
+                                                @endcan
+
+                                                @can('delete-post')
+                                                {{-- <small> --}}
+                                                    <a
+                                                    class="dropdown-item"
+                                                    href="" type="submit" role="button"
+                                                    onclick="event.preventDefault();
+                                                    if(confirm('Are you sure!')){
+                                                        $('#form-delete-{{$post->id}}').submit();
+                                                    }
+                                                    ">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            {{-- </small> --}}
+                                            <form
+                                                style="display:none"
+                                                id="form-delete-{{$post->id}}"
+                                                action="{{route('posts.destroy',$post->id)}}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                            </form>
+
+                                            @endcan
+                                            </div>
+                                          </div>
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>
@@ -120,4 +208,22 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+
+<script>
+    function getAll(){
+        const allelement = document.querySelector('.allclass');
+        const activeelement = document.querySelector('.activeclass');
+        const inactiveelement = document.querySelector('.inactiveclass');
+
+        if(activeelement.classList.contains('active')){
+            allelement.classList.remove('active');
+        } else if(inactiveelement.classList.contains('active')) {
+            allelement.classList.remove('active');
+        } else {
+            allelement.classList.add('active');
+        }
+    }
+    // getAll();
+    window.addEventListener('load', getAll);
+</script>
 @endsection

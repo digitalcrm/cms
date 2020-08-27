@@ -28,6 +28,7 @@
 
     Route::group(['namespace' => 'Posts'], function () {
         Route::resource('posts', 'PostController');
+        Route::put('posts/isactive/{isActive}','PostController@isActive')->name('posts.status');
     });
 
     Route::group(['namespace' => 'Category'], function () {

@@ -20,9 +20,9 @@ class PostController extends Controller
         $this->middleware('auth');
         // $this->authorizeResource('posts');
         $this->middleware('permission:list-post')->only('index');
-        $this->middleware('permission:create-post')->only('create');
+        $this->middleware('permission:create-post')->only(['create', 'store']);
         $this->middleware('permission:view-post')->only('view');
-        $this->middleware('permission:edit-post')->only('edit');
+        $this->middleware('permission:edit-post')->only(['edit', 'update', 'isActive']);
         $this->middleware('permission:delete-post')->only('destroy');
     }
     /**
@@ -35,19 +35,48 @@ class PostController extends Controller
         // dd(auth()->user()->hasRole('superadmin'));
         $query = Post::query();
 
+        //Refactor code
+        $query->activePost(request('filterByactive'));
+
+        $query->inactivePost(request('filterByinactive'));
+
         if(auth()->user()->hasRole('superadmin')) {
-            $allPosts = $query->has('user')->latest()->get();
 
-        } elseif (auth()->user()->hasRole('admin')) {
-            $allPosts = $query->whereHas('user', function($query){
-                $query->where('user_id','!=',1);
-            })->latest()->get();
-
+            $allPosts = $query->latest()->get();
         } else {
-            $allPosts = $query->whereHas('user', function($query){
-                $query->where('user_id',auth()->user()->id);
-            })->latest()->get();
+
+            $allPosts = $query->where('user_id',auth()->user()->id)->latest()->get();
         }
+
+        /* #  Old code without refactoring
+        // if(auth()->user()->hasRole('superadmin|admin')) {
+
+        //     $allPosts = $query->when(request('filterBy') == 'inactivepost', function($post) {
+        //         $post->has('user')->Inactive();
+        //     })->latest()->get();
+
+        //     $allPosts = $query->when(request('filterBy') == 'activepost', function($post) {
+        //         $post->has('user')->Isactive();
+        //     })->latest()->get();
+
+        //     $allPosts = $query->has('user')->latest()->get();
+
+        // } else {
+
+        //     $allPosts = $query->when(request('filterBy') == 'inactivepost', function($post) {
+        //         // $post->has('user')->Inactive();
+        //         $post->has('user')->whereUserId(auth()->user()->id)->Inactive();
+        //     })->latest()->get();
+
+        //     $allPosts = $query->when(request('filterBy') == 'activepost', function($post) {
+        //         $post->has('user')->whereUserId(auth()->user()->id)->Isactive();
+        //     })->latest()->get();
+
+        //     $allPosts = $query->whereHas('user', function($query){
+        //         $query->where('user_id',auth()->user()->id);
+        //     })->latest()->get();
+        // }
+        */
         return view('cms.posts.index',compact('allPosts'));
     }
 
@@ -102,6 +131,9 @@ class PostController extends Controller
         //     abort_if((Auth::id() != $post->user_id), 403);
         //         return view('cms.posts.show',compact('post'));
         // }
+
+        $post->increment('postcount');
+
         Gate::authorize('view', $post);
             return view('cms.posts.show',compact('post'));
 
@@ -174,5 +206,20 @@ class PostController extends Controller
         $post->delete();
 
         return redirect(route('posts.index'))->with('message','Posts deleted succesfully');
+    }
+
+    public function isActive(Post $isActive)
+    {
+        // dd($isActive->isactive);
+        if($isActive->isactive === 1){
+            $isActive->update([
+                'isactive' => 0,
+            ]);
+        } else {
+            $isActive->update([
+                'isactive' => 1,
+            ]);
+        }
+        return redirect()->back()->withInfo('post status has been changed');
     }
 }

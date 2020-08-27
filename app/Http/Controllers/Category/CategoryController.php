@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Category;
 
 use App\Category;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -27,6 +28,8 @@ class CategoryController extends Controller
         $allCategory = Category::latest()->get();
 
         return view('cms.categories.index',compact('allCategory'));
+
+
     }
 
     /**

@@ -2,17 +2,18 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Post extends Model implements HasMedia
 {
     use SoftDeletes, InteractsWithMedia;
 
-    protected $fillable = ['user_id','category_id','title','slug','body','subcategory_id'];
+    protected $fillable = ['user_id','category_id','title','slug','body','subcategory_id', 'postcount', 'isactive'];
 
     protected $appends = [
         'featured_image',
@@ -20,7 +21,7 @@ class Post extends Model implements HasMedia
 
     protected $table = 'posts';
 
-    protected $with = ['user'];
+    protected $with = ['user', 'category', 'subcategory', 'tags'];
 
     public function category()
     {
@@ -63,4 +64,47 @@ class Post extends Model implements HasMedia
                 ->height(35);
         });
     }
+
+    /**
+     *  Anonymous Global Scopes
+     *  https://laravel.com/docs/7.x/eloquent#query-scopes
+     * @return void
+     */
+
+    // protected static function booted()
+    // {
+    //     static::addGlobalScope('isactive', function (Builder $builder) {
+    //         $builder->where('isactive', 1);
+    //     });
+    // }
+
+    /**
+     * local scopes
+     *
+     * @param [type] $query
+     * @return void
+     */
+    public function scopeActivePost($query, $filterby)
+    {
+        // return $query->where('isactive', 1);
+        return $query->when($filterby == 'active', function ($query) {
+            $query->has('user')->where('isactive', 1);
+        });
+    }
+
+    public function scopeInactivePost($query, $filterby)
+    {
+        // return $query->where('isactive', 0);
+        return $query->when($filterby == 'inactive', function ($query) {
+            $query->has('user')->where('isactive', 0);
+        });
+    }
+
+    public function scopeWithRoleUserPost($query)
+    {
+        // return $query->whereHas('user', function($query) {
+            $query->where('user_id', auth()->user()->id);
+        // });
+    }
+
 }
