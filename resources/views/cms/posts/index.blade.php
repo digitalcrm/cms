@@ -25,7 +25,7 @@
                 <!-- /.card -->
                 <div class="card">
                     <div class="card-header">
-
+                        @if(count($allPosts)>0)
                         <a
                             href="{{ route('posts.index') }}"
                             class="btn btn-sm btn-outline-secondary mr-1 allclass">
@@ -41,10 +41,12 @@
                             class="btn btn-sm btn-outline-secondary mr-1 inactiveclass {{ request('filterByinactive') == 'inactive' ? 'active' : '' }}">
                             Inactive
                         </a>
+                        @endif
 
                         @can('create-post')
                         <a href="{{route('posts.create')}}" class="btn btn-success float-right">Add New</a>
                         @endcan
+
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
