@@ -43,7 +43,7 @@
                                 {{$post->title}}
                             </div>
                             <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
-                                {{$post->body}}
+                                {!! $post->body !!}
                             </div>
                             <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">
                                 {{$post->created_at->diffForHumans()}}

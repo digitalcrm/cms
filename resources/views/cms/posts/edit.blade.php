@@ -94,8 +94,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="body">Description</label>
-                                <textarea id="body" class="form-control" name="body" rows="5">{{trim($post->body)}}</textarea>
+                                <label for="mytextarea">Description</label>
+                                <textarea id="mytextarea" class="form-control" name="body" rows="5">{{trim($post->body)}}</textarea>
                             </div>
 
                             <a name="" id="" class="btn btn-light" href="{{route('posts.index')}}" role="button">Cancel</a>
@@ -111,5 +111,14 @@
     </div>
 </section>
   <!-- /.content -->
+  @section('scripts')
+    @parent
+    <script>
+        tinymce.init({
+        selector: '#mytextarea'
+        });
+    </script>
+
+    @endsection
 
 @endsection

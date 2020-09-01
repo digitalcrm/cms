@@ -81,8 +81,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="body">Description</label>
-                                <textarea id="body" class="form-control @error('body') is-invalid @enderror" name="body" rows="5"></textarea>
+                                <label for="mytextarea">Description</label>
+                                <textarea id="mytextarea" class="form-control @error('body') is-invalid @enderror" name="body" rows="5"></textarea>
                                 @error('body')
                                 <small class="form-text text-red">{{ $message }}</small>
                                 @enderror
@@ -100,4 +100,14 @@
         </div>
     </div>
 </section>
+
+    @section('scripts')
+        @parent
+        <script>
+            tinymce.init({
+            selector: '#mytextarea'
+            });
+        </script>
+
+    @endsection
 @endsection
