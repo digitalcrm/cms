@@ -4,14 +4,11 @@ namespace App\Http\Controllers\Posts;
 
 use App\Tag;
 use App\Post;
-use App\User;
-use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\PostStoreRequest;
-use App\Subcategory;
 
 class PostController extends Controller
 {
