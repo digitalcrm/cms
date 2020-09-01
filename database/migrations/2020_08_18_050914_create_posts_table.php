@@ -16,11 +16,14 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            // $table->foreignId('photo_id')->nullable()->constrained();
             $table->foreignId('category_id')->constrained();
+            $table->foreignId('subcategory_id')->nullable()->constrained();
             $table->string('title');
             $table->string('slug')->nullable();
             $table->text('body');
+            $table->string('published')->default(1)->comment('1 published 0 draft');
+            $table->integer('postcount')->nullable()->default(0)->comment('postviews');
+            $table->boolean('isactive')->default(1)->comment('1 active 0 block');
             $table->softDeletes();
             $table->timestamps();
         });
