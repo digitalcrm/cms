@@ -12,6 +12,14 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!--bootstrap toggle lib added-->
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <style>
+        .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+        .toggle.ios .toggle-handle { border-radius: 20px; }
+    </style>
+
     @livewireStyles
     </head>
     <body class="hold-transition sidebar-mini">
@@ -40,7 +48,7 @@
             <!-- Scripts -->
             <script src="{{ asset('js/app.js') }}"></script>
             <script src="{{ mix('js/popper.js') }}"></script>
-
+            <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
             {{-- TinyMce Editor --}}
             <script src="https://cdn.tiny.cloud/1/vv9tkawq7if6sdym2688hjvqnn3nfxsd10otch4qb7fasq1y/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 

@@ -9,7 +9,15 @@
 
     Auth::routes(['verify' => true]);
 
-    // Route::get('/home', 'HomeController@index')->name('home');
+    /** Ajax routes */
+
+    Route::group(['middleware' => ['auth'], 'namespace' => 'Ajax'], function () {
+        Route::get('userStatus','AjaxController@userStatus')->name('auth.userStatus');
+
+    });
+
+
+    /** Basic Routes */
 
     Route::group(['middleware' => ['verified']], function () {
 
@@ -48,4 +56,7 @@
             Route::resource('role', 'RoleController');
         });
     });
+
+
+
 
