@@ -96,6 +96,7 @@
 
     @section('scripts')
     @parent
+    <!--script for active/inactive-->
     <script src="{{ asset('ajax/js/status_toggle.js') }}"></script>
     @endsection
 @endsection
