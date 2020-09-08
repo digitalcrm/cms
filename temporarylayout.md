@@ -82,7 +82,7 @@ Pending Work
 
 # Dashboard Section
     # User Datatable
-        confirm mail
+        confirm mail => done
         active/inactive => middleware check web (isActive column)
         profile pic
     # Post
