@@ -12,9 +12,10 @@
     /** Ajax routes */
 
     Route::group(['middleware' => ['auth'], 'namespace' => 'Ajax'], function () {
+
         Route::get('userStatus','AjaxController@userStatus')->name('auth.userStatus');
 
-    });
+    }); /** Ajax group route end here */
 
 
     /** Basic Routes */
@@ -33,9 +34,19 @@
                 Route::post('auth/create', 'SuperAdminController@store')->name('auth.store')->middleware('permission:user-create');
 
                 Route::get('/all-users','SuperAdminController@getAllUsers')->name('all-users')->middleware('permission:all-users');
-            });
-        });
+            }); /** superadmin middleware group End Here */
 
+
+        }); /** SuperAdmin route group End Here */
+
+        /** User Profile Routes */
+        Route::group(['namespace' => 'Profile'], function () {
+
+            Route::resource('auth_profile', 'UserProfileController');
+
+        }); /** User profile group end here */
+
+        /** Post Category Tag routes Rolemanagement */
         Route::group(['namespace' => 'Posts'], function () {
             Route::resource('posts', 'PostController');
             Route::put('posts/isactive/{isActive}','PostController@isActive')->name('posts.status');
@@ -55,7 +66,8 @@
             Route::resource('permission', 'PermissionController');
             Route::resource('role', 'RoleController');
         });
-    });
+
+    }); /** verfied Routes End Here */
 
 
 

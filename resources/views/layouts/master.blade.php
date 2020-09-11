@@ -9,11 +9,15 @@
 
     <title>{{ config('app.name', 'CRM-Role-Management') }}</title>
 
+    @section('style')
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- custome css --}}
+    <link href="{{ asset('css/userprofile_custome.css') }}" rel="stylesheet">
 
     <!--bootstrap toggle lib added-->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
@@ -21,6 +25,7 @@
         .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
         .toggle.ios .toggle-handle { border-radius: 20px; }
     </style>
+    @show
 
     @livewireStyles
     </head>

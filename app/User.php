@@ -2,11 +2,13 @@
 
 namespace App;
 
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -19,7 +21,15 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'firstname',
+        'lastname',
+        'profile_photo_path',
+        'mobile_number',
+        'address',
+        'description',
     ];
 
     /**
@@ -41,6 +51,76 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $with = ['roles'];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'profile_photo_url',
+        'full_name',
+    ];
+
+    /**
+     * Update the user's profile photo.
+     *
+     * @param  \Illuminate\Http\UploadedFile  $photo
+     * @return void
+     */
+    public function updateProfilePhoto(UploadedFile $photo)
+    {
+        tap($this->profile_photo_path, function ($previous) use ($photo) {
+            $this->forceFill([
+                'profile_photo_path' => $photo->storePublicly(
+                    'profile-photos', ['disk' => $this->profilePhotoDisk()]
+                ),
+            ])->save();
+
+            if ($previous) {
+                Storage::disk($this->profilePhotoDisk())->delete($previous);
+            }
+        });
+    }
+
+    /**
+     * Get the URL to the user's profile photo.
+     *
+     * @return string
+     */
+    public function getProfilePhotoUrlAttribute()
+    {
+        return $this->profile_photo_path
+                    ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
+                    : $this->defaultProfilePhotoUrl();
+    }
+
+    /**
+     * Get the default profile photo URL if no profile photo has been uploaded.
+     *
+     * @return string
+     */
+    protected function defaultProfilePhotoUrl()
+    {
+        return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4AA';
+    }
+
+    /**
+     * Get the disk that profile photos should be stored on.
+     *
+     * @return string
+     */
+    protected function profilePhotoDisk()
+    {
+        return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : 'public';
+    }
+
+    public function getFullNameAttribute()
+    {
+        return ( !empty($this->firstname && $this->lastname) )
+                ? "{$this->firstname} {$this->lastname}"
+                : "{$this->name}";
+    }
 
     // public function scopeWithoutSuperAdmin($query) {
     //     return $query->where('id','!=',1);
@@ -79,4 +159,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
         });
     }
+
+
+
+
 }
