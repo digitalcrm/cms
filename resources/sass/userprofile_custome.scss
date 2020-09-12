@@ -15,3 +15,21 @@
 .rounded-circle {
     border-radius: 50% !important;
 }
+
+.social-list-item {
+    height: 2rem;
+    width: 2rem;
+    line-height: calc(2rem - 4px);
+    display: block;
+    border: 2px solid #adb5bd;
+    border-radius: 50%;
+    color: #adb5bd;
+}
+
+.text-purple {
+    color: #6559cc !important;
+}
+
+.border-purple {
+    border-color: #6559cc !important;
+}

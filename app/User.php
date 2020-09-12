@@ -60,6 +60,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
         'full_name',
+        'single_role_name',
     ];
 
     /**
@@ -73,7 +74,8 @@ class User extends Authenticatable implements MustVerifyEmail
         tap($this->profile_photo_path, function ($previous) use ($photo) {
             $this->forceFill([
                 'profile_photo_path' => $photo->storePublicly(
-                    'profile-photos', ['disk' => $this->profilePhotoDisk()]
+                    'profile-photos',
+                    ['disk' => $this->profilePhotoDisk()]
                 ),
             ])->save();
 
@@ -91,8 +93,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getProfilePhotoUrlAttribute()
     {
         return $this->profile_photo_path
-                    ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
-                    : $this->defaultProfilePhotoUrl();
+            ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
+            : $this->defaultProfilePhotoUrl();
     }
 
     /**
@@ -102,7 +104,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected function defaultProfilePhotoUrl()
     {
-        return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4AA';
+        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4AA';
     }
 
     /**
@@ -117,9 +119,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getFullNameAttribute()
     {
-        return ( !empty($this->firstname && $this->lastname) )
-                ? "{$this->firstname} {$this->lastname}"
-                : "{$this->name}";
+        return (!empty($this->firstname && $this->lastname))
+            ? "{$this->firstname} {$this->lastname}"
+            : "{$this->name}";
     }
 
     // public function scopeWithoutSuperAdmin($query) {
@@ -133,21 +135,18 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
-    public function scopeGet_All_User_WithDoesntHave_SuperAdmin_Role($query) {
+    public function scopeGet_All_User_WithDoesntHave_SuperAdmin_Role($query)
+    {
         return  $query->whereDoesntHave('roles', function ($query) {
             $query->where('id', 1);
         });
-    }
-
-    public function posts() {
-        return $this->hasMany( Post::class );
     }
 
     protected static function boot()
     {
         parent::boot();
 
-        static::created(function ($user){
+        static::created(function ($user) {
             # Here condition check if user is logged in and create a User model then assign role otherwise else condition
             if (Auth::check()) {
                 $user->assignRole(2); # Role 2 Admin
@@ -156,11 +155,26 @@ class User extends Authenticatable implements MustVerifyEmail
                 $user->assignRole(3); # Role 3 User default registration
 
             }
-
         });
     }
 
+    /**
+     * Below Relationship part add
+     *
+    */
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 
+    /**
+     * get Single Role Name instead of collection getRoleNames()
+     *
+     */
 
+    public function getSingleRoleNameAttribute()
+    {
+        return '@'.$this->getRoleNames()->last();
+    }
 }
