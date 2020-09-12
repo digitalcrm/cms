@@ -37,33 +37,16 @@ class PostController extends Controller
 
         $query->inactivePost(request('filterByinactive'));
 
+        $query->draftPost(request('draftPost'));
+
         if(auth()->user()->hasRole('superadmin')) {
 
-            $allPosts = $query->latest()->get();
+            $allPosts = $query->published()->latest()->get();
         } else {
 
-            $allPosts = $query->where('user_id',auth()->user()->id)->latest()->get();
+            $allPosts = $query->published()->where('user_id',auth()->user()->id)->latest()->get();
         }
 
-        /* #  Old code without refactoring
-        // if(auth()->user()->hasRole('superadmin|admin')) {
-
-        //     $allPosts = $query->when(request('filterBy') == 'inactivepost', function($post) {
-        //         $post->has('user')->Inactive();
-        //     })->latest()->get();
-
-        //     $allPosts = $query->when(request('filterBy') == 'activepost', function($post) {
-        //         $post->has('user')->Isactive();
-        //     })->latest()->get();
-
-        //     $allPosts = $query->has('user')->latest()->get();
-
-        // } else {
-        //     $allPosts = $query->whereHas('user', function($query){
-        //         $query->where('user_id',auth()->user()->id);
-        //     })->latest()->get();
-        // }
-        */
         return view('cms.posts.index',compact('allPosts'));
     }
 
@@ -88,8 +71,23 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
+        // dd(request('postType'));
+
         $input = $request->validated();
-        // dd($input);
+
+        $postType = $request->postType; #check Post is draft or published
+
+        switch ($postType) {
+            case 'draft':
+                $input['published'] = false;
+                break;
+
+            default:
+                $input['published'] = true;
+                break;
+        }
+        // dd($input['published']);
+
         $posts = auth()->user()->posts()->create($input);
 
         $posts->tags()->attach(request('tags'));
@@ -160,6 +158,18 @@ class PostController extends Controller
     {
         // dd($request->input('featuredimage', false));
         $input = $request->validated();
+
+        $postType = $request->postType; #check Post is draft or published
+
+        switch ($postType) {
+            case 'draft':
+                $input['published'] = false;
+                break;
+
+            default:
+                $input['published'] = true;
+                break;
+        }
 
         $post->update($input);
 

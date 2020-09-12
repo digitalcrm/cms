@@ -13,7 +13,17 @@ class Post extends Model implements HasMedia
 {
     use SoftDeletes, InteractsWithMedia;
 
-    protected $fillable = ['user_id','category_id','title','slug','body','subcategory_id', 'postcount', 'isactive'];
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'title',
+        'slug',
+        'body',
+        'published',
+        'subcategory_id',
+        'postcount',
+        'isactive',
+    ];
 
     protected $appends = [
         'featured_image',
@@ -100,11 +110,48 @@ class Post extends Model implements HasMedia
         });
     }
 
+    public function scopeDraftPost($query, $filterby)
+    {
+        return $query->when($filterby == 'true', function ($query) {
+            $query->has('user')->where('published', 0);
+        });
+    }
+
     public function scopeWithRoleUserPost($query)
     {
         // return $query->whereHas('user', function($query) {
             $query->where('user_id', auth()->user()->id);
         // });
     }
+
+    public function scopePublished($query)
+    {
+        return $query->orWhere([
+            'published' => 1,
+        ]);
+    }
+
+    /*
+    #  Old code without refactoring
+    # Working Code index method code for fetch fecthing post
+    # Here put for dummy purpose
+        // if(auth()->user()->hasRole('superadmin|admin')) {
+
+        //     $allPosts = $query->when(request('filterBy') == 'inactivepost', function($post) {
+        //         $post->has('user')->Inactive();
+        //     })->latest()->get();
+
+        //     $allPosts = $query->when(request('filterBy') == 'activepost', function($post) {
+        //         $post->has('user')->Isactive();
+        //     })->latest()->get();
+
+        //     $allPosts = $query->has('user')->latest()->get();
+
+        // } else {
+        //     $allPosts = $query->whereHas('user', function($query){
+        //         $query->where('user_id',auth()->user()->id);
+        //     })->latest()->get();
+        // }
+    */
 
 }

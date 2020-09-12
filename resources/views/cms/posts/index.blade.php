@@ -41,6 +41,12 @@
                             class="btn btn-sm btn-outline-secondary mr-1 inactiveclass {{ request('filterByinactive') == 'inactive' ? 'active' : '' }}">
                             Inactive
                         </a>
+
+                        <a href="{{ route('posts.index',['draftPost' => 'true']) }}"
+                            class="btn btn-sm btn-outline-secondary mr-1 draftclass {{ request('draftPost') == 'true' ? 'active' : '' }}">
+                            Draft
+                        </a>
+
                         @endif
 
                         @can('create-post')
@@ -213,16 +219,27 @@
 
 <script>
     function getAll(){
-        const allelement = document.querySelector('.allclass');
-        const activeelement = document.querySelector('.activeclass');
-        const inactiveelement = document.querySelector('.inactiveclass');
+        const request_all_element = document.querySelector('.allclass');
+        const request_active_element = document.querySelector('.activeclass');
+        const request_inactive_element = document.querySelector('.inactiveclass');
+        const request_draft_element = document.querySelector('.draftclass');
 
-        if(activeelement.classList.contains('active')){
-            allelement.classList.remove('active');
-        } else if(inactiveelement.classList.contains('active')) {
-            allelement.classList.remove('active');
+        if(request_active_element.classList.contains('active')){
+
+            request_all_element.classList.remove('active');
+
+        } else if(request_inactive_element.classList.contains('active')) {
+
+            request_all_element.classList.remove('active');
+
+        } else if(request_draft_element.classList.contains('active')) {
+
+            request_all_element.classList.remove('active');
+
         } else {
-            allelement.classList.add('active');
+
+            request_all_element.classList.add('active');
+
         }
     }
     // getAll();
