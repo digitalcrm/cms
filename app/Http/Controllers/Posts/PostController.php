@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\PostStoreRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PostController extends Controller
 {
@@ -116,11 +117,18 @@ class PostController extends Controller
         //     abort_if((Auth::id() != $post->user_id), 403);
         //         return view('cms.posts.show',compact('post'));
         // }
+        try{
+            $post->increment('postcount');
 
-        $post->increment('postcount');
+            $post->load(['category', 'tags', 'user', 'subcategory']);
 
-        Gate::authorize('view', $post);
-            return view('cms.posts.show',compact('post'));
+            Gate::authorize('view', $post);
+
+        } catch (ModelNotFoundException $exception) {
+            return view('errors._not_found_exception');
+
+        }
+        return view('cms.posts.show',compact('post'));
 
     }
 

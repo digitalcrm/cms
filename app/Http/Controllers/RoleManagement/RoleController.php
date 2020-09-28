@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\RoleManagement;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
@@ -79,9 +81,18 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        $allPermissions = Permission::pluck('name','id');
+        try {
+            $allPermissions = Permission::pluck('name','id');
 
-        $role->load('permissions');
+            $role->load('permissions');
+
+        } catch (RelationNotFoundException $exception) {
+            return view('errors._relation_not_found_exception');
+
+        } catch (ModelNotFoundException $exception) {
+            return view('errors._model_not_found_exception');
+
+        }
 
         return view('role_management.role.edit',compact('role','allPermissions'));
     }

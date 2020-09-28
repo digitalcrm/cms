@@ -11,13 +11,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-
-    // AdminLTE code here.
-    require('admin-lte');
-} catch (e) {
-    console.log(e);
-}
-
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

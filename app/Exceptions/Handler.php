@@ -51,12 +51,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        // $message = $exception->getMessage();
+        /*
+        $message = $exception->getMessage();
 
-        // if ($exception instanceof \InvalidArgumentException && \Str::startsWith($message, 'View') && \Str::endsWith($message, 'not found.')) {
+        if ($exception instanceof \InvalidArgumentException && \Str::startsWith($message, 'View') && \Str::endsWith($message, 'not found.')) {
 
-        //     return redirect()->back()->withError($message);
-        // }
+            return redirect()->back()->withError($message);
+        }
+        */
 
         return parent::render($request, $exception);
     }
