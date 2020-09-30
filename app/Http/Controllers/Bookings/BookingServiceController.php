@@ -1,19 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Profile;
+namespace App\Http\Controllers\Bookings;
 
-use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateProfileInfoRequest;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-class UserProfileController extends Controller
+class BookingServiceController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,9 +14,7 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        $profileinfo = Auth::user();
-        // dd($profileinfo->full_name);
-        return view('userprofile.profile_page', compact('profileinfo'));
+        //
     }
 
     /**
@@ -53,9 +44,9 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $auth_profile)
+    public function show($id)
     {
-        // return view('userprofile.profile_page', compact('auth_profile'));
+        //
     }
 
     /**
@@ -64,9 +55,9 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $auth_profile)
+    public function edit($id)
     {
-        // return view('userprofile.profile_page', compact('auth_profile'));
+        //
     }
 
     /**
@@ -76,23 +67,9 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProfileInfoRequest $request, User $auth_profile)
+    public function update(Request $request, $id)
     {
-        $input = $request->validated();
-
-        $photo = $request->profile_photo_path;
-
-        // // dd($input);
-
-        $auth_profile->update($input);
-
-        if ($request->hasFile('profile_photo_path')) {
-
-            $auth_profile->updateProfilePhoto($photo);
-        }
-
-
-        return redirect()->back()->withInfo('Profile updated succesfully');
+        //
     }
 
     /**
