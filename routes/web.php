@@ -1,6 +1,8 @@
 <?php
 
-    use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Bookings\BookingServiceController;
+use App\Http\Controllers\Settings\SettingController;
+use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Route;
 
     Route::get('/', function () {
@@ -15,7 +17,7 @@
 
         Route::get('userStatus','AjaxController@userStatus')->name('auth.userStatus');
 
-    }); /** Ajax group route end here */
+    });
 
 
     /** Basic Routes */
@@ -34,7 +36,7 @@
                 Route::post('auth/create', 'SuperAdminController@store')->name('auth.store')->middleware('permission:user-create');
 
                 Route::get('/all-users','SuperAdminController@getAllUsers')->name('all-users')->middleware('permission:all-users');
-            }); /** superadmin middleware group End Here */
+            });
 
 
         }); /** SuperAdmin route group End Here */
@@ -44,7 +46,7 @@
 
             Route::resource('auth_profile', 'UserProfileController');
 
-        }); /** User profile group end here */
+        });
 
         /** Post Category Tag routes Rolemanagement */
         Route::group(['namespace' => 'Posts'], function () {
@@ -69,6 +71,18 @@
 
     }); /** verfied Routes End Here */
 
+    /* Booking routes */
+    Route::group(['namespace' => 'Bookings'], function () {
 
+        Route::resources([
+            'booking' => 'BookingServiceController',
+        ]);
+    });
+
+    /* Setting controller invokable */
+
+    Route::group(['namespace' => 'Settings'], function () {
+        Route::get('settings', 'SettingController')->name('settings');
+    });
 
 

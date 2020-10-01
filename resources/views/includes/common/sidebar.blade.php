@@ -123,6 +123,7 @@
                             </a>
                         </li>
                         @endcan
+
                         @can('subcategory-lists')
                         <li class="nav-item">
                             <a href="{{route('subcategory.index')}}" class="nav-link">
@@ -143,19 +144,40 @@
                             </a>
                         </li>
                         @endcan
-                    </li>
+                    </ul>
+                </li>
                 @endcan
-                {{-- <li class="nav-item">
+
+                <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Category
-                            <span class="right badge badge-danger">New</span>
+                            Booking
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                </li> --}}
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('booking.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Book Event
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li> <!--booking dropdown end here -->
 
-            </ul>
+                <li class="nav-item">
+                    <a href="{{route('settings')}}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Settings
+                        </p>
+                    </a>
+                </li>
+
+            </ul> <!--main ul end-->
         </nav>
         <!-- /.sidebar-menu -->
     </div>
