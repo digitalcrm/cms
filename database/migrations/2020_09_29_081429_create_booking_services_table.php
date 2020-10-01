@@ -15,7 +15,9 @@ class CreateBookingServicesTable extends Migration
     {
         Schema::create('booking_services', function (Blueprint $table) {
             $table->id();
+            $table->string('service_name')->comment('this is type of booking form');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

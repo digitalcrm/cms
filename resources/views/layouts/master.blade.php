@@ -61,9 +61,21 @@
 
             {{-- Blade message validation --}}
             @include('includes.pop-up-messages.message')
+
+            @livewireScripts
+
+            <script type="text/javascript">
+                window.livewire.on('showModal', () => {
+                    $('#exampleModal').modal('hide');
+                });
+            </script>
+            <script type="text/javascript">
+                window.livewire.on('updateModal', () => {
+                    $('#updateModal').modal('hide');
+                });
+            </script>
         @show
 
-        @livewireScripts
     </body>
 
 </html>
