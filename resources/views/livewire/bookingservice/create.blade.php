@@ -38,7 +38,7 @@
                         <label for="service_name" class="col-sm-3 col-form-label">Service Name</label>
                         <div class="col-sm-9">
                             <input type="text"
-                            class="form-control @error('service_name') is-invalid @enderror "
+                            class="form-control @error('service_name') is-invalid @enderror"
                             id="service_name"
                             wire:model="service_name"
                             name="service_name"
@@ -51,7 +51,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success" wire:loading.attr="disabled" wire:loading.class.remove="btn-success" wire:loading.class="btn-info">
+                        Save
+                    </button>
                 </div>
             </div>
         </form>

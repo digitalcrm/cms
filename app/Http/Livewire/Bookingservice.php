@@ -11,6 +11,7 @@ class Bookingservice extends Component
     public $service_name;
     public $service_id;
     public $updateMode = false;
+    public $successMessage;
 
     public function render()
     {
@@ -44,7 +45,11 @@ class Bookingservice extends Component
 
         AppBookingService::create($validatedData);
 
-        session()->flash('message', 'Service Created Successfully.');
+        sleep(1);
+        // session()->flash('message', 'Service Created Successfully.');
+
+        // another way to define success message
+        $this->successMessage = 'Service Created Successfully.';
 
         $this->resetInputFields();
 
@@ -82,7 +87,8 @@ class Bookingservice extends Component
 
             $this->updateMode = false;
 
-            session()->flash('message', 'Service Updated Successfully.');
+            // session()->flash('message', 'Service Updated Successfully.');
+            $this->successMessage = 'Service Updated Successfully.';
 
             $this->resetInputFields();
 

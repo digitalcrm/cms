@@ -37,7 +37,7 @@
                 </div>
                 <div class="modal-footer">
                     <button wire:click.prevent="cancel()" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Update</button>
+                    <button type="submit" class="btn btn-success" wire:loading.attr="disabled" wire:loading.class.remove="btn-success" wire:loading.class="btn-info">Update</button>
                 </div>
             </div>
         </form>

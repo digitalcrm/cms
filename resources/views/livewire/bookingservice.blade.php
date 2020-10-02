@@ -1,9 +1,17 @@
 <div>
     <div>
-        @if (session()->has('message'))
+        {{-- @if (session()->has('message'))
             <div class="alert alert-success">
                 {{ session('message') }}
             </div>
+        @endif --}}
+        @if($successMessage)
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ $successMessage }}
+            <button type="button" class="close" wire:click="$set('successMessage', null)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         @endif
     </div>
     <div class="card">
