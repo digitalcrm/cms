@@ -73,10 +73,12 @@ use Illuminate\Support\Facades\Auth;
 
     /* Booking routes */
     Route::group(['namespace' => 'Bookings'], function () {
-
-        Route::resources([
-            'booking' => 'BookingServiceController',
+        Route::resource('bookservices', 'BookingServiceController')->except([
+            'create', 'store', 'update', 'destroy', 'show', 'edit',
         ]);
+
+        Route::resource('bookings', 'BookingEventController');
+
     });
 
     /* Setting controller invokable */

@@ -158,7 +158,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('booking.index')}}" class="nav-link">
+                            <a href="{{ route('bookings.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Book Event

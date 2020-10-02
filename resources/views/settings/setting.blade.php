@@ -21,7 +21,7 @@
             <div class="card shadow card-danger card-outline">
                 <!--/.card-header-->
                 <div class="card-body">
-                    <a href="{{ route('booking.index') }}" class="trash-link">
+                    <a href="{{ route('bookservices.index') }}" class="trash-link">
                         <span class=""><i class="fa fa-money-bill fa-2x"></i></span>
                         <div class="text-bold mt-2">
                             BookingServices
