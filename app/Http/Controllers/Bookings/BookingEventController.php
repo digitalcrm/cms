@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Bookings;
 
+use App\BookingEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,9 @@ class BookingEventController extends Controller
      */
     public function index()
     {
-        //
+        $bookevents = BookingEvent::latest()->get();
+
+        return view('bookings.events.index', compact('bookevents'));
     }
 
     /**
@@ -29,7 +32,7 @@ class BookingEventController extends Controller
      */
     public function create()
     {
-        //
+        return view('bookings.events.create');
     }
 
     /**
