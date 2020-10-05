@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SubcategoryRequest extends FormRequest
+class BookingEventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,11 @@ class SubcategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ($this->getMethod() == 'POST')
-                    ? 'required|unique:subcategories|max:50'
-                    : 'required|max:50|unique:subcategories,name,'.$this->subcategory->id,
-            'category_id' => 'required|not_in:0',
+            'event_name' => ['required', 'string', 'max:100'],
+            'booking_service_id' => ['required', 'not_in:0'],
+            'duration' => ['required', 'not_in:0'],
+            'price' => ['required', 'string'],
+            'event_description' => ['max:255'],
         ];
     }
 }

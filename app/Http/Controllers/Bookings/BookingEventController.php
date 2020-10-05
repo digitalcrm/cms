@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Bookings;
 
 use App\BookingEvent;
+use App\BookingService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BookingEventRequest;
 use Illuminate\Http\Request;
 
 class BookingEventController extends Controller
@@ -32,7 +34,10 @@ class BookingEventController extends Controller
      */
     public function create()
     {
-        return view('bookings.events.create');
+        $services = BookingService::all();
+        $timeDuration = config('time_duration.hours');
+        // dd($timeDuration);
+        return view('bookings.events.create', compact('services', 'timeDuration'));
     }
 
     /**
@@ -41,9 +46,14 @@ class BookingEventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookingEventRequest $request)
     {
-        //
+        $bookingEventRequestData = $request->validated();
+
+        // dd($bookingEventRequestData);
+        auth()->user()->bookingevents()->create($bookingEventRequestData);
+
+        return redirect(route('bookevents.index'))->withMessage('events created successfully');
     }
 
     /**
@@ -63,9 +73,20 @@ class BookingEventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BookingEvent $bookevent)
     {
-        //
+        try {
+            $services = BookingService::all();
+            $timeDuration = config('time_duration.hours');
+
+        } catch (\Throwable $e) {
+
+            report($e);
+
+            return false;
+        }
+
+        return view('bookings.events.edit', compact('services', 'timeDuration', 'bookevent'));
     }
 
     /**
@@ -75,9 +96,14 @@ class BookingEventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BookingEventRequest $request, BookingEvent $bookevent)
     {
-        //
+        $bookingEventRequestData = $request->validated();
+        $bookevent->load('booking_service');
+
+        $bookevent->update($bookingEventRequestData);
+
+        return redirect(route('bookevents.index'))->withMessage('booking event updated successfully');
     }
 
     /**
@@ -86,8 +112,10 @@ class BookingEventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BookingEvent $bookevent)
     {
-        //
+        $bookevent->delete();
+
+        return redirect()->back()->withMessage($bookevent->event_name . ' deleted successfully');
     }
 }

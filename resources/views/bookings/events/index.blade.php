@@ -19,7 +19,7 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header">
-                    <a href="{{ route('bookings.create') }}" class="btn btn-primary btn-sm float-right">Add New</a>
+                    <a href="{{ route('bookevents.create') }}" class="btn btn-primary btn-sm float-right">Add New</a>
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body">
@@ -27,7 +27,10 @@
                           <thead>
                               <tr>
                                   <th>Name</th>
-                                  <th>Created_at</th>
+                                  <th>Consultant</th>
+                                  <th>Event Session</th>
+                                  <th>Price</th>
+                                  <th>Created</th>
                                   <th>Action</th>
                               </tr>
                           </thead>
@@ -35,10 +38,27 @@
                               @forelse($bookevents as $event)
                               <tr>
                                   <td>{{ $event->event_name ?? '' }}</td>
-                                  <td>{{ $event->created_at->diffForHumans() ?? ''}}</td>
+                                  <td>{{ $event->user->name ?? '' }}</td>
+                                  <td>{{ $event->duration ?? '' }}</td>
+                                  <td>{{ $event->price ?? '' }}</td>
+                                  <td>{{ $event->created_at->toDateString() ?? ''}}</td>
                                   <td>
-                                      <a href="{{ route('bookings.edit', $event->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                      <a class="btn btn-danger btn-sm">Delete</a>
+                                      <a href="{{ route('bookevents.edit', $event->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                      <a
+                                        class="btn btn-danger btn-sm"
+                                        href=""
+                                        onclick="event.preventDefault();
+                                        if(confirm('Are you sure!')){
+                                            $('#form-delete-{{$event->id}}').submit();
+                                        }
+                                        ">Delete</a>
+
+                                    <form id="form-delete-{{ $event->id }}"
+                                        action="{{ route('bookevents.destroy', $event->id) }}"
+                                        method="post" style="display: none">
+                                    @csrf
+                                    @method('delete')
+                                    </form>
                                   </td>
                               </tr>
                               @empty

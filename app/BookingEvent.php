@@ -18,6 +18,10 @@ class BookingEvent extends Model
     */
     protected $primaryKey = 'id';
 
+    protected $with = ['booking_service'];
+
+    // protected $withCount = ['booking_service'];
+
     /**
      * @var array
     */
@@ -25,6 +29,8 @@ class BookingEvent extends Model
         'event_name',
         'user_id',
         'booking_service_id',
+        'duration',
+        'price',
         'event_start',
         'event_end',
         'event_description',
@@ -36,5 +42,15 @@ class BookingEvent extends Model
     public function booking_service()
     {
         return $this->belongsTo( BookingService::class );
+    }
+
+    public function getDurationAttribute($value)
+    {
+        return $value . " Hours";
+    }
+
+    public function user()
+    {
+        return $this->belongsTo( User::class );
     }
 }

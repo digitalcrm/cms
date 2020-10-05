@@ -177,4 +177,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return '@'.$this->getRoleNames()->last();
     }
+
+    /**
+     * User has many BookingEvents
+     *
+     *
+     */
+    public function bookingevents()
+    {
+        return $this->hasMany( BookingEvent::class );
+    }
 }
