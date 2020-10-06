@@ -95,7 +95,6 @@ Route::group(['namespace' => 'Bookings'], function () {
         /* guest user Booking form route */
         Route::get('bookings/{bookservice:service_name}/event/{bookevent}', 'BookingHomePageController@create')->name('event.create');
         Route::post('bookings/{bookservice:service_name}/event/{bookevent}', 'BookingHomePageController@store')->name('event.store');
-        // Route::post('events', 'BookingHomePageController@store')->name('event.store');
 
     });
 
