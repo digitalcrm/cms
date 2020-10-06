@@ -71,13 +71,19 @@ use Illuminate\Support\Facades\Auth;
 
     }); /** verfied Routes End Here */
 
-    /* Booking routes */
-    Route::group(['namespace' => 'Bookings'], function () {
 
+/*##############################################################################################
+                            Booking Routes
+###############################################################################################*/
+
+Route::group(['namespace' => 'Bookings'], function () {
+
+        /* Booking Services routes */
         Route::resource('bookservices', 'BookingServiceController')->except([
             'create', 'store', 'update', 'destroy', 'show', 'edit',
         ]);
 
+        /* Booking Create Events routes*/
         Route::resource('bookevents', 'BookingEventController');
 
     });
