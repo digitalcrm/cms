@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -36,6 +37,9 @@ class BookingEvent extends Model
         'event_description',
     ];
 
+    protected $appends = [
+        'short_description',
+    ];
     /**
      * Get the event based on the booking services.
      */
@@ -52,5 +56,15 @@ class BookingEvent extends Model
     public function user()
     {
         return $this->belongsTo( User::class );
+    }
+
+    public function getShortDescriptionAttribute()
+    {
+        return Str::limit($this->event_description, 56, '...');
+    }
+
+    public function booking_customers()
+    {
+        return $this->belongsToMany( BookingCustomer::class );
     }
 }

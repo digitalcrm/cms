@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/daterangepicker.css') }}">
 </head>
 <body>
     <div id="app">
@@ -35,6 +36,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <a class="nav-link" href="{{ route('bookings') }}">Booking</a>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -72,11 +74,13 @@
             @yield('content')
         </main>
     </div>
+    @section('scripts')
        <!-- Scripts -->
        <script src="{{ asset('js/app.js') }}"></script>
        <script src="{{ mix('js/popper.js') }}"></script>
 
        {{-- Blade message validation --}}
        @include('includes.pop-up-messages.message')
+    @show
 </body>
 </html>

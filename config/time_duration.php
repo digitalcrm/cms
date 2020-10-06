@@ -3,13 +3,13 @@
 return [
 
     'hours' => [
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
+        '1 Hours',
+        '2 Hours',
+        '3 Hours',
+        '4 Hours',
+        '5 Hours',
+        '6 Hours',
+        '7 Hours',
     ],
 
 ];

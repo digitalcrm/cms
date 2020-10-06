@@ -64,11 +64,13 @@
 
             @livewireScripts
 
+            <!-- for create part modal used in booking services-->
             <script type="text/javascript">
                 window.livewire.on('showModal', () => {
                     $('#exampleModal').modal('hide');
                 });
             </script>
+            <!-- for update part modal used in booking services-->
             <script type="text/javascript">
                 window.livewire.on('updateModal', () => {
                     $('#updateModal').modal('hide');

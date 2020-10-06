@@ -28,6 +28,7 @@
                               <tr>
                                   <th>Name</th>
                                   <th>Consultant</th>
+                                  <th>Services</th>
                                   <th>Event Session</th>
                                   <th>Price</th>
                                   <th>Created</th>
@@ -39,6 +40,7 @@
                               <tr>
                                   <td>{{ $event->event_name ?? '' }}</td>
                                   <td>{{ $event->user->name ?? '' }}</td>
+                                  <td>{{ $event->booking_service->service_name ?? '' }}</td>
                                   <td>{{ $event->duration ?? '' }}</td>
                                   <td>{{ $event->price ?? '' }}</td>
                                   <td>{{ $event->created_at->toDateString() ?? ''}}</td>

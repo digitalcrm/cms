@@ -70,6 +70,7 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                    <a href="{{ route('bookings') }}">Booking</a>
                     @auth
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     @else

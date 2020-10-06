@@ -86,6 +86,17 @@ Route::group(['namespace' => 'Bookings'], function () {
         /* Booking Create Events routes*/
         Route::resource('bookevents', 'BookingEventController');
 
+        /* list of services at front side */
+        Route::get('bookings', 'BookingController')->name('bookings');
+
+        /* services having list of events show */
+        Route::get('bookings/{bookservice:service_name}', 'BookingHomePageController@service_has_list_of_events')->name('service.events');
+
+        /* guest user Booking form route */
+        Route::get('bookings/{bookservice:service_name}/event/{bookevent}', 'BookingHomePageController@create')->name('event.create');
+        Route::post('bookings/{bookservice:service_name}/event/{bookevent}', 'BookingHomePageController@store')->name('event.store');
+        // Route::post('events', 'BookingHomePageController@store')->name('event.store');
+
     });
 
     /* Setting controller invokable */

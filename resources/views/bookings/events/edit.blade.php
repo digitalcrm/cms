@@ -56,7 +56,7 @@
                                     <option value="0">Select Field</option>
                                     @foreach ($services as $service)
                                     <option
-                                    value="{{$service->id}}" {{ old('booking_service_id', $service->id) == $service->id  ? 'selected' : '' }}>
+                                    value="{{$service->id}}" {{ old('booking_service_id', $bookevent->booking_service_id) == $service->id  ? 'selected' : '' }}>
                                         {{$service->service_name}}
                                     </option>
                                     @endforeach
@@ -73,8 +73,8 @@
                                     <option value="0">Select Field</option>
                                     @foreach ($timeDuration as $time)
                                     <option
-                                    value="{{$time}}" {{ old('duration', $time) == $time  ? 'selected' : '' }}>
-                                        {{ $time }} {{ __('Hours') }}
+                                    value="{{$time}}" {{ old('duration', $bookevent->duration) == $time  ? 'selected' : '' }}>
+                                        {{ $time }}
                                     </option>
                                     @endforeach
                                 </select>
