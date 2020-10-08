@@ -1,9 +1,10 @@
 <?php
 
+use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -20,5 +21,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
+        $user = User::firstOrFail();
+        $user->assignRole('superadmin');
     }
 }
