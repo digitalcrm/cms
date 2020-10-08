@@ -21,7 +21,7 @@ class BookingEvent extends Model
 
     protected $with = ['booking_service'];
 
-    // protected $withCount = ['booking_service'];
+    protected $withCount = ['bookingcustomers'];
 
     /**
      * @var array
@@ -40,6 +40,7 @@ class BookingEvent extends Model
     protected $appends = [
         'short_description',
     ];
+
     /**
      * Get the event based on the booking services.
      */
@@ -50,7 +51,8 @@ class BookingEvent extends Model
 
     public function getDurationAttribute($value)
     {
-        return $value . " Hours";
+        // return $value . " Hours";
+        return $value;
     }
 
     public function user()
@@ -63,7 +65,7 @@ class BookingEvent extends Model
         return Str::limit($this->event_description, 56, '...');
     }
 
-    public function booking_customers()
+    public function bookingcustomers()
     {
         return $this->belongsToMany( BookingCustomer::class );
     }

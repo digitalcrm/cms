@@ -29,6 +29,7 @@
                                   <th>Name</th>
                                   <th>Consultant</th>
                                   <th>Services</th>
+                                  <th>CustomerBooked</th>
                                   <th>Event Session</th>
                                   <th>Price</th>
                                   <th>Created</th>
@@ -41,6 +42,12 @@
                                   <td>{{ $event->event_name ?? '' }}</td>
                                   <td>{{ $event->user->name ?? '' }}</td>
                                   <td>{{ $event->booking_service->service_name ?? '' }}</td>
+
+                                  <td>
+                                    {{  $event->bookingcustomers->count() }}
+                                  </td>
+
+
                                   <td>{{ $event->duration ?? '' }}</td>
                                   <td>{{ $event->price ?? '' }}</td>
                                   <td>{{ $event->created_at->toDateString() ?? ''}}</td>
@@ -65,7 +72,7 @@
                               </tr>
                               @empty
                               <tr>
-                                  <td class="text-center" colspan="7">
+                                  <td class="text-center" colspan="9">
                                       No data available in table
                                   </td>
                               </tr>

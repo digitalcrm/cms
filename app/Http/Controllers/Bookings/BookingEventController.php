@@ -22,7 +22,16 @@ class BookingEventController extends Controller
      */
     public function index()
     {
-        $bookevents = BookingEvent::latest()->get();
+        $query = BookingEvent::query();
+
+        if(auth()->user()->hasRole('superadmin')) {
+
+            $bookevents = $query->latest()->get();
+
+        } else {
+
+            $bookevents = auth()->user()->bookingevents()->latest()->get();
+        }
 
         return view('bookings.events.index', compact('bookevents'));
     }

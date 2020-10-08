@@ -39,6 +39,7 @@
                                             Name
                                         </th>
                                         <th>Email</th>
+                                        <th>Events</th>
                                         <th>Status</th>
                                         <th>Roles</th>
                                     </tr>
@@ -52,6 +53,8 @@
                                                     <span class="text-sm">{{ $user->name ?? '' }}</span>
                                             </td>
                                             <td>{{ $user->email ?? '' }}</td>
+
+                                            <td>{{ $user->bookingevents->count()  }}</td>
 
                                             <td>
                                                 <input data-id="{{ $user->id }}" class="toggle-class" type="checkbox"

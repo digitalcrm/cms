@@ -73,7 +73,7 @@
                                     @foreach ($timeDuration as $time)
                                     <option
                                     value="{{$time}}" {{ old('duration') == $time  ? 'selected' : '' }}>
-                                        {{ $time }} {{ __('Hours') }}
+                                        {{ $time }}
                                     </option>
                                     @endforeach
                                 </select>

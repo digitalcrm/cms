@@ -15,7 +15,7 @@ class BookingCustomer extends Model
 
     protected $fillable = ['customer_name', 'email', 'mobile_number'];
 
-    public function booking_events()
+    public function bookingevents()
     {
         return $this->belongsToMany( BookingEvent::class );
     }
