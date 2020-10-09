@@ -66,7 +66,11 @@ class BookingEvent extends Model
 
     public function bookingcustomers()
     {
-        return $this->belongsToMany( BookingCustomer::class )->withTimestamps(['created_at','booking_date', 'updated_at']);
+        return $this->belongsToMany( BookingCustomer::class )->withTimestamps([
+            'created_at',
+            'booking_date',
+            'updated_at'
+        ]);
     }
 
 }

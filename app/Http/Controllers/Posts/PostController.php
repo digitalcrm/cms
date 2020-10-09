@@ -125,7 +125,7 @@ class PostController extends Controller
             Gate::authorize('view', $post);
 
         } catch (ModelNotFoundException $exception) {
-            return view('errors._not_found_exception');
+            return view('errors._model_not_found_exception');
 
         }
         return view('cms.posts.show',compact('post'));
