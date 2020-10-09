@@ -44,7 +44,9 @@
                                   <td>{{ $event->booking_service->service_name ?? '' }}</td>
 
                                   <td>
-                                    {{  $event->bookingcustomers->count() }}
+                                    <a href="{{ route('bookevents.show', $event->id) }}">
+                                        {{  $event->bookingcustomers->count() }}
+                                    </a>
                                   </td>
 
 

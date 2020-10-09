@@ -19,7 +19,7 @@ class BookingEvent extends Model
     */
     protected $primaryKey = 'id';
 
-    protected $with = ['booking_service'];
+    protected $with = ['booking_service','bookingcustomers'];
 
     protected $withCount = ['bookingcustomers'];
 
@@ -51,7 +51,6 @@ class BookingEvent extends Model
 
     public function getDurationAttribute($value)
     {
-        // return $value . " Hours";
         return $value;
     }
 
@@ -67,6 +66,7 @@ class BookingEvent extends Model
 
     public function bookingcustomers()
     {
-        return $this->belongsToMany( BookingCustomer::class );
+        return $this->belongsToMany( BookingCustomer::class )->withTimestamps(['created_at','booking_date', 'updated_at']);
     }
+
 }

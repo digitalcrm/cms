@@ -71,9 +71,9 @@ class BookingEventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(BookingEvent $bookevent)
     {
-        //
+        return view('bookings.events.show', compact('bookevent'));
     }
 
     /**
