@@ -17,7 +17,7 @@ class BookingHomePageController extends Controller
         // $sti = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.';
         // dd(strlen($sti));
         try {
-            $events = $bookservice->booking_events()->get();
+            $events = $bookservice->bookingevents()->get();
         } catch (ModelNotFoundException $exception) {
 
             return view('errors._model_not_found_exception');
@@ -50,7 +50,7 @@ class BookingHomePageController extends Controller
 
         $customerData = BookingCustomer::create($validatedData);
 
-        $customerData->booking_events()->attach(request('eventId'),[
+        $customerData->bookingevents()->attach(request('eventId'),[
             'booking_date' => $bookDate1,
             'description' => $request->description,
         ]);
