@@ -88,6 +88,7 @@ Route::group(['namespace' => 'Bookings'], function () {
 
         /* list of services at front side */
         Route::get('bookings', 'BookingController')->name('bookings');
+        Route::get('event/calendar', 'BookingEventController@calendarlist');
 
         /* services having list of events show */
         Route::get('bookings/{bookservice:service_name}', 'BookingHomePageController@service_has_list_of_events')->name('service.events');

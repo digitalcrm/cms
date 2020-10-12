@@ -127,4 +127,9 @@ class BookingEventController extends Controller
 
         return redirect()->back()->withMessage($bookevent->event_name . ' deleted successfully');
     }
+
+    public function calendarlist()
+    {
+        return view('bookings.calendar');
+    }
 }
