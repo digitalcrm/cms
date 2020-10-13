@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\User;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        JsonResource::withoutWrapping();
         # this method is moved in User model with boot method
         // User::created(function ($user){
         //     $user->assignRole(3);

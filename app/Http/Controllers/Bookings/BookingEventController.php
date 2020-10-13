@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Bookings;
 
 use App\BookingEvent;
 use App\BookingService;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookingEventRequest;
-use Illuminate\Http\Request;
+use App\Http\Resources\BookingEventResource;
 
 class BookingEventController extends Controller
 {
@@ -128,8 +130,17 @@ class BookingEventController extends Controller
         return redirect()->back()->withMessage($bookevent->event_name . ' deleted successfully');
     }
 
-    public function calendarlist()
+    public function allBookingEvent()
     {
         return view('bookings.calendar');
     }
+
+    public function calendarlist()
+    {
+        $event = auth()->user()->bookingevents()->get();
+
+        return BookingEventResource::collection($event);
+
+    }
+
 }
