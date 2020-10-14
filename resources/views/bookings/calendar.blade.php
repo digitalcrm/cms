@@ -1,16 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Calendar Events</h1>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
 
   <!-- Main content -->
   <div class="content">
@@ -24,4 +14,10 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->
+
+  @section('scripts')
+  @parent
+  <script src="{{ asset('ajax/js/fullcalendar.js') }}"></script>
+  @endsection
+
 @endsection

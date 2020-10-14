@@ -2,13 +2,14 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BookingEvent extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
     /**
      * @var string
     */

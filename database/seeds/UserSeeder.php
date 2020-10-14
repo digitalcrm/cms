@@ -15,13 +15,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
+        factory(App\User::class, 5)->create();
+        // DB::table('users')->insert([
+        //     'name' => Str::random(10),
+        //     'email' => Str::random(10).'@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        $user = User::firstOrFail();
-        $user->assignRole('superadmin');
+        // $user = User::firstOrFail();
+        // $user->assignRole('superadmin');
     }
 }
