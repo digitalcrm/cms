@@ -47,6 +47,41 @@
                                 />
                                 <small class="text-danger">{{ $errors->first('user_id') }}</small>
                             </div>
+
+                            <div class="form-group">
+                                <label>Start Event</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input
+                                    type="text"
+                                    class="form-control float-right"
+                                    id="event_start"
+                                    name="event_start"
+                                    />
+                                </div>
+                                <small class="text-danger">{{ $errors->first('event_start') }}</small>
+                            </div>
+                            <div class="form-group">
+                                <label>End Event</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input
+                                    type="text"
+                                    class="form-control float-right"
+                                    id="event_end"
+                                    name="event_end"
+                                    />
+                                </div>
+                                <small class="text-danger">{{ $errors->first('event_end') }}</small>
+                            </div>
                             <div class="form-group">
                                 <label for="booking_service_id">Services</label>
                                 <select id="booking_service_id"
@@ -63,6 +98,7 @@
                                 <small class="text-danger">{{ $errors->first('booking_service_id') }}</small>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="duration">Duration</label>
@@ -113,5 +149,39 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->
+
+  @section('scripts')
+  @parent
+  <script>
+    $(function () {
+            //Below Started_at
+            $("#event_start").daterangepicker({
+
+                startDate: moment().startOf('hour'),
+                minYear: 2000,
+                showDropdowns: true,
+                singleDatePicker: true,
+                // timePicker: false,
+                // timePicker24Hour: false,
+                // timePickerIncrement: 05,
+                drops:"up",
+                locale: {
+                    format: 'MM/DD/YYYY'
+                }
+            });
+            $("#event_end").daterangepicker({
+
+                startDate: moment().startOf('hour').add(48, 'hour'),
+                minYear: 2000,
+                showDropdowns: true,
+                singleDatePicker: true,
+                drops:"up",
+                locale: {
+                    format: 'MM/DD/YYYY'
+                }
+            });
+    });
+    </script>
+  @endsection
 
 @endsection

@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
       plugins: [ momentPlugin, dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin ],
       initialView: 'dayGridMonth',
       themeSystem: 'bootstrap',
+      displayEventTime : false,
       height: 600,
       selectable:true,
       editable:true,
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // });
       },
       events: '/bookingeventdata',
-      eventColor: '#378006',
+      eventColor: '#1b2961',
     });
 
     calendar.render();

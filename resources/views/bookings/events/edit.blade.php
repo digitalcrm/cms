@@ -49,6 +49,40 @@
                                 <small class="text-danger">{{ $errors->first('user_id') }}</small>
                             </div>
                             <div class="form-group">
+                                <label>Event Start:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input
+                                    type="text"
+                                    class="form-control float-right"
+                                    id="event_start"
+                                    name="event_start"
+                                    value="{{ old('event_start' ,$bookevent->event_start->format('m/d/Y') ) }}"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Event End:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input
+                                    type="text"
+                                    class="form-control float-right"
+                                    id="event_end"
+                                    name="event_end"
+                                    value="{{ old( 'event_end', $bookevent->event_end->format('m/d/Y') ) }}"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="booking_service_id">Services</label>
                                 <select id="booking_service_id"
                                     class="custom-select {{ $errors->first('booking_service_id', 'is-invalid') }}"
@@ -114,5 +148,35 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->
+  @section('scripts')
+  @parent
+  <script>
+    $(function () {
+            //Below Started_at
+            $("#event_start").daterangepicker({
+
+                // startDate: moment().startOf('hour'), // This would be not used in edit case because it overrides it
+                minYear: 2000,
+                showDropdowns: true,
+                singleDatePicker: true,
+                drops:"up",
+                locale: {
+                    format: 'MM/DD/YYYY'
+                }
+            });
+
+            $("#event_end").daterangepicker({
+
+                minYear: 2000,
+                showDropdowns: true,
+                singleDatePicker: true,
+                drops:"up",
+                locale: {
+                    format: 'MM/DD/YYYY'
+                }
+            });
+    });
+    </script>
+  @endsection
 
 @endsection

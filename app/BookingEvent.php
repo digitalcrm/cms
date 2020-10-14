@@ -42,6 +42,14 @@ class BookingEvent extends Model
         'short_description',
     ];
 
+    protected $dates = [
+        'event_start',
+        'event_end',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
     /**
      * Get the event based on the booking services.
      */
@@ -73,5 +81,15 @@ class BookingEvent extends Model
             'updated_at'
         ]);
     }
+
+    // public function startdate()
+    // {
+    //     return $this->event_start->format('d-m-y');
+    // }
+
+    // public function enddate()
+    // {
+    //     return $this->event_end->format('d-m-y');
+    // }
 
 }

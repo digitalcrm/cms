@@ -29,6 +29,8 @@ class BookingEventRequest extends FormRequest
             'duration' => ['required', 'not_in:0'],
             'price' => ['required', 'string'],
             'event_description' => ['max:255'],
+            'event_start' => ['required', 'date'],
+            'event_end' => ['required', 'date'],
         ];
     }
 }

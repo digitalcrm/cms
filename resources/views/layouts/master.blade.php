@@ -62,6 +62,10 @@
             {{-- Blade message validation --}}
             @include('includes.pop-up-messages.message')
 
+
+            <script src="{{ asset('assets/moment.min.js') }}"></script>
+            <script src="{{ asset('assets/daterangepicker.min.js') }}"></script>
+
             @livewireScripts
 
             <!-- for create part modal used in booking services-->
