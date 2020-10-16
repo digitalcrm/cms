@@ -30,8 +30,8 @@ class RawDataSeeder extends Seeder
         $user5 = User::find(5);
         $user5->assignRole('user');
 
-        factory(App\BookingService::class, 5)->create();
-        factory(App\BookingEvent::class, 5)->create();
+        // factory(App\BookingService::class, 5)->create();
+        // factory(App\BookingEvent::class, 5)->create();
         # create roles
         // $role1 = Role::create(['name' => 'superadmin']);
         // $role2 = Role::create(['name' => 'admin']);

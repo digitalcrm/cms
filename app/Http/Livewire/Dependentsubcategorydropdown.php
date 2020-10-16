@@ -25,6 +25,7 @@ class Dependentsubcategorydropdown extends Component
             // dd(count($this->subcategories));
         }
         return view('livewire.dependentsubcategorydropdown')->withCategories(Category::has('subcategories')->get());
+        // return view('livewire.dependentsubcategorydropdown')->withCategories(Category::get());
     }
 
 

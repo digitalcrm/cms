@@ -14,8 +14,9 @@ class CreateBookingEventsTable extends Migration
     public function up()
     {
         Schema::create('booking_events', function (Blueprint $table) {
-            $table->id();
+            $table->id()->startingValue(1000);
             $table->string('event_name')->comment('event title');
+            $table->string('slug')->unique();
             $table->foreignId('user_id')->constrained()->comment('salesperson consultant user');
             $table->foreignId('booking_service_id')->nullable()->constrained()->comment('service type');
             $table->string('duration');

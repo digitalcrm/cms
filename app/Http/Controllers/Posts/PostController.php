@@ -16,7 +16,6 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->authorizeResource('posts');
         $this->middleware('permission:list-post')->only('index');
         $this->middleware('permission:create-post')->only(['create', 'store']);
         $this->middleware('permission:view-post')->only('view');
@@ -42,10 +41,10 @@ class PostController extends Controller
 
         if(auth()->user()->hasRole('superadmin')) {
 
-            $allPosts = $query->published()->latest()->get();
+            $allPosts = $query->latest()->get();
         } else {
 
-            $allPosts = $query->published()->where('user_id',auth()->user()->id)->latest()->get();
+            $allPosts = $query->where('user_id',auth()->user()->id)->latest()->get();
         }
 
         return view('cms.posts.index',compact('allPosts'));

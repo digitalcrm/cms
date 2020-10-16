@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,12 +13,12 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Post extends Model implements HasMedia
 {
-    use SoftDeletes, InteractsWithMedia;
+    use SoftDeletes, InteractsWithMedia, HasSlug;
 
     protected $fillable = [
+        'title',
         'user_id',
         'category_id',
-        'title',
         'slug',
         'body',
         'published',
@@ -32,6 +34,34 @@ class Post extends Model implements HasMedia
     protected $table = 'posts';
 
     protected $with = ['user', 'category', 'subcategory', 'tags'];
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function registerMediaCollections(): void
+    {
+    $this
+        ->addMediaCollection('posts')
+        ->useDisk('media')
+        ->registerMediaConversions(function (Media $media) {
+            $this
+                ->addMediaConversion('post-thumb')
+                ->width(35)
+                ->height(35);
+        });
+    }
 
     public function category()
     {
@@ -57,23 +87,6 @@ class Post extends Model implements HasMedia
        return $this->getMedia('posts')->last();
     }
 
-    // public function media()
-    // {
-    //     return $this->morphMany(Media::class, 'model');
-    // }
-
-    public function registerMediaCollections(): void
-    {
-    $this
-        ->addMediaCollection('posts')
-        ->useDisk('media')
-        ->registerMediaConversions(function (Media $media) {
-            $this
-                ->addMediaConversion('post-thumb')
-                ->width(35)
-                ->height(35);
-        });
-    }
 
     /**
      *  Anonymous Global Scopes
@@ -124,12 +137,12 @@ class Post extends Model implements HasMedia
         // });
     }
 
-    public function scopePublished($query)
-    {
-        return $query->orWhere([
-            'published' => 1,
-        ]);
-    }
+    // public function scopePublished($query)
+    // {
+    //     return $query->orWhere([
+    //         'published' => 1,
+    //     ]);
+    // }
 
     /*
     #  Old code without refactoring

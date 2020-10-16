@@ -119,7 +119,7 @@
                                                 {{-- <small> --}}
                                                     <a
                                                     class="dropdown-item"
-                                                    href="{{route('posts.edit',$post->id)}}">
+                                                    href="{{route('posts.edit',$post->slug)}}">
                                                     <i class="far fa-edit"></i>
                                                     </a>
                                                 {{-- </small> --}}
@@ -147,7 +147,7 @@
                                                 style="display: none"
                                                 method="post"
                                                 id="post-status-{{$post->id}}"
-                                                action="{{route('posts.status',$post->id)}}"
+                                                action="{{route('posts.status',$post->slug)}}"
                                                 >
                                                 @csrf
                                                 @method('put')
@@ -162,7 +162,7 @@
                                                 {{-- <small> --}}
                                                     <a
                                                     class="dropdown-item"
-                                                    href="{{route('posts.show',$post->id)}}">
+                                                    href="{{route('posts.show',$post->slug)}}">
                                                         <i class="far fa-eye"></i>
                                                     </a>
                                                 {{-- </small> --}}
@@ -184,7 +184,7 @@
                                             <form
                                                 style="display:none"
                                                 id="form-delete-{{$post->id}}"
-                                                action="{{route('posts.destroy',$post->id)}}" method="POST">
+                                                action="{{route('posts.destroy',$post->slug)}}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                             </form>
