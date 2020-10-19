@@ -125,10 +125,6 @@ class User extends Authenticatable implements MustVerifyEmail
             : "{$this->name}";
     }
 
-    // public function scopeWithoutSuperAdmin($query) {
-    //     return $query->where('id','!=',1);
-    // }
-
     public function scopeWithRolesFilter($query, $userRole)
     {
         return $query->whereHas('roles', function ($query) use ($userRole) {
@@ -159,31 +155,22 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
-    /**
-     * Below Relationship part add
-     *
-    */
+    /** Below Relationship part add */
 
     public function posts()
     {
         return $this->hasMany(Post::class);
     }
 
-    /**
-     * get Single Role Name instead of collection getRoleNames()
-     *
-     */
+    /** get Single Role Name instead of collection getRoleNames() */
 
     public function getSingleRoleNameAttribute()
     {
         return '@'.$this->getRoleNames()->last();
     }
 
-    /**
-     * User has many BookingEvents
-     *
-     *
-     */
+    /** User has many BookingEvents */
+
     public function bookingevents()
     {
         return $this->hasMany( BookingEvent::class );

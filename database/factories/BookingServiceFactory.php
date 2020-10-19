@@ -18,6 +18,6 @@ use Faker\Generator as Faker;
 
 $factory->define(BookingService::class, function (Faker $faker) {
     return [
-        'service_name' => $faker->name,
+        'service_name' => $this->faker->name,
     ];
 });

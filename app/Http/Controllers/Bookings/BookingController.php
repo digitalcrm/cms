@@ -16,8 +16,11 @@ class BookingController extends Controller
      */
     public function __invoke()
     {
+        // $services = BookingService::has('bookingevents')->get();
+        $services = BookingService::latest()->get();
+
         return view('bookings.services.homepagebooking', [
-            'services' => BookingService::all(),
+            'services' => $services,
         ]);
     }
 }

@@ -3,7 +3,7 @@
     <a href="index3.html" class="brand-link">
         <img src="{{asset('/img/AdminLTELogo.png')}}" alt="company_profile" class="brand-image img-circle elevation-3"
         style="opacity: .8">
-        <span class="brand-text font-weight-light">{{ env('App_Name') }}</span>
+        <span class="brand-text font-weight-light">CMS</span>
     </a>
 
     <!-- Sidebar -->
@@ -162,6 +162,14 @@
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Book Event
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('allBookingEvent') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Calendar
                                 </p>
                             </a>
                         </li>

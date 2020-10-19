@@ -75,7 +75,7 @@
                             Booking Routes
 ###############################################################################################*/
 
-Route::group(['namespace' => 'Bookings'], function () {
+    Route::group(['namespace' => 'Bookings'], function () {
 
         /* Booking Services routes */
         Route::resource('bookservices', 'BookingServiceController')->except([
