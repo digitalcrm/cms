@@ -33,7 +33,7 @@ class TagSeeder extends Seeder
             ],
             [
                 'id'  => 4,
-                'name' => 'my-first-blog',
+                'name' => 'ReactJs',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PermissionSeeder::class,
             UserSeeder::class, // User create
-            RawDataSeeder::class, // Role assign to the user
             CategorySeeder::class,
             TagSeeder::class,
+            // RawDataSeeder::class, // Role assign to the user
             // BookingEventSeeder::class, // BookingEvent generate
         ]);
     }
