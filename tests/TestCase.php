@@ -24,7 +24,7 @@ abstract class TestCase extends BaseTestCase
         // $title = $title ?? 'Business';
         // return BookingService::create(['service_name' => $title]);
 
-        return factory(BookingService::class, $num)->create($args);
+        return BookingService::factory($num)->create($args);
     }
 }
 

@@ -1,28 +1,35 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\BookingEvent;
-use Faker\Generator as Faker;
+use App\BookingService;
+use App\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class BookingEventFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = BookingEvent::class;
 
-$factory->define(BookingEvent::class, function (Faker $faker) {
-    return [
-        'event_name' => $this->faker->name,
-        'user_id' => $this->faker->numberBetween(1,2),
-        'booking_service_id' => $this->faker->numberBetween(1, 2),
-        'duration' => $this->faker->randomElement(array ('1 Hours','2 Hours')),
-        'price' => $this->faker->numberBetween(500, 1000),
-        'event_description' => $this->faker->text,
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'event_name' => $this->faker->name,
+            'user_id' => User::factory(),
+            'booking_service_id' => BookingService::factory(),
+            'duration' => $this->faker->randomElement(array ('1 Hours','2 Hours')),
+            'price' => $this->faker->numberBetween(500, 1000),
+            'event_description' => $this->faker->text,
+        ];
+    }
+}

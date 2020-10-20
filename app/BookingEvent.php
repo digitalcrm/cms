@@ -70,7 +70,7 @@ class BookingEvent extends Model
     /**
      * Get the event based on the booking services.
      */
-    public function booking_service()
+    public function bookingService()
     {
         return $this->belongsTo( BookingService::class );
     }

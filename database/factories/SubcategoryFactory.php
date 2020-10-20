@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\BookingService;
+use App\Category;
+use App\Subcategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BookingServiceFactory extends Factory
+class SubcategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = BookingService::class;
+    protected $model = Subcategory::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +23,8 @@ class BookingServiceFactory extends Factory
     public function definition()
     {
         return [
-            'service_name' => $this->faker->name,
+            'name' => $this->faker->company,
+            'category_id' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

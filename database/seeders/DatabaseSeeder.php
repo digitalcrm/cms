@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +16,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             PermissionSeeder::class,
-            UserSeeder::class, // User create
+            UserSeeder::class,
             CategorySeeder::class,
+            SubcategorySeeder::class,
             TagSeeder::class,
-            // RawDataSeeder::class, // Role assign to the user
-            // BookingEventSeeder::class, // BookingEvent generate
+            PostSeeder::class,
+            BookingServiceSeeder::class,
+            BookingEventSeeder::class,
         ]);
     }
 }
