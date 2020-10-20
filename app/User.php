@@ -171,7 +171,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /** User has many BookingEvents */
 
-    public function bookingevents()
+    public function BookingEvents()
     {
         return $this->hasMany( BookingEvent::class );
     }

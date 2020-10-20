@@ -28,7 +28,7 @@ class BookingService extends Model
     */
     protected $fillable = ['service_name'];
 
-    public function bookingevents() {
+    public function bookingEvents() {
 
         return $this->hasMany( BookingEvent::class );
 

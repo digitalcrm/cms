@@ -41,7 +41,7 @@
                               <tr>
                                   <td>{{ $event->event_name ?? '' }}</td>
                                   <td>{{ $event->user->name ?? '' }}</td>
-                                  <td>{{ $event->booking_service->service_name ?? '' }}</td>
+                                  <td>{{ $event->bookingService->service_name ?? '' }}</td>
 
                                   <td>
                                     <a href="{{ route('bookevents.show', $event->id) }}">
