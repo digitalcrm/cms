@@ -34,9 +34,6 @@
        <!-- Scripts -->
        <script src="{{ asset('js/app.js') }}"></script>
        <script src="{{ mix('js/popper.js') }}"></script>
-
-       {{-- Blade message validation --}}
-       @include('includes.pop-up-messages.message')
     @show
 </body>
 </html>

@@ -68,6 +68,7 @@
         </div>
     </div>
 </div>
+
     @section('scripts')
     @parent
         <script src="{{ asset('assets/jquery.min.js') }}"></script>
@@ -99,7 +100,11 @@
 
         });
         </script>
-    @endsection
+
+        {{-- Blade message validation --}}
+        @include('includes.pop-up-messages.message')
+
+        @endsection
 
 @endsection
 
