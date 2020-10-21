@@ -9,14 +9,12 @@
 
     <title>@yield('title', 'CMS')</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/daterangepicker.css') }}">
+
 </head>
 <body>
 
@@ -32,8 +30,7 @@
 
     @section('scripts')
        <!-- Scripts -->
-       <script src="{{ asset('js/app.js') }}"></script>
-       <script src="{{ mix('js/popper.js') }}"></script>
+       <script src="{{ asset('js/home.js') }}"></script>
     @show
 </body>
 </html>
