@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row mt-5 mb-3">
         @forelse ($services as $service)
         <div class="col-md-2">
             <div class="card shadow card-danger card-outline">

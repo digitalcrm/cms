@@ -3,13 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-6 mt-5 mb-3">
             <div class="card">
                 <div class="card-header">
                     {{ $bookevent->event_name }}
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('event.store', ['bookservice' =>$bookevent->booking_service->service_name, 'bookevent'=>$bookevent->id]) }}"
+                    <form action="{{ route('event.store', ['bookservice' =>$bookevent->bookingService->service_name, 'bookevent'=>$bookevent->id]) }}"
                             method="POST"
                             enctype="multipart/form-data" id="form">
                         @csrf

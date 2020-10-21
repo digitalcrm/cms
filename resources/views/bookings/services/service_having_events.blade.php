@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         @forelse ($events as $service_event)
-        <div class="col-md-3">
+        <div class="col-md-3 mt-5 mb-3">
             <div class="card shadow card-danger card-outline">
                 <!--/.card-header-->
                 <div class="card-body">
@@ -16,7 +16,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('event.create', ['bookservice' =>$service_event->booking_service->name, 'bookevent'=>$service_event->id]) }}">
+                    <a href="{{ route('event.create', ['bookservice' =>$service_event->bookingService->name, 'bookevent'=>$service_event->id]) }}">
                         BookNow
                     </a>
                 </div>
@@ -25,7 +25,9 @@
         </div>
 
         @empty
-        <h3>NO data available</h3>
+        <div class="col mt-5 mb-3">
+        <h3 class="text-center">No data available</h3>
+        </div>
         @endforelse
     </div>
 </div>
