@@ -78,19 +78,13 @@ class UserProfileController extends Controller
      */
     public function update(UpdateProfileInfoRequest $request, User $auth_profile)
     {
-        $input = $request->validated();
+        // $input = $request->validated();
+        $input = $request->except(['profile_photo_path']);
 
-        $photo = $request->profile_photo_path;
-
-        // // dd($input);
-
+        // dd($input);
         $auth_profile->update($input);
 
-        if ($request->hasFile('profile_photo_path')) {
-
-            $auth_profile->updateProfilePhoto($photo);
-        }
-
+        $auth_profile->updateProfilePhoto($request->profile_photo_path);
 
         return redirect()->back()->withInfo('Profile updated succesfully');
     }

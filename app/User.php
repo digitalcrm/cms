@@ -70,20 +70,21 @@ class User extends Authenticatable implements MustVerifyEmail
      * @param  \Illuminate\Http\UploadedFile  $photo
      * @return void
      */
-    public function updateProfilePhoto(UploadedFile $photo)
+    public function updateProfilePhoto($photo)
     {
-        tap($this->profile_photo_path, function ($previous) use ($photo) {
-            $this->forceFill([
-                'profile_photo_path' => $photo->storePublicly(
-                    'profile-photos',
-                    ['disk' => $this->profilePhotoDisk()]
-                ),
-            ])->save();
+        if($photo){
+            // dd($this->profile_photo_path);
+            $this->deletepreviousImage($this->profile_photo_path);
 
-            if ($previous) {
-                Storage::disk($this->profilePhotoDisk())->delete($previous);
-            }
-        });
+            $image = $photo->storePublicly('profile-photos',$this->profilePhotoDisk());
+
+            $this->update(['profile_photo_path' => $image]);
+        }
+    }
+
+    protected function deletepreviousImage($previous)
+    {
+        Storage::disk($this->profilePhotoDisk())->delete($previous);
     }
 
     /**

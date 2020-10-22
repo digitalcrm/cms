@@ -588,3 +588,7 @@ p {
 	font-weight: 700;
 	text-transform: uppercase;
 }
+
+.card-danger.card-outline {
+    border-top: 3px solid #dc3545;
+}
