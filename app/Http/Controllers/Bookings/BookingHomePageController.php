@@ -8,6 +8,7 @@ use App\BookingCustomer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Rules\googleCaptcha;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BookingHomePageController extends Controller
@@ -37,11 +38,13 @@ class BookingHomePageController extends Controller
     {
         // dd($request->eventId);
         $validatedData = $request->validate([
-            'customer_name' => 'required|string|max:100',
-            'email' => 'required',
-            'mobile_number' => 'required',
+            'booking_date' => ['required'],
+            'customer_name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'max:255'],
+            'mobile_number' => ['required','numeric'],
+            'g-recaptcha-response' => ['required', new googleCaptcha()],
         ]);
-
+            // dd($validatedData);
         $bookDate = request('booking_date');
         $bookDate1 = Carbon::parse($bookDate)->format('Y-m-d H:i:s');
 

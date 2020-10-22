@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             SubcategorySeeder::class,
             TagSeeder::class,
             PostSeeder::class,
-            BookingServiceSeeder::class,
-            BookingEventSeeder::class,
+            // BookingServiceSeeder::class,
+            // BookingEventSeeder::class,
         ]);
     }
 }

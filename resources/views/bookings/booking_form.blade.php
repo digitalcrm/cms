@@ -4,6 +4,26 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 mt-5 mb-3">
+            @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </ul>
+                </div>
+            @endif
+            @if (session('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Hooray!</strong> {{ session('message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
             <div class="card">
                 <div class="card-header">
                     {{ $bookevent->event_name }}
@@ -32,29 +52,63 @@
                         </div>
                         <div class="form-group">
                             <label for="customer_name" class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="customer_name" name="customer_name">
+                            <input type="text"
+                                    class="form-control @error('customer_name') is-invalid @enderror"
+                                    id="customer_name"
+                                    name="customer_name"
+                                    value="{{ old('customer_name') }}"
+                                    required>
+                            @error('customer_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <input type="email"
+                                    class="form-control @error('email') is-invalid @enderror"
+                                    id="email"
+                                    name="email"
+                                    value="{{ old('email') }}"
+                                    required>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="mobile_number" class="col-form-label">Mobile:</label>
-                            <input type="tel" class="form-control" id="mobile_number" name="mobile_number">
-                        </div>
-                        <div class="form-group">
-                            <label for="description" class="col-form-label">Description:</label>
-                            <textarea class="form-control" id="description" name="description"></textarea>
+                            <input type="tel"
+                                    class="form-control @error('mobile_number') is-inavalid @enderror"
+                                    id="mobile_number" name="mobile_number"
+                                    value="{{ old('mobile_number') }}"
+                                    required>
+                            @error('mobile_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
-                        {{-- <div class="form-group">
+                        <div class="form-group">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea
+                            class="form-control"
+                            id="description"
+                            name="description"
+                            >{{ old('description') }}</textarea>
+                        </div>
+
+                        <div class="form-group">
                             <div
                                 class="g-recaptcha"
                                 data-sitekey="{{ env('CAPTCHA_SITE_KEY') }}"
                                 data-error-callback="Fill the recaptcha"
                                 data-expired-callback="Your Recaptcha has expired, please verify it again !">
                             </div>
-                        </div> --}}
+                        </div>
 
                     <div class="card-footer">
                         <a class="btn btn-info" href="{{ url()->previous() }}">Back</a>
@@ -71,6 +125,7 @@
 
     @section('scripts')
     @parent
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script src="{{ asset('assets/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/moment.min.js') }}"></script>
         <script src="{{ asset('assets/daterangepicker.min.js') }}"></script>
@@ -100,9 +155,6 @@
 
         });
         </script>
-
-        {{-- Blade message validation --}}
-        @include('includes.pop-up-messages.message')
 
         @endsection
 

@@ -26,7 +26,7 @@ class CreateBookingCustomersTable extends Migration
             $table->foreignId('booking_customer_id')->constrained();
             $table->foreignId('booking_event_id')->constrained();
             $table->dateTime('booking_date');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->unique(['booking_customer_id', 'booking_event_id'],'customer_event_index_unique');
             $table->timestamps();
         });
