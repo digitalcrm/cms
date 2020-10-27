@@ -20,7 +20,7 @@ class BookingEventResource extends JsonResource
             'title' => $this->event_name,
             'start' => $this->event_start,
             'end' => $this->event_end,
-            'url' => route('bookevents.show',$this->id),
+            'url' => route('event.create',['bookservice' =>$this->bookingService->name, 'bookevent'=>$this->id]),
             'customer' => $this->bookingcustomers->count(),
             'description' => $this->event_description,
         ];

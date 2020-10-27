@@ -14,6 +14,9 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/daterangepicker.css') }}">
+    @section('styles')
+    
+    @show
 
 </head>
 <body>

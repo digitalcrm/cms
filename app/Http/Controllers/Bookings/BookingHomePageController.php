@@ -24,7 +24,7 @@ class BookingHomePageController extends Controller
             return view('errors._model_not_found_exception');
         }
 
-        return view('bookings.services.service_having_events', compact('events'));
+        return view('bookings.services.service_having_events', compact('events','bookservice'));
     }
 
     public function create(BookingService $bookservice , BookingEvent $bookevent)
