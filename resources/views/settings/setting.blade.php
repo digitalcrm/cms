@@ -36,10 +36,10 @@
             <div class="card shadow card-danger card-outline">
                 <!--/.card-header-->
                 <div class="card-body">
-                    <a href="#" class="trash-link">
+                    <a href="{{ route('activity_type') }}" class="trash-link">
                         <span class=""><i class="fa fa-money-bill fa-2x"></i></span>
                         <div class="text-bold mt-2">
-                            Settings#1
+                            Booking Activity Type
                         </div>
                     </a>
                 </div>

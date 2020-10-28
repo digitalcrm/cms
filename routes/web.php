@@ -15,6 +15,7 @@
     Route::group(['middleware' => ['auth'], 'namespace' => 'Ajax'], function () {
 
         Route::get('userStatus','AjaxController@userStatus')->name('auth.userStatus');
+        Route::get('eventStatus','AjaxController@eventStatus')->name('auth.eventStatus');
 
     });
 
@@ -81,6 +82,8 @@
         Route::resource('bookservices', 'BookingServiceController')->except([
             'create', 'store', 'update', 'destroy', 'show', 'edit',
         ]);
+
+        Route::get('activity_type', 'BookingActivityTypeController')->name('activity_type');
 
         /* Booking Create Events routes*/
         Route::resource('bookevents', 'BookingEventController');

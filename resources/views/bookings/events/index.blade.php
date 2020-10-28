@@ -29,9 +29,11 @@
                                   <th>Name</th>
                                   <th>Consultant</th>
                                   <th>Services</th>
-                                  <th>CustomerBooked</th>
+                                  <th>Customer Booked</th>
                                   <th>Event Session</th>
+                                  <th>Activity Type</th>
                                   <th>Price</th>
+                                  <th>Active</th>
                                   <th>Created</th>
                                   <th>Action</th>
                               </tr>
@@ -39,7 +41,11 @@
                           <tbody>
                               @forelse($bookevents as $event)
                               <tr>
-                                  <td>{{ $event->event_name ?? '' }}</td>
+                                  <td>
+                                      <a href="{{ route('bookevents.show', $event->id) }}">
+                                        {{ $event->event_name ?? '' }}
+                                    </a>
+                                    </td>
                                   <td>{{ $event->user->name ?? '' }}</td>
                                   <td>{{ $event->bookingService->service_name ?? '' }}</td>
 
@@ -51,7 +57,16 @@
 
 
                                   <td>{{ $event->duration ?? '' }}</td>
+
+                                  <td>{{ $event->bookingActivity->title ?? '' }}</td>
+
                                   <td>{{ $event->price ?? '' }}</td>
+                                  <td>
+                                    <input data-id="{{ $event->id }}" class="toggle-class" type="checkbox"
+                                    data-onstyle="info" data-style="ios" data-offstyle="warning"
+                                    data-toggle="toggle" data-on="Active" data-size="small" data-off="Block"
+                                    {{ $event->isActive ? 'checked' : '' }}>
+                                  </td>
                                   <td>{{ $event->created_at->toDateString() ?? ''}}</td>
                                   <td>
                                       <a href="{{ route('bookevents.edit', $event->id) }}" class="btn btn-primary btn-sm">Edit</a>
@@ -91,5 +106,10 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->
+    @section('scripts')
+    @parent
+    <script src="{{ asset('ajax/js/bookingevent_toggle.js') }}"></script>
 
+
+    @endsection
 @endsection

@@ -152,7 +152,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Booking
+                            Appointment
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -161,7 +161,7 @@
                             <a href="{{ route('bookevents.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Book Event
+                                    Events
                                 </p>
                             </a>
                         </li>

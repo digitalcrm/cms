@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Bookings;
 
+use App\BookingActivity;
 use App\BookingEvent;
 use App\BookingService;
 use Illuminate\Http\Request;
@@ -46,9 +47,10 @@ class BookingEventController extends Controller
     public function create()
     {
         $services = BookingService::all();
+        $activities = BookingActivity::pluck('title','id');
         $timeDuration = config('time_duration.hours');
         // dd($timeDuration);
-        return view('bookings.events.create', compact('services', 'timeDuration'));
+        return view('bookings.events.create', compact('services', 'timeDuration','activities'));
     }
 
     /**
@@ -88,6 +90,7 @@ class BookingEventController extends Controller
     {
         try {
             $services = BookingService::all();
+            $activities = BookingActivity::pluck('title','id');
             $timeDuration = config('time_duration.hours');
 
         } catch (\Throwable $e) {
@@ -97,7 +100,7 @@ class BookingEventController extends Controller
             return false;
         }
 
-        return view('bookings.events.edit', compact('services', 'timeDuration', 'bookevent'));
+        return view('bookings.events.edit', compact('services', 'timeDuration', 'bookevent','activities'));
     }
 
     /**
@@ -110,7 +113,7 @@ class BookingEventController extends Controller
     public function update(BookingEventRequest $request, BookingEvent $bookevent)
     {
         $bookingEventRequestData = $request->validated();
-        $bookevent->load('booking_service');
+        $bookevent->load('bookingService');
 
         $bookevent->update($bookingEventRequestData);
 
@@ -137,7 +140,7 @@ class BookingEventController extends Controller
 
     public function calendarlist()
     {
-        $event = auth()->user()->bookingevents()->get();
+        $event = auth()->user()->bookingevents()->active()->get();
 
         return BookingEventResource::collection($event);
 

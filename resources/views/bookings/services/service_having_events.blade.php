@@ -13,14 +13,14 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item">
-                            <a class="float-right" 
+                            <a class="float-right"
                                 href="{{ route('service.events',['bookservice'=>$bookservice->name]) }}"
                                 data-toggle="tooltip" data-placement="left" title="Gallery View">
                                 <i class="fas fa-th"></i>
                             </a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a class="float-right" 
+                            <a class="float-right"
                                 href="{{ route('service.events',['bookservice'=>$bookservice->name,'lists'=> 'true']) }}"
                                 data-toggle="tooltip" data-placement="left" title="List view">
                                 <i class="fas fa-list"></i>
@@ -34,7 +34,7 @@
      </div>
     <div class="row">
         @if(request('lists') == 'true')
-            @include('bookings.includes.lists')        
+            @include('bookings.includes.lists')
         @else
             @include('bookings.includes.grid')
         @endif

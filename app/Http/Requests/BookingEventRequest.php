@@ -26,6 +26,7 @@ class BookingEventRequest extends FormRequest
         return [
             'event_name' => ['required', 'string', 'max:100'],
             'booking_service_id' => ['required', 'not_in:0'],
+            'booking_activity_id' => ['required', 'not_in:0'],
             'duration' => ['required', 'not_in:0'],
             'price' => ['required', 'string'],
             'event_description' => ['max:255'],

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -33,11 +34,13 @@ class BookingEvent extends Model
         'event_name',
         'user_id',
         'booking_service_id',
+        'booking_activity_id',
         'duration',
         'price',
         'event_start',
         'event_end',
         'event_description',
+        'isActive',
     ];
 
     protected $appends = [
@@ -75,6 +78,11 @@ class BookingEvent extends Model
         return $this->belongsTo( BookingService::class );
     }
 
+    public function bookingActivity()
+    {
+        return $this->belongsTo( BookingActivity::class );
+    }
+
     public function getDurationAttribute($value)
     {
         return $value;
@@ -108,5 +116,10 @@ class BookingEvent extends Model
     // {
     //     return $this->event_end->format('d-m-y');
     // }
+
+    public function scopeActive($query)
+    {
+        return $query->where('isActive', 1);
+    }
 
 }

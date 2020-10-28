@@ -24,7 +24,7 @@ class BookingCustomer extends Model
     protected $dates = ['booking_time'];
 
 
-    public function bookingevents()
+    public function bookingEvents()
     {
         return $this->belongsToMany( BookingEvent::class );
     }

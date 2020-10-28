@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Bookings;
 use App\BookingEvent;
 use App\BookingService;
 use App\BookingCustomer;
+use App\Rules\googleCaptcha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
-use App\Rules\googleCaptcha;
+use App\Mail\BookingConfirmed;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BookingHomePageController extends Controller
@@ -18,7 +20,7 @@ class BookingHomePageController extends Controller
         // $sti = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.';
         // dd(strlen($sti));
         try {
-            $events = $bookservice->bookingevents()->get();
+            $events = $bookservice->bookingevents()->active()->get();
         } catch (ModelNotFoundException $exception) {
 
             return view('errors._model_not_found_exception');
@@ -57,8 +59,13 @@ class BookingHomePageController extends Controller
             'booking_date' => $bookDate1,
             'description' => $request->description,
         ]);
+        // dd($customerData);
+        $eventDetail = BookingEvent::findOrFail($request->eventId);
 
-        return redirect()->back()->withMessage('event booked successfully');
+        Mail::to($customerData->email)->send(new BookingConfirmed($customerData, $eventDetail));
+
+
+        return redirect()->back()->withMessage('event booked successfully! please check your email');
 
 
     }

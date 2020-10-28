@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Settings;
+namespace App\Http\Controllers\Bookings;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SettingController extends Controller
+class BookingActivityTypeController extends Controller
 {
     public function __construct()
     {
@@ -19,6 +19,6 @@ class SettingController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('settings.setting');
+        return view('bookings.activity_types.index');
     }
 }

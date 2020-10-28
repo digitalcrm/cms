@@ -101,6 +101,21 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="booking_activity_id">Activity Type</label>
+                                <select id="booking_activity_id"
+                                    class="custom-select {{ $errors->first('booking_activity_id', 'is-invalid') }}"
+                                    name="booking_activity_id">
+                                    <option value="0">Select Field</option>
+                                    @foreach ($activities as $id=>$title)
+                                    <option
+                                    value="{{ $id }}" {{ old('booking_activity_id') == $id  ? 'selected' : '' }}>
+                                        {{ $title }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                <small class="text-danger">{{ $errors->first('duration') }}</small>
+                            </div>
+                            <div class="form-group">
                                 <label for="duration">Duration</label>
                                 <select id="duration"
                                     class="custom-select {{ $errors->first('duration', 'is-invalid') }}"

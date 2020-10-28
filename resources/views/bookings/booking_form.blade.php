@@ -96,7 +96,7 @@
                             </span>
                             @enderror
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="description" class="col-form-label">Description:</label>
                             <textarea
@@ -105,7 +105,7 @@
                             name="description"
                             >{{ old('description') }}</textarea>
                         </div>
-                        
+
                         <div class="form-group">
                             <div
                             class="g-recaptcha"
@@ -114,7 +114,7 @@
                             data-expired-callback="Your Recaptcha has expired, please verify it again !">
                         </div>
                     </div>
-                    
+
                     <div class="card-footer">
                         <a class="btn btn-info" href="{{ url()->previous() }}">Back</a>
                         <button type="submit" class="btn btn-primary float-right">Submit</button>
@@ -152,7 +152,7 @@
     $(function () {
         //Below Started_at
         $("#booking_date").daterangepicker({
-            
+
             startDate: moment().startOf('hour'),
             minYear: 1901,
             showDropdowns: true,
@@ -165,12 +165,12 @@
                 format: 'MM/DD/YYYY hh:mm A'
             }
         });
-        
+
         //Timepicker
         $("#timepicker").datetimepicker({
             format: "LT",
         });
-        
+
     });
 </script>
 

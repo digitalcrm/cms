@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th scope="col">Event Name</th>
+                <th scope="col">Consultant</th>
                 <th scope="col">Event service</th>
                 <th scope="col">Price</th>
                 <th scope="col">Duration</th>
@@ -13,11 +14,12 @@
             @forelse($events as $service_event)
             <tr>
                 <td>{{ $service_event->event_name ?? ''}}</td>
+                <td>{{ $service_event->user->name ?? ''}}</td>
                 <td>{{ $bookservice->name ?? '' }}</td>
                 <td>{{ $service_event->price ?? ''}}</td>
                 <td>{{ $service_event->duration ?? ''}}</td>
                 <td>
-                    <a class="btn btn-primary" 
+                    <a class="btn btn-primary"
                     href="{{ route('event.create', ['bookservice' =>$service_event->bookingService->name, 'bookevent'=>$service_event->id]) }}">
                     BookNow
                 </a>
