@@ -46,15 +46,25 @@ class BookingHomePageController extends Controller
             'customer_name' => ['required', 'string', 'max:100'],
             'start_from' => ['required'],
             'to_end' => ['required'],
+            'time' => ['required'],
             'email' => ['required', 'string', 'max:255'],
             'mobile_number' => ['required','numeric'],
             'g-recaptcha-response' => ['required', new googleCaptcha()],
         ]);
 
+        $startDateTime = request('start_from').' '.request('time');
+        $endDateTime = request('to_end').' '.request('time');
+        // dd($startDateTime);
+
         $validatedData['booking_event_id'] = $request->eventId;
 
         $validatedData['user_id'] = $request->userId;
 
+        $validatedData['start_from'] = $startDateTime;
+
+        $validatedData['to_end'] = $endDateTime;
+
+        // dd($validatedData);
         $customerData = BookingCustomer::create($validatedData);
 
         $eventDetail = BookingEvent::findOrFail($request->eventId);

@@ -100,7 +100,22 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                         </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Time</label>
+                            <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                <input type="text"
+                                        name="time"
+                                        class="form-control datetimepicker-input"
+                                        data-toggle="datetimepicker" data-target="#datetimepicker3"/>
+                                <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-clock" aria-hidden="true"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
                             <label for="customer_name" class="col-form-label">Name:</label>
                             <input type="text"
@@ -252,7 +267,8 @@
             },
             minDate: new Date(startEventDate),
             maxDate: new Date(endEventDate).setHours(23,59,59,999),
-            format: 'MM/DD/YYYY hh:mm A',
+            // format: 'MM/DD/YYYY hh:mm A',
+            format: 'MM/DD/YYYY',
             sideBySide: true,
             stepping: 30,
             daysOfWeekDisabled: [0, 6],
@@ -275,6 +291,9 @@
             $('#datetimepicker7').datetimepicker('maxDate', e.date);
         });
 
+        $('#datetimepicker3').datetimepicker({
+            format: 'LT'
+        });
     });
 </script>
 @endsection
