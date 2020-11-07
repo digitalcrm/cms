@@ -35,7 +35,7 @@ class BookingConfirmed extends Mailable
     {
         $userMail = $this->eventDetail->user->email;
         // dd($userMail);
-        return $this->from($userMail)
+        return $this->from('support@studyk.com')
                     ->markdown('emails.bookings.confirmed');
     }
 }

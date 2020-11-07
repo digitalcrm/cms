@@ -33,7 +33,7 @@ class SendEventLinkToFriend extends Mailable
         $senderMail = $this->customerData->sender_email;
         $eventURL = $this->customerData->url;
 
-        return $this->from($senderMail)
+        return $this->from('support@studyk.com')
                     ->markdown('emails.bookings.share-event-link')
                     ->with('eventURL', $eventURL);
     }
