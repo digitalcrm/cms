@@ -2,11 +2,12 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Builder;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -98,28 +99,53 @@ class BookingEvent extends Model
         return Str::limit($this->event_description, 56, '...');
     }
 
-    public function bookingcustomers()
+    public function bookingCustomers()
     {
-        return $this->belongsToMany( BookingCustomer::class )->withTimestamps([
-            'created_at',
-            'booking_date',
-            'updated_at'
-        ]);
+        return $this->hasMany( 'App\BookingCustomer', 'booking_event_id' );
     }
-
-    // public function startdate()
-    // {
-    //     return $this->event_start->format('d-m-y');
-    // }
-
-    // public function enddate()
-    // {
-    //     return $this->event_end->format('d-m-y');
-    // }
 
     public function scopeActive($query)
     {
         return $query->where('isActive', 1);
+    }
+
+    public function scopeEndEvent($query)
+    {
+        return $query->where('event_end', '>=', now());
+    }
+
+    public function eventStatus()
+    {
+        $eventDate = $this->event_start;
+
+        switch ($eventDate) {
+            case $eventDate->toDateTimeString() < Carbon::now()->toDateTimeString():
+                echo '<span class="badge badge-danger">completed</span>';
+                break;
+
+            case $eventDate->toDateTimeString() > Carbon::now()->toDateTimeString():
+                echo '<span class="badge badge-primary">upcoming</span>';
+                break;
+
+            default:
+                echo 'Event is started';
+                break;
+        }
+    }
+
+    public function scopeToday($query) {
+
+        return $query->where('event_start', '=', now() );
+    }
+
+    public function scopeUpcoming($query) {
+
+        return $query->where('event_end', '>', now()->toDateTimeString() );
+    }
+
+    public function scopeCompleted($query) {
+
+        return $query->where('event_end', '<', now()->toDateTimeString() );
     }
 
 }

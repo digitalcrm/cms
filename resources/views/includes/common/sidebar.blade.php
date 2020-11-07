@@ -158,10 +158,18 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('bookevents.index') }}" class="nav-link">
+                            <a href="{{ route('bookevents.index',['events'=>'upcoming']) }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Events
+                                    Appointment Pages
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('confirmed_users.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Customers
                                 </p>
                             </a>
                         </li>

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Bookings;
 
-use App\BookingService;
+use App\BookingCustomer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class BookingServiceController extends Controller
+class BookedCustomerController extends Controller
 {
     public function __construct()
     {
@@ -19,9 +19,10 @@ class BookingServiceController extends Controller
      */
     public function index()
     {
-        $services = BookingService::all();
+        // $customers = BookingCustomer::all();
+        $customers = auth()->user()->bookingCustomers()->get();
 
-        return view('bookings.services.index', compact('services'));
+        return view('bookings.bookedcustomer.index', compact('customers'));
     }
 
     /**
@@ -31,7 +32,7 @@ class BookingServiceController extends Controller
      */
     public function create()
     {
-        return view('bookings.services.create');
+        //
     }
 
     /**
@@ -42,13 +43,7 @@ class BookingServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'service_name' => 'required|unique:booking_services|max:25',
-        ]);
-
-        BookingService::create($validatedData);
-
-        return redirect(route('bookservices.index'))->withMessage('Service created successfully');
+        //
     }
 
     /**
@@ -68,9 +63,9 @@ class BookingServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(BookingService $bookservice)
+    public function edit($id)
     {
-        return view('bookings.services.edit', compact('bookservice'));
+        //
     }
 
     /**
@@ -80,15 +75,9 @@ class BookingServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BookingService $bookservice)
+    public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'service_name' => 'required|max:25|unique:booking_services,service_name,'.$bookservice->id,
-        ]);
-
-        $bookservice->update($validatedData);
-
-        return redirect(route('bookservices.index'))->withMessage('Service updated successfully');
+        //
     }
 
     /**
@@ -97,11 +86,8 @@ class BookingServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BookingService $bookservice)
+    public function destroy($id)
     {
-        $bookservice->delete();
-
-        return redirect(route('bookservices.index'))->withMessage('Service deleted successfully');
-
+        //
     }
 }

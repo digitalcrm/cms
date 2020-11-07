@@ -14,6 +14,9 @@ class BookingServiceSeeder extends Seeder
      */
     public function run()
     {
-        BookingService::factory()->times(2)->create();
+        // BookingService::factory()->times(1)->create();
+        BookingService::create([
+            'name' => 'Appointment',
+        ]);
     }
 }

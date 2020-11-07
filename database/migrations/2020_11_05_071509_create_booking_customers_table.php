@@ -18,17 +18,13 @@ class CreateBookingCustomersTable extends Migration
             $table->string('customer_name');
             $table->string('email');
             $table->string('mobile_number');
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('booking_event_id')->constrained();
+            $table->dateTime('start_from');
+            $table->dateTime('to_end');
+            $table->longText('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
-        });
-
-        Schema::create('booking_customer_booking_event', function (Blueprint $table) {
-            $table->foreignId('booking_customer_id')->constrained();
-            $table->foreignId('booking_event_id')->constrained();
-            $table->dateTime('booking_date');
-            $table->longText('description')->nullable();
-            $table->unique(['booking_customer_id', 'booking_event_id'],'customer_event_index_unique');
-            $table->timestamps();
         });
     }
 

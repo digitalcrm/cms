@@ -20,7 +20,10 @@ class BookingHomePageController extends Controller
         // $sti = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.';
         // dd(strlen($sti));
         try {
-            $events = $bookservice->bookingevents()->active()->get();
+            $events = $bookservice->bookingevents()
+                                    ->active()
+                                    ->endEvent()
+                                    ->get();
         } catch (ModelNotFoundException $exception) {
 
             return view('errors._model_not_found_exception');
@@ -40,26 +43,20 @@ class BookingHomePageController extends Controller
     {
         // dd($request->eventId);
         $validatedData = $request->validate([
-            'booking_date' => ['required'],
             'customer_name' => ['required', 'string', 'max:100'],
+            'start_from' => ['required'],
+            'to_end' => ['required'],
             'email' => ['required', 'string', 'max:255'],
             'mobile_number' => ['required','numeric'],
             'g-recaptcha-response' => ['required', new googleCaptcha()],
         ]);
-            // dd($validatedData);
-        $bookDate = request('booking_date');
-        $bookDate1 = Carbon::parse($bookDate)->format('Y-m-d H:i:s');
 
-        // dd($request->all());
+        $validatedData['booking_event_id'] = $request->eventId;
 
+        $validatedData['user_id'] = $request->userId;
 
         $customerData = BookingCustomer::create($validatedData);
 
-        $customerData->bookingevents()->attach(request('eventId'),[
-            'booking_date' => $bookDate1,
-            'description' => $request->description,
-        ]);
-        // dd($customerData);
         $eventDetail = BookingEvent::findOrFail($request->eventId);
 
         Mail::to($customerData->email)->send(new BookingConfirmed($customerData, $eventDetail));

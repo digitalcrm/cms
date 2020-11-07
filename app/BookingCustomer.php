@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Carbon;
 
 class BookingCustomer extends Model
 {
@@ -15,23 +14,32 @@ class BookingCustomer extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['customer_name', 'email', 'mobile_number'];
-
-    protected $appends = [
-        'booking_time',
+    protected $fillable = [
+        'customer_name',
+        'email',
+        'mobile_number',
+        'description',
+        'booking_event_id',
+        'user_id',
+        'start_from',
+        'to_end'
     ];
 
-    protected $dates = ['booking_time'];
+    protected $dates = [
+        'start_from',
+        'to_end',
+        'created_at',
+        'updated_at',
+    ];
 
-
-    public function bookingEvents()
+    public function bookingEvent()
     {
-        return $this->belongsToMany( BookingEvent::class );
+        return $this->belongsTo( BookingEvent::class );
     }
 
-    public function getBookingTimeAttribute()
+    public function user()
     {
-        return Carbon::parse($this->pivot->booking_date)->toDayDateTimeString();
+        return $this->belongsTo( User::class );
     }
 
 }

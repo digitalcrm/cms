@@ -169,34 +169,46 @@
   @parent
   <script>
     $(function () {
-            //Below Started_at
-            $("#event_start").daterangepicker({
-
-                startDate: moment().startOf('hour'),
-                minYear: 2000,
-                showDropdowns: true,
-                singleDatePicker: true,
-                // timePicker: false,
-                // timePicker24Hour: false,
-                // timePickerIncrement: 05,
-                drops:"up",
-                locale: {
-                    format: 'MM/DD/YYYY'
-                }
-            });
-            $("#event_end").daterangepicker({
-
-                startDate: moment().startOf('hour').add(48, 'hour'),
-                minYear: 2000,
-                showDropdowns: true,
-                singleDatePicker: true,
-                drops:"up",
-                locale: {
-                    format: 'MM/DD/YYYY'
-                }
-            });
+        //Below Started_at
+        $("#event_start").daterangepicker({
+            minDate: new Date(),
+            // startDate: moment().startOf('hour'),
+            minYear: 2000,
+            showDropdowns: true,
+            singleDatePicker: true,
+            timePicker: true,
+            timePicker24Hour: false,
+            timePickerIncrement: 15,
+            isInvalidDate: function(date) {
+                //return true if date is not a monday
+                return (date.day() == 0 || date.day() == 6);
+            },
+            drops:"up",
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        });
+        $("#event_end").daterangepicker({
+            minDate: new Date(),
+            startDate: moment().startOf('hour').add(48, 'hour'),
+            minYear: 2000,
+            showDropdowns: true,
+            singleDatePicker: true,
+            timePicker: true,
+            timePicker24Hour: false,
+            timePickerIncrement: 15,
+            drops:"up",
+            isInvalidDate: function(date) {
+                //return true if date is not a monday
+                return (date.day() == 0 || date.day() == 6);
+                console.log(date);
+            },
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        });
     });
-    </script>
+</script>
   @endsection
 
 @endsection

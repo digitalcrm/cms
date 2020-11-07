@@ -29,12 +29,41 @@ class BookingEventController extends Controller
 
         if(auth()->user()->hasRole('superadmin')) {
 
-            $bookevents = $query->latest()->get();
+            switch (request('events')) {
+            case 'upcoming':
+                $bookevents = $query->upcoming()->get();
+
+                break;
+
+            case 'completed':
+                $bookevents = $query->completed()->get();
+
+                    break;
+
+            default:
+                $bookevents = $query->latest()->get();
+                break;
+        }
 
         } else {
 
-            $bookevents = auth()->user()->bookingevents()->latest()->get();
+            switch (request('events')) {
+                case 'upcoming':
+                    $bookevents = auth()->user()->bookingEvents()->upcoming()->get();
+
+                    break;
+
+                case 'completed':
+                    $bookevents = auth()->user()->bookingEvents()->completed()->get();
+
+                        break;
+
+                default:
+                    $bookevents = auth()->user()->bookingEvents()->latest()->get();
+                    break;
+            }
         }
+
 
         return view('bookings.events.index', compact('bookevents'));
     }
@@ -66,7 +95,7 @@ class BookingEventController extends Controller
         // dd($bookingEventRequestData);
         auth()->user()->bookingevents()->create($bookingEventRequestData);
 
-        return redirect(route('bookevents.index'))->withMessage('events created successfully');
+        return redirect(route('bookevents.index',['events'=>'upcoming']))->withMessage('events created successfully');
     }
 
     /**
@@ -117,7 +146,7 @@ class BookingEventController extends Controller
 
         $bookevent->update($bookingEventRequestData);
 
-        return redirect(route('bookevents.index'))->withMessage('booking event updated successfully');
+        return redirect(route('bookevents.index',['events'=>'upcoming']))->withMessage('booking event updated successfully');
     }
 
     /**

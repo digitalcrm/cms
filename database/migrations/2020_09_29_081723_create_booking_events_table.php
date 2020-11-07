@@ -17,8 +17,10 @@ class CreateBookingEventsTable extends Migration
             $table->id()->startingValue(1000);
             $table->string('event_name')->comment('event title');
             $table->string('slug')->unique();
-            $table->foreignId('user_id')->constrained()->comment('salesperson consultant user');
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('booking_service_id')->nullable()->constrained()->comment('service type');
+            $table->foreignId('booking_activity_id')->nullable()->constrained();
+            $table->boolean('isActive')->default(1);
             $table->string('duration');
             $table->string('price')->default('0');
             $table->longText('event_description')->nullable()->comment('add note related to event');

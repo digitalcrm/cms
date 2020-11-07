@@ -49,7 +49,10 @@
                                 <small class="text-danger">{{ $errors->first('user_id') }}</small>
                             </div>
                             <div class="form-group">
-                                <label>Event Start:</label>
+                                <label>
+                                    Event Start:
+                                    {{-- {{ $bookevent->event_start->isoFormat('M/D/Y HH:mm a') }} --}}
+                                </label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
@@ -61,7 +64,7 @@
                                     class="form-control float-right"
                                     id="event_start"
                                     name="event_start"
-                                    value="{{ old('event_start' ,$bookevent->event_start->format('m/d/Y') ) }}"
+                                    value="{{ old('event_start' ,$bookevent->event_start->isoFormat('M/D/Y HH:mm a') ) }}"
                                     />
                                 </div>
                             </div>
@@ -78,7 +81,7 @@
                                     class="form-control float-right"
                                     id="event_end"
                                     name="event_end"
-                                    value="{{ old( 'event_end', $bookevent->event_end->format('m/d/Y') ) }}"
+                                    value="{{ old( 'event_end', $bookevent->event_end->isoFormat('M/D/Y HH:mm a') ) }}"
                                     />
                                 </div>
                             </div>
@@ -167,31 +170,46 @@
   @parent
   <script>
     $(function () {
-            //Below Started_at
-            $("#event_start").daterangepicker({
+        //Below Started_at
+        $("#event_start").daterangepicker({
 
-                // startDate: moment().startOf('hour'), // This would be not used in edit case because it overrides it
-                minYear: 2000,
-                showDropdowns: true,
-                singleDatePicker: true,
-                drops:"up",
-                locale: {
-                    format: 'MM/DD/YYYY'
-                }
-            });
+            // startDate: moment().startOf('hour'), // This would be not used in edit case because it overrides it
+            minDate: new Date(),
+            minYear: 2000,
+            showDropdowns: true,
+            singleDatePicker: true,
+            timePicker: true,
+            timePicker24Hour: false,
+            timePickerIncrement: 15,
+            drops:"up",
+            isInvalidDate: function(date) {
+                //return true if date is sunday or saturday
+                return (date.day() == 0 || date.day() == 6);
+            },
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        });
 
-            $("#event_end").daterangepicker({
-
-                minYear: 2000,
-                showDropdowns: true,
-                singleDatePicker: true,
-                drops:"up",
-                locale: {
-                    format: 'MM/DD/YYYY'
-                }
-            });
+        $("#event_end").daterangepicker({
+            minDate: new Date(),
+            minYear: 2000,
+            showDropdowns: true,
+            singleDatePicker: true,
+            timePicker: true,
+            timePicker24Hour: false,
+            timePickerIncrement: 15,
+            drops:"up",
+            isInvalidDate: function(date) {
+                //return true if date is not a monday
+                return (date.day() == 0 || date.day() == 6);
+            },
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        });
     });
-    </script>
+</script>
   @endsection
 
 @endsection

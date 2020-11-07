@@ -102,6 +102,14 @@
         Route::get('bookings/{bookservice:service_name}/event/{bookevent}', 'BookingHomePageController@create')->name('event.create');
         Route::post('bookings/{bookservice:service_name}/event/{bookevent}', 'BookingHomePageController@store')->name('event.store');
 
+        /** Booked Customer */
+        Route::resource('confirmed_users', 'BookedCustomerController')->only(['index']);
+
+        /** send booking appointment link to friend */
+        Route::resource('booking_shares', 'BookingShareController')->only([
+            'store'
+        ]);
+
     });
 
     /* Setting controller invokable */
