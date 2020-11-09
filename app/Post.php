@@ -2,14 +2,15 @@
 
 namespace App;
 
+use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\HasMedia;
+use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Post extends Model implements HasMedia
@@ -167,5 +168,29 @@ class Post extends Model implements HasMedia
         //     })->latest()->get();
         // }
     */
+
+    /** This posts_having_tags used for get the tags */
+    public function getPostsHavingTagsAttribute()
+    {
+        $tags = $this->tags()->get()->map(function($tag) {
+            return $tag->name;
+        })->implode(',');
+
+        if ($tags == '') return '';
+
+        return $tags;
+    }
+
+    public function getSummaryOfBodyAttribute()
+    {
+        $body =  Str::limit(strip_tags($this->body), 156, '...');
+        // dd($body);
+        return $body;
+    }
+
+    public function getDefaultImageAttribute()
+    {
+        return 'https://via.placeholder.com/348x232?text='.$this->slug;
+    }
 
 }

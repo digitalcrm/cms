@@ -63,6 +63,7 @@
                                     <th>Author</th>
                                     <th>Category</th>
                                     <th>Subcategory</th>
+                                    <th>Tags</th>
                                     <th>Created_at</th>
                                     <th>Action</th>
                                     </tr>
@@ -106,8 +107,11 @@
                                     </td>
                                     <td>{{ $post->user->name ?? '' }}</td>
                                     <td>{{ $post->category->name ?? '' }}</td>
-                                    <td>{{ $post->subcategory->name ?? '' }}</td>
-                                    <td>{{ $post->created_at ?? '' }}</td>
+                                    <td>{{ $post->subcategory->name ?? 'none' }}</td>
+                                    <td>
+                                        {{ $post->posts_having_tags ?? '' }}
+                                    </td>
+                                    <td>{{ $post->created_at->toFormattedDateString() ?? '' }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">

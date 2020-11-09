@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label for="title">Title</label>
                                     <input id="title" class="form-control @error('title') is-invalid @enderror" type="text"
-                                        name="title" value="{{ $post->title }}">
+                                        name="title" value="{{ old('title',$post->title) }}">
                                     @error('title')
                                     <small class="form-text text-red">{{ $message }}</small>
                                     @enderror
@@ -47,7 +47,7 @@
                                 <div class="form-group">
                                     <label for="mytextarea">Description</label>
                                     <textarea id="mytextarea" class="form-control" name="body"
-                                        rows="5">{{ trim($post->body) }}</textarea>
+                                        rows="5">{{ old('body',trim($post->body)) }}</textarea>
                                 </div>
 
                             </div>
@@ -75,8 +75,8 @@
                                 ])
 
                                 <div class="form-group">
-                                    <label>Tags</label>
-                                    <select class="select2bs4" name="tags[]" multiple="multiple"
+                                    <label>Tags (comma-separted)</label>
+                                    {{-- <select class="select2bs4" name="tags[]" multiple="multiple"
                                         data-placeholder="Select a Tag" style="width: 100%;">
                                         <option value="0">Select tags</option>
                                         @foreach ($tags as $tag)
@@ -85,7 +85,14 @@
                                                 {{ $tag->name }}
                                             </option>
                                         @endforeach
-                                    </select>
+                                    </select> --}}
+                                    <input type="text" name="tags" class="form-control" 
+                                            value="{{ old('tags',$post->posts_having_tags) ?? '' }}"
+                                    />
+                                    {{-- <input type="text" 
+                                        name="tags" class="form-control" 
+                                        value="{{ $post->tags->keyBy('name')->keys()->implode(',') }}"
+                                    />                                     --}}
                                     @error('tags')
                                     <small class="form-text text-red">{{ $message }}</small>
                                     @enderror

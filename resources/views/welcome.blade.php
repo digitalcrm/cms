@@ -145,50 +145,7 @@
             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a lorem velit. Etiam nec nulla a erat hendrerit varius sit amet et enim. Cras id tincidunt erat. Suspendisse facilisis condimentum urna.</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="latest-post border mb-4">
-                <a href="#"><img src="{{ asset('img/blog_posts_img_10.jpg') }}" class="img-fluid" alt="..."></a>
-                <div class="card-body">
-                    <h5 class="c-title"><a href="#">Nullam neque sapien pharetra</a></h5>
-                    <div class="blog-info mb-3"><span>January 19th, 2016</span> <span>Design, Technology</span></div>
-                    <p>Fusce nec erat sed nisl lobortis eleifend. In eu fringilla leo. Curabitur dignissim efficitur lorem nec fermentum. Etiam</p>
-                </div>
-                <div class="card-footer small bg-light">
-                    <a class="float-left read-more-arrow" href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                    <a class="float-right" href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 0</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="latest-post border mb-4">
-                <a href="#"><img src="{{ asset('img/blog_posts_img_11.jpg') }}" class="img-fluid" alt="..."></a>
-                <div class="card-body">
-                    <h5 class="c-title"><a href="#">Nullam neque sapien pharetra</a></h5>
-                    <div class="blog-info mb-3"><span>January 19th, 2016</span> <span>Design, Technology</span></div>
-                    <p>Fusce nec erat sed nisl lobortis eleifend. In eu fringilla leo. Curabitur dignissim efficitur lorem nec fermentum. Etiam</p>
-                </div>
-                <div class="card-footer small bg-light">
-                    <a class="float-left read-more-arrow" href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                    <a class="float-right" href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 0</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="latest-post border mb-4">
-                <a href="#"><img src="{{ asset('img/blog_posts_img_12.jpg') }}" class="img-fluid" alt="..."></a>
-                <div class="card-body">
-                    <h5 class="c-title"><a href="#">Nullam neque sapien pharetra</a></h5>
-                    <div class="blog-info mb-3"><span>January 19th, 2016</span> <span>Design, Technology</span></div>
-                    <p>Fusce nec erat sed nisl lobortis eleifend. In eu fringilla leo. Curabitur dignissim efficitur lorem nec fermentum. Etiam</p>
-                </div>
-                <div class="card-footer small bg-light">
-                    <a class="float-left read-more-arrow" href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                    <a class="float-right" href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 0</a>
-                </div>
-            </div>
-        </div>
-    </div>
+        <x-homepage.blog-component :blogs="$blogs"/>
 </div>
 <div class="container-fluid bg-dark3 our-team mt-5">
     <div class="container">

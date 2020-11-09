@@ -116,7 +116,7 @@ class BookingEvent extends Model
 
     public function eventStatus()
     {
-        $eventDate = $this->event_start;
+        $eventDate = $this->event_end;
 
         switch ($eventDate) {
             case $eventDate->toDateTimeString() < Carbon::now()->toDateTimeString():

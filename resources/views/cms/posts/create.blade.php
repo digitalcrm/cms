@@ -29,8 +29,11 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input id="title" class="form-control @error('title') is-invalid @enderror" type="text"
-                                        name="title">
+                                    <input id="title" 
+                                        class="form-control @error('title') is-invalid @enderror" type="text"
+                                        name="title"
+                                        value="{{ old('title') }}"
+                                        >
                                     @error('title')
                                     <small class="form-text text-red">{{ $message }}</small>
                                     @enderror
@@ -39,38 +42,26 @@
                                 <div class="form-group">
                                     <label for="mytextarea">Description</label>
                                     <textarea id="mytextarea" class="form-control @error('body') is-invalid @enderror"
-                                        name="body" rows="5"></textarea>
+                                        name="body" rows="5">{{ old('body') }}</textarea>
                                     @error('body')
                                     <small class="form-text text-red">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                {{-- <div class="form-group">
-                                    <label for="category_id">Category</label>
-                                    <select class="form-control @error('category_id') is-invalid @enderror"
-                                        name="category_id" id="category">
-                                        <option value="0">Select Category</option>
-                                        @foreach ($categories as $cat)
-                                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('category_id')
-                                    <small class="form-text text-red">{{ $message }}</small>
-                                    @enderror
-                                </div> --}}
 
                                 @livewire('dependentsubcategorydropdown')
 
                                 <div class="form-group">
-                                    <label>Tags</label>
-                                    <select class="select2bs4" name="tags[]" multiple="multiple"
+                                    <label>Tags (Comma-separated)</label>
+                                    {{-- <select class="select2bs4" name="tags[]" multiple="multiple"
                                         data-placeholder="Select a Tag" style="width: 100%;">
                                         <option value="0">Select tags</option>
                                         @foreach ($tags as $tag)
                                             <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                         @endforeach
-                                    </select>
+                                    </select> --}}
+                                    <input type="text" name="tags" class="form-control" value="{{ old('tags') }}" />
                                     @error('tags')
                                     <small class="form-text text-red">{{ $message }}</small>
                                     @enderror

@@ -89,8 +89,14 @@ class PostController extends Controller
         // dd($input['published']);
 
         $posts = auth()->user()->posts()->create($input);
-
-        $posts->tags()->attach(request('tags'));
+        // dd(request('tags'));
+        if (request('tags') != '') {
+            $tags = explode(',', request('tags'));
+            foreach ($tags as $tag_name) {
+                $tag = Tag::firstOrCreate(['name' => $tag_name]);
+                $posts->tags()->attach($tag);
+            }
+        }
 
         if($request->hasFile('featuredimage')){
 
@@ -140,7 +146,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $tags = Tag::get(['id','name']);
-        // $categories = Category::get(['id','name']);
+
         $post->load('tags');
 
         // if (auth()->user()->hasRole('superadmin')) {
@@ -180,7 +186,18 @@ class PostController extends Controller
 
         $post->update($input);
 
-        $post->tags()->sync(request('tags'));
+        $tags = [];
+        if (request('tags') != '') {
+            $tags = explode(',', request('tags'));
+            // dd($tags);
+            foreach ($tags as $tag_name) {
+                $tag = Tag::updateOrCreate(['name' => $tag_name]);
+                $tagIds[] = $tag->id;
+            }
+            // dd($tagIds);
+        $post->tags()->sync($tagIds);
+        }
+
 
         if($request->hasFile('featuredimage')){
             $post->addMedia($request->featuredimage)->toMediaCollection('posts');
