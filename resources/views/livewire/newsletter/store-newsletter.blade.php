@@ -1,16 +1,16 @@
 <div>
     <p class="f-title">NEWSLETTER</p>
     <p class="">Signup for our weekly newletter to get latest news</p>
-    <p>
-        @if($this->successMessage)
+    @if (session()->has('message'))
+        <p>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                {!! $this->successMessage !!}
+                {!! session('message') !!}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        @endif
-    </p>
+        </p>
+    @endif
     <form wire:submit.prevent="saveSubscribedUser">
         <input type="text"
                 name="name"

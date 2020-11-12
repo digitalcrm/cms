@@ -44,17 +44,18 @@ class StoreNewsletter extends Component
         {
             $userData = Newsletter::create($validatedData);
 
-            $this->successMessage = '<strong>We have sent an email with a confirmation link to your email address.</strong>!
-                                    In order to complete the subscription, please click the confirmation link.
-                                    💡 Make sure you check your spam/junk folder to find confirmation email from.'.env('APP_NAME');
+            session()->flash('message', '<strong>We have sent an email with a confirmation link to your email address.</strong>!
+                                        In order to complete the subscription, please click the confirmation link.
+                                        💡 Make sure you check your spam/junk folder to find confirmation email from.'.env('APP_NAME'));
 
             Mail::to($this->email)->send(new ConfirmedNewsletter($userData));
         } else {
-            $this->successMessage = '<strong>You already Subscribe our Newsletter</strong>! Thanks for showing your interest';
+            session()->flash('message', '<strong>You already Subscribe our Newsletter</strong>! Thanks for showing your interest');
         }
         sleep(1);
-
         $this->reset(['name', 'email']);
+
+
     }
 
     public function render()
