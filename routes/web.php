@@ -4,7 +4,7 @@
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Route;
 
-    Route::get('/', 'LandingPageController@index');
+    Route::get('/', 'LandingPageController@index')->name('home');
 
     Auth::routes(['verify' => true]);
 
@@ -122,6 +122,7 @@
                             Booking Routes End
 ###############################################################################################*/
 
+    Route::get('subcripition-confirmed','Newsletter\NewsletterController@confirm_subscription')->name('confirmed.subscription');
 
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');

@@ -14,10 +14,12 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/daterangepicker.css') }}">
-    @section('styles')
-    
-    @show
 
+    @livewireStyles
+
+    @section('styles')
+
+    @show
 </head>
 <body>
 
@@ -30,6 +32,8 @@
     @yield('content')
 
    <x-homefooterpage />
+
+   @livewireScripts
 
     @section('scripts')
        <!-- Scripts -->

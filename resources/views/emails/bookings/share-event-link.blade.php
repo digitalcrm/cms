@@ -3,6 +3,7 @@
 
 {{ $customerData->message }}
 
+{{-- Route('public.subscriber.update', ['email' => $subscriber->email, 'token' => $subscriber->token]) --}}
 @component('mail::button', ['url' => $eventURL])
 Click Here
 @endcomponent

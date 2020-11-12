@@ -1,0 +1,34 @@
+<div>
+    <p class="f-title">NEWSLETTER</p>
+    <p class="">Signup for our weekly newletter to get latest news</p>
+    <p>
+        @if($this->successMessage)
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {!! $this->successMessage !!}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+    </p>
+    <form wire:submit.prevent="saveSubscribedUser">
+        <input type="text"
+                name="name"
+                class="form-control form-control-sm mt-1 @error('name') is-invalid @enderror "
+                placeholder="Enter your name"
+                wire:model.debounce.500ms="name">
+        @error('name') <small class="error">{{ $message }}</small> @enderror
+
+        <input type="email"
+                name="email"
+                class="form-control form-control-sm mt-1 @error('email') is-invalid @enderror"
+                placeholder="Enter your email"
+                wire:model.debounce.500ms="email">
+        @error('email') <small class="error">{{ $message }}</small> @enderror
+
+        <button type="submit" class="btn btn-primary float-right mt-1"
+                wire:loading.attr="disabled"
+                wire:loading.class.remove="btn-primary"
+                wire:loading.class="btn-info">Subscribe</button>
+    </form>
+</div>

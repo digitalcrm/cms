@@ -1,5 +1,5 @@
 <div>
-    <footer class="footer bg-dark footer-main pt-5 pb-5 mt-5">
+    <footer class="footer bg-dark footer-main pt-5 mt-5 pb-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 footer-about-col">
@@ -15,6 +15,7 @@
                     <p><a href="#">Porta ac consectetur ac</a></p>
                     <p><a href="#">Vestibulum at eros</a></p>
                 </div>
+
                 <div class="col-md-3 footer-links">
                     <p class="f-title">RESOURCES</p>
                     <p><a href="#">Job Fair Software</a></p>
@@ -24,15 +25,11 @@
                     <p><a href="#">Recruitment CRM Software</a></p>
                     <p><a href="#">Self Hosted Recruitment Software</a></p>
                 </div>
-                <div class="col-md-3 footer-links">
-                    <p class="f-title">COMPANY</p>
-                    <p><a href="#">Job Board Software</a></p>
-                    <p><a href="#">Applicant Tracking Software</a></p>
-                    <p><a href="#">Recruitment Software</a></p>
-                    <p><a href="#">CV Bank</a></p>
-                    <p><a href="#">Reverse Job Board</a></p>
-                    <p><a href="#"> Software</a></p>
+
+                <div class="col-md-3 footer-about-col">
+                <livewire:newsletter.store-newsletter />
                 </div>
+
             </div>
         </div>
     </footer>
