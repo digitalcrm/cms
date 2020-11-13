@@ -123,6 +123,10 @@
 ###############################################################################################*/
 
     Route::get('subcripition-confirmed','Newsletter\NewsletterController@confirm_subscription')->name('confirmed.subscription');
+    Route::get('newsletters','Newsletter\NewsletterController@subscriber_list')->name('subscribers');
+    Route::get('newsletters/create','Newsletter\NewsletterController@create')->name('newsletters.create');
+    Route::post('newsletters/create','Newsletter\NewsletterController@store')->name('newsletters.store');
+    Route::get('subscription-delete','Newsletter\NewsletterController@subscription_delete')->name('newsletters.unsubscribe');
 
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');

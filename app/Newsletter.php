@@ -13,4 +13,14 @@ class Newsletter extends Model
     protected $table = 'newsletters';
 
     protected $fillable = ['name', 'email', 'isSubscribed', 'token'];
+
+    public function scopeGetSubscribers($query, $request)
+    {
+        return ($request === 'false') ? $query->where('isSubscribed', false) : $query->where('isSubscribed', true);
+    }
+
+    public function scopeIsSubscribed($query)
+    {
+        return $query->where('isSubscribed', true);
+    }
 }

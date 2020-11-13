@@ -185,6 +185,15 @@
                 </li> <!--booking dropdown end here -->
 
                 <li class="nav-item">
+                    <a href="{{route('subscribers')}}" class="nav-link {{ request()->routeIs('subscribers*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Newsletters
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{route('settings')}}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
