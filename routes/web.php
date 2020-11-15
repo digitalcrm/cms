@@ -1,10 +1,19 @@
 <?php
 
-    use Illuminate\Support\Facades\Artisan;
+use App\Jobs\NewsletterJob;
+use App\Jobs\ProcessPodcast;
+use App\Mail\SendQueueMailable;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Artisan;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Route;
 
     Route::get('/', 'LandingPageController@index')->name('home');
+    // Route::get('sendmail', function(){
+    //     dispatch(new ProcessPodcast());
+    //     // Mail::to('example@info.com')->send(new SendQueueMailable);
+    //     return 'sent mail';
+    // });
 
     Auth::routes(['verify' => true]);
 

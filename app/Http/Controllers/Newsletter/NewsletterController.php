@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Newsletter;
 use App\Newsletter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Jobs\NewsletterJob;
 use App\Mail\SendNewsletter;
 use App\NewsletterEmail;
 use Illuminate\Support\Facades\Mail;
@@ -39,12 +40,14 @@ class NewsletterController extends Controller
 
         $send_mail_form_data = NewsletterEmail::create($validatedData);
 
-        $getAllActiveSubscribers = Newsletter::isSubscribed()->get(['name','email','token']);
+        dispatch(new NewsletterJob($send_mail_form_data))->delay(now()->addSeconds(3));
 
-        foreach ($getAllActiveSubscribers as $subscriber) {
+        // $getAllActiveSubscribers = Newsletter::isSubscribed()->get(['name','email','token']);
 
-            Mail::to($subscriber)->send(new SendNewsletter($subscriber, $send_mail_form_data));
-        }
+        // foreach ($getAllActiveSubscribers as $subscriber) {
+
+        //     Mail::to($subscriber)->queue(new SendNewsletter($subscriber, $send_mail_form_data));
+        // }
 
         return redirect('newsletters')->withMessage('Mail sent Successfully');
     }
