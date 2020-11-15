@@ -40,14 +40,15 @@ class NewsletterController extends Controller
 
         $send_mail_form_data = NewsletterEmail::create($validatedData);
 
-        dispatch(new NewsletterJob($send_mail_form_data))->delay(now()->addSeconds(3));
-
         // $getAllActiveSubscribers = Newsletter::isSubscribed()->get(['name','email','token']);
 
         // foreach ($getAllActiveSubscribers as $subscriber) {
 
         //     Mail::to($subscriber)->queue(new SendNewsletter($subscriber, $send_mail_form_data));
         // }
+
+        dispatch(new NewsletterJob($send_mail_form_data))->delay(now()->addSeconds(3));
+
 
         return redirect('newsletters')->withMessage('Mail sent Successfully');
     }
