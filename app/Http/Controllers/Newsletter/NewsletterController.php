@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Newsletter;
 
 use App\Newsletter;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\NewsletterEmail;
 use App\Jobs\NewsletterJob;
 use App\Mail\SendNewsletter;
-use App\NewsletterEmail;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Artisan;
 
 class NewsletterController extends Controller
 {
@@ -49,6 +50,7 @@ class NewsletterController extends Controller
 
         dispatch(new NewsletterJob($send_mail_form_data))->delay(now()->addSeconds(3));
 
+        // Artisan::call('queue:work')->withoutOverlapping();
 
         return redirect('newsletters')->withMessage('Mail sent Successfully');
     }
