@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 .env
+_ide_helper.php
 .env.backup
 .phpunit.result.cache
 Homestead.json
@@ -12,3 +13,4 @@ npm-debug.log
 yarn-error.log
 temporarylayout.html
 booking_todo.md
+config/.env
