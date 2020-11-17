@@ -184,13 +184,32 @@
                     </ul>
                 </li> <!--booking dropdown end here -->
 
-                <li class="nav-item">
-                    <a href="{{route('subscribers')}}" class="nav-link {{ request()->routeIs('subscribers*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-th"></i>
+                <li class="nav-item has-treeview {{ request()->url('newsletter*') ? 'menu-open' : 'menu-close' }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Newsletters
+                            Newsletter
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('subscribers',['subscribed'=> 'subscribers'])}}" class="nav-link {{ request()->routeIs('subscribers*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Subscribers
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('newsletter.emails')}}" class="nav-link {{ request()->routeIs('newsletter.emails*') || request()->routeIs('newsletters.create') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Newsletter Emails
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item">

@@ -26,8 +26,6 @@
                         @include('newsletter.includes.filter-tabs')
                         {{-- @endif --}}
 
-                        <a href="{{route('newsletters.create')}}" class="btn btn-success float-right">Post Newsletter</a>
-
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

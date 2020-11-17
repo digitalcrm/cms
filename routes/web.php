@@ -129,6 +129,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('subscription-delete','Newsletter\NewsletterController@subscription_delete')->name('newsletters.unsubscribe');
     Route::get('newsletter/emails','Newsletter\NewsletterController@sent_email_list')->name('newsletter.emails');
 
+    ###########################################Export/Import Routes#################################################
+    Route::get('newsletter/export/', 'Newsletter\ExportImportController@export')->name('exports_subscribers');
+
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');
         Artisan::call('cache:clear');
