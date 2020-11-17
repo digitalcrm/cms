@@ -22,11 +22,8 @@
                 <!-- /.card -->
                 <div class="card">
                     <div class="card-header">
-                        {{-- @if(count($lists_of_subscribers)>0) --}}
+                        {{-- This file is located under newsletter/includes folder in resources/views --}}
                         @include('newsletter.includes.filter-tabs')
-                        {{-- @endif --}}
-
-                        <a href="{{route('newsletters.create')}}" class="btn btn-success float-right">Post Newsletter</a>
 
                     </div>
                     <!-- /.card-header -->
@@ -34,23 +31,23 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Subscriber Name</th>
-                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
                                     <th>Created_at</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                @forelse($lists_of_subscribers as $subscriber)
+                                @forelse($sent_email_lists as $subscriber)
                                     <tr>
-                                        <td>{{ $subscriber->name }}</td>
-                                        <td>{{ $subscriber->email }}</td>
+                                        <td>{{ $subscriber->subject }}</td>
+                                        <td>{{ $subscriber->message }}</td>
                                         <td>{{ $subscriber->created_at->toDateString() }}</td>
                                     </tr>
                                 @empty
                                 <tr>
                                     <td class="text-center" colspan="7">
-                                        {{("No Subscribers are Available")}}
+                                        {{("No Emails are sent")}}
                                     </td>
                                 </tr>
 

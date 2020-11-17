@@ -119,7 +119,7 @@ use Illuminate\Support\Facades\Route;
 
 
 /*##############################################################################################
-                            Booking Routes End
+                        Booking Routes End /Newsletter Routes Start
 ###############################################################################################*/
 
     Route::get('subcripition-confirmed','Newsletter\NewsletterController@confirm_subscription')->name('confirmed.subscription');
@@ -127,6 +127,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('newsletters/create','Newsletter\NewsletterController@create')->name('newsletters.create');
     Route::post('newsletters/create','Newsletter\NewsletterController@store')->name('newsletters.store');
     Route::get('subscription-delete','Newsletter\NewsletterController@subscription_delete')->name('newsletters.unsubscribe');
+    Route::get('newsletter/emails','Newsletter\NewsletterController@sent_email_list')->name('newsletter.emails');
 
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');

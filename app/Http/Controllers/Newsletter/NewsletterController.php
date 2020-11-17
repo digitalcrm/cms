@@ -75,4 +75,12 @@ class NewsletterController extends Controller
         }
         return view('unsubscribe-thank-you');
     }
+
+    public function sent_email_list()
+    {
+        $sent_email_lists = NewsletterEmail::all();
+
+        return view('newsletter.sent-newsletter-email-lists', compact('sent_email_lists'));
+
+    }
 }
