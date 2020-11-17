@@ -34,6 +34,7 @@
                                 <tr>
                                     <th>Subscriber Name</th>
                                     <th>Email</th>
+                                    <th>Is Subscribed</th>
                                     <th>Created_at</th>
                                     </tr>
                                 </thead>
@@ -43,6 +44,9 @@
                                     <tr>
                                         <td>{{ $subscriber->name }}</td>
                                         <td>{{ $subscriber->email }}</td>
+                                        <td>
+                                            {{ ($subscriber->isSubscribed === 1) ? __("YES") : __("NO") }}
+                                        </td>
                                         <td>{{ $subscriber->created_at->toDateString() }}</td>
                                     </tr>
                                 @empty
