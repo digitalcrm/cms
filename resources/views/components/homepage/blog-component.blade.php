@@ -3,7 +3,7 @@
         @forelse($blogs as $post)
         <div class="col-md-4">
             <div class="latest-post border mb-4">
-                <a href="#">
+                <a href="{{ route('post.viewitem', $post->slug) }}">
                     <img src="{{ optional($post->featured_image)->getFullUrl() ?? $post->default_image }}" class="img-fluid" alt="{{ $post->slug }}">
                 </a>
                 <div class="card-body">

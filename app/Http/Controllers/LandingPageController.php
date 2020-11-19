@@ -16,6 +16,8 @@ class LandingPageController extends Controller
 
     public function viewitem(Post $post)
     {
+        $post->increment('postcount');
+
         return view('pages.landing-post-view-page',compact('post'));
     }
 }
