@@ -20,7 +20,7 @@
                             </div>
                         </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="#Under_working">Blog</a>
+                            <a class="nav-link" href="{{ route('latest.latestpost') }}">Blog</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('bookings') }}">Bookings</a>

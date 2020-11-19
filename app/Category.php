@@ -22,4 +22,9 @@ class Category extends Model
 
         return $this->hasMany(Subcategory::class);
     }
+
+    public function category_has_total_posts()
+    {
+        return $this->hasMany( Post::class )->count();
+    }
 }

@@ -20,4 +20,9 @@ class LandingPageController extends Controller
 
         return view('pages.landing-post-view-page',compact('post'));
     }
+
+    public function latestpost()
+    {
+        return view('pages.landing-post-lists');
+    }
 }

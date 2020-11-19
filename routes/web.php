@@ -1,12 +1,14 @@
 <?php
 
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-    Route::get('/', 'LandingPageController@index')->name('home');
     ###################################################Landing Page Post routes############################################################
-    Route::get('blogs/{post:slug}', 'LandingPageController@viewitem')->name('post.viewitem');
+    Route::get('/', [LandingPageController::class, 'index'])->name('home');
+    Route::get('latest', [LandingPageController::class, 'latestpost'])->name('latest.latestpost');
+    Route::get('blogs/{post:slug}', [LandingPageController::class, 'viewitem'])->name('post.viewitem');
 
     Auth::routes(['verify' => true]);
 

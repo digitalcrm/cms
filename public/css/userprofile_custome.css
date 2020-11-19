@@ -1,1 +1,40 @@
-.card-box{background-color:#fff;background-clip:border-box;border:1px solid #e7eaed;padding:1.5rem;margin-bottom:24px;border-radius:.25rem}.avatar-xl{height:6rem;width:6rem}.rounded-circle{border-radius:50%!important}.social-list-item{height:2rem;width:2rem;line-height:calc(2rem - 4px);display:block;border:2px solid #adb5bd;border-radius:50%;color:#adb5bd}.text-purple{color:#6559cc!important}.border-purple{border-color:#6559cc!important}.custome-card-footer{background-color:transparent}
+.card-box {
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #e7eaed;
+  padding: 1.5rem;
+  margin-bottom: 24px;
+  border-radius: 0.25rem;
+}
+
+.avatar-xl {
+  height: 6rem;
+  width: 6rem;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.social-list-item {
+  height: 2rem;
+  width: 2rem;
+  line-height: calc(2rem - 4px);
+  display: block;
+  border: 2px solid #adb5bd;
+  border-radius: 50%;
+  color: #adb5bd;
+}
+
+.text-purple {
+  color: #6559cc !important;
+}
+
+.border-purple {
+  border-color: #6559cc !important;
+}
+
+.custome-card-footer {
+  background-color: transparent;
+}
+

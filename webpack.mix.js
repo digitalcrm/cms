@@ -12,4 +12,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/fullcalendar.js','public/ajax/js')
     .js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps();
 
+mix.browserSync('acl.test');
 

@@ -28,10 +28,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            'components.homefooterpage', 'App\Http\View\Composers\PostComposer',
+            ['components.homefooterpage', 'livewire.landing-page.right-sidebar'], 'App\Http\View\Composers\PostComposer',
         );
         View::composer(
-            'components.homefooterpage', 'App\Http\View\Composers\CategoryComposer',
+            ['components.homefooterpage', 'livewire.landing-page.right-sidebar'], 'App\Http\View\Composers\CategoryComposer',
         );
         JsonResource::withoutWrapping();
         Paginator::useBootstrap();
