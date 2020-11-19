@@ -16,6 +16,11 @@
         class="btn btn-sm btn-outline-secondary mr-1 inactiveclass">
     Export
     </a>
+    <a
+        href="{{ route('imports_subscribers') }}"
+        class="btn btn-sm btn-outline-secondary mr-1 inactiveclass">
+    Import
+    </a>
 
     @endif
 

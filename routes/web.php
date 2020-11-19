@@ -131,6 +131,8 @@ use Illuminate\Support\Facades\Route;
 
     ###########################################Export/Import Routes#################################################
     Route::get('newsletter/export/', 'Newsletter\ExportImportController@export')->name('exports_subscribers');
+    Route::get('newsletter/imports/', 'Newsletter\ExportImportController@import')->name('imports_subscribers');
+    Route::post('newsletter/imports/', 'Newsletter\ExportImportController@store')->name('store_subscribers.store');
 
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');
