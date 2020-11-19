@@ -10,7 +10,7 @@
                 <div class="col-md-3 footer-recent-news">
                     <p class="f-title">Latest Posts</p>
                     @forelse ($blog_posts as $post)
-                    <p><a href="#">{{ $post->title }}</a></p>
+                    <p><a href="{{ route('post.viewitem',$post->slug) }}">{{ $post->title }}</a></p>
                     @empty
                     <p><a href="#">{{ __('No posts available yet') }}</a></p>
                     @endforelse

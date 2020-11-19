@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
     Route::get('/', 'LandingPageController@index')->name('home');
+    ###################################################Landing Page Post routes############################################################
+    Route::get('blogs/{post:slug}', 'LandingPageController@viewitem')->name('post.viewitem');
 
     Auth::routes(['verify' => true]);
 

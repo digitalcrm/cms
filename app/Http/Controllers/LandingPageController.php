@@ -13,4 +13,9 @@ class LandingPageController extends Controller
 
         return view('welcome',compact('blogs'));
     }
+
+    public function viewitem(Post $post)
+    {
+        return view('pages.landing-post-view-page',compact('post'));
+    }
 }

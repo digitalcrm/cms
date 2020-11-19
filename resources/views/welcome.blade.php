@@ -145,8 +145,10 @@
             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a lorem velit. Etiam nec nulla a erat hendrerit varius sit amet et enim. Cras id tincidunt erat. Suspendisse facilisis condimentum urna.</p>
         </div>
     </div>
+
         <x-homepage.blog-component :blogs="$blogs"/>
-</div>
+
+    </div>
 <div class="container-fluid bg-dark3 our-team mt-5">
     <div class="container">
         <div class="row">
