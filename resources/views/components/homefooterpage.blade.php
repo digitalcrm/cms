@@ -8,22 +8,21 @@
                     </p>
                 </div>
                 <div class="col-md-3 footer-recent-news">
-                    <p class="f-title">RECENT NEWS</p>
-                    <p><a href="#">Cras justo odio</a></p>
-                    <p><a href="#">Dapibus ac facilisis in</a></p>
-                    <p><a href="#">Morbi leo risus</a></p>
-                    <p><a href="#">Porta ac consectetur ac</a></p>
-                    <p><a href="#">Vestibulum at eros</a></p>
+                    <p class="f-title">Latest Posts</p>
+                    @forelse ($blog_posts as $post)
+                    <p><a href="#">{{ $post->title }}</a></p>
+                    @empty
+                    <p><a href="#">{{ __('No posts available yet') }}</a></p>
+                    @endforelse
                 </div>
 
                 <div class="col-md-3 footer-links">
-                    <p class="f-title">RESOURCES</p>
-                    <p><a href="#">Job Fair Software</a></p>
-                    <p><a href="#">Recruitment Marketplace Software</a></p>
-                    <p><a href="#">Resume Search Software</a></p>
-                    <p><a href="#">Hiring Software</a></p>
-                    <p><a href="#">Recruitment CRM Software</a></p>
-                    <p><a href="#">Self Hosted Recruitment Software</a></p>
+                    <p class="f-title">Categories</p>
+                    @forelse ($blog_categories as $cat)
+                    <p><a href="#">{{ $cat->name }}</a></p>
+                    @empty
+                    <p><a href="#">{{ __('No Cat available yet') }}</a></p>
+                    @endforelse
                 </div>
 
                 <div class="col-md-3 footer-about-col">

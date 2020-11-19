@@ -184,7 +184,7 @@
                     </ul>
                 </li> <!--booking dropdown end here -->
 
-                <li class="nav-item has-treeview {{ request()->url('newsletter*') ? 'menu-open' : 'menu-close' }}">
+                <li class="nav-item has-treeview {{ request()->routeIs('subscribers*') || request()->routeIs('newsletter.emails*') || request()->routeIs('newsletters.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>

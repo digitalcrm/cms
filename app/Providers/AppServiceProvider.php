@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\User;
+use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -26,6 +27,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(
+            'components.homefooterpage', 'App\Http\View\Composers\PostComposer',
+        );
+        View::composer(
+            'components.homefooterpage', 'App\Http\View\Composers\CategoryComposer',
+        );
         JsonResource::withoutWrapping();
         Paginator::useBootstrap();
         # this method is moved in User model with boot method
