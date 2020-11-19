@@ -146,6 +146,15 @@ class Post extends Model implements HasMedia
         // });
     }
 
+    public function scopeCategoryFilter($query, $request)
+    {
+        $query->when($request, function($q){
+            $q->whereHas('category', function($q1){
+                $q1->where('name', request('category'));
+            });
+        });
+    }
+
     // public function scopePublished($query)
     // {
     //     return $query->orWhere([

@@ -14,8 +14,19 @@ class ListPosts extends Component
 
     public function render()
     {
+        // $lists_of_posts = Post::with(['category'])
+        //     ->when(request('category_id'), function($query) {
+        //         return $query->whereHas('category', function($q) {
+        //             return $q->where('id', request('category'));
+        //         });
+        //     })
+        //     ->orderBy('id', 'desc')
+        //     ->paginate(3);
+
+        $lists_of_posts = Post::categoryFilter(request('category'))->orderBy('id', 'desc')->paginate(10);
+
         return view('livewire.landing-page.list-posts', [
-            'list_of_posts' => Post::latest()->paginate(10),
+            'list_of_posts' => $lists_of_posts,
         ]);
     }
 }

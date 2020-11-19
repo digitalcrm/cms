@@ -10,7 +10,7 @@
         <div class="mb-4">
             <h6 class="mb-4">Categories</h6>
             @forelse ($blog_categories as $cat)
-            <p class="border-bottom pb-2 mb-2"><a href="#"><i class="fas fa-chevron-right"></i> {{ $cat->name }} [{{ $cat->category_has_total_posts() }}]</a></p>
+            <p class="border-bottom pb-2 mb-2"><a href="{{ route('latest.latestpost',['category' => $cat->name]) }}"><i class="fas fa-chevron-right"></i> {{ $cat->name }} [{{ $cat->category_has_total_posts() }}]</a></p>
             @empty
             <p><a href="#">{{ __('No Category available yet') }}</a></p>
             @endforelse
