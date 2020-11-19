@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Sub_Category</h1>
+                <h1 class="m-0 text-dark">Sub Category</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -33,7 +33,9 @@
                                 <tr>
                                     <th>SubCategroy</th>
                                     <th>Parent Category</th>
-                                    <th>Created_at</th>
+                                    <th>Date</th>
+                                    <th>View</th>
+                                    <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,25 +54,49 @@
 
                                             @can('subcategory-delete')
                                             <small>
-                                                <a href="" type="submit" role="button"
-                                                onclick="event.preventDefault();
-                                                if(confirm('Are you sure!')){
-                                                    $('#form-delete-{{$subcat->id}}').submit();
-                                                }
-                                                ">
-                                                Delete
-                                            </a>
+
                                         </small>
-                                        <form style="display:none" id="form-delete-{{$subcat->id}}" action="{{route('subcategory.destroy',$subcat->id)}}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                        </form>
+
 
                                         @endcan
 
                                     </td>
                                     <td>{{ $subcat->category->name }}</td>
                                     <td>{{ $subcat->created_at->diffForHumans() ?? '' }}</td>
+                                    <td>
+                                        @can('subcategory-view')
+                                            <a href="{{route('subcategory.show',$subcat->id)}}"><i class="far fa-eye"></i></a>
+                                        @endcan
+                                    </td>
+
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-sm-left dropdown-menu-lg-right">
+
+                                                @can('subcategory-edit')
+                                                    <a class="dropdown-item" href="{{route('subcategory.edit',$subcat->id)}}"><i class="far fa-edit"></i> Edit</a>
+                                                @endcan
+
+                                                @can('subcategory-delete')
+                                                    <a class="dropdown-item" href="" type="submit" role="button"
+                                                    onclick="event.preventDefault();
+                                                    if(confirm('Are you sure!')){
+                                                        $('#form-delete-{{$subcat->id}}').submit();
+                                                    }
+                                                    ">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                    </a>
+                                                    <form style="display:none" id="form-delete-{{$subcat->id}}" action="{{route('subcategory.destroy',$subcat->id)}}" method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                    </form>
+                                                @endcan
+                                            </div>
+                                          </div>
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>

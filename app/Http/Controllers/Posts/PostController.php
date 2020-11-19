@@ -39,6 +39,8 @@ class PostController extends Controller
 
         $query->draftPost(request('draftPost'));
 
+        $query->trashPost(request('trashPost'));
+
         if(auth()->user()->hasRole('superadmin')) {
 
             $allPosts = $query->latest()->get();
@@ -71,25 +73,27 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
-        // dd(request('postType'));
 
+        // dd(request('postType'));
         $input = $request->validated();
 
-        $postType = $request->postType; #check Post is draft or published
-
-        switch ($postType) {
+        switch (request('postType')) {
             case 'draft':
                 $input['published'] = false;
+                $input['isactive'] = false;
+                break;
+
+            case 'publish':
+                $input['published'] = true;
                 break;
 
             default:
                 $input['published'] = true;
                 break;
         }
-        // dd($input['published']);
 
         $posts = auth()->user()->posts()->create($input);
-        // dd(request('tags'));
+
         if (request('tags') != '') {
             $tags = explode(',', request('tags'));
             foreach ($tags as $tag_name) {
@@ -123,7 +127,7 @@ class PostController extends Controller
         //         return view('cms.posts.show',compact('post'));
         // }
         try{
-            $post->increment('postcount');
+            // $post->increment('postcount');
 
             $post->load(['category', 'tags', 'user', 'subcategory']);
 
@@ -172,11 +176,15 @@ class PostController extends Controller
         // dd($request->input('featuredimage', false));
         $input = $request->validated();
 
-        $postType = $request->postType; #check Post is draft or published
-
-        switch ($postType) {
+        switch (request('postType')) {
             case 'draft':
                 $input['published'] = false;
+                $input['isactive'] = false;
+                break;
+
+            case 'publish':
+                $input['published'] = true;
+                $input['isactive'] = true;
                 break;
 
             default:

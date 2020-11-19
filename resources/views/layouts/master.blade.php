@@ -57,7 +57,7 @@
             <script src="{{ mix('js/popper.js') }}"></script>
             <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
             {{-- TinyMce Editor --}}
-            <script src="https://cdn.tiny.cloud/1/vv9tkawq7if6sdym2688hjvqnn3nfxsd10otch4qb7fasq1y/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+            <script src="https://cdn.tiny.cloud/1/arqcdm5zkxhobz2iqxmr2x97ulkuqohqy3yei2jbbh5z6zdp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
             {{-- Blade message validation --}}
             @include('includes.pop-up-messages.message')

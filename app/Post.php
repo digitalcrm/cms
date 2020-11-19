@@ -132,6 +132,13 @@ class Post extends Model implements HasMedia
         });
     }
 
+    public function scopeTrashPost($query, $filterby)
+    {
+        return $query->when($filterby == 'deleted', function ($query) {
+            $query->has('user')->onlyTrashed();
+        });
+    }
+
     public function scopeWithRoleUserPost($query)
     {
         // return $query->whereHas('user', function($query) {

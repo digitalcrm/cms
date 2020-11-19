@@ -7,7 +7,7 @@
                     <img src="{{ optional($post->featured_image)->getFullUrl() ?? $post->default_image }}" class="img-fluid" alt="{{ $post->slug }}">
                 </a>
                 <div class="card-body">
-                    <h5 class="c-title"><a href="#">{{ $post->title ?? '' }}</a></h5>
+                    <h5 class="c-title"><a href="{{ route('post.viewitem', $post->slug) }}">{{ $post->title ?? '' }}</a></h5>
                     <div class="blog-info mb-3">
                         <span>{{ $post->created_at->toFormattedDateString() }}</span>
                         <span>{{ $post->category->name ?? '' }}</span></div>

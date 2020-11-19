@@ -40,7 +40,9 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Created_at</th>
+                                    <th>Date</th>
+                                    <th>View</th>
+                                    <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,15 +51,15 @@
                                         <td>
                                             {{ $tag->name ?? '' }}<br>
 
-                                            @can('tag-edit')
+                                            {{-- @can('tag-edit')
                                             <small><a href="{{route('tag.edit',$tag->id)}}">Edit</a></small>
                                             @endcan
 
                                             @can('tag-view')
                                             <small><a href="{{route('tag.show',$tag->id)}}">View</a></small>
-                                            @endcan
+                                            @endcan --}}
 
-                                            @can('tag-delete')
+                                            {{-- @can('tag-delete')
                                             <small>
                                                 <a href="" type="submit" role="button"
                                                 onclick="event.preventDefault();
@@ -73,10 +75,42 @@
                                             @method('delete')
                                         </form>
 
-                                        @endcan
+                                        @endcan --}}
 
                                     </td>
                                     <td>{{ $tag->created_at->diffForHumans() ?? '' }}</td>
+                                    <td>
+                                        @can('tag-view')
+                                           <a href="{{route('tag.show',$tag->id)}}"><i class="far fa-eye"></i></a>
+                                        @endcan
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-sm-left dropdown-menu-lg-right">
+                                                @can('tag-edit')
+                                                    <a class="dropdown-item" href="{{route('tag.edit',$tag->id)}}"><i class="far fa-edit"></i> Edit</a>
+                                                @endcan
+
+                                                @can('tag-delete')
+                                                    <a class="dropdown-item" href="" type="submit" role="button"
+                                                    onclick="event.preventDefault();
+                                                    if(confirm('Are you sure!')){
+                                                        $('#form-delete-{{$tag->id}}').submit();
+                                                    }
+                                                    ">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                    </a>
+                                                    <form style="display:none" id="form-delete-{{$tag->id}}" action="{{route('tag.destroy',$tag->id)}}" method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                    </form>
+                                                @endcan
+                                            </div>
+                                          </div>
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>

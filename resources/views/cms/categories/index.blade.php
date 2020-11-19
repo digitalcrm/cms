@@ -40,45 +40,50 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Created_at</th>
-                                    {{-- <th>Edit</th>
-                                        <th>Delete</th> --}}
+                                    <th>Date</th>
+                                    <th>View</th>
+                                    <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse($allCategory as $cat)
                                     <tr>
-                                        <td>
-                                            {{ $cat->name ?? '' }}<br>
-
-                                            @can('category-edit')
-                                            <small><a href="{{route('category.edit',$cat->id)}}">Edit</a></small>
-                                            @endcan
-
-                                            @can('category-view')
-                                            <small><a href="{{route('category.show',$cat->id)}}">View</a></small>
-                                            @endcan
-
-                                            @can('category-delete')
-                                            <small>
-                                                <a href="" type="submit" role="button"
-                                                onclick="event.preventDefault();
-                                                if(confirm('Are you sure!')){
-                                                    $('#form-delete-{{$cat->id}}').submit();
-                                                }
-                                                ">
-                                                Delete
-                                            </a>
-                                        </small>
-                                        <form style="display:none" id="form-delete-{{$cat->id}}" action="{{route('category.destroy',$cat->id)}}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                        </form>
-
-                                        @endcan
-
+                                    <td>
+                                        {{ $cat->name ?? '' }}
                                     </td>
                                     <td>{{ $cat->created_at->diffForHumans() ?? '' }}</td>
+                                    <td>
+                                        @can('category-view')
+                                            <a href="{{route('category.show',$cat->id)}}"><i class="far fa-eye"></i></a>
+                                        @endcan
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-sm-left dropdown-menu-lg-right">
+                                                @can('category-edit')
+                                                    <a class="dropdown-item" href="{{route('category.edit',$cat->id)}}"><i class="far fa-edit"></i> Edit</a>
+                                                @endcan
+
+                                                @can('category-delete')
+                                                    <a class="dropdown-item" href="" type="submit" role="button"
+                                                        onclick="event.preventDefault();
+                                                        if(confirm('Are you sure!')){
+                                                            $('#form-delete-{{$cat->id}}').submit();
+                                                        }
+                                                        ">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                    </a>
+                                                    <form style="display:none" id="form-delete-{{$cat->id}}" action="{{route('category.destroy',$cat->id)}}" method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                    </form>
+                                                @endcan
+                                            </div>
+                                          </div>
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>

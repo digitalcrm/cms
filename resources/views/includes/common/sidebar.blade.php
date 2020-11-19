@@ -99,7 +99,7 @@
                         <li class="nav-item">
                             <a href="{{route('posts.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add Post</p>
+                                <p>Add New</p>
                             </a>
                         </li>
                         @endcan
@@ -108,7 +108,7 @@
                         <li class="nav-item">
                             <a href="{{route('posts.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>List Post</p>
+                                <p>All Posts</p>
                             </a>
                         </li>
                         @endcan

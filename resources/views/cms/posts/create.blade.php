@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Posts</h1>
+                    <h1 class="m-0 text-dark">CMS</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -14,7 +14,23 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card">
-                <div class="card-header">Create Post
+                <form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                    @csrf
+                <div class="card-header row">
+                    <div class="col-md-2">
+                        Add New
+                    </div>
+                    <div class="col-md-10">
+                        <button type="submit" name="postType" value="publish" class="btn btn-sm btn-outline-primary float-right mx-1">
+                            Published
+                        </button>
+                        <button type="submit" name="postType" value="draft" class="btn btn-sm btn-outline-secondary float-right mx-1">
+                            Draft
+                        </button>
+                        <button type="button" name="postType" value="preview" class="btn btn-sm btn-outline-secondary float-right mx-1">
+                            Preview
+                        </button>
+                    </div>
                 </div>
 
                 <div class="card-body">
@@ -23,13 +39,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
-                        @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input id="title" 
+                                    <input id="title"
                                         class="form-control @error('title') is-invalid @enderror" type="text"
                                         name="title"
                                         value="{{ old('title') }}"
@@ -48,7 +62,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
 
                                 @livewire('dependentsubcategorydropdown')
 
@@ -68,7 +82,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="featuredimage">FeaturedImage</label>
+                                    <label for="featuredimage">Featured Image</label>
                                     <input id="featuredimage"
                                         class="form-control-file @error('featuredimage') is-invalid @enderror" type="file"
                                         name="featuredimage" aria-describedby="fileHelp">
@@ -83,7 +97,7 @@
                         </div> <!-- row end-->
                 </div>
                 <!--card body end-->
-                <div class="card-footer custome-card-footer">
+                {{-- <div class="card-footer custome-card-footer">
                     <a name="" id="" class="btn btn-light" href="{{ route('posts.index') }}" role="button">Cancel</a>
                     <div class="btn-group float-right">
                         <div class="input-group" id="">
@@ -99,7 +113,8 @@
                             </div>
                         </div>
                     </div>
-                </div> <!--card-footer end -->
+                </div>  --}}
+                <!--card-footer end -->
                 </form>
             </div> <!--card end -->
         </div>
@@ -107,20 +122,7 @@
 
 @section('scripts')
     @parent
-    <script>
-        tinymce.init({
-            selector: '#mytextarea'
-        });
-
-    </script>
-    <script>
-        (function removeClassStyleProperty() {
-            const cardFooter = document.querySelector(".card-footer");
-            // cardFooter.style.removeProperty('background-color');
-            cardFooter.classList.add('custome-card-footer');
-        })();
-
-    </script>
+    <script src="{{ asset('js/tinymce.js') }}"></script>
 
 @endsection
 @endsection

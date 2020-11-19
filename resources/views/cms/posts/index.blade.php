@@ -25,7 +25,7 @@
                 <!-- /.card -->
                 <div class="card">
                     <div class="card-header">
-                        @if(count($allPosts)>0)
+                        {{-- @if(count($allPosts)>0) --}}
                         <a
                             href="{{ route('posts.index') }}"
                             class="btn btn-sm btn-outline-secondary mr-1 allclass">
@@ -47,7 +47,12 @@
                             Draft
                         </a>
 
-                        @endif
+                        <a href="{{ route('posts.index',['trashPost' => 'deleted']) }}"
+                            class="btn btn-sm btn-outline-secondary mr-1 draftclass {{ request('trashPost') == 'deleted' ? 'active' : '' }}">
+                            Trash
+                        </a>
+
+                        {{-- @endif --}}
 
                         @can('create-post')
                         <a href="{{route('posts.create')}}" class="btn btn-success float-right">Add New</a>
@@ -64,45 +69,23 @@
                                     <th>Category</th>
                                     <th>Subcategory</th>
                                     <th>Tags</th>
-                                    <th>Created_at</th>
+                                    <th>Date</th>
+                                    <th>Views</th>
+                                    <th>Show</th>
+                                    <th>Active/Inactive</th>
                                     <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse($allPosts as $post)
                                     <tr>
-                                        <td>
-                                            @if($post->featured_image)
-                                                <img src="{{ $post->featured_image->getUrl('post-thumb') }}" alt="">
-                                            @endif
-
-                                            {{ $post->title ?? '' }}<br>
-
-                                            {{-- @can('edit-post')
-                                            <small><a href="{{route('posts.edit',$post->id)}}">Edit</a></small>
-                                            @endcan
-
-                                            @can('view-post')
-                                            <small><a href="{{route('posts.show',$post->id)}}">View</a></small>
-                                            @endcan
-
-                                            @can('delete-post')
-                                            <small>
-                                                <a href="" type="submit" role="button"
-                                                onclick="event.preventDefault();
-                                                if(confirm('Are you sure!')){
-                                                    $('#form-delete-{{$post->id}}').submit();
-                                                }
-                                                ">
-                                                Delete
-                                            </a>
-                                        </small>
-                                        <form style="display:none" id="form-delete-{{$post->id}}" action="{{route('posts.destroy',$post->id)}}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                        </form>
-
-                                        @endcan --}}
+                                    <td>
+                                        @if($post->featured_image)
+                                            <img src="{{ $post->featured_image->getUrl('post-thumb') }}" alt="">
+                                        @endif
+                                        <a href="{{ route('post.viewitem', $post->slug) }}" target="_blank">
+                                            {{ $post->title ?? '' }}
+                                        </a>
 
                                     </td>
                                     <td>{{ $post->user->name ?? '' }}</td>
@@ -113,6 +96,48 @@
                                     </td>
                                     <td>{{ $post->created_at->toFormattedDateString() ?? '' }}</td>
                                     <td>
+                                        {{ $post->postcount }}
+                                    </td>
+                                    <td>
+                                        @can('view-post')
+                                        {{-- <small> --}}
+                                            <a
+                                            class="dropdown-item"
+                                            href="{{route('posts.show',$post->slug)}}">
+                                                <i class="far fa-eye"></i>
+                                            </a>
+                                        {{-- </small> --}}
+                                        @endcan
+                                    </td>
+                                    <td>
+                                    <a
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="{{($post->isactive === 1) ? 'click for inactive the post' : 'click for active the post'}}"
+                                        class="dropdown-item"
+                                        href=""
+                                        type="submit"
+                                        onclick="event.preventDefault();
+                                        if(confirm('Are you sure!')){
+                                            $('#post-status-{{$post->id}}').submit();
+                                        }">
+                                        {!!
+                                            ($post->isactive == 1) ?
+                                                '<i class="fas fa-toggle-on" style="color: green"></i>' :
+                                                '<i class="fas fa-toggle-off" style="color: red"></i>'
+                                        !!}
+                                    </a>
+                                    <form
+                                    style="display: none"
+                                    method="post"
+                                    id="post-status-{{$post->id}}"
+                                    action="{{route('posts.status',$post->slug)}}"
+                                    >
+                                    @csrf
+                                    @method('put')
+                                    </form>
+                                    </td>
+                                    <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
 
@@ -120,58 +145,13 @@
                                             <div class="dropdown-menu dropdown-menu-sm-left dropdown-menu-lg-right">
                                                 {{-- edit permission start --}}
                                                 @can('edit-post')
-                                                {{-- <small> --}}
                                                     <a
                                                     class="dropdown-item"
                                                     href="{{route('posts.edit',$post->slug)}}">
-                                                    <i class="far fa-edit"></i>
+                                                    <i class="far fa-edit"></i> Edit
                                                     </a>
-                                                {{-- </small> --}}
-
-                                                {{-- <small> --}}
-                                                    <a
-                                                    data-toggle="tooltip"
-                                                    data-placement="top"
-                                                    title="{{($post->isactive === 1) ? 'click for inactive the post' : 'click for active the post'}}"
-                                                    class="dropdown-item"
-                                                    href=""
-                                                    type="submit"
-                                                    onclick="event.preventDefault();
-                                                    if(confirm('Are you sure!')){
-                                                        $('#post-status-{{$post->id}}').submit();
-                                                    }">
-                                                        {!!
-                                                            ($post->isactive == 1) ?
-                                                                '<i class="fas fa-toggle-on" style="color: green"></i>' :
-                                                                '<i class="fas fa-toggle-off" style="color: red"></i>'
-                                                        !!}
-                                                    </a>
-                                                {{-- </small> --}}
-                                                <form
-                                                style="display: none"
-                                                method="post"
-                                                id="post-status-{{$post->id}}"
-                                                action="{{route('posts.status',$post->slug)}}"
-                                                >
-                                                @csrf
-                                                @method('put')
-                                                </form>
-
-
                                                 @endcan
                                                 {{-- edit permission end --}}
-
-
-                                                @can('view-post')
-                                                {{-- <small> --}}
-                                                    <a
-                                                    class="dropdown-item"
-                                                    href="{{route('posts.show',$post->slug)}}">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                {{-- </small> --}}
-                                                @endcan
-
                                                 @can('delete-post')
                                                 {{-- <small> --}}
                                                     <a
@@ -182,7 +162,7 @@
                                                         $('#form-delete-{{$post->id}}').submit();
                                                     }
                                                     ">
-                                                    <i class="fas fa-trash"></i>
+                                                    <i class="fas fa-trash"></i> Delete
                                                 </a>
                                             {{-- </small> --}}
                                             <form
@@ -200,7 +180,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td class="text-center" colspan="7">
+                                    <td class="text-center" colspan="15">
                                         {{("No Posts Available")}}
                                     </td>
                                 </tr>
@@ -227,6 +207,7 @@
         const request_active_element = document.querySelector('.activeclass');
         const request_inactive_element = document.querySelector('.inactiveclass');
         const request_draft_element = document.querySelector('.draftclass');
+        const request_trash_element = document.querySelector('.trashclass');
 
         if(request_active_element.classList.contains('active')){
 
@@ -240,6 +221,8 @@
 
             request_all_element.classList.remove('active');
 
+        } else if(request_trash_element.classList.contains('active')) {
+            request_all_element.classList.remove('active');
         } else {
 
             request_all_element.classList.add('active');
