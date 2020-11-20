@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', [LandingPageController::class, 'index'])->name('home');
     Route::get('latest', [LandingPageController::class, 'latestpost'])->name('latest.latestpost');
     Route::get('blogs/{post:slug}', [LandingPageController::class, 'viewitem'])->name('post.viewitem');
+    Route::get('articles-by-category', [LandingPageController::class, 'articles_by_category'])->name('lists_of_category');
 
     Auth::routes(['verify' => true]);
 

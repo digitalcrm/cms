@@ -25,4 +25,9 @@ class LandingPageController extends Controller
     {
         return view('pages.landing-post-lists');
     }
+
+    public function articles_by_category()
+    {
+        return view('pages.landing-list-of-category');
+    }
 }

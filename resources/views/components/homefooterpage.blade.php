@@ -17,12 +17,8 @@
                 </div>
 
                 <div class="col-md-3 footer-links">
-                    <p class="f-title">Categories</p>
-                    @forelse ($blog_categories as $cat)
-                    <p><a href="#">{{ $cat->name }}</a></p>
-                    @empty
-                    <p><a href="#">{{ __('No Cat available yet') }}</a></p>
-                    @endforelse
+                    <p class="f-title">RESOURCES</p>
+                    <p><a href="{{ route('lists_of_category') }}">Articles by Category</a></p>
                 </div>
 
                 <div class="col-md-3 footer-about-col">
