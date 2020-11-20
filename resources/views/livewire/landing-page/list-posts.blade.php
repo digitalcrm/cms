@@ -1,7 +1,17 @@
 <div>
     <div class="row featured-post-heading">
         <div class="col-md-12 mt-5 mb-3">
-           <h2 class="mb-4">All Articles</h2>
+           <h2 class="mb-4">
+            @if(request('category'))
+                {{ __('Category: ' . request('category')) }}
+                @elseif(request('tags'))
+                {{ __('Tag: ' . request('tags')) }}
+                @elseif(request('blogs'))
+                {{ __('Popular: Articles') }}
+                @else
+                {{ __('Latest: Articles') }}
+            @endif
+            </h2>
         </div>
      </div>
      <div class="row">

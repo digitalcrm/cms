@@ -4,14 +4,14 @@
         <div class="row text-center mt-2">
             <div class="col-lg-12 mb-3 mt-5">
                 <h1>
-                    Articles by Categories
+                    Articles by Tags
                 </h1>
                 <p class="text-muted for-mobile">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
 
-            @forelse($article_by_category as $cat)
+            @forelse($article_by_tags as $tag)
             <div class="col-md-4 mb-4">
-                <a href="{{ route('latest.latestpost',['category' => $cat->name]) }}">{{ $cat->category_name_with_total_posts() }}</a>
+                <a href="{{ route('latest.latestpost',['tags' => $tag->name]) }}">{{ $tag->tag_name_with_total_posts() }}</a>
             </div>
             @empty
 
@@ -21,9 +21,9 @@
 
             @endforelse
 
-            @if(count($article_by_category) == $this->perPage)
+            @if(count($article_by_tags) == $this->perPage)
             <div class="col-lg-12">
-                <a wire:click="load" class="btn btn-outline-secondary">All Categories</a>
+                <a wire:click="load" class="btn btn-outline-secondary">All Tags</a>
             </div>
             @endif
 

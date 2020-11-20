@@ -164,12 +164,14 @@ class Post extends Model implements HasMedia
         });
     }
 
-    // public function scopePublished($query)
-    // {
-    //     return $query->orWhere([
-    //         'published' => 1,
-    //     ]);
-    // }
+    public function scopePopularFilter($query, $request)
+    {
+        // dd($request);
+        $query->when($request === 'most_visited', function($q){
+            $q->orderBy('postcount', 'desc');
+            // dd('most-vist');
+        });
+    }
 
     /*
     #  Old code without refactoring
@@ -213,9 +215,20 @@ class Post extends Model implements HasMedia
         return $body;
     }
 
+    /** get the default image api */
     public function getDefaultImageAttribute()
     {
         return 'https://via.placeholder.com/348x232?text='.$this->slug;
+    }
+
+    public function scopePopularPost($query)
+    {
+        return $query->orderBy('postcount', 'desc');
+    }
+
+    public function scopeActiveArticle($query)
+    {
+        return $query->where('isactive', true);
     }
 
 }

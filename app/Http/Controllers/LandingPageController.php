@@ -30,4 +30,10 @@ class LandingPageController extends Controller
     {
         return view('pages.landing-list-of-category');
     }
+
+    public function articles_by_tag()
+    {
+        return view('pages.landing-list-of-tag');
+
+    }
 }

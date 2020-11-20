@@ -12,7 +12,7 @@ class ListCategory extends Component
 
     public function render()
     {
-        $article_by_category = Category::with('posts')->latest()->take($this->perPage)->get();
+        $article_by_category = Category::has('posts')->latest()->take($this->perPage)->get();
 
         return view('livewire.landing-page.list-category',compact('article_by_category'));
     }

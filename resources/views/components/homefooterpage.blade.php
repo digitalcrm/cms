@@ -19,6 +19,7 @@
                 <div class="col-md-3 footer-links">
                     <p class="f-title">RESOURCES</p>
                     <p><a href="{{ route('lists_of_category') }}">Articles by Category</a></p>
+                    <p><a href="{{ route('lists_of_tag') }}">Articles by Tag</a></p>
                 </div>
 
                 <div class="col-md-3 footer-about-col">

@@ -2,6 +2,7 @@ tinymce.init({
     selector: '#mytextarea',
     branding: false,
     height: 300,
+    menubar: false,
     plugins: [
     "advlist autolink lists link image charmap print preview hr anchor pagebreak",
     "searchreplace wordcount visualblocks visualchars code fullscreen",

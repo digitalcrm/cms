@@ -16,6 +16,19 @@ class Tag extends Model
     ];
 
     public function posts() {
+
         return $this->belongsToMany(Post::class);
+
     }
+
+    public function tag_has_total_posts()
+    {
+        return $this->belongsToMany( Post::class )->count();
+    }
+
+    public function tag_name_with_total_posts()
+    {
+        return $this->name. ' ['.$this->tag_has_total_posts().']';
+    }
+
 }

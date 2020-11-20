@@ -27,4 +27,9 @@ class Category extends Model
     {
         return $this->hasMany( Post::class )->count();
     }
+
+    public function category_name_with_total_posts()
+    {
+        return $this->name. ' ['.$this->category_has_total_posts().']';
+    }
 }

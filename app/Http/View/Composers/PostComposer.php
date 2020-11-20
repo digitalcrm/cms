@@ -19,6 +19,11 @@ class PostComposer
      */
     public function compose(View $view)
     {
-        $view->with('blog_posts', Post::where('isactive',1)->latest()->take(5)->get());
+        $view->with(
+            'blog_posts', Post::activeArticle()->latest()->take(5)->get(),
+        );
+        $view->with(
+            'popular_posts', Post::activeArticle()->popularPost()->take(5)->get(),
+        );
     }
 }

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">CMS</h1>
+                    <h1 class="m-0 text-dark">Add New</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -18,10 +18,10 @@
                     @csrf
                 <div class="card-header row">
                     <div class="col-md-2">
-                        Add New
+
                     </div>
                     <div class="col-md-10">
-                        <button type="submit" name="postType" value="publish" class="btn btn-sm btn-outline-primary float-right mx-1">
+                        <button type="submit" name="postType" value="publish" class="btn btn-sm btn-primary float-right mx-1">
                             Published
                         </button>
                         <button type="submit" name="postType" value="draft" class="btn btn-sm btn-outline-secondary float-right mx-1">
