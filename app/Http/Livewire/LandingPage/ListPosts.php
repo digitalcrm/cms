@@ -23,7 +23,9 @@ class ListPosts extends Component
         //     ->orderBy('id', 'desc')
         //     ->paginate(3);
 
-        $lists_of_posts = Post::categoryFilter(request('category'))->orderBy('id', 'desc')->paginate(10);
+        $lists_of_posts = Post::categoryFilter(request('category'))
+                                ->tagFilter(request('tags'))                        
+                                ->orderBy('id', 'desc')->paginate(10);
 
         return view('livewire.landing-page.list-posts', [
             'list_of_posts' => $lists_of_posts,

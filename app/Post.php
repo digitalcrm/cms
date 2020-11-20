@@ -155,6 +155,15 @@ class Post extends Model implements HasMedia
         });
     }
 
+    public function scopeTagFilter($query, $request)
+    {
+        $query->when($request, function($q){
+            $q->whereHas('tags', function($q1){
+                $q1->where('name', request('tags'));
+            });
+        });
+    }
+
     // public function scopePublished($query)
     // {
     //     return $query->orWhere([

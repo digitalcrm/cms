@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\User;
 use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
@@ -32,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
         );
         View::composer(
             ['components.homefooterpage', 'livewire.landing-page.right-sidebar'], 'App\Http\View\Composers\CategoryComposer',
+        );
+        View::composer(
+            ['livewire.landing-page.right-sidebar'], 'App\Http\View\Composers\TagComposer',
         );
         JsonResource::withoutWrapping();
         Paginator::useBootstrap();
