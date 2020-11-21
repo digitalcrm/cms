@@ -56,6 +56,7 @@ use Illuminate\Support\Facades\Route;
         Route::group(['namespace' => 'Posts'], function () {
             Route::resource('posts', 'PostController');
             Route::put('posts/isactive/{isActive}','PostController@isActive')->name('posts.status');
+            Route::put('posts/featured/{featured}','PostController@featured')->name('posts.featured');
         });
 
         Route::group(['namespace' => 'Category'], function () {

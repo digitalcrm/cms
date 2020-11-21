@@ -73,6 +73,7 @@
                                     <th>Views</th>
                                     <th>Show</th>
                                     <th>Active/Inactive</th>
+                                    <th>Featured</th>
                                     <th>Action</th>
                                     </tr>
                                 </thead>
@@ -137,6 +138,36 @@
                                     @method('put')
                                     </form>
                                     </td>
+
+                                    <td>
+                                        <a
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="{{($post->featured === 1) ? 'click for disable the featured post' : 'click for active the featured post'}}"
+                                        class="dropdown-item"
+                                        href=""
+                                        type="submit"
+                                        onclick="event.preventDefault();
+                                        if(confirm('Are you sure!')){
+                                            $('#post-featured{{$post->id}}').submit();
+                                        }">
+                                        {!!
+                                            ($post->featured == 1) ?
+                                                '<i class="fas fa-toggle-on" style="color: green"></i>' :
+                                                '<i class="fas fa-toggle-off" style="color: red"></i>'
+                                        !!}
+                                    </a>
+                                    <form
+                                    style="display: none"
+                                    method="post"
+                                    id="post-featured{{$post->id}}"
+                                    action="{{route('posts.featured',$post->slug)}}"
+                                    >
+                                    @csrf
+                                    @method('put')
+                                    </form>
+                                    </td>
+
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">

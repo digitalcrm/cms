@@ -251,4 +251,18 @@ class PostController extends Controller
         }
         return redirect()->back()->withInfo('post status has been changed');
     }
+    public function featured(Post $featured)
+    {
+        // dd($isActive->isactive);
+        if($featured->featured === 1){
+            $featured->update([
+                'featured' => 0,
+            ]);
+        } else {
+            $featured->update([
+                'featured' => 1,
+            ]);
+        }
+        return redirect()->back()->withInfo('post featured has been changed');
+    }
 }

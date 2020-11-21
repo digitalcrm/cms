@@ -1,9 +1,9 @@
 <div class="col-md-3 col-sidebar">
         <div class="mb-4">
-            <h6 class="mb-4"><a href="{{ route('latest.latestpost') }}">Featured Posts</a></h6>
-            @forelse($blog_posts as $post)
-            <p class="border-bottom pb-2 mb-2"><a href="{{ route('post.viewitem', $post->slug) }}">
-                <i class="fas fa-chevron-right"></i> {{ $post->title }}</a></p>
+            <h6 class="mb-4"><a href="{{ route('latest.latestpost',['blogs'=> 'featured']) }}">Featured Posts</a></h6>
+            @forelse($featured_posts as $featured)
+            <p class="border-bottom pb-2 mb-2"><a href="{{ route('post.viewitem', $featured->slug) }}">
+                <i class="fas fa-chevron-right"></i> {{ $featured->title }}</a></p>
             @empty
             <p class="border-bottom pb-2 mb-2"><a href="#"><i class="fas fa-chevron-right"></i> {{ __('No Posts Available') }}</a></p>
             @endforelse

@@ -26,6 +26,7 @@ class ListPosts extends Component
         $lists_of_posts = Post::categoryFilter(request('category'))
                                 ->tagFilter(request('tags'))
                                 ->popularFilter(request('blogs'))
+                                ->featuredFilter(request('blogs'))
                                 ->orderBy('id', 'desc')->paginate(10);
 
         return view('livewire.landing-page.list-posts', [

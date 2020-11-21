@@ -27,6 +27,7 @@ class Post extends Model implements HasMedia
         'subcategory_id',
         'postcount',
         'isactive',
+        'featured',
     ];
 
     protected $appends = [
@@ -173,6 +174,15 @@ class Post extends Model implements HasMedia
         });
     }
 
+    public function scopeFeaturedFilter($query, $request)
+    {
+        // dd($request);
+        $query->when($request === 'featured', function($q){
+            $q->where('featured', true);
+            // dd('most-vist');
+        });
+    }
+
     /*
     #  Old code without refactoring
     # Working Code index method code for fetch fecthing post
@@ -224,6 +234,11 @@ class Post extends Model implements HasMedia
     public function scopePopularPost($query)
     {
         return $query->orderBy('postcount', 'desc');
+    }
+
+    public function scopeFeaturedPost($query)
+    {
+        return $query->where('featured', true);
     }
 
     public function scopeActiveArticle($query)

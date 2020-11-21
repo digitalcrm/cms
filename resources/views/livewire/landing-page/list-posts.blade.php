@@ -6,8 +6,10 @@
                 {{ __('Category: ' . request('category')) }}
                 @elseif(request('tags'))
                 {{ __('Tag: ' . request('tags')) }}
-                @elseif(request('blogs'))
+                @elseif(request('blogs') == 'most_visited')
                 {{ __('Popular: Articles') }}
+                @elseif(request('blogs') == 'featured')
+                {{ __('Featured: Articles') }}
                 @else
                 {{ __('Latest: Articles') }}
             @endif
