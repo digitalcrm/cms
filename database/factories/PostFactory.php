@@ -26,9 +26,11 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->text(10),
-            'user_id' => User::factory(),
+            'user_id' => $this->faker->numberBetween(1, 3),
             'category_id'=> $this->faker->numberBetween(1, 5),
             'body' => $this->faker->sentence(),
+            'postcount' => $this->faker->numberBetween(10,100),
+            'featured' => 1,
         ];
     }
 }
