@@ -246,4 +246,11 @@ class Post extends Model implements HasMedia
         return $query->where('isactive', true);
     }
 
+    public function scopeSearch($query, $val)
+    {
+        $searchInput = '%'.$val.'%';
+        return $query->where('title','like',$searchInput)
+                    ->orWhere('body','like',$searchInput);
+    }
+
 }

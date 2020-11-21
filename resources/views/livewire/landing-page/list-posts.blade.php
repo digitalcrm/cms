@@ -10,6 +10,8 @@
                 {{ __('Popular: Articles') }}
                 @elseif(request('blogs') == 'featured')
                 {{ __('Featured: Articles') }}
+                @elseif(request('searchItem'))
+                {{ __('Search: ' . request('searchItem')) }}
                 @else
                 {{ __('Latest: Articles') }}
             @endif

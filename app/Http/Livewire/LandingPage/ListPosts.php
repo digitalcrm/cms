@@ -27,8 +27,8 @@ class ListPosts extends Component
                                 ->tagFilter(request('tags'))
                                 ->popularFilter(request('blogs'))
                                 ->featuredFilter(request('blogs'))
+                                ->search(request('searchItem'))
                                 ->orderBy('id', 'desc')->paginate(10);
-
         return view('livewire.landing-page.list-posts', [
             'list_of_posts' => $lists_of_posts,
         ]);
