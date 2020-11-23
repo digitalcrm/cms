@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ArticleLinkSendToFriend;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class LandingPageController extends Controller
 {
@@ -37,5 +39,26 @@ class LandingPageController extends Controller
     {
         return view('pages.landing-list-of-tag');
 
+    }
+
+    public function article_shares_to_friend(Request $request)
+    {
+        $validatedData = $request->validate([
+            'post_sender_email' => ['required','email'],
+            'post_receiver_email' => ['required','email'],
+        ]);
+        // dd($request->url());
+        $getArticleURL = $request->currentPageURL;
+
+        Mail::to($validatedData['post_receiver_email'])->send(new ArticleLinkSendToFriend($getArticleURL));
+
+        return redirect()->back()->withMessage('Successfully Sent');
+    }
+
+    public function print_article($print_article)
+    {
+        $print_article = Post::where('slug',$print_article)->activeArticle()->get();
+
+        return view('pages.printpost',compact('print_article'));
     }
 }

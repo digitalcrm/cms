@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('blogs/{post:slug}', [LandingPageController::class, 'viewitem'])->name('post.viewitem');
     Route::get('articles-by-categories', [LandingPageController::class, 'articles_by_category'])->name('lists_of_category');
     Route::get('articles-by-tags', [LandingPageController::class, 'articles_by_tag'])->name('lists_of_tag');
+    Route::Post('articles-share-to-friend', [LandingPageController::class, 'article_shares_to_friend'])->name('article_share.store');
+    Route::get('print/{print_article}', [LandingPageController::class, 'print_article'])->name('article.print_article');
 
     Auth::routes(['verify' => true]);
 

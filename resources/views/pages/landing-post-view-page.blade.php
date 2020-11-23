@@ -37,9 +37,12 @@
                     By: {{ $post->user->name }}
                 </a>
                 </li>
-                <li class="list-group-item"><i class="fa fa-comments-o" aria-hidden="true"></i> {{ $post->postcount }} Views</li>
-                {{-- <li class="list-group-item"><i class="fa fa-comments-o" aria-hidden="true"></i> 10 Comments</li> --}}
+                <li class="list-group-item">{{ $post->postcount }} Views</li>
+                <li class="list-group-item"><a type="button" data-toggle="modal" data-target="#sendposttofriend"> {{  __('Send to Friend')}}</a></li>
+                <li class="list-group-item"><a href="{{ route('article.print_article', $post->slug) }}" target="__blank"> {{  __('Print')}}</a></li>
             </ul>
+
+            @include('pages.share-post-with-email-sent')
 
             <div class="comments-section mt-5">
                 <div class="mb-3">About the Author: {{ $post->user->name }}</div>
