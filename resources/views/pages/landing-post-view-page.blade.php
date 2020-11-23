@@ -12,39 +12,47 @@
     <div class="row">
        <div class="col-md-9 pl-0 pr-5">
           <div class="col-md-12">
-             <ul class="list-group list-group-horizontal small mb-3">
-                <li class="list-group-item">{{ $post->created_at->toFormattedDateString() }}</li>
-                <li class="list-group-item">{{ $post->category->name }}</li>
-                <li class="list-group-item">By: {{ $post->user->name }}</li>
-                <li class="list-group-item"><i class="fa fa-comments-o" aria-hidden="true"></i> {{ $post->postcount }} Views</li>
-                {{-- <li class="list-group-item"><i class="fa fa-comments-o" aria-hidden="true"></i> 10 Comments</li> --}}
-             </ul>
              <img src="{{ optional($post->featured_image)->getFullUrl() ?? $post->default_image }}" class="img-fluid rounded mb-3" alt="{{ $post->slug }}">
              <p>
                 {!! $post->body !!}
              </p>
-             {{-- <div class="alert alert-info small mt-4 mb-3" role="alert">
-                <span>Share This News, Choose Your Platform!</span>
-                <span class="float-right">
-                <a href="#"><i class="fab fa-facebook-f social-share"></i></a>
-                <a href="#"><i class="fab fa-twitter social-share"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in social-share"></i></a>
-                <a href="#"><i class="fab fa-instagram social-share"></i></a>
-                <a href="#"><i class="fab fa-pinterest social-share"></i></a>
-                <a href="#"><i class="far fa-envelope social-share"></i></a>
-                </span>
-             </div> --}}
 
-             {{-- <div class="comments-section mt-5">
-                <div class="mb-3">About the Author: admin</div>
+            {{-- Tag div --}}
+            @if($post->count_post_having_total_tags() > 0)
+            <hr>
+             <div>
+                <p>
+                    <span class="font-weight-bold">Tags:</span> @foreach($post->tags as $tag)
+                    <a href="{{ route('latest.latestpost',['tags' => $tag->tag_name]) }}">{{ $tag->name }}{{ ($loop->last) ? '' : ', ' }}</a>
+                    @endforeach
+                </p>
+             </div>
+            @endif
+
+            {{-- Toolbar --}}
+            <ul class="list-group list-group-horizontal small mb-3">
+                <li class="list-group-item">{{ $post->created_at->toFormattedDateString() }}</li>
+                <li class="list-group-item"><a href="{{ route('latest.latestpost',['category' => $post->category->name]) }}">{{ $post->category->name }}</a></li>
+                <li class="list-group-item"><a href="{{ route('latest.latestpost',['author' => $post->user->name]) }}">
+                    By: {{ $post->user->name }}
+                </a>
+                </li>
+                <li class="list-group-item"><i class="fa fa-comments-o" aria-hidden="true"></i> {{ $post->postcount }} Views</li>
+                {{-- <li class="list-group-item"><i class="fa fa-comments-o" aria-hidden="true"></i> 10 Comments</li> --}}
+            </ul>
+
+            <div class="comments-section mt-5">
+                <div class="mb-3">About the Author: {{ $post->user->name }}</div>
                 <div class="media small">
-                   <img src="images/team2.jpg" width="50" class="img-fluid mr-3" alt="...">
-                   <div class="media-body">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat. Donec sollicitudin molestie malesuada.
-                   </div>
+                    <a href="{{ route('latest.latestpost',['author' => $post->user->name]) }}">
+                        <img src="{{ $post->user->profile_photo_url }}" width="50" class="img-fluid mr-3" alt="{{ $post->user->full_name }}">
+                    </a>
+                    <div class="media-body">
+                        {{ $post->user->description ?? 'Hi 👋! This is ' .$post->user->name }}
+                    </div>
                 </div>
 
-                <div class="mb-3 mt-5">Leave A Comment</div>
+                {{-- <div class="mb-3 mt-5">Leave A Comment</div>
                 <form>
                    <div class="form-group">
                       <textarea class="form-control" placeholder="Comment..." id="exampleFormControlTextarea1" rows="6"></textarea>
@@ -65,13 +73,43 @@
                    <div class="form-group">
                       <button type="submit" class="btn btn-primary px-3">POST COMMENT</button>
                    </div>
-                </form>
+                </form> --}}
 
-             </div> --}}
+                    <div class="mb-3 mt-5">Related Article</div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                @forelse($related_posts as $related)
+                                <ul class="list-unstyled">
+                                    <li class="media">
+                                        <img src="{{ optional($post->featured_image)->getFullUrl() ?? $post->default_fake_image($related->slug) }}" class="mr-3 related-img" alt="{{ $related->slug }}">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-1"><a href="#">{{ $related->title }}</a></h5><small>{{ $related->category->name }}</small>
+                                                <p>
+                                                    {!! $post->summary_of_body !!}
+                                                </p>
+                                            </div>
+                                    </li>
+                                    <hr>
+                                </ul>
+                                @empty
+
+                                @endforelse
+                            </div>
+                        </div>
+                    </div>
+             </div>
           </div>
        </div>
        <livewire:landing-page.right-sidebar />
     </div>
  </div>
+
+@section('scripts')
+@parent
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fbb79b6dfa2be74"></script>
+
+@endsection
 
 @endsection

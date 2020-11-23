@@ -183,6 +183,16 @@ class Post extends Model implements HasMedia
         });
     }
 
+    public function scopeAuthorFilter($query, $request)
+    {
+        // dd($request);
+        $query->when($request, function($q){
+            $q->whereHas('user', function($q1){
+                $q1->where('name', request('author'));
+            });
+        });
+    }
+
     /*
     #  Old code without refactoring
     # Working Code index method code for fetch fecthing post
@@ -207,6 +217,16 @@ class Post extends Model implements HasMedia
     */
 
     /** This posts_having_tags used for get the tags */
+    // public function getPostsHavingTagsAttribute()
+    // {
+    //     $tags = $this->tags()->get()->map(function($tag) {
+    //         return '<a href="'.route('latest.latestpost',['tags' => $tag->name]).'">'.$tag->name.'</a>';
+    //     })->implode(',');
+
+    //     if ($tags == '') return '';
+
+    //     return $tags;
+    // }
     public function getPostsHavingTagsAttribute()
     {
         $tags = $this->tags()->get()->map(function($tag) {
@@ -216,6 +236,11 @@ class Post extends Model implements HasMedia
         if ($tags == '') return '';
 
         return $tags;
+    }
+
+    public function count_post_having_total_tags()
+    {
+        return $this->belongsToMany( Tag::class )->count();
     }
 
     public function getSummaryOfBodyAttribute()
@@ -231,6 +256,11 @@ class Post extends Model implements HasMedia
         return 'https://via.placeholder.com/348x232?text='.$this->slug;
     }
 
+    public function default_fake_image($fieldName = Null)
+    {
+        return 'https://via.placeholder.com/348x232?text='.$fieldName;
+    }
+
     public function scopePopularPost($query)
     {
         return $query->orderBy('postcount', 'desc');
@@ -239,6 +269,14 @@ class Post extends Model implements HasMedia
     public function scopeFeaturedPost($query)
     {
         return $query->where('featured', true);
+    }
+
+    public function scopeRelatedPost($query)
+    {
+        // dd($this->category_id);
+        return $query->whereHas('category', function($query){
+            $query->where('id', $this->category_id);
+        });
     }
 
     public function scopeActiveArticle($query)

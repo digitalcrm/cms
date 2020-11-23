@@ -27,6 +27,7 @@ class ListPosts extends Component
                                 ->tagFilter(request('tags'))
                                 ->popularFilter(request('blogs'))
                                 ->featuredFilter(request('blogs'))
+                                ->authorFilter(request('author'))
                                 ->search(request('searchItem'))
                                 ->orderBy('id', 'desc')->paginate(10);
         return view('livewire.landing-page.list-posts', [

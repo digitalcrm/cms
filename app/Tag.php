@@ -15,6 +15,10 @@ class Tag extends Model
         'name',
     ];
 
+    protected $appends = [
+        'tag_name',
+    ];
+
     public function posts() {
 
         return $this->belongsToMany(Post::class);
@@ -29,6 +33,12 @@ class Tag extends Model
     public function tag_name_with_total_posts()
     {
         return $this->name. ' ['.$this->tag_has_total_posts().']';
+    }
+
+    public function getTagNameAttribute()
+    {
+        return trim($this->name);
+        // return preg_replace('/\s/','',$this->name);
     }
 
 }
