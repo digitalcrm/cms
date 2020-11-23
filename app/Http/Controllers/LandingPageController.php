@@ -18,9 +18,8 @@ class LandingPageController extends Controller
     {
         $post->increment('postcount');
 
-        // $related_posts = $post->has('category')->where('category_id', $post->category_id)->take(3)->get();
-        $related_posts = $post->relatedPost()->take(3)->get(['title','category_id','slug','body']);
-        // dd($related_posts);
+        $related_posts = $post->relatedPost()->orderBy('id', 'desc')->take(3)->get(['title','category_id','slug','body']);
+
         return view('pages.landing-post-view-page',compact('post','related_posts'));
     }
 
