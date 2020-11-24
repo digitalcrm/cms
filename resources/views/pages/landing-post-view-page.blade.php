@@ -85,9 +85,18 @@
                                 @forelse($related_posts as $related)
                                 <ul class="list-unstyled">
                                     <li class="media">
-                                        <img src="{{ optional($post->featured_image)->getFullUrl() ?? $post->default_fake_image($related->slug) }}" class="mr-3 related-img" alt="{{ $related->slug }}">
-                                            <div class="media-body">
-                                                <h5 class="mt-0 mb-1"><a href="#">{{ $related->title }}</a></h5><small>{{ $related->category->name }}</small>
+                                        <a href="{{ route('post.viewitem', $related->slug) }}">
+                                            <img src="{{ optional($post->featured_image)->getFullUrl() ?? $post->default_fake_image($related->slug) }}"
+                                                class="mr-3 related-img"
+                                                alt="{{ $related->slug }}"
+                                            >
+                                        </a>
+                                        <div class="media-body">
+                                                <h5 class="mt-0 mb-1">
+                                                    <a href="{{ route('post.viewitem', $related->slug) }}">
+                                                        {{ $related->title }}
+                                                    </a>
+                                                </h5><small>{{ $related->category->name }}</small>
                                                 <p>
                                                     {!! $post->summary_of_body !!}
                                                 </p>

@@ -54,8 +54,8 @@
         <div class="mb-4">
             <h6 class="mb-2"><a href="{{ route('lists_of_tag') }}">Tags</a></h6>
             @forelse ($blog_tags as $tag)
-            <a class="" href="{{ route('latest.latestpost',['tags' => $tag->name]) }}">
-                <i class="fas fa-tags "></i> {{ $tag->name }}
+            <a class="badge badge-info" href="{{ route('latest.latestpost',['tags' => $tag->name]) }}">
+                {{ $tag->name }}
             </a>
             @empty
             <p><a href="#">{{ __('No Tags Available') }}</a></p>

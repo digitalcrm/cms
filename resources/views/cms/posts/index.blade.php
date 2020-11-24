@@ -48,25 +48,41 @@
                         </a>
 
                         <a href="{{ route('posts.index',['trashPost' => 'deleted']) }}"
-                            class="btn btn-sm btn-outline-secondary mr-1 draftclass {{ request('trashPost') == 'deleted' ? 'active' : '' }}">
+                            class="btn btn-sm btn-outline-secondary mr-1 trashclass {{ request('trashPost') == 'deleted' ? 'active' : '' }}">
                             Trash
                         </a>
 
                         {{-- @endif --}}
-
                         @can('create-post')
-                        <a href="{{route('posts.create')}}" class="btn btn-success float-right">Add New</a>
+                        <a href="{{route('posts.create')}}" class="btn btn-success btn-sm mx-1 float-right">Add New</a>
                         @endcan
+
+                        <div class="btn-group dropdown keep-open float-right">
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-secondary dropdown-toggle"
+                                id="login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"><i class="fa fa-filter" aria-hidden="true"></i></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <form action="#" id="popForm" method="get" class="p-2">
+                                    <div id="filtertable">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="posttable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Title</th>
                                     <th>Author</th>
                                     <th>Category</th>
+                                    <th style="display: none">Date</th>
                                     <th>Subcategory</th>
                                     <th>Tags</th>
                                     <th>Date</th>
@@ -81,9 +97,11 @@
                                     @forelse($allPosts as $post)
                                     <tr>
                                     <td>
-                                        @if($post->featured_image)
+                                        {{-- @if($post->featured_image)
                                             <img src="{{ $post->featured_image->getUrl('post-thumb') }}" alt="">
-                                        @endif
+                                            @endif --}}
+                                        <img src="{{ optional($post->featured_image)->getUrl('post-thumb') ?? $post->default_fake_image($post->slug, 35, 35) }}" alt="">
+
                                         <a href="{{ route('post.viewitem', $post->slug) }}" target="_blank">
                                             {{ $post->title ?? '' }}
                                         </a>
@@ -91,6 +109,9 @@
                                     </td>
                                     <td>{{ $post->user->name ?? '' }}</td>
                                     <td>{{ $post->category->name ?? '' }}</td>
+
+                                    <td style="display: none">{{ $post->created_at->toDateString() ?? '' }}</td>
+
                                     <td>{{ $post->subcategory->name ?? 'none' }}</td>
                                     <td>
                                         {{ $post->posts_having_tags ?? '' }}
@@ -231,36 +252,70 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+    @section('scripts')
+    @parent
 
-<script>
-    function getAll(){
-        const request_all_element = document.querySelector('.allclass');
-        const request_active_element = document.querySelector('.activeclass');
-        const request_inactive_element = document.querySelector('.inactiveclass');
-        const request_draft_element = document.querySelector('.draftclass');
-        const request_trash_element = document.querySelector('.trashclass');
+    <script>
+        function getAll(){
+            const request_all_element = document.querySelector('.allclass');
+            const request_active_element = document.querySelector('.activeclass');
+            const request_inactive_element = document.querySelector('.inactiveclass');
+            const request_draft_element = document.querySelector('.draftclass');
+            const request_trash_element = document.querySelector('.trashclass');
 
-        if(request_active_element.classList.contains('active')){
+            if(request_active_element.classList.contains('active')){
 
-            request_all_element.classList.remove('active');
+                request_all_element.classList.remove('active');
 
-        } else if(request_inactive_element.classList.contains('active')) {
+            } else if(request_inactive_element.classList.contains('active')) {
 
-            request_all_element.classList.remove('active');
+                request_all_element.classList.remove('active');
 
-        } else if(request_draft_element.classList.contains('active')) {
+            } else if(request_draft_element.classList.contains('active')) {
 
-            request_all_element.classList.remove('active');
+                request_all_element.classList.remove('active');
 
-        } else if(request_trash_element.classList.contains('active')) {
-            request_all_element.classList.remove('active');
-        } else {
+            } else if(request_trash_element.classList.contains('active')) {
 
-            request_all_element.classList.add('active');
+                request_all_element.classList.remove('active');
 
+            } else {
+
+                request_all_element.classList.add('active');
+
+            }
         }
-    }
-    // getAll();
-    window.addEventListener('load', getAll);
-</script>
+        // getAll();
+        window.addEventListener('load', getAll);
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#posttable').DataTable( {
+                "ordering": false,
+                initComplete: function () {
+                    this.api().columns([2,3]).every( function (d) {//THis is used for specific column
+                        var column = this;
+                        var theadname = $('#posttable th').eq([d]).text();
+                        var select = $('<select class="form-control my-1"><option value="">'+theadname+': All</option></select>')
+                        .appendTo( '#filtertable' )
+                        .on( 'change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                            );
+
+                            column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                        } );
+                        column.data().unique().sort().each( function ( d, j ) {
+                            var val = $('<div/>').html(d).text();
+                            select.append( '<option value="'+val+'">'+val+'</option>' )
+                        } );
+
+                    } );
+                }
+            } );
+        } );
+    </script>
+    @endsection
 @endsection

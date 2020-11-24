@@ -256,9 +256,10 @@ class Post extends Model implements HasMedia
         return 'https://via.placeholder.com/348x232?text='.$this->slug;
     }
 
-    public function default_fake_image($fieldName = Null)
+    public function default_fake_image($fieldName = Null, $width = '348', $height = '232')
     {
-        return 'https://via.placeholder.com/348x232?text='.$fieldName;
+        // return 'https://via.placeholder.com/348x232?text='.$fieldName;
+        return 'https://via.placeholder.com/'.$width.'x'.$height.'?text='.$fieldName;
     }
 
     public function scopePopularPost($query)

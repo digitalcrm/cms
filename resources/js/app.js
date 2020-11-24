@@ -19,7 +19,7 @@ import'admin-lte/plugins/daterangepicker/daterangepicker.js';
 // Datepicket Code
 $('#datepicker').datepicker();
 
-//Datatable
+Datatable
 $("#example1").DataTable({
     'responsive': true,
     'autoWidth': false,
