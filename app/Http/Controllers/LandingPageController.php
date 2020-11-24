@@ -61,4 +61,17 @@ class LandingPageController extends Controller
 
         return view('pages.printpost',compact('print_article'));
     }
+
+    public function rss_feed()
+    {
+        $rss_latest_posts = Post::activeArticle()->latest()->take(20)->get();
+
+        $sites = config('rss_config');
+
+        // dd($sites['feeds']['main']['description']);
+
+        $content = view('rss-feed', compact('rss_latest_posts','sites'));
+
+        return response($content, 200)->header('Content-Type', 'text/xml');
+    }
 }

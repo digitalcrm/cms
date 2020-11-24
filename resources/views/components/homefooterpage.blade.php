@@ -41,6 +41,7 @@
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="{{ route('rss_feed') }}"><i class="fas fa-rss"></i></a>
                     </div>
                 </div>
             </div>
