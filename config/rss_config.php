@@ -6,7 +6,7 @@ return [
 
             'items' => '',
 
-            'url' => url('rss_latest_feed'),
+            'url' => '/rss_latest_feed',
 
             'logo_url' => 'https://aynsoft.com/wp-content/uploads/2020/03/aynsoft-logo-new.jpg',
 

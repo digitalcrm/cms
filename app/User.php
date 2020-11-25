@@ -181,4 +181,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany( BookingCustomer::class );
     }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Post::class, 'favorites', 'user_id', 'post_id')->withTimeStamps();
+    }
 }

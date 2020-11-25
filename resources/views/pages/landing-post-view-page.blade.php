@@ -3,7 +3,7 @@
 @section('title', $post->title .' : '. $post->category->name )
 
 @section('content')
-<div class="container">
+<div class="container" id="app">
     <div class="row featured-post-heading">
        <div class="col-md-12 mt-5 mb-3">
           <h2 class="mb-4">{{ $post->title }}</h2>
@@ -37,6 +37,16 @@
                     By: {{ $post->user->name }}
                 </a>
                 </li>
+
+                @if(Auth::check())
+                    @if($post->favorited())
+                    <li class="list-group-item"><a href="{{ route('unsaved.post',['posts'=>$post->id]) }}">Unsaved</a></li>
+                    @else
+                    <li class="list-group-item"><a href="{{ route('save.post',['posts'=>$post->id]) }}">Save</a></li>
+                    @endif
+                @endif
+
+
                 <li class="list-group-item">{{ $post->postcount }} Views</li>
                 <li class="list-group-item"><a type="button" data-toggle="modal" data-target="#sendposttofriend"> {{  __('Send to Friend')}}</a></li>
                 <li class="list-group-item"><a href="{{ route('article.print_article', $post->slug) }}" target="__blank"> {{  __('Print')}}</a></li>

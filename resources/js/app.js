@@ -15,7 +15,6 @@ import'admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js';
 import'admin-lte/plugins/select2/js/select2.full.min.js';
 import'admin-lte/plugins/daterangepicker/daterangepicker.js';
 
-
 // Datepicket Code
 $('#datepicker').datepicker();
 

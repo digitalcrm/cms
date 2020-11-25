@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Favorite;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -290,6 +292,13 @@ class Post extends Model implements HasMedia
         $searchInput = '%'.$val.'%';
         return $query->where('title','like',$searchInput)
                     ->orWhere('body','like',$searchInput);
+    }
+
+    public function favorited()
+    {
+        return (bool) Favorite::where('user_id', Auth::id())
+                            ->where('post_id', $this->id)
+                            ->first();
     }
 
 }

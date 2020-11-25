@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ArticleLinkSendToFriend;
+use DB;
 use App\Post;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\ArticleLinkSendToFriend;
 
 class LandingPageController extends Controller
 {
@@ -73,5 +77,25 @@ class LandingPageController extends Controller
         $content = view('rss-feed', compact('rss_latest_posts','sites'));
 
         return response($content, 200)->header('Content-Type', 'text/xml');
+    }
+
+    public function favoritePost()
+    {
+        $post = Post::findOrFail(request('posts'));
+
+        // dd($post->favorited());
+
+        Auth::user()->favorites()->attach($post->id);
+
+        return back();
+    }
+
+    public function unFavoritePost()
+    {
+        $post = Post::findOrFail(request('posts'));
+
+        Auth::user()->favorites()->detach($post->id);
+
+        return back();
     }
 }
