@@ -16,7 +16,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('permission:list-post')->only('index');
+        $this->middleware('permission:list-post')->only(['index', 'savedPosts']);
         $this->middleware('permission:create-post')->only(['create', 'store']);
         $this->middleware('permission:view-post')->only('view');
         $this->middleware('permission:edit-post')->only(['edit', 'update', 'isActive']);
@@ -251,6 +251,7 @@ class PostController extends Controller
         }
         return redirect()->back()->withInfo('post status has been changed');
     }
+
     public function featured(Post $featured)
     {
         // dd($isActive->isactive);
@@ -264,5 +265,12 @@ class PostController extends Controller
             ]);
         }
         return redirect()->back()->withInfo('post featured has been changed');
+    }
+
+    public function auth_user_saved_post()
+    {
+        $savedPosts = Auth::user()->favorites()->get();
+
+        return view('cms.posts.saved-posts', compact('savedPosts'));
     }
 }

@@ -111,6 +111,12 @@
                                 <p>All Posts</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('posts.saved')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Saved Posts</p>
+                            </a>
+                        </li>
                         @endcan
 
                         @can('category-list')

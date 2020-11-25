@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\Posts\PostController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
     Route::Post('articles-share-to-friend', [LandingPageController::class, 'article_shares_to_friend'])->name('article_share.store');
     Route::get('print/{print_article}', [LandingPageController::class, 'print_article'])->name('article.print_article');
     Route::get('rss_latest_feed', [LandingPageController::class, 'rss_feed'])->name('rss_feed');
+
+    /* Favorite posts routes */
     Route::get('favorite/{posts:slug}/posts',[LandingPageController::class,'favoritePost'])->name('save.post');
     Route::get('unfavorite/{posts:slug}/posts',[LandingPageController::class,'unFavoritePost'])->name('unsaved.post');
 
@@ -60,6 +63,7 @@ use Illuminate\Support\Facades\Route;
 
         /** Post Category Tag routes Rolemanagement */
         Route::group(['namespace' => 'Posts'], function () {
+            Route::get('posts/saved','PostController@auth_user_saved_post')->name('posts.saved');
             Route::resource('posts', 'PostController');
             Route::put('posts/isactive/{isActive}','PostController@isActive')->name('posts.status');
             Route::put('posts/featured/{featured}','PostController@featured')->name('posts.featured');
