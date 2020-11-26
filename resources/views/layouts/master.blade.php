@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'CRM-Role-Management') }}</title>
+    <title>@yield('title',config('app.name', 'CRM-Role-Management'))</title>
 
     @section('style')
     <!-- Fonts -->
@@ -65,7 +65,8 @@
 
             <script src="{{ asset('assets/moment.min.js') }}"></script>
             <script src="{{ asset('assets/daterangepicker.min.js') }}"></script>
-
+            <!-- Scripts -->
+            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
             @livewireScripts
 
             <!-- for create part modal used in booking services-->

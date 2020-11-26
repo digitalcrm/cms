@@ -154,6 +154,49 @@
                 </li>
                 @endcan
 
+                {{-- Appearance --}}
+                <li class="nav-item has-treeview {{ request()->routeIs('customize*') ? 'menu-open' :'' }}">
+                    <a href="#" class="nav-link">
+                       <i class="nav-icon fas fa-palette"></i>
+                       <p>
+                          Appearance
+                          <i class="fas fa-angle-left right"></i>
+                       </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                       {{-- <li class="nav-item">
+                          <a href="themes.html" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Themes</p>
+                          </a>
+                       </li> --}}
+                       <li class="nav-item">
+                          <a href="{{ route('customize') }}" class="nav-link {{ request()->routeIs('customize') ? 'active' : '' }}">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Customize</p>
+                          </a>
+                       </li>
+                       {{-- <li class="nav-item">
+                          <a href="widgets.html" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Widgets</p>
+                          </a>
+                       </li>
+                       <li class="nav-item">
+                          <a href="menus.html" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Menus</p>
+                          </a>
+                       </li>
+                       <li class="nav-item">
+                          <a href="slider.html" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Slider</p>
+                          </a>
+                       </li> --}}
+                    </ul>
+                 </li>
+
                 <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>

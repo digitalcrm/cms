@@ -20,9 +20,10 @@ class DatabaseSeeder extends Seeder
             // CategorySeeder::class,
             // SubcategorySeeder::class,
             // TagSeeder::class,
-            PostSeeder::class,
+            // PostSeeder::class,
             // BookingServiceSeeder::class,
             // BookingEventSeeder::class,
+            LogoSeeder::class,
         ]);
     }
 }

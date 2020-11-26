@@ -151,6 +151,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('newsletter/imports/', 'Newsletter\ExportImportController@import')->name('imports_subscribers');
     Route::post('newsletter/imports/', 'Newsletter\ExportImportController@store')->name('store_subscribers.store');
 
+    ###########################################Theme Customization#################################################
+    Route::get('customization', Customization\CustomizationController::class)->name('customize');
+
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');
         Artisan::call('cache:clear');
