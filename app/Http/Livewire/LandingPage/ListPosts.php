@@ -29,7 +29,7 @@ class ListPosts extends Component
                                 ->featuredFilter(request('blogs'))
                                 ->authorFilter(request('author'))
                                 ->search(request('searchItem'))
-                                ->orderBy('id', 'desc')->paginate(10);
+                                ->orderBy('id', 'desc')->activeArticle()->paginate(10);
         return view('livewire.landing-page.list-posts', [
             'list_of_posts' => $lists_of_posts,
         ]);

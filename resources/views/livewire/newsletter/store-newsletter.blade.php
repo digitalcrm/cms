@@ -27,8 +27,9 @@
         @error('email') <small class="error">{{ $message }}</small> @enderror
 
         <button type="submit" class="btn btn-primary float-right mt-1"
-                wire:loading.attr="disabled"
-                wire:loading.class.remove="btn-primary"
-                wire:loading.class="btn-info">Subscribe</button>
+                wire:loading.attr="disabled">
+                <span wire:loading class="spinner-border text-dark spinner-border-sm" role="status" aria-hidden="true"></span>
+                Subscribe
+        </button>
     </form>
 </div>

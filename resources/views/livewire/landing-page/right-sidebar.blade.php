@@ -1,4 +1,4 @@
-<div>
+<div wire:poll.keep-alive>
         <div class="mb-4">
             <h6 class="mb-4">Search</h6>
             <form>
@@ -10,7 +10,6 @@
                 </div>
             </form>
         </div>
-
         <div class="mb-4">
             <h6 class="mb-4"><a href="{{ route('latest.latestpost',['blogs'=> 'featured']) }}">Featured Posts</a></h6>
             @forelse($featured_posts as $featured)

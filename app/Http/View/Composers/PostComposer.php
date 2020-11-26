@@ -26,7 +26,7 @@ class PostComposer
             'popular_posts', Post::activeArticle()->popularPost()->take(5)->get(),
         );
         $view->with(
-            'featured_posts', Post::activeArticle()->featuredPost()->take(5)->get(),
+            'featured_posts', Post::activeArticle()->featuredPost()->take(5)->latest()->get(),
         );
     }
 }
