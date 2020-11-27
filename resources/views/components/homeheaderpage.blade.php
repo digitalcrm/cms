@@ -2,7 +2,11 @@
     <header class="header">
         <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">AYN<span>SOFT</span></a>
+
+
+                @include('layouts.partials.homepage-logo')
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

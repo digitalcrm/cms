@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\DefaultProfile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Logo extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, DefaultProfile;
 
     protected $fillable = ['options', 'alt_text', 'logo_path'];
 
@@ -21,26 +22,33 @@ class Logo extends Model
     {
         return $this->logo_path
             ? Storage::disk($this->profilePhotoDisk())->url($this->logo_path)
-            : $this->defaultProfilePhotoUrl();
+            : $this->defaultLogo();
     }
 
-    /**
-     * Get the default profile photo URL if no profile photo has been uploaded.
-     *
-     * @return string
-     */
-    protected function defaultProfilePhotoUrl()
+    public function faviconURL()
     {
-        return 'https://via.placeholder.com/75x75?text=Visit+Blogging.com+Now';
+        return $this->logo_path
+            ? Storage::disk($this->profilePhotoDisk())->url($this->logo_path)
+            : $this->defaultFaviconUrl();
     }
 
-    /**
-     * Get the disk that profile photos should be stored on.
-     *
-     * @return string
-     */
-    protected function profilePhotoDisk()
+    public function homepageLogoURL()
     {
-        return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : 'public';
+        return $this->logo_path
+            ? Storage::disk($this->profilePhotoDisk())->url($this->logo_path)
+            : '';
     }
+
+    public function adminPageLogoURL()
+    {
+        return $this->logo_path
+            ? Storage::disk($this->profilePhotoDisk())->url($this->logo_path)
+            : $this->defaultGravatar();
+    }
+
+    public function altText()
+    {
+        return $this->alt_text ?? env('APP_NAME');
+    }
+
 }

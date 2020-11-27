@@ -11,6 +11,7 @@ class Customizelogo extends Component
 {
     use WithFileUploads;
 
+    public $removeFlashMessage;
     public $admin_panel_value;
     public $homepage_logo_value;
     public $favicon_value;
@@ -26,6 +27,13 @@ class Customizelogo extends Component
     // public $favicon_alt_text;
     public $favicon_path;
     public $uploadfavicon;
+
+    public $iteration;
+    public $iteration2;
+    public $iteration3;
+    public $save = false;
+    public $save2 = false;
+    public $save3 = false;
 
     public function updatedUploadadminlogo()
     {
@@ -48,18 +56,24 @@ class Customizelogo extends Component
 
     public function mount($admin_panel_value='admin_panel_logo', $homepage_logo_value='homepage__logo', $favicon_value='favicon')
     {
-        $this->admin_panel_value = Logo::where('options',$admin_panel_value)->firstOrFail();
-        $this->homepage_logo_value = Logo::where('options',$homepage_logo_value)->firstOrFail();
-        $this->favicon_value = Logo::where('options',$favicon_value)->firstOrFail();
+        try {
+            //code...
+            $this->admin_panel_value = Logo::where('options',$admin_panel_value)->firstOrFail();
+            $this->homepage_logo_value = Logo::where('options',$homepage_logo_value)->firstOrFail();
+            $this->favicon_value = Logo::where('options',$favicon_value)->firstOrFail();
 
-        $this->admin_alt_text = $this->admin_panel_value->alt_text ?? '' ;
-        $this->admin_logo_path = $this->admin_panel_value->profile_photo_url ?? '' ;
+            $this->admin_alt_text = $this->admin_panel_value->alt_text ?? '' ;
+            $this->admin_logo_path = $this->admin_panel_value->profile_photo_url ?? '' ;
 
-        $this->homepage_alt_text = $this->homepage_logo_value->alt_text ?? '' ;
-        $this->homepage_logo_path = $this->homepage_logo_value->profile_photo_url ?? '' ;
+            $this->homepage_alt_text = $this->homepage_logo_value->alt_text ?? '' ;
+            $this->homepage_logo_path = $this->homepage_logo_value->profile_photo_url ?? '' ;
 
-        // $this->favicon_alt_text = $this->favicon_value->alt_text ?? '' ;
-        $this->favicon_path = $this->favicon_value->profile_photo_url ?? '' ;
+            // $this->favicon_alt_text = $this->favicon_value->alt_text ?? '' ;
+            $this->favicon_path = $this->favicon_value->profile_photo_url ?? '' ;
+        } catch (\Throwable $e) {
+            // dd($e);
+            session()->flash('modelExceptionError', '😥 There is default value missing. Check Datatable! '.$e->getMessage());
+        }
     }
 
     public function adminLogoDataSave()
@@ -80,7 +94,9 @@ class Customizelogo extends Component
             'logo_path' => $adminlogopath,
         ]);
 
-        $this->reset('uploadadminlogo');
+        $this->save = true;
+        $this->iteration++;
+        // $this->emit('fileInputClear');
 
         session()->flash('message', 'Admin Logo uploaded successfully');
     }
@@ -104,6 +120,8 @@ class Customizelogo extends Component
         ]);
 
         // $this->reset('uploadhomepagelogo');
+        $this->save2 = true;
+        $this->iteration2++;
 
         session()->flash('message', 'Homepage Logo uploaded successfully');
     }
@@ -126,7 +144,9 @@ class Customizelogo extends Component
             'logo_path' => $faviconpath,
         ]);
 
-        $this->reset('uploadfavicon');
+        // $this->reset('uploadfavicon');
+        $this->save3 = true;
+        $this->iteration3++;
 
         session()->flash('message', 'Favicon uploaded successfully');
     }

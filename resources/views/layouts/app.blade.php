@@ -9,6 +9,8 @@
 
     <title>@yield('title', 'CMS')</title>
 
+    @include('layouts.partials.favicons')
+
     <!-- Styles -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">

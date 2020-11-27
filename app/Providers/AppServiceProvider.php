@@ -35,6 +35,11 @@ class AppServiceProvider extends ServiceProvider
         View::composer(
             ['livewire.landing-page.right-sidebar'], 'App\Http\View\Composers\TagComposer',
         );
+
+        View::composer('layouts.partials.favicons', 'App\Http\View\Composers\LogoManagementComposer');
+        View::composer('layouts.partials.homepage-logo', 'App\Http\View\Composers\HomePageLogoComposer');
+        View::composer('layouts.partials.admin-panel-logo', 'App\Http\View\Composers\AdminPanelLogoComposer');
+
         JsonResource::withoutWrapping();
         Paginator::useBootstrap();
         # this method is moved in User model with boot method

@@ -9,6 +9,8 @@
 
     <title>@yield('title',config('app.name', 'CRM-Role-Management'))</title>
 
+    @include('layouts.partials.favicons')
+
     @section('style')
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -81,6 +83,11 @@
                     $('#updateModal').modal('hide');
                 });
             </script>
+            {{-- <script>
+                window.livewire.on('fileInputClear', ()=>{
+                    $('#form-upload')[0].reset();
+                });
+            </script> --}}
         @show
 
     </body>

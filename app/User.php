@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\DefaultProfile;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
@@ -14,7 +15,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, HasRoles, SoftDeletes, HasFactory;
+    use Notifiable, HasRoles, SoftDeletes, HasFactory, DefaultProfile;
 
     /**
      * The attributes that are mass assignable.
@@ -82,11 +83,6 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
-    protected function deletepreviousImage($previous)
-    {
-        Storage::disk($this->profilePhotoDisk())->delete($previous);
-    }
-
     /**
      * Get the URL to the user's profile photo.
      *
@@ -97,26 +93,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->profile_photo_path
             ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
             : $this->defaultProfilePhotoUrl();
-    }
-
-    /**
-     * Get the default profile photo URL if no profile photo has been uploaded.
-     *
-     * @return string
-     */
-    protected function defaultProfilePhotoUrl()
-    {
-        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4AA';
-    }
-
-    /**
-     * Get the disk that profile photos should be stored on.
-     *
-     * @return string
-     */
-    protected function profilePhotoDisk()
-    {
-        return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : 'public';
     }
 
     public function getFullNameAttribute()
