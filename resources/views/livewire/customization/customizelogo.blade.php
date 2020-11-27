@@ -39,7 +39,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col" x-data="{ isUploading: false, progress: 0 }"
+                        x-on:livewire-upload-start="isUploading = true"
+                        x-on:livewire-upload-finish="isUploading = false"
+                        x-on:livewire-upload-error="isUploading = false"
+                        x-on:livewire-upload-progress="progress = $event.detail.progress">
                         <div class="form-group">
                             <label for="uploadadminlogo">Select Logo</label>
                             <input
@@ -50,6 +54,13 @@
                                 id="upload{{ $iteration }}">
                             <small id="logo_path" class="form-text text-muted">JPEG, PNG only</small>
                             @error('uploadadminlogo') <span class="text-danger">{{ $message }}</span> @enderror
+
+                            <div wire:loading wire:target="uploadadminlogo" x-show="isUploading">
+                                <progress max="100" x-bind:value="progress"></progress>
+                            </div>
+                            <div wire:loading wire:target="adminLogoDataSave">
+                                <progress max="100" x-bind:value="progress"></progress>
+                            </div>
                         </div>
                     </div>
 
@@ -96,12 +107,23 @@
                     @error('homepage_alt_text')<span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col" x-data="{ isUploading: false, progress: 0 }"
+                        x-on:livewire-upload-start="isUploading = true"
+                        x-on:livewire-upload-finish="isUploading = false"
+                        x-on:livewire-upload-error="isUploading = false"
+                        x-on:livewire-upload-progress="progress = $event.detail.progress">
                         <div class="form-group">
                             <label for="homepage_logo_path">Select Logo</label>
                             <input type="file" wire:model="uploadhomepagelogo" class="form-control-file" id="upload2{{ $iteration2 }}" name="logo_path">
                             <small id="homepage_logo_path" class="form-text text-muted">JPEG, PNG only</small>
                             @error('uploadhomepagelogo') <span class="text-danger">{{ $message }}</span> @enderror
+
+                            <div wire:loading wire:target="uploadhomepagelogo" x-show="isUploading">
+                                <progress max="100" x-bind:value="progress"></progress>
+                            </div>
+                            <div wire:loading wire:target="homePageLogoDataSave">
+                                <progress max="100" x-bind:value="progress"></progress>
+                            </div>
                         </div>
                     </div>
 
@@ -141,7 +163,11 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col">
+                    <div class="col" x-data="{ isUploading: false, progress: 0 }"
+                        x-on:livewire-upload-start="isUploading = true"
+                        x-on:livewire-upload-finish="isUploading = false"
+                        x-on:livewire-upload-error="isUploading = false"
+                        x-on:livewire-upload-progress="progress = $event.detail.progress">
                         <div class="form-group">
                             <label for="favicon">Select Logo</label>
                             <input wire:model="uploadfavicon"
@@ -149,6 +175,13 @@
                                 name="logo_path">
                             <small id="favicon" class="form-text text-muted">JPEG, PNG only</small>
                             @error('uploadfavicon') <span class="text-danger">{{ $message }}</span> @enderror
+
+                            <div wire:loading wire:target="uploadfavicon" x-show="isUploading">
+                                <progress max="100" x-bind:value="progress"></progress>
+                            </div>
+                            <div wire:loading wire:target="favicon">
+                                <progress max="100" x-bind:value="progress"></progress>
+                            </div>
                         </div>
                     </div>
 
