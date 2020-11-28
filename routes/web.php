@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Posts\PostController;
+use App\Http\Controllers\Settings\CmsSettingController;
 use App\Http\Controllers\Settings\SettingController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -135,6 +136,10 @@ use Illuminate\Support\Facades\Route;
         Route::get('setting-general', [SettingController::class,'general_setting'])->name('generals');
         Route::get('setting-appointments', [SettingController::class,'appointment_setting'])->name('appointments');
         Route::get('setting-cms', [SettingController::class,'cms_setting'])->name('cms_settings');
+
+        ###########################################CMS Settings#################################################
+        Route::resource('cms-visibility','CmsSettingController')->only(['index','update']);
+
     });
 
 
@@ -154,6 +159,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('newsletter/export/', 'Newsletter\ExportImportController@export')->name('exports_subscribers');
     Route::get('newsletter/imports/', 'Newsletter\ExportImportController@import')->name('imports_subscribers');
     Route::post('newsletter/imports/', 'Newsletter\ExportImportController@store')->name('store_subscribers.store');
+
 
     ###########################################Theme Customization#################################################
     Route::get('customization', Customization\CustomizationController::class)->name('customize');

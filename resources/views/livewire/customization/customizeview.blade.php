@@ -22,11 +22,7 @@
                             <div class="card-body p-0">
                                 <div class="list-group customize-left" id="list-tab" role="tablist">
 
-                                    <a class="list-group-item list-group-item-action active" id="v-pills-home-identity"
-                                        data-toggle="pill" href="#v-pills-identity" role="tab"
-                                        aria-controls="v-pills-identity" aria-selected="true"><i class="fas fa-image"></i>
-                                        Site Identity</a>
-                                    <a class="list-group-item list-group-item-action" id="v-pills-home-general"
+                                    <a class="list-group-item list-group-item-action active" id="v-pills-home-general"
                                         data-toggle="pill" href="#v-pills-general" role="tab"
                                         aria-controls="v-pills-general" aria-selected="true"><i class="fas fa-wrench"></i>
                                         General Settings</a>
@@ -99,7 +95,7 @@
                         <div class="tab-content" id="v-pills-tabContent">
 
                             <!-- Site Menus -->
-                            <div class="tab-pane fade" id="v-pills-general" role="tabpanel"
+                            <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel"
                                 aria-labelledby="v-pills-home-general">
                                 <form>
                                     <div class="card">
@@ -134,12 +130,6 @@
                             </div>
                             <!-- End -->
 
-                            <!-- Site Identity -->
-                            <div class="tab-pane fade show active" id="v-pills-identity" role="tabpanel" aria-labelledby="v-pills-home-identity">
-                                <livewire:customization.customizelogo />
-                            </div>
-
-                            <!-- End -->
                             <!-- Site Colors -->
                             <div class="tab-pane fade" id="v-pills-colors" role="tabpanel"
                                 aria-labelledby="v-pills-home-colors">

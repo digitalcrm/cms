@@ -23,10 +23,10 @@
             <div class="card shadow card-danger card-outline">
                 <!--/.card-header-->
                 <div class="card-body">
-                    <a href="{{ route('bookservices.index') }}" class="trash-link">
+                    <a href="{{ route('cms-visibility.index') }}" class="trash-link">
                         <span class=""><i class="fa fa-money-bill fa-2x"></i></span>
                         <div class="text-bold mt-2">
-                            ToolBar Active/Inactive
+                            Article Permissions (Active/Inactive)
                         </div>
                     </a>
                 </div>
@@ -38,7 +38,7 @@
             <div class="card shadow card-danger card-outline">
                 <!--/.card-header-->
                 <div class="card-body">
-                    <a href="{{ route('activity_type') }}" class="trash-link">
+                    <a href="#" class="trash-link">
                         <span class=""><i class="fa fa-money-bill fa-2x"></i></span>
                         <div class="text-bold mt-2">
                             Other Menu...continue..

@@ -4,6 +4,7 @@ namespace App;
 
 use App\Favorite;
 use Illuminate\Support\Str;
+use App\SettingCmsVisibility;
 use Spatie\Sluggable\HasSlug;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Sluggable\SlugOptions;
@@ -299,6 +300,18 @@ class Post extends Model implements HasMedia
         return (bool) Favorite::where('user_id', Auth::id())
                             ->where('post_id', $this->id)
                             ->first();
+    }
+
+    /**
+     * This function is used for getting the SettingCmsVisibility value for hide/unhide the values
+     *
+     *
+     */
+    public function get_first_row_of_visibility($columnVisibilityName)
+    {
+        $post_date_value = SettingCmsVisibility::where('visibility_name', $columnVisibilityName)->first();
+
+        return $post_date_value->action;
     }
 
 }

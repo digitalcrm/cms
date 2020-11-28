@@ -23,7 +23,10 @@ class DatabaseSeeder extends Seeder
             // PostSeeder::class,
             // BookingServiceSeeder::class,
             // BookingEventSeeder::class,
-            LogoSeeder::class,
+
+            // Below are mandatory part for seeding the value
+            // LogoSeeder::class,
+            SettingCmsVisibilitySeeder::class,
         ]);
     }
 }

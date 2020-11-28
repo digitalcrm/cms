@@ -1,4 +1,5 @@
-<div wire:poll.keep-alive>
+{{-- <div wire:poll.keep-alive> --}}
+<div>
     <div class="row featured-post-heading">
         <div class="col-md-12 mt-5 mb-3">
            <h2 class="mb-4">
