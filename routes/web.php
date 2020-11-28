@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Posts\PostController;
+use App\Http\Controllers\Settings\SettingController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -130,7 +131,10 @@ use Illuminate\Support\Facades\Route;
     /* Setting controller invokable */
 
     Route::group(['namespace' => 'Settings'], function () {
-        Route::get('settings', 'SettingController')->name('settings');
+        Route::get('settings', [SettingController::class,'index'])->name('settings');
+        Route::get('setting-general', [SettingController::class,'general_setting'])->name('generals');
+        Route::get('setting-appointments', [SettingController::class,'appointment_setting'])->name('appointments');
+        Route::get('setting-cms', [SettingController::class,'cms_setting'])->name('cms_settings');
     });
 
 

@@ -17,8 +17,23 @@ class SettingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function index()
     {
         return view('settings.setting');
+    }
+
+    public function general_setting()
+    {
+        return view('settings.setting-general');
+    }
+
+    public function appointment_setting()
+    {
+        return view('settings.setting-appointment');
+    }
+
+    public function cms_setting()
+    {
+        return view('settings.setting-cms');
     }
 }
