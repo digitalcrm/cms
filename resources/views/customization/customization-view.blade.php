@@ -19,4 +19,9 @@
     </script>
 @endsection --}}
 
+@section('scripts')
+    @parent
+        <script src="{{ asset('jscolor.min.js') }}"></script>
+    @endsection
+
 @endsection

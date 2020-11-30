@@ -22,9 +22,10 @@
                             <div class="card-body p-0">
                                 <div class="list-group customize-left" id="list-tab" role="tablist">
 
-                                    <a class="list-group-item list-group-item-action" id="v-pills-home-colors"
+                                    <a class="list-group-item list-group-item-action active" id="v-pills-home-colors"
                                         data-toggle="pill" href="#v-pills-colors" role="tab" aria-controls="v-pills-colors"
                                         aria-selected="true"><i class="fas fa-palette"></i> Colors</a>
+
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-background-image"
                                         data-toggle="pill" href="#v-pills-background-image" role="tab"
                                         aria-controls="v-pills-background-image" aria-selected="true"><i
@@ -89,56 +90,13 @@
                     </div>
                     <div class="col-9 pb-5">
                         <div class="tab-content" id="v-pills-tabContent">
-
-                            <!-- Site Menus -->
-
                             <!-- Site Colors -->
-                            <div class="tab-pane fade" id="v-pills-colors" role="tabpanel"
+                            <div class="tab-pane fade show active" id="v-pills-colors" role="tabpanel"
                                 aria-labelledby="v-pills-home-colors">
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">Color Settings</div>
-                                        <div class="card-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Header Background</label>
-                                                    <input class="jscolor float-right" value="222">
-                                                </div>
-                                                <hr>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Footer Background</label>
-                                                    <input class="jscolor float-right" value="ffffff">
-                                                </div>
-                                                <hr>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Sub Footer Background</label>
-                                                    <input class="jscolor float-right" value="000000">
-                                                </div>
-                                                <hr>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Link Color</label>
-                                                    <input class="jscolor float-right" value="007bff">
-                                                </div>
-
-                                                <hr>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Button Color</label>
-                                                    <input class="jscolor float-right" value="32AB19">
-                                                </div>
-                                                <hr>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Heading Color</label>
-                                                    <input class="jscolor float-right" value="FE9C46">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="card-footer text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <livewire:customization.homepage-style />
                             </div>
                             <!-- End -->
+                            
                             <!-- Site Background Image -->
                             <div class="tab-pane fade" id="v-pills-background-image" role="tabpanel"
                                 aria-labelledby="v-pills-home-background-image">
