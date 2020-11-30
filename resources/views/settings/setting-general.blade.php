@@ -27,7 +27,14 @@
                                 <a class="list-group-item list-group-item-action active" id="v-pills-home-identity"
                                     data-toggle="pill" href="#v-pills-identity" role="tab"
                                     aria-controls="v-pills-identity" aria-selected="true"><i class="fas fa-image"></i>
-                                    Logo Management</a>
+                                    Logo Management
+                                </a>
+
+                                <a class="list-group-item list-group-item-action" id="v-pills-home-general"
+                                    data-toggle="pill" href="#v-pills-general" role="tab"
+                                    aria-controls="v-pills-general" aria-selected="true"><i class="fas fa-wrench"></i>
+                                    Article Settings
+                                </a>
 
                             </div>
                         </div>
@@ -42,6 +49,13 @@
                             <livewire:customization.customizelogo />
                         </div>
                         <!-- End -->
+
+                        {{-- Article Setting --}}
+                        <div class="tab-pane fade" id="v-pills-general" role="tabpanel"
+                            aria-labelledby="v-pills-home-general">
+                            <livewire:customization.article-limit />
+                        </div>
+                        {{-- End --}}
                     </div>
                 </div>
             </div>

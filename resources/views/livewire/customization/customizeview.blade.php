@@ -22,10 +22,6 @@
                             <div class="card-body p-0">
                                 <div class="list-group customize-left" id="list-tab" role="tablist">
 
-                                    <a class="list-group-item list-group-item-action active" id="v-pills-home-general"
-                                        data-toggle="pill" href="#v-pills-general" role="tab"
-                                        aria-controls="v-pills-general" aria-selected="true"><i class="fas fa-wrench"></i>
-                                        General Settings</a>
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-colors"
                                         data-toggle="pill" href="#v-pills-colors" role="tab" aria-controls="v-pills-colors"
                                         aria-selected="true"><i class="fas fa-palette"></i> Colors</a>
@@ -95,40 +91,6 @@
                         <div class="tab-content" id="v-pills-tabContent">
 
                             <!-- Site Menus -->
-                            <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel"
-                                aria-labelledby="v-pills-home-general">
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">General Settings</div>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Number of Posts Display on Homepage</label>
-                                                <input type="email" placeholder="10" class="form-control"
-                                                    id="exampleInputEmail1" aria-describedby="emailHelp">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Number of Categories Display on Internal
-                                                    Page</label>
-                                                <input type="email" placeholder="20" class="form-control"
-                                                    id="exampleInputEmail1" aria-describedby="emailHelp">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Google Analytics Tracking Code</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                    rows="5"></textarea>
-                                                <small>Insert the complete tracking script. Where can I <a
-                                                        title="Where can I find my tracking code from within my Google Analytics account?"
-                                                        href="http://www.google.com/analytics/" target="_blank">find my
-                                                        tracking code</a> from within my Google Analytics account?</small>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- End -->
 
                             <!-- Site Colors -->
                             <div class="tab-pane fade" id="v-pills-colors" role="tabpanel"

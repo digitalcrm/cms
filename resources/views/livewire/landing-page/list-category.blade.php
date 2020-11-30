@@ -21,7 +21,7 @@
 
             @endforelse
 
-            @if(count($article_by_category) == $this->perPage)
+            @if(count($article_by_category) == $this->catLimit)
             <div class="col-lg-12">
                 <a wire:click="load" class="btn btn-outline-secondary">All Categories</a>
             </div>

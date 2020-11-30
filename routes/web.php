@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\Posts\PostController;
-use App\Http\Controllers\Settings\CmsSettingController;
 use App\Http\Controllers\Settings\SettingController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;

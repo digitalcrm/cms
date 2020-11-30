@@ -2,6 +2,7 @@
 
 namespace App\Http\View\Composers;
 
+use App\ArticleLimit;
 use App\Category;
 use Illuminate\View\View;
 
@@ -19,6 +20,7 @@ class CategoryComposer
      */
     public function compose(View $view)
     {
+        // $getPaginationForCategory = ArticleLimit::first() ?? 5;
         $view->with('blog_categories', Category::latest()->take(5)->get());
     }
 }
