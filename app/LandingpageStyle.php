@@ -3,9 +3,10 @@
 namespace App;
 
 use App\Traits\DefaultProfile;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class LandingpageStyle extends Model
 {
@@ -26,4 +27,15 @@ class LandingpageStyle extends Model
         'background_image',
         'backgroundstatus',
     ];
+    
+    protected $appends = [
+        'profile_photo_url',
+    ];
+
+    public function getProfilePhotoUrlAttribute()
+    {
+        return $this->background_image
+            ? Storage::disk($this->profilePhotoDisk())->url($this->background_image)
+            : $this->defaultGravatar();
+    }
 }

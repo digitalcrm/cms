@@ -29,17 +29,21 @@
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-background-image"
                                         data-toggle="pill" href="#v-pills-background-image" role="tab"
                                         aria-controls="v-pills-background-image" aria-selected="true"><i
-                                            class="fas fa-chalkboard"></i> Background Image</a>
-                                    <a class="list-group-item list-group-item-action" id="v-pills-home-menus"
+                                        class="fas fa-chalkboard"></i> Background Image</a>
+
+                                    {{-- <a class="list-group-item list-group-item-action" id="v-pills-home-menus"
                                         data-toggle="pill" href="#v-pills-menus" role="tab" aria-controls="v-pills-menus"
-                                        aria-selected="true"><i class="fas fa-stream"></i> Menus</a>
+                                        aria-selected="true"><i class="fas fa-stream"></i> Menus</a> --}}
+                                    
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-slider"
                                         data-toggle="pill" href="#v-pills-slider" role="tab" aria-controls="v-pills-slider"
                                         aria-selected="true"><i class="fas fa-sliders-h"></i> Slider</a>
+                                    
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-services"
                                         data-toggle="pill" href="#v-pills-services" role="tab"
                                         aria-controls="v-pills-services" aria-selected="true"><i
-                                            class="fas fa-user-cog"></i> Services</a>
+                                        class="fas fa-user-cog"></i> Services</a>
+
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-intro"
                                         data-toggle="pill" href="#v-pills-intro" role="tab" aria-controls="v-pills-color"
                                         aria-selected="true"><i class="fas fa-info-circle"></i> Intro</a>
@@ -77,9 +81,11 @@
                                         data-toggle="pill" href="#v-pills-social-media" role="tab"
                                         aria-controls="v-pills-social-media" aria-selected="true"><i
                                             class="fas fa-share-square"></i> Social Media</a>
-                                    <a class="list-group-item list-group-item-action" id="v-pills-home-banner"
+
+                                    {{-- <a class="list-group-item list-group-item-action" id="v-pills-home-banner"
                                         data-toggle="pill" href="#v-pills-banner" role="tab" aria-controls="v-pills-banner"
-                                        aria-selected="true"><i class="fas fa-audio-description"></i> Banner Management</a>
+                                        aria-selected="true"><i class="fas fa-audio-description"></i> Banner Management</a> --}}
+                                        
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-additional-css"
                                         data-toggle="pill" href="#v-pills-additional-css" role="tab"
                                         aria-controls="v-pills-additional-css" aria-selected="true"><i
@@ -101,28 +107,13 @@
                             <div class="tab-pane fade" id="v-pills-background-image" role="tabpanel"
                                 aria-labelledby="v-pills-home-background-image">
                                 <!-- Background Image -->
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">
-                                            Background Image
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="exampleFormControlFile1">Select Image</label>
-                                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                                <small id="emailHelp" class="form-text text-muted">JPEG, PNG only</small>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer border-top white-bg text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <livewire:customization.background-image />
                                 <!-- End -->
                             </div>
                             <!-- End -->
+
                             <!-- Site Menus -->
-                            <div class="tab-pane fade" id="v-pills-menus" role="tabpanel"
+                            {{-- <div class="tab-pane fade" id="v-pills-menus" role="tabpanel"
                                 aria-labelledby="v-pills-home-menus">
                                 <form>
                                     <div class="card">
@@ -134,8 +125,9 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                             <!-- End -->
+                            
                             <!-- Site Slider -->
                             <div class="tab-pane fade" id="v-pills-slider" role="tabpanel"
                                 aria-labelledby="v-pills-home-slider">
@@ -1079,7 +1071,7 @@
                             <!-- End -->
 
                             <!-- Banner Management -->
-                            <div class="tab-pane fade" id="v-pills-banner" role="tabpanel"
+                            {{-- <div class="tab-pane fade" id="v-pills-banner" role="tabpanel"
                                 aria-labelledby="v-pills-home-banner">
                                 <form>
                                     <div class="card">
@@ -1098,7 +1090,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                             <!-- End -->
 
 
