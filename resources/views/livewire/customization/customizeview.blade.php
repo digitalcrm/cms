@@ -23,30 +23,34 @@
                                 <div class="list-group customize-left" id="list-tab" role="tablist">
 
                                     <a class="list-group-item list-group-item-action active" id="v-pills-home-colors"
-                                        data-toggle="pill" href="#v-pills-colors" role="tab" aria-controls="v-pills-colors"
-                                        aria-selected="true"><i class="fas fa-palette"></i> Colors</a>
+                                        data-toggle="pill" href="#v-pills-colors" role="tab"
+                                        aria-controls="v-pills-colors" aria-selected="true"><i
+                                            class="fas fa-palette"></i> Colors</a>
 
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-background-image"
                                         data-toggle="pill" href="#v-pills-background-image" role="tab"
                                         aria-controls="v-pills-background-image" aria-selected="true"><i
-                                        class="fas fa-chalkboard"></i> Background Image</a>
+                                            class="fas fa-chalkboard"></i> Background Image</a>
 
                                     {{-- <a class="list-group-item list-group-item-action" id="v-pills-home-menus"
                                         data-toggle="pill" href="#v-pills-menus" role="tab" aria-controls="v-pills-menus"
                                         aria-selected="true"><i class="fas fa-stream"></i> Menus</a> --}}
-                                    
+
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-slider"
-                                        data-toggle="pill" href="#v-pills-slider" role="tab" aria-controls="v-pills-slider"
-                                        aria-selected="true"><i class="fas fa-sliders-h"></i> Slider</a>
-                                    
+                                        data-toggle="pill" href="#v-pills-slider" role="tab"
+                                        aria-controls="v-pills-slider" aria-selected="true"><i
+                                            class="fas fa-sliders-h"></i> Slider</a>
+
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-services"
                                         data-toggle="pill" href="#v-pills-services" role="tab"
                                         aria-controls="v-pills-services" aria-selected="true"><i
-                                        class="fas fa-user-cog"></i> Services</a>
+                                            class="fas fa-user-cog"></i> Services</a>
 
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-intro"
-                                        data-toggle="pill" href="#v-pills-intro" role="tab" aria-controls="v-pills-color"
-                                        aria-selected="true"><i class="fas fa-info-circle"></i> Intro</a>
+                                        data-toggle="pill" href="#v-pills-intro" role="tab"
+                                        aria-controls="v-pills-color" aria-selected="true"><i
+                                            class="fas fa-info-circle"></i> Intro</a>
+
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-who-we-are"
                                         data-toggle="pill" href="#v-pills-who-we-are" role="tab"
                                         aria-controls="v-pills-who-we-are" aria-selected="true"><i
@@ -75,8 +79,9 @@
                                         aria-controls="v-pills-say-hello" aria-selected="true"><i
                                             class="fas fa-envelope-open-text"></i> Say Hello</a>
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-footer"
-                                        data-toggle="pill" href="#v-pills-footer" role="tab" aria-controls="v-pills-footer"
-                                        aria-selected="true"><i class="fas fa-columns"></i> Footer</a>
+                                        data-toggle="pill" href="#v-pills-footer" role="tab"
+                                        aria-controls="v-pills-footer" aria-selected="true"><i
+                                            class="fas fa-columns"></i> Footer</a>
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-social-media"
                                         data-toggle="pill" href="#v-pills-social-media" role="tab"
                                         aria-controls="v-pills-social-media" aria-selected="true"><i
@@ -85,7 +90,7 @@
                                     {{-- <a class="list-group-item list-group-item-action" id="v-pills-home-banner"
                                         data-toggle="pill" href="#v-pills-banner" role="tab" aria-controls="v-pills-banner"
                                         aria-selected="true"><i class="fas fa-audio-description"></i> Banner Management</a> --}}
-                                        
+
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-additional-css"
                                         data-toggle="pill" href="#v-pills-additional-css" role="tab"
                                         aria-controls="v-pills-additional-css" aria-selected="true"><i
@@ -102,7 +107,7 @@
                                 <livewire:customization.homepage-style />
                             </div>
                             <!-- End -->
-                            
+
                             <!-- Site Background Image -->
                             <div class="tab-pane fade" id="v-pills-background-image" role="tabpanel"
                                 aria-labelledby="v-pills-home-background-image">
@@ -127,399 +132,31 @@
                                 </form>
                             </div> --}}
                             <!-- End -->
-                            
+
                             <!-- Site Slider -->
                             <div class="tab-pane fade" id="v-pills-slider" role="tabpanel"
                                 aria-labelledby="v-pills-home-slider">
-
-                                <div class="accordion" id="accordionExample">
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold" id="headingOne">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link" type="button" data-toggle="collapse"
-                                                    data-target="#collapseOne" aria-expanded="true"
-                                                    aria-controls="collapseOne">
-                                                    Slide #1
-                                                </button>
-                                            </h2>
-                                        </div>
-
-                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                            data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                <!-- Slider -->
-                                                <form>
-                                                    <div class="card-body">
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlFile1">Select Image</label>
-                                                            <input type="file" class="form-control-file"
-                                                                id="exampleFormControlFile1">
-                                                            <small id="emailHelp" class="form-text text-muted">JPEG, PNG
-                                                                only</small>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Heading</label>
-                                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                                aria-describedby="emailHelp">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Paragraph</label>
-                                                            <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                                rows="3"></textarea>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <label for="exampleInputEmail1">Button Text 1</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="exampleInputEmail1"
-                                                                        aria-describedby="emailHelp">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <label for="exampleInputEmail1">Button Text 2</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="exampleInputEmail1"
-                                                                        aria-describedby="emailHelp">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                            </div>
-                                            <div class="card-footer border-top white-bg text-right">
-                                                <button type="submit" class="btn btn-primary">Save</button>
-                                            </div>
-                                            </form>
-                                            <!-- End -->
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold" id="headingTwo">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                                    data-target="#collapseTwo" aria-expanded="false"
-                                                    aria-controls="collapseTwo">
-                                                    Slide #2
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                            data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                <!-- Slider -->
-                                                <form>
-                                                    <div class="card-body">
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlFile1">Select Image</label>
-                                                            <input type="file" class="form-control-file"
-                                                                id="exampleFormControlFile1">
-                                                            <small id="emailHelp" class="form-text text-muted">JPEG, PNG
-                                                                only</small>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Heading</label>
-                                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                                aria-describedby="emailHelp">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Paragraph</label>
-                                                            <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                                rows="3"></textarea>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <label for="exampleInputEmail1">Button Text 1</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="exampleInputEmail1"
-                                                                        aria-describedby="emailHelp">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <label for="exampleInputEmail1">Button Text 2</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="exampleInputEmail1"
-                                                                        aria-describedby="emailHelp">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                            </div>
-                                            <div class="card-footer border-top white-bg text-right">
-                                                <button type="submit" class="btn btn-primary">Save</button>
-                                            </div>
-                                            </form>
-                                            <!-- End -->
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold" id="headingThree">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                                    data-target="#collapseThree" aria-expanded="false"
-                                                    aria-controls="collapseThree">
-                                                    Slide #3
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                            data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                <!-- Slider -->
-                                                <form>
-                                                    <div class="card-body">
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlFile1">Select Image</label>
-                                                            <input type="file" class="form-control-file"
-                                                                id="exampleFormControlFile1">
-                                                            <small id="emailHelp" class="form-text text-muted">JPEG, PNG
-                                                                only</small>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Heading</label>
-                                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                                aria-describedby="emailHelp">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Paragraph</label>
-                                                            <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                                rows="3"></textarea>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <label for="exampleInputEmail1">Button Text 1</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="exampleInputEmail1"
-                                                                        aria-describedby="emailHelp">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <label for="exampleInputEmail1">Button Text 2</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="exampleInputEmail1"
-                                                                        aria-describedby="emailHelp">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <!-- End -->
-                                            </div>
-                                            <div class="card-footer border-top white-bg text-right">
-                                                <button type="submit" class="btn btn-primary">Save</button>
-                                            </div>
-                                            </form>
-                                            <!-- End -->
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                                <livewire:customization.slider />
                             </div>
                             <!-- End -->
                             <!-- Site Services -->
                             <div class="tab-pane fade" id="v-pills-services" role="tabpanel"
                                 aria-labelledby="v-pills-home-services">
                                 <!-- Services -->
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">
-                                            Services
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Heading</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Paragraph</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                    rows="3"></textarea>
-                                            </div>
-                                            <hr>
-                                            <!-- Block #1 -->
-                                            <div class="row">
-                                                <div class="col-md-12"><span class="badge badge-info">Block #1</span></div>
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Icon</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Title</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Paragraph</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                            rows="3"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <!-- Block #2 -->
-                                            <div class="row">
-                                                <div class="col-md-12"><span class="badge badge-info">Block #2</span></div>
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Icon</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Title</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Paragraph</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                            rows="3"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <!-- Block #3 -->
-                                            <div class="row">
-                                                <div class="col-md-12"><span class="badge badge-info">Block #3</span></div>
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Icon</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Title</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Paragraph</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                            rows="3"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                        <div class="card-footer border-top white-bg text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <livewire:customization.service />
                                 <!-- End -->
                             </div>
                             <!-- End -->
                             <!-- Site Intro -->
                             <div class="tab-pane fade" id="v-pills-intro" role="tabpanel"
                                 aria-labelledby="v-pills-home-intro">
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">Intro</div>
-                                        <div class="card-body">
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Text</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                    rows="3"></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Background Color</label>
-                                                <input class="jscolor float-right" value="008eff">
-                                            </div>
-                                            <hr>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Font Color</label>
-                                                <input class="jscolor float-right" value="ffffff">
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-
+                                <livewire:customization.intro />
                             </div>
                             <!-- End -->
                             <!-- Site Who We Are -->
                             <div class="tab-pane fade" id="v-pills-who-we-are" role="tabpanel"
                                 aria-labelledby="v-pills-home-who-we-are">
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">Who We Are</div>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="exampleFormControlFile1">Select Image</label>
-                                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                                <small id="emailHelp" class="form-text text-muted">JPEG, PNG only</small>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Main Title</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Sub Title</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Paragraph</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                    rows="3"></textarea>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Button Text 1</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Button Text 2</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="card-footer text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <livewire:customization.who-we-are />
                             </div>
                             <!-- End -->
                             <!-- Clients -->

@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
 
             // Below are mandatory part for seeding the value
             // LogoSeeder::class,
-            SettingCmsVisibilitySeeder::class,
+            // SettingCmsVisibilitySeeder::class,
+            ThemeSliderSeeder::class,
         ]);
     }
 }
