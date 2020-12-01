@@ -17,6 +17,8 @@
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/daterangepicker.css') }}">
 
+    @include('themes.theme1.backend_css.backend-custom')
+
     @livewireStyles
 
     @section('styles')

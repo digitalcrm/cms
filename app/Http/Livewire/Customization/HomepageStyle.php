@@ -90,7 +90,7 @@ class HomepageStyle extends Component
             $this->a_tag_hover_color = $firstRowData->a_tag_hover_color;
             $this->primary_color = $firstRowData->primary_color;
             $this->secondary_color = $firstRowData->secondary_color;
-            $this->h2_tag_color = $firstRowData->h2_tag_color;            
+            $this->h2_tag_color = $firstRowData->h2_tag_color;
         } catch (\Throwable $th) {
             $this->notFoundData = $th->getMessage();
         }

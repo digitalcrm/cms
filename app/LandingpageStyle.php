@@ -27,7 +27,7 @@ class LandingpageStyle extends Model
         'background_image',
         'backgroundstatus',
     ];
-    
+
     protected $appends = [
         'profile_photo_url',
     ];
