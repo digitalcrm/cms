@@ -22,7 +22,7 @@
                             <div class="card-body p-0">
                                 <div class="list-group customize-left" id="list-tab" role="tablist">
 
-                                    <a class="list-group-item list-group-item-action active" id="v-pills-home-colors"
+                                    <a class="list-group-item list-group-item-action" id="v-pills-home-colors"
                                         data-toggle="pill" href="#v-pills-colors" role="tab"
                                         aria-controls="v-pills-colors" aria-selected="true"><i
                                             class="fas fa-palette"></i> Colors</a>
@@ -36,7 +36,7 @@
                                         data-toggle="pill" href="#v-pills-menus" role="tab" aria-controls="v-pills-menus"
                                         aria-selected="true"><i class="fas fa-stream"></i> Menus</a> --}}
 
-                                    <a class="list-group-item list-group-item-action" id="v-pills-home-slider"
+                                    <a class="list-group-item list-group-item-action {{ (session()->has('tab')) ? 'active' : '' }}" id="v-pills-home-slider"
                                         data-toggle="pill" href="#v-pills-slider" role="tab"
                                         aria-controls="v-pills-slider" aria-selected="true"><i
                                             class="fas fa-sliders-h"></i> Slider</a>
@@ -77,24 +77,12 @@
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-say-hello"
                                         data-toggle="pill" href="#v-pills-say-hello" role="tab"
                                         aria-controls="v-pills-say-hello" aria-selected="true"><i
-                                            class="fas fa-envelope-open-text"></i> Say Hello</a>
-                                    <a class="list-group-item list-group-item-action" id="v-pills-home-footer"
-                                        data-toggle="pill" href="#v-pills-footer" role="tab"
-                                        aria-controls="v-pills-footer" aria-selected="true"><i
-                                            class="fas fa-columns"></i> Footer</a>
-                                    <a class="list-group-item list-group-item-action" id="v-pills-home-social-media"
-                                        data-toggle="pill" href="#v-pills-social-media" role="tab"
-                                        aria-controls="v-pills-social-media" aria-selected="true"><i
-                                            class="fas fa-share-square"></i> Social Media</a>
-
-                                    {{-- <a class="list-group-item list-group-item-action" id="v-pills-home-banner"
-                                        data-toggle="pill" href="#v-pills-banner" role="tab" aria-controls="v-pills-banner"
-                                        aria-selected="true"><i class="fas fa-audio-description"></i> Banner Management</a> --}}
+                                        class="fas fa-envelope-open-text"></i> Say Hello</a>
 
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-additional-css"
                                         data-toggle="pill" href="#v-pills-additional-css" role="tab"
                                         aria-controls="v-pills-additional-css" aria-selected="true"><i
-                                            class="fas fa-file-code"></i> Additional CSS</a>
+                                        class="fas fa-file-code"></i> Additional CSS</a>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +90,7 @@
                     <div class="col-9 pb-5">
                         <div class="tab-content" id="v-pills-tabContent">
                             <!-- Site Colors -->
-                            <div class="tab-pane fade show active" id="v-pills-colors" role="tabpanel"
+                            <div class="tab-pane fade show" id="v-pills-colors" role="tabpanel"
                                 aria-labelledby="v-pills-home-colors">
                                 <livewire:customization.homepage-style />
                             </div>
@@ -134,7 +122,7 @@
                             <!-- End -->
 
                             <!-- Site Slider -->
-                            <div class="tab-pane fade" id="v-pills-slider" role="tabpanel"
+                            <div class="tab-pane fade {{ (session()->has('tab')) ? 'show active' : '' }}" id="v-pills-slider" role="tabpanel"
                                 aria-labelledby="v-pills-home-slider">
                                 <livewire:customization.slider />
                             </div>
@@ -447,289 +435,21 @@
                             <!-- Site Statistics -->
                             <div class="tab-pane fade" id="v-pills-statistics" role="tabpanel"
                                 aria-labelledby="v-pills-home-statistics">
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">Statistics</div>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Background Color</label>
-                                                <input class="jscolor float-right" value="008eff" autocomplete="off"
-                                                    style="background-image: none; background-color: rgb(0, 142, 255); color: rgb(255, 255, 255);">
-                                            </div>
-                                            <hr>
-
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <span class="badge badge-pill badge-info">Stat #1</span>
-
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Main Text</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Sub Text</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="col-3">
-                                                    <span class="badge badge-pill badge-info">Stat #2</span>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Main Text</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Sub Text</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-3">
-                                                    <span class="badge badge-pill badge-info">Stat #3</span>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Main Text</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Sub Text</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-3">
-                                                    <span class="badge badge-pill badge-info">Stat #4</span>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Main Text</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Sub Text</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-
-                                        </div>
-                                        <div class="card-footer text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <livewire:customization.setting-stats /> 
                             </div>
                             <!-- End -->
                             <!-- Site Contact Us -->
                             <div class="tab-pane fade" id="v-pills-contact-us" role="tabpanel"
                                 aria-labelledby="v-pills-home-contact-us">
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">
-                                            Contact Us
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Main Title</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Paragraph</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                    rows="3"></textarea>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Address</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                    rows="6"></textarea>
-                                            </div>
-
-                                        </div>
-                                        <div class="card-footer border-top white-bg text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <livewire:customization.contact-setting />
                             </div>
                             <!-- End -->
                             <!-- Site Say Hello -->
                             <div class="tab-pane fade" id="v-pills-say-hello" role="tabpanel"
                                 aria-labelledby="v-pills-home-say-hello">
-                                <form>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            Say Hello
-                                        </div>
-                                        <div class="card-footer text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <livewire:customization.welcom-widget />
                             </div>
                             <!-- End -->
-                            <!-- Site Footer -->
-                            <div class="tab-pane fade" id="v-pills-footer" role="tabpanel"
-                                aria-labelledby="v-pills-home-footer">
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">
-                                            Footer
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="row">
-
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Column #1 Title</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Column #2 Title</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Column #3 Title</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Column #4 Title</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="card-footer border-top white-bg text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- End -->
-                            <!-- Site Social Media -->
-                            <div class="tab-pane fade" id="v-pills-social-media" role="tabpanel"
-                                aria-labelledby="v-pills-home-social-media">
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">Social Media</div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Facebook URL</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Twitter URL</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Linkedin URL</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">RSS URL</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Instagram URL</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">YouTube URL</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Pinterest URL</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                                            aria-describedby="emailHelp">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="card-footer text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Banner Management -->
-                            {{-- <div class="tab-pane fade" id="v-pills-banner" role="tabpanel"
-                                aria-labelledby="v-pills-home-banner">
-                                <form>
-                                    <div class="card">
-                                        <div class="card-header text-primary font-weight-bold">Bananer Management</div>
-                                        <div class="card-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlTextarea1">Paste Banner Code</label>
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                        rows="3"></textarea>
-                                                    <small>HTML and Javascript Code</small>
-                                                </div>
-                                        </div>
-                                        <div class="card-footer text-right">
-                                            <button type="submit" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div> --}}
-                            <!-- End -->
-
 
                             <!-- Site Additional CSS -->
                             <div class="tab-pane fade" id="v-pills-additional-css" role="tabpanel"

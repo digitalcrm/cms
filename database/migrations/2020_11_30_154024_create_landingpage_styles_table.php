@@ -24,6 +24,9 @@ class CreateLandingpageStylesTable extends Migration
             $table->string('primary_color')->nullable();
             $table->string('secondary_color')->nullable();
             $table->string('h2_tag_color')->nullable();
+            $table->string('stats_back_color')->nullable();
+            $table->string('team_back_color')->nullable();
+            $table->string('client_back_color')->nullable();
             $table->string('background_image')->nullable();
             $table->tinyInteger('backgroundstatus')->nullable();
             $table->timestamps();

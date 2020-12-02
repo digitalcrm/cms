@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Customization\UrlBasedCustomizationController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Settings\SettingController;
 use Illuminate\Support\Facades\Artisan;
@@ -161,6 +162,8 @@ use Illuminate\Support\Facades\Route;
 
     ###########################################Theme Customization#################################################
     Route::get('customization', Customization\CustomizationController::class)->name('customize');
+    Route::put('slider/{update}', [UrlBasedCustomizationController::class, 'sliderupdate'])->name('slider.update');
+    Route::put('service/{update}', [UrlBasedCustomizationController::class, 'serviceupdate'])->name('service.update');
 
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');

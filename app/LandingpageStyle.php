@@ -24,6 +24,9 @@ class LandingpageStyle extends Model
         'primary_color',
         'secondary_color',
         'h2_tag_color',
+        'stats_back_color',
+        'team_back_color',
+        'client_back_color',
         'background_image',
         'backgroundstatus',
     ];

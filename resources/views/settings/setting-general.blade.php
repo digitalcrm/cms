@@ -35,7 +35,12 @@
                                     aria-controls="v-pills-general" aria-selected="true"><i class="fas fa-wrench"></i>
                                     Article Settings
                                 </a>
-
+                                
+                                <a class="list-group-item list-group-item-action" id="v-pills-home-social-media"
+                                    data-toggle="pill" href="#v-pills-social-media" role="tab"
+                                    aria-controls="v-pills-social-media" aria-selected="true"><i
+                                    class="fas fa-share-square"></i> Social Media</a>
+                                
                             </div>
                         </div>
                     </div>
@@ -56,6 +61,11 @@
                             <livewire:customization.article-limit />
                         </div>
                         {{-- End --}}
+
+                        {{-- Social link --}}
+                        <div class="tab-pane fade" id="v-pills-social-media" role="tabpanel" aria-labelledby="v-pills-home-social-media">
+                            <livewire:customization.social-media-link />
+                        </div>
                     </div>
                 </div>
             </div>

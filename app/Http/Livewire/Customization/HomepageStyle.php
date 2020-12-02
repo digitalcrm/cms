@@ -10,6 +10,8 @@ class HomepageStyle extends Component
     public $notFoundData;
     public $removeFlashMessage;
 
+    // public $updateForm;
+
     public $body_background_color;
     public $nav_head_color;
     public $firstfootercolor;
@@ -19,6 +21,9 @@ class HomepageStyle extends Component
     public $primary_color;
     public $secondary_color;
     public $h2_tag_color;
+    public $stats_back_color;
+    public $team_back_color;
+    public $client_back_color;
     // public $background_image;
     // public $backgroundstatus;
 
@@ -34,6 +39,9 @@ class HomepageStyle extends Component
             'primary_color' => 'required|string',
             'secondary_color' => 'required|string',
             'h2_tag_color' => 'required|string',
+            'stats_back_color' => 'required|string',
+            'team_back_color' => 'required|string',
+            'client_back_color' => 'required|string',
         ]);
     }
 
@@ -49,13 +57,15 @@ class HomepageStyle extends Component
             'primary_color' => 'required|string',
             'secondary_color' => 'required|string',
             'h2_tag_color' => 'required|string',
-        ]);
-
+            'stats_back_color' => 'required|string',
+            'team_back_color' => 'required|string',
+            'client_back_color' => 'required|string',
+        ]);            
         LandingpageStyle::create($validatedData);
 
         session()->flash('message', 'First Row Data Created Successfully');
 
-        $this->reset();
+        // $this->updateForm = true;
     }
 
     public function update()
@@ -70,8 +80,11 @@ class HomepageStyle extends Component
             'primary_color' => 'required|string',
             'secondary_color' => 'required|string',
             'h2_tag_color' => 'required|string',
+            'stats_back_color' => 'required|string',
+            'team_back_color' => 'required|string',
+            'client_back_color' => 'required|string',
         ]);
-
+        // dd($this->stats_back_color, $this->client_back_color, $this->team_back_color);
         $firstRow = LandingpageStyle::first();
         $firstRow->update($validatedData);
 
@@ -91,6 +104,9 @@ class HomepageStyle extends Component
             $this->primary_color = $firstRowData->primary_color;
             $this->secondary_color = $firstRowData->secondary_color;
             $this->h2_tag_color = $firstRowData->h2_tag_color;
+            $this->stats_back_color = $firstRowData->stats_back_color;
+            $this->team_back_color = $firstRowData->team_back_color;
+            $this->client_back_color = $firstRowData->client_back_color;
         } catch (\Throwable $th) {
             $this->notFoundData = $th->getMessage();
         }
