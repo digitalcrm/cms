@@ -101,16 +101,11 @@
         </div>
     </div>
 </div>
-<div class="container-fluid bg-dark2 text-center mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="home-highlighter">Aynsoft Classic has been the Largest Global Software Company for more than
-                    18 years, making it the most trusted corporation in the world.</div>
-            </div>
-        </div>
-    </div>
-</div>
+
+{{-- <div> Intro Section Start --}}
+   <x-themes.company.home-higlighter />
+{{-- </div> Intro Section End--}}
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
