@@ -46,5 +46,14 @@ $color = App\LandingpageStyle::first();
 		background-color: {{$color->secondary_color}}!important;
 
 	}
+    .stats-custom {
+        background-color: {{$color->stats_back_color}}!important;
+    }
+    .team-custom {
+        background-color: {{$color->team_back_color}}!important;
+    }
+    .client-custom {
+        background-color: {{$color->client_back_color}}!important;
+    }
 
 </style>
