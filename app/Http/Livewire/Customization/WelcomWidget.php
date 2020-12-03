@@ -10,10 +10,10 @@ class WelcomWidget extends Component
     public $widget_table_all_data;
 
     public $wants_to_update = false;
-    
+
     public $removeFlashMessage;
     public $rowId;
-    
+
     public $heading;
     public $sub_heading;
     public $isActive;
@@ -37,7 +37,7 @@ class WelcomWidget extends Component
         $data = AboutWidget::find($id);
 
         ($data->isActive === 1) ? $this->isActive = false : $this->isActive = true;
-        
+
         $data->update([
             'isActive' => $this->isActive,
         ]);
@@ -47,7 +47,7 @@ class WelcomWidget extends Component
 
     public function edit($id)
     {
-        $this->wants_to_update = true;  
+        $this->wants_to_update = true;
 
         $row_data = AboutWidget::findOrFail($id);
 
@@ -65,7 +65,7 @@ class WelcomWidget extends Component
         ]);
 
         $table_row = AboutWidget::find($id);
-        
+
         $table_row->update($validatedData);
 
         session()->flash('welcome','Data Updated successfully');
@@ -75,7 +75,7 @@ class WelcomWidget extends Component
     public function render()
     {
         $this->widget_table_all_data = AboutWidget::get();
-        
+
         return view('livewire.customization.welcom-widget');
     }
 }
