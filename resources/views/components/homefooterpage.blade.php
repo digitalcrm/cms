@@ -2,17 +2,22 @@
     <footer class="footer bg-dark footer-main pt-5 mt-5 pb-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 footer-about-col">
-                    <p class="f-title">ABOUT US</p>
-                    <p>Aynsoft has been the #1 selling theme for more than 6 years, making it the most trusted and complete WordPress theme on the market. We are dedicated to providing you with the best experience possible.
-                    </p>
-                </div>
+
+                @if($about_widget)
+                    <div class="col-md-3 footer-about-col">
+                        <p class="f-title">{{ $about_widget->heading }}</p>
+                        <p>{{ $about_widget->sub_heading }}</p>
+                    </div>
+                @endif
+
                 <div class="col-md-3 footer-recent-news">
                     <p class="f-title">Latest Posts</p>
-                    @forelse ($blog_posts as $post)
-                    <p><a href="{{ route('post.viewitem',$post->slug) }}">{{ $post->title }}</a></p>
+                    @forelse($blog_posts as $post)
+                        <p><a
+                                href="{{ route('post.viewitem',$post->slug) }}">{{ $post->title }}</a>
+                        </p>
                     @empty
-                    <p><a href="#">{{ __('No posts available yet') }}</a></p>
+                        <p><a href="#">{{ __('No posts available yet') }}</a></p>
                     @endforelse
                 </div>
 
@@ -23,7 +28,7 @@
                 </div>
 
                 <div class="col-md-3 footer-about-col">
-                <livewire:newsletter.store-newsletter />
+                    <livewire:newsletter.store-newsletter />
                 </div>
 
             </div>
@@ -33,15 +38,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <p class="copyright">2020 <a href="#">aynsoft.com</a> All rights reserved.</p>
+                    <p class="copyright">{{ date('Y') }} <a href="{{ env('APP_URL') }}">{{ env('APP_NAME') }}</a> All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-right">
                     <div class="social-media-widget">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="{{ route('rss_feed') }}"><i class="fas fa-rss"></i></a>
+                        @forelse($social_icon as $social)
+                            <a href="{{ $social->social_link }}">{!! $social->social_logo !!}</a>
+                        @empty
+                            <a>No Icon</a>
+                        @endforelse
+                        <a href="{{ route('rss_feed') }}"><i class="fas fa-rss-square"></i></a>
                     </div>
                 </div>
             </div>

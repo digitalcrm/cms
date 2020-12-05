@@ -21,6 +21,10 @@ class ThemeTestimonial extends Model
         'isActive',
     ];
 
+    public function scopeIsActive($query)
+    {
+        return $query->where('isActive', true);
+    }
     public function imageUrl()
     {
         return $this->profile_url

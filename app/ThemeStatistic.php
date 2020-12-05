@@ -17,4 +17,9 @@ class ThemeStatistic extends Model
         'sub_text',
         'isActive',
     ];
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('isActive', true);
+    }
 }

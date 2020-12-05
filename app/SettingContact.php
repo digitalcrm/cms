@@ -18,4 +18,9 @@ class SettingContact extends Model
         'address',
         'isActive',
     ];
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('isActive', true);
+    }
 }

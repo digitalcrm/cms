@@ -17,4 +17,9 @@ class AboutWidget extends Model
         'sub_heading',
         'isActive',
     ];
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('isActive', true);
+    }
 }

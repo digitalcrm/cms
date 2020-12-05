@@ -2,24 +2,24 @@
 
 namespace App\View\Components;
 
-use App\Category;
-use App\Post;
+use App\AboutWidget;
+use App\SocialLink;
 use Illuminate\View\Component;
 
 class homefooterpage extends Component
 {
-    // public $latest_posts;
-    // public $latest_categories;
+    public $about_widget;
+    public $social_icon;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    // public function __construct(Post $latest_posts, Category $latest_categories)
-    // {
-    //     $this->latest_posts = $latest_posts->where('isactive',1)->latest()->take(5)->get();
-    //     $this->latest_categories = $latest_categories->latest()->take(5)->get();
-    // }
+    public function __construct(AboutWidget $about_widget, SocialLink $social_icon)
+    {
+        $this->about_widget = $about_widget->isActive()->first();
+        $this->social_icon = $social_icon->isActive()->get();
+    }
 
     /**
      * Get the view / contents that represent the component.

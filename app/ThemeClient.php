@@ -25,4 +25,9 @@ class ThemeClient extends Model
             ? Storage::disk($this->profilePhotoDisk())->url($this->logo)
             : $this->defaultGravatar();
     }
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('isActive',true);
+    }
 }

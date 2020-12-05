@@ -558,7 +558,7 @@ p {
 	font-family: 'Open Sans', sans-serif;
 }
 
-.social-media-widget {}
+/* .social-media-widget {} */
 
 .social-media-widget .fab {
 	color: #fff;
@@ -567,6 +567,15 @@ p {
 }
 
 .social-media-widget .fab:hover {
+	color: #FE9C46;
+}
+.social-media-widget .fas {
+	color: #fff;
+	font-size: 20px;
+	width: 50px;
+}
+
+.social-media-widget .fas:hover {
 	color: #FE9C46;
 }
 
