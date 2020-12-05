@@ -27,10 +27,10 @@
                                         aria-controls="v-pills-colors" aria-selected="true"><i
                                             class="fas fa-palette"></i> Colors</a>
 
-                                    <a class="list-group-item list-group-item-action" id="v-pills-home-background-image"
+                                    {{-- <a class="list-group-item list-group-item-action" id="v-pills-home-background-image"
                                         data-toggle="pill" href="#v-pills-background-image" role="tab"
                                         aria-controls="v-pills-background-image" aria-selected="true"><i
-                                            class="fas fa-chalkboard"></i> Background Image</a>
+                                            class="fas fa-chalkboard"></i> Background Image</a> --}}
 
                                     <a class="list-group-item list-group-item-action {{ (session()->has('tab')) ? 'active' : '' }}" id="v-pills-home-slider"
                                         data-toggle="pill" href="#v-pills-slider" role="tab"
@@ -104,12 +104,12 @@
                             <!-- End -->
 
                             <!-- Site Background Image -->
-                            <div class="tab-pane fade" id="v-pills-background-image" role="tabpanel"
+                            {{-- <div class="tab-pane fade" id="v-pills-background-image" role="tabpanel"
                                 aria-labelledby="v-pills-home-background-image">
                                 <!-- Background Image -->
                                 <livewire:customization.background-image />
                                 <!-- End -->
-                            </div>
+                            </div> --}}
                             <!-- End -->
 
                             <!-- Site Slider -->
@@ -194,7 +194,7 @@
                                                 <div class="form-group">
                                                     <label for="exampleFormControlTextarea1">Additional CSS</label>
                                                     <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                        rows="10"></textarea>
+                                                        rows="10">Coming Soon........</textarea>
                                                 </div>
                                         </div>
                                         <div class="card-footer text-right">
