@@ -6,7 +6,7 @@ use App\AboutWidget;
 use App\SocialLink;
 use Illuminate\View\Component;
 
-class homefooterpage extends Component
+class HomeFooterPage extends Component
 {
     public $about_widget;
     public $social_icon;
@@ -28,6 +28,6 @@ class homefooterpage extends Component
      */
     public function render()
     {
-        return view('components.homefooterpage');
+        return view('components.home-footer-page');
     }
 }

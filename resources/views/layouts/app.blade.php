@@ -32,7 +32,7 @@
 
     @yield('content')
 
-   <x-homefooterpage />
+   <x-home-footer-page />
 
    @livewireScripts
 
