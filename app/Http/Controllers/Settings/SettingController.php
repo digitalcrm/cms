@@ -10,6 +10,7 @@ class SettingController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(['role:superadmin|admin'])->only(['general_setting','cms_setting']);
     }
     /**
      * Handle the incoming request.

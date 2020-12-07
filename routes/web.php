@@ -132,8 +132,8 @@ use Illuminate\Support\Facades\Route;
 
     Route::group(['namespace' => 'Settings'], function () {
         Route::get('settings', [SettingController::class,'index'])->name('settings');
-        Route::get('setting-general', [SettingController::class,'general_setting'])->name('generals');
         Route::get('setting-appointments', [SettingController::class,'appointment_setting'])->name('appointments');
+        Route::get('setting-general', [SettingController::class,'general_setting'])->name('generals');
         Route::get('setting-cms', [SettingController::class,'cms_setting'])->name('cms_settings');
 
         ###########################################CMS Settings#################################################
@@ -161,9 +161,9 @@ use Illuminate\Support\Facades\Route;
 
 
     ###########################################Theme Customization#################################################
+
     Route::get('customization', Customization\CustomizationController::class)->name('customize');
     Route::put('slider/{update}', [UrlBasedCustomizationController::class, 'sliderupdate'])->name('slider.update');
-    Route::put('service/{update}', [UrlBasedCustomizationController::class, 'serviceupdate'])->name('service.update');
 
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');

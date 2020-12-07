@@ -32,6 +32,7 @@
             </div>
         </div>
 
+        @hasanyrole('superadmin|admin')
         <div class="col-lg-4">
             <div class="card shadow card-danger card-outline">
                 <!--/.card-header-->
@@ -61,6 +62,7 @@
                 <!-- /.card -->
             </div>
         </div>
+        @endhasanyrole
 
       </div>
       <!-- /.row -->

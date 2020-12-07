@@ -16,6 +16,7 @@ class NewsletterController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['confirm_subscription', 'subscription_delete']);
+        $this->middleware(['role:superadmin|admin'])->except(['confirm_subscription', 'subscription_delete']);
     }
 
     public function subscriber_list()
