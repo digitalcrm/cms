@@ -15,6 +15,11 @@ trait DefaultProfile
     {
         return 'https://via.placeholder.com/75x75?text=Visit+Blogging.com+Now';
     }
+
+    protected function defaultImage($name)
+    {
+        return 'https://via.placeholder.com/468x120?text='.$name;
+    }
     /**
      *
      * Get the default profile photo URL from gravtar.

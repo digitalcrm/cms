@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
             // LogoSeeder::class,
             // SettingCmsVisibilitySeeder::class,
             // ThemeSliderSeeder::class,
-            ThemeServiceSeeder::class,
+            // ThemeServiceSeeder::class,
+            ThemeSeeder::class,
         ]);
     }
 }

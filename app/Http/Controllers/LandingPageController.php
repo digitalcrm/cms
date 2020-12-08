@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use App\Post;
-use App\User;
-use Carbon\Carbon;
+use App\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -13,11 +11,32 @@ use App\Mail\ArticleLinkSendToFriend;
 
 class LandingPageController extends Controller
 {
+    protected $first_themes;
+    protected $second_themes;
+    protected $get_active_theme_id;
+
+    public function __construct(Theme $themes)
+    {
+        // $this->first_themes = $themes->find(1);
+        // $this->second_themes = $themes->find(2);
+        $this->get_active_theme_id = $themes->isActive()->first();
+        // dd($this->first_themes->id, $this->second_themes->id);
+    }
+
     public function index()
     {
+        // dd($this->themes);
         $blogs = Post::whereIsactive(1)->latest()->limit(3)->get();
 
-        return view('welcome',compact('blogs'));
+        switch ($this->get_active_theme_id->id) {
+            case 1:
+                return view('welcome',compact('blogs'));
+                break;
+
+            default:
+                return view('themes.theme2.layouts.main');
+                break;
+        }
     }
 
     public function viewitem(Post $post)

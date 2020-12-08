@@ -165,10 +165,15 @@ use Illuminate\Support\Facades\Route;
     Route::get('customization', Customization\CustomizationController::class)->name('customize');
     Route::put('slider/{update}', [UrlBasedCustomizationController::class, 'sliderupdate'])->name('slider.update');
 
+    ###########################################Theme Customization#################################################
+    Route::resource('themes', ThemeController::class)->only(['index','update']);
+
+
+
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');
         Artisan::call('cache:clear');
         Artisan::call('route:clear');
         Artisan::call('view:clear');
         return 'cache cleared';
-    });
+    })->middleware('auth');

@@ -1,12 +1,22 @@
 {
     "/ajax/js/bookingevent_toggle.js": "/ajax/js/bookingevent_toggle.js",
+    "/ajax/js/bookingevent_toggle.js.map": "/ajax/js/bookingevent_toggle.js.map",
     "/ajax/js/fullcalendar.js": "/ajax/js/fullcalendar.js",
+    "/ajax/js/fullcalendar.js.map": "/ajax/js/fullcalendar.js.map",
     "/ajax/js/status_toggle.js": "/ajax/js/status_toggle.js",
+    "/ajax/js/status_toggle.js.map": "/ajax/js/status_toggle.js.map",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/home.css": "/css/home.css",
     "/css/thankyou.css": "/css/thankyou.css",
     "/css/userprofile_custome.css": "/css/userprofile_custome.css",
+    "/css/bootstrap4.css": "/css/bootstrap4.css",
+    "/css/fontawesome.css": "/css/fontawesome.css",
+    "/css/theme2-crousel.css": "/css/theme2-crousel.css",
+    "/css/theme2-custom.css": "/css/theme2-custom.css",
+    "/js/app.js.map": "/js/app.js.map",
     "/js/home.js": "/js/home.js",
-    "/js/popper.js": "/js/popper.js"
+    "/js/home.js.map": "/js/home.js.map",
+    "/js/popper.js": "/js/popper.js",
+    "/js/popper.js.map": "/js/popper.js.map"
 }
