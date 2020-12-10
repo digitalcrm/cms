@@ -17,10 +17,7 @@ class LandingPageController extends Controller
 
     public function __construct(Theme $themes)
     {
-        // $this->first_themes = $themes->find(1);
-        // $this->second_themes = $themes->find(2);
         $this->get_active_theme_id = $themes->isActive()->first();
-        // dd($this->first_themes->id, $this->second_themes->id);
     }
 
     public function index()
@@ -34,7 +31,7 @@ class LandingPageController extends Controller
                 break;
 
             default:
-                return view('themes.theme2.layouts.main');
+                return view('themes.theme2.home-page');
                 break;
         }
     }
@@ -44,13 +41,29 @@ class LandingPageController extends Controller
         $post->increment('postcount');
 
         $related_posts = $post->relatedPost()->orderBy('id', 'desc')->take(3)->get(['title','category_id','slug','body']);
+        
+        switch ($this->get_active_theme_id->id) {
+            case 1:
+                return view('pages.landing-post-view-page',compact('post','related_posts'));
+                break;
 
-        return view('pages.landing-post-view-page',compact('post','related_posts'));
+            default:
+                return view('themes.theme2.internal-view-page',compact('post','related_posts'));
+                break;
+        }
     }
 
     public function latestpost()
     {
-        return view('pages.landing-post-lists');
+        switch ($this->get_active_theme_id->id) {
+            case 1:
+                return view('pages.landing-post-lists');
+                break;
+
+            default:
+                return view('themes.theme2.internal-list-page');
+                break;
+        }
     }
 
     public function articles_by_category()

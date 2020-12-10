@@ -5,6 +5,7 @@ namespace App;
 use App\Favorite;
 use Illuminate\Support\Str;
 use App\SettingCmsVisibility;
+use App\Traits\DefaultProfile;
 use Spatie\Sluggable\HasSlug;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Sluggable\SlugOptions;
@@ -18,7 +19,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Post extends Model implements HasMedia
 {
-    use SoftDeletes, InteractsWithMedia, HasSlug, HasFactory;
+    use SoftDeletes, InteractsWithMedia, HasSlug, HasFactory, DefaultProfile;
 
     protected $fillable = [
         'title',
@@ -251,18 +252,6 @@ class Post extends Model implements HasMedia
         $body =  Str::limit(strip_tags($this->body), 156, '...');
         // dd($body);
         return $body;
-    }
-
-    /** get the default image api */
-    public function getDefaultImageAttribute()
-    {
-        return 'https://via.placeholder.com/348x232?text='.$this->slug;
-    }
-
-    public function default_fake_image($fieldName = Null, $width = '348', $height = '232')
-    {
-        // return 'https://via.placeholder.com/348x232?text='.$fieldName;
-        return 'https://via.placeholder.com/'.$width.'x'.$height.'?text='.$fieldName;
     }
 
     public function scopePopularPost($query)

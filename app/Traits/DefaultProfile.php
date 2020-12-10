@@ -20,6 +20,7 @@ trait DefaultProfile
     {
         return 'https://via.placeholder.com/468x120?text='.$name;
     }
+
     /**
      *
      * Get the default profile photo URL from gravtar.
@@ -64,6 +65,18 @@ trait DefaultProfile
     protected function deletepreviousImage($previous)
     {
         Storage::disk($this->profilePhotoDisk())->delete($previous);
+    }
+    
+    /** get the default image api */
+    public function getDefaultImageAttribute()
+    {
+        return 'https://via.placeholder.com/348x232?text='.$this->slug;
+    }
+
+    public function default_fake_image($fieldName = Null, $width = '348', $height = '232')
+    {
+        // return 'https://via.placeholder.com/348x232?text='.$fieldName;
+        return 'https://via.placeholder.com/'.$width.'x'.$height.'?text='.$fieldName;
     }
 }
 
