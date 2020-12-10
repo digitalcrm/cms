@@ -168,8 +168,9 @@ use Illuminate\Support\Facades\Route;
 
     ###########################################Theme Customization#################################################
     Route::resource('themes', ThemeController::class)->only(['index','update']);
-
-
+    
+    ###########################################Page Routes#################################################
+    Route::resource('pages', Page\PageController::class);
 
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');

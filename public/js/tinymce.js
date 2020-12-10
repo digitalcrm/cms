@@ -14,3 +14,4 @@ tinymce.init({
             "bullist numlist outdent indent | link | image | media | preview print fullpage",
     block_formats: 'Paragraph=p; Header 1=h1; Header 2=h2; Header 3=h3'
 });
+

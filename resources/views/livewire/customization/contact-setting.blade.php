@@ -21,7 +21,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="title">Main Title</label>
-                    <input wire:model.defer="title" type="text" class="form-control" id="title"
+                    <input wire:model="title" type="text" class="form-control" id="title"
                         aria-describedby="emailHelp">
                     @error('title')
                         <p class="text-danger">{{ $message }}</p>
@@ -29,16 +29,16 @@
                 </div>
                 <div class="form-group">
                     <label for="paragraph">Paragraph</label>
-                    <textarea wire:model.defer="paragraph" class="form-control" id="paragraph"
+                    <textarea wire:model="paragraph" class="form-control" id="paragraph"
                         rows="3"></textarea>
                     @error('paragraph')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div class="form-group">
+                <div wire:ignore class="form-group">
                     <label for="address">Address</label>
-                    <textarea wire:model.defer="address" class="form-control" id="mytextarea"
+                    <textarea wire:model="address" class="form-control" id="mytextarea"
                         rows="6"></textarea>
                     @error('address')
                         <p class="text-danger">{{ $message }}</p>
@@ -51,9 +51,34 @@
             </div>
         </div>
     </form>
-{{-- @section('scripts')
+@section('scripts')
 @parent
-<script src="{{ asset('js/tinymce.js') }}"></script>
+<script>
+    tinymce.init({
+        selector: '#mytextarea',
+        branding: false,
+        height: 300,
+        menubar: false,
+        plugins: [
+        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save table contextmenu directionality",
+        "emoticons template paste textcolor colorpicker textpattern textcolor colorpicker"
+        ],
+        toolbar: "styleselect | bold italic | " +
+                " alignleft aligncenter alignright alignjustify | " +
+                "bullist numlist outdent indent | link | image | media | preview print fullpage | forecolor",
+        block_formats: 'Paragraph=p; Header 1=h1; Header 2=h2; Header 3=h3',
+        setup: function (editor) {
+            editor.on('init change', function () {
+                editor.save();
+            });
+            editor.on('change', function (e) {
+            @this.set('address', editor.getContent());
+            });
+        },
+    });
+</script>
 
-@endsection --}}
+@endsection
 </div>
