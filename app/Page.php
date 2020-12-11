@@ -62,4 +62,9 @@ class Page extends Model
             $this->update(['image' => $image]);
         }
     }
+
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
+    }
 }

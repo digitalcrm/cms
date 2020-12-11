@@ -169,8 +169,10 @@ use Illuminate\Support\Facades\Route;
     ###########################################Theme Customization#################################################
     Route::resource('themes', ThemeController::class)->only(['index','update']);
     
-    ###########################################Page Routes#################################################
+    ###########################################Page/Menu Routes#################################################
     Route::resource('pages', Page\PageController::class);
+    Route::resource('menus', Menu\MenuController::class);
+    Route::get('menus/{menuslug}/{pageslug}', 'Menu\MenuController@menu_with_page')->name('menu.page');
 
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');

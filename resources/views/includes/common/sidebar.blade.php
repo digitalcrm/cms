@@ -169,19 +169,12 @@
                         </p>
                     </a>
                 </li>
+               
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Media
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Module
                         </p>
                     </a>
                 </li>
@@ -205,105 +198,110 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('menus.index') }}" class="nav-link {{ request()->routeIs('menus*') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Menus
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('customize') }}"
                                     class="nav-link {{ request()->routeIs('customize') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Customize</p>
                                 </a>
                             </li>
-                            {{-- <li class="nav-item">
-                          <a href="widgets.html" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Widgets</p>
-                          </a>
-                       </li>
-                       <li class="nav-item">
-                          <a href="menus.html" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Menus</p>
-                          </a>
-                       </li>
-                       <li class="nav-item">
-                          <a href="slider.html" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Slider</p>
-                          </a>
-                       </li> --}}
                         </ul>
                     </li>
                 @endhasanyrole
 
-                {{-- Appointment --}}
-                <li class="nav-item has-treeview menu-close">
+                <li
+                    class="nav-item has-treeview {{ request()->routeIs('subscribers*') || request()->routeIs('newsletter.emails*') || request()->routeIs('newsletters.create') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Appointment
+                            Module
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('bookevents.index',['events'=>'upcoming']) }}"
-                                class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
+                        {{-- Appointment --}}
+                        <li class="nav-item has-treeview menu-close">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Appointment Pages
+                                    Appointment
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('bookevents.index',['events'=>'upcoming']) }}"
+                                        class="nav-link">
+                                        <i class="nav-icon fas fa-th"></i>
+                                        <p>
+                                            Appointment Pages
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('confirmed_users.index') }}" class="nav-link">
+                                        <i class="nav-icon fas fa-th"></i>
+                                        <p>
+                                            Customers
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('allBookingEvent') }}" class="nav-link">
+                                        <i class="nav-icon fas fa-th"></i>
+                                        <p>
+                                            Calendar
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('confirmed_users.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Customers
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('allBookingEvent') }}" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Calendar
-                                </p>
-                            </a>
-                        </li>
+                        <!--booking dropdown end here -->
+                        
+                        @hasanyrole('superadmin|admin')
+                            <li
+                                class="nav-item has-treeview {{ request()->routeIs('subscribers*') || request()->routeIs('newsletter.emails*') || request()->routeIs('newsletters.create') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Newsletter
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('subscribers',['subscribed'=> 'subscribers']) }}"
+                                            class="nav-link {{ request()->routeIs('subscribers*') ? 'active' : '' }}">
+                                            <i class="nav-icon fas fa-th"></i>
+                                            <p>
+                                                Subscribers
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('newsletter.emails') }}"
+                                            class="nav-link {{ request()->routeIs('newsletter.emails*') || request()->routeIs('newsletters.create') ? 'active' : '' }}">
+                                            <i class="nav-icon fas fa-th"></i>
+                                            <p>
+                                                Newsletter Emails
+                                            </p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endhasanyrole
                     </ul>
                 </li>
-                <!--booking dropdown end here -->
 
-                @hasanyrole('superadmin|admin')
-                    <li
-                        class="nav-item has-treeview {{ request()->routeIs('subscribers*') || request()->routeIs('newsletter.emails*') || request()->routeIs('newsletters.create') ? 'menu-open' : '' }}">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Newsletter
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('subscribers',['subscribed'=> 'subscribers']) }}"
-                                    class="nav-link {{ request()->routeIs('subscribers*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-th"></i>
-                                    <p>
-                                        Subscribers
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('newsletter.emails') }}"
-                                    class="nav-link {{ request()->routeIs('newsletter.emails*') || request()->routeIs('newsletters.create') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-th"></i>
-                                    <p>
-                                        Newsletter Emails
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                @endhasanyrole
+
+                
                 <li class="nav-item">
                     <a href="{{ route('settings') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
