@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +20,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::isActive()->latest()->get();
-        return view('admin_page.index', compact('pages'));
+        // $pages = Page::latest()->get();
+        return view('admin_page.index');
     }
 
     /**
