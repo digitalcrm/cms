@@ -11,21 +11,36 @@
                 @endif
 
                 <div class="col-md-3 footer-recent-news">
-                    <p class="f-title">Latest Posts</p>
-                    @forelse($blog_posts as $post)
+                    @forelse($menus as $menu)
+                    @if($loop->iteration <=5)
                         <p><a
-                                href="{{ route('post.viewitem',$post->slug) }}">{{ $post->title }}</a>
+                                href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}">{{ $menu->name }}</a>
                         </p>
+                    @endif
                     @empty
-                        <p><a href="#">{{ __('No posts available yet') }}</a></p>
+                        <p><a href="#">{{ __('No pages available yet') }}</a></p>
                     @endforelse
                 </div>
 
-                <div class="col-md-3 footer-links">
+                <div class="col-md-3 footer-recent-news">
+                    @if(count($menus) > 5)
+                    @forelse($menus as $menu)
+                    @if($loop->iteration >=6)
+                        <p><a
+                                href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}">{{ $menu->name }}</a>
+                        </p>
+                    @endif
+                    @empty
+                        <p><a href="#">{{ __('No pages available yet') }}</a></p>
+                    @endforelse
+                    @endif
+                </div>
+
+                {{-- <div class="col-md-3 footer-links">
                     <p class="f-title">RESOURCES</p>
                     <p><a href="{{ route('lists_of_category') }}">Articles by Category</a></p>
                     <p><a href="{{ route('lists_of_tag') }}">Articles by Tag</a></p>
-                </div>
+                </div> --}}
 
                 <div class="col-md-3 footer-about-col">
                     <livewire:newsletter.store-newsletter />
