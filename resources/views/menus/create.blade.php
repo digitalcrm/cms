@@ -40,7 +40,7 @@
                             <select class="custom-select" id="validationCustom02" name="placed_in" required>
                                 <option selected disabled value="">Choose...</option>
                                 @foreach(App\Menu::PLACED_IN as $value)
-                                    <option value="{{ $value }}">{{ $value }}</option>
+                                    <option value="{{ $value }}" {{ ($value) == 'header' ? 'selected' : '' }}>{{ $value }}</option>
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">

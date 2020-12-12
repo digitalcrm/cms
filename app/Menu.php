@@ -34,6 +34,34 @@ class Menu extends Model
         return $this->belongsTo( Page::class );
     }
 
+    public function scopeIsActive($query)
+    {
+        return $query->where('isActive',true);
+    }
+
+    public function scopeHeaderMenu($query)
+    {
+        return $query->where('placed_in', 'header');
+    }
+
+    public function scopeFooterMenu($query)
+    {
+        return $query->where('placed_in', 'footer');
+    }
+
+    /** This filter is used for get the header or footer menu based on request */
+    public function scopeTypeFilter($query, $filterby)
+    {
+        return $query->when($filterby == 'footer', function ($query) {
+            $query->where('placed_in','footer');
+        }, 
+        function($query) use ($filterby) {
+        return $query->when($filterby == '', function($query){
+                $query->where('placed_in','header');
+            });
+        });
+    }
+
     protected static function boot()
     {
         parent::boot();

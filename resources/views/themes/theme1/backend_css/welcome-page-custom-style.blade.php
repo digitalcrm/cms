@@ -6,9 +6,9 @@ $color = App\LandingpageStyle::first();
 
 	body {
 		background-color: {{$color->body_background_color}};
-        @if($color->backgroundstatus == 1)
+        /* @if($color->backgroundstatus == 1)
         background-image: url({{'storage/'.$color->background_image}});
-        @endif
+        @endif */
 
 	}
 

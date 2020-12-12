@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'CMS')
+@section('title', 'Company Theme')
 
 @section('styles')
 @parent
-@include('themes.theme1.backend_css.backend-custom')
+@include('themes.theme1.backend_css.welcome-page-custom-style')
 @endsection
 
 @section('header_middle')

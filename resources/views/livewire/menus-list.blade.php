@@ -14,6 +14,10 @@
             </td>
 
             <td>
+                {{ $menu->placed_in ?? '' }}
+            </td>
+
+            <td>
                 <a wire:click="toggle({{ $menu->id }})" class="btn btn-link">
                     {!! ($menu->isActive === 1) ? '<i class="fas fa-toggle-on fa-2x"></i>' :
                     '<i class="fas fa-toggle-off fa-2x"></i>' !!}

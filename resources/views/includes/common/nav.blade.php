@@ -120,7 +120,5 @@
         <!-- Right Side Of Navbar -->
         <!-- Authentication Links -->
         <x-navigation.nav_profile_dropdown />
-
-
     </ul>
 </nav>

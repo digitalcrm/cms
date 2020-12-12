@@ -20,15 +20,32 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="{{ route('menus.create') }}"
-                            class="btn btn-primary btn-sm mx-1 float-right">Add New</a>
+                        <div class="row">
+                            <div class="col-8">
+                                <a href="{{ route('menus.index') }}"
+                                    class="btn btn-sm btn-outline-secondary mr-1 {{ request('type') == '' ? 'active' : '' }}">
+                                    Header
+                                </a>
+                                <a href="{{ route('menus.index',['type'=>'footer']) }}"
+                                    class="btn btn-sm btn-outline-secondary mr-1 {{ request('type') == 'footer' ? 'active' : '' }}">
+                                    Footer
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="{{ route('menus.create') }}"
+                                    class="btn btn-primary btn-sm mx-1 float-right">
+                                    Add New
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Page Title</th>
+                                    <th>Page Name</th>
+                                    <th>Placed In</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>

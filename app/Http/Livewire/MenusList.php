@@ -31,7 +31,7 @@ class MenusList extends Component
 
     public function render()
     {
-        $this->menus = Menu::with('page')->latest()->get();
+        $this->menus = Menu::with('page')->typeFilter(request('type'))->latest()->get();
         return view('livewire.menus-list');
     }
 }

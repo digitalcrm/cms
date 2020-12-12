@@ -2,18 +2,20 @@
 
 namespace App\View\Components;
 
+use App\Menu;
 use Illuminate\View\Component;
 
-class homeheaderpage extends Component
+class HomeHeaderPage extends Component
 {
+    public $menus;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Menu $menus)
     {
-        //
+        $this->menus = $menus->has('page')->headerMenu()->isActive()->latest()->get();
     }
 
     /**
@@ -23,6 +25,6 @@ class homeheaderpage extends Component
      */
     public function render()
     {
-        return view('components.homeheaderpage');
+        return view('components.home-header-page');
     }
 }
