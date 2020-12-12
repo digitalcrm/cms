@@ -105,7 +105,7 @@ class MenuController extends Controller
     {
         $menu_page = Page::with(['menus' => function ($q) use($menuslug){
             $q->where('slug',$menuslug);
-        }])->where('slug',$pageslug)->firstOrFail();
+        }])->where('slug',$pageslug)->isActive()->firstOrFail();
 
         // dd($menu_page->menus->name);
         

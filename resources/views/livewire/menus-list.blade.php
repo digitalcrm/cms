@@ -8,7 +8,9 @@
             </td>
 
             <td>
-                {{ $menu->page->title ?? '' }}
+                <a href="{{ route('pages.show', $menu->page->slug) }}" target="_blank">
+                    {{ $menu->page->title ?? '' }}
+                </a>
             </td>
 
             <td>
