@@ -172,7 +172,7 @@ use Illuminate\Support\Facades\Route;
     ###########################################Page/Menu Routes#################################################
     Route::resource('pages', Page\PageController::class);
     Route::resource('menus', Menu\MenuController::class);
-    Route::get('menus/{menuslug}/{pageslug}', 'Menu\MenuController@menu_with_page')->name('menu.page');
+    Route::get('menus/{menuslug}/{pageslug}', [LandingPageController::class, 'menu_with_page'])->name('menu.page');
 
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');

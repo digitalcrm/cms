@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 pl-0 pr-5">
+        <div class="col-md-9 pl-0 pr-5">
             <div class="col-md-12">
                 @if($page->image)
                     <img src="{{ $page->imageUrl() }}" class="img-fluid rounded mb-3"
@@ -21,6 +21,7 @@
                 </p>
             </div>
         </div>
+        <livewire:landing-page.right-sidebar />
     </div>
 </div>
 

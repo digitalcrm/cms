@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Page;
 use App\Post;
 use App\Theme;
 use Illuminate\Http\Request;
@@ -129,5 +130,23 @@ class LandingPageController extends Controller
         Auth::user()->favorites()->detach($post->id);
 
         return back();
+    }
+
+    public function menu_with_page($menuslug, $pageslug)
+    {
+        $menu_page = Page::with(['menus' => function ($q) use($menuslug){
+            $q->where('slug',$menuslug);
+        }])->where('slug',$pageslug)->isActive()->firstOrFail();
+
+        // dd($menu_page->menus->name);
+        switch ($this->get_active_theme_id->id) {
+            case 1:
+                return view('pages.menu-page',compact('menu_page'));
+                break;
+
+            default:
+                return view('themes.theme2.partials.menu-page', compact('menu_page'));
+                break;
+        }
     }
 }

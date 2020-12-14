@@ -100,15 +100,4 @@ class MenuController extends Controller
         $menu->delete();
         return redirect(route('menus.index'))->withMessage('Menu deleted successfully');
     }
-
-    public function menu_with_page($menuslug, $pageslug)
-    {
-        $menu_page = Page::with(['menus' => function ($q) use($menuslug){
-            $q->where('slug',$menuslug);
-        }])->where('slug',$pageslug)->isActive()->firstOrFail();
-
-        // dd($menu_page->menus->name);
-        
-        return view('pages.menu-page',compact('menu_page'));
-    }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('themes.theme2.layouts.main')
 
 @section('title',  $menu_page->slug )
 
@@ -21,7 +21,9 @@
                 </p>
             </div>
         </div>
-        <livewire:landing-page.right-sidebar />
+        <div class="col-md-3">
+            <x-themes.theme2.home-internal-right-side-list />
+        </div>
     </div>
 </div>
 
