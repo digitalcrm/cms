@@ -2,14 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="copyright">2020 <a href="#">KSPNGROUP.COM</a> ALL RIGHTS RESERVED.</p>
+                <p class="copyright">{{ date('Y') }} <a href="{{ env('APP_URL') }}">{{ env('APP_NAME') }}</a> ALL RIGHTS RESERVED.</p>
                 <p class="footer-nav">
-                    <span><a href="#">Home</a></span>
-                    <span><a href="#">about us</a></span>
-                    <span><a href="#">products</a></span>
-                    <span><a href="#">privacy</a></span>
-                    <span><a href="#">contact us</a></span>
-                    <span><a href="#">site map</a></span>
+                    @forelse($menus as $menu)
+                        <span><a href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}">{{ $menu->name }}</a></span>
+                        @empty
+                        <span><a href="#">No Links Found</a></span>
+                    @endforelse
                 </p>
             </div>
         </div>
@@ -20,10 +19,12 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="social-media-widget">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    @forelse($social_icon as $social)
+                        <a href="{{ $social->social_link }}">{!! $social->social_logo !!}</a>
+                    @empty
+                        <a>No Icon</a>
+                    @endforelse
+                    {{-- <a href="{{ route('rss_feed') }}"><i class="fas fa-rss-square"></i></a> --}}
                 </div>
             </div>
         </div>
