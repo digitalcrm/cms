@@ -27,7 +27,7 @@ class MenuRequest extends FormRequest
             'name' => ($this->getMethod() == 'POST')
             ? 'required|unique:menus|max:75'
             : 'required|max:75|unique:menus,name,'.$this->menu->id,
-            'page_id' => 'required|not_in:0|exists:App\Page,id',
+            'page_id' => 'not_in:0|exists:App\Page,id',
             'placed_in' => 'required|in:header,footer',
         ];
     }

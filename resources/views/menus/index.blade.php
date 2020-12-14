@@ -44,8 +44,9 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Page Name</th>
+                                    <th>Page Link</th>
                                     <th>Placed In</th>
+                                    <th>checkBox</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>

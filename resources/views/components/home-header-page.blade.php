@@ -17,7 +17,9 @@
                             @if($loop->iteration <=5)
                             <li class="nav-item active">
                                 <a class="nav-link" 
-                                    href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}">
+                                    href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}"
+                                    target="{{ ($menu->isChecked) ? '_blank' : '' }}"
+                                    >
                                     {{ $menu->name }}
                                 </a>
                             </li>
@@ -32,7 +34,8 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                                     @foreach($menus as $menu)
                                         @if($loop->iteration >=6)
-                                            <a class="dropdown-item" href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}">{{ $menu->name }}</a>
+                                            <a class="dropdown-item" href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}"
+                                                target="{{ ($menu->isChecked) ? '_blank' : '' }}">{{ $menu->name }}</a>
                                         @endif                            
                                     @endforeach
                                 </div>

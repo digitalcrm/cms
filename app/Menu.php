@@ -20,6 +20,8 @@ class Menu extends Model
         'placed_in',
         'sort_order',
         'isActive',
+        'isChecked',
+        'url',
     ];
 
     /** This const variable is used for dropdown put value in header or footer */
@@ -69,5 +71,19 @@ class Menu extends Model
         static::saving(function ($menu) {
             $menu->slug = Str::slug($menu->name, '-');
         });
+    }
+
+    public function menuPageRoute()
+    {
+        return $this->page_id 
+                        ? route('menu.page', ['menuslug'=>$this->slug, 'pageslug'=>$this->page->slug]) 
+                        : $this->url;
+    }
+
+    public function pageRoute()
+    {
+        return $this->page_id
+                        ? route('pages.show', $this->page->slug)
+                        : $this->url;
     }
 }

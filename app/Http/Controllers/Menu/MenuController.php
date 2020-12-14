@@ -43,8 +43,12 @@ class MenuController extends Controller
      */
     public function store(MenuRequest $request)
     {
-        $validatedData = $request->validated();
+        $validatedData = $request->validated() + [
+            'isChecked' => $request->has('isChecked'),
+            'url' => ($request->has('urlText')) ? $request->urlText : '',
+        ];
 
+        // dd($validatedData);
         Menu::create($validatedData);
 
         return redirect(route('menus.index'))->withMessage('Menu added successfully');
@@ -82,8 +86,13 @@ class MenuController extends Controller
      */
     public function update(MenuRequest $request, Menu $menu)
     {
-        $validatedData = $request->validated();
+        $validatedData = $request->validated() + [
+            'isChecked' => $request->has('isChecked'),
+            'url' => ($request->has('urlText')) ? $request->urlText : '',
+            'page_id' => ($request->has('urlText')) ? $request->page_id = Null : $request->page_id,
+        ];
 
+        // dd($validatedData);
         $menu->update($validatedData);
 
         return redirect(route('menus.index'))->withMessage('Menu updated successfully');
