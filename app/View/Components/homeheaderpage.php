@@ -15,7 +15,7 @@ class HomeHeaderPage extends Component
      */
     public function __construct(Menu $menus)
     {
-        $this->menus = $menus->has('page')->headerMenu()->isActive()->latest()->get();
+        $this->menus = $menus->with('page')->headerMenu()->isActive()->latest()->get();
     }
 
     /**

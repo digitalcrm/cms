@@ -9,15 +9,15 @@
                 </button>
                 <div class="collapse navbar-collapse float-right" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
+                        {{-- <li class="nav-item active">
                             <a class="nav-link" href="{{ url('/') }}">Home</a>
-                        </li>
+                        </li> --}}
 
                         @foreach($menus as $menu)
                             @if($loop->iteration <=5)
                             <li class="nav-item active">
                                 <a class="nav-link" 
-                                    href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}"
+                                    href="{{ $menu->menuPageRoute() }}"
                                     target="{{ ($menu->isChecked) ? '_blank' : '' }}"
                                     >
                                     {{ $menu->name }}
@@ -34,7 +34,7 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                                     @foreach($menus as $menu)
                                         @if($loop->iteration >=6)
-                                            <a class="dropdown-item" href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}"
+                                            <a class="dropdown-item" href="{{ $menu->menuPageRoute() }}"
                                                 target="{{ ($menu->isChecked) ? '_blank' : '' }}">{{ $menu->name }}</a>
                                         @endif                            
                                     @endforeach
