@@ -14,7 +14,8 @@
                     @forelse($menus as $menu)
                     @if($loop->iteration <=5)
                         <p><a
-                                href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}">{{ $menu->name }}</a>
+                                href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}"
+                                target="{{ $menu->isChecked ? '_blank' : '' }}">{{ $menu->name }}</a>
                         </p>
                     @endif
                     @empty
@@ -27,7 +28,8 @@
                     @forelse($menus as $menu)
                     @if($loop->iteration >=6)
                         <p><a
-                                href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}">{{ $menu->name }}</a>
+                                href="{{ route('menu.page', ['menuslug'=>$menu->slug, 'pageslug'=>$menu->page->slug]) }}"
+                                target="{{ $menu->isChecked ? '_blank' : '' }}">{{ $menu->name }}</a>
                         </p>
                     @endif
                     @empty
