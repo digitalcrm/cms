@@ -34,19 +34,39 @@
                                     Description
                                 </a>
                                 <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">
-                                    Other details
+                                    Comments
                                 </a>
                             </div>
                         </nav>
                         <div class="tab-content p-3" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab">
                                 {{$post->title}}
+                                <p>Posted On: {{$post->created_at->diffForHumans()}}</p>
                             </div>
                             <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
                                 {!! $post->body !!}
                             </div>
                             <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">
-                                {{$post->created_at->diffForHumans()}}
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Body</th>
+                                            <th>Posted By</th>
+                                            <th>Posted On</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($post->comments as $comment)
+                                        <tr>
+                                            <td>{{ $comment->body }}</td>
+                                            <td>{{ $comment->user->name }}</td>
+                                            <td>{{ $comment->created_at->toFormattedDateString() }}</td>
+                                        </tr>
+                                        @empty
+                                            <td colspan="10">No Comments Available</td>                                    
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

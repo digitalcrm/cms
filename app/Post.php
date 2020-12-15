@@ -303,4 +303,14 @@ class Post extends Model implements HasMedia
         return $post_date_value->action;
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function total_comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->count();
+    }
+
 }

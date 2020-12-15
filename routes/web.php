@@ -173,6 +173,9 @@ use Illuminate\Support\Facades\Route;
     Route::resource('pages', Page\PageController::class);
     Route::resource('menus', Menu\MenuController::class);
     Route::get('menus/{menuslug}/{pageslug}', [LandingPageController::class, 'menu_with_page'])->name('menu.page');
+    
+    Route::resource('comments', Comments\CommentController::class);
+    Route::post('post-comment/{thread}', 'Comments\CommentController@addCommentPost')->name('thread.comment');
 
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');

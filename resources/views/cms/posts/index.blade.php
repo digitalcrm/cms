@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'All Posts')
+
 @section('content')
 
 
@@ -76,7 +78,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="posttable" class="table table-bordered table-striped">
+                        <table id="posttable" class="table table-bordered table-striped dt-responsive" style="width:100%">>
                             <thead>
                                 <tr>
                                     <th>Title</th>
@@ -87,6 +89,7 @@
                                     <th>Tags</th>
                                     <th>Date</th>
                                     <th>Views</th>
+                                    <th>Comments</th>
                                     <th>Show</th>
                                     <th>Active/Inactive</th>
                                     <th>Featured</th>
@@ -119,6 +122,9 @@
                                     <td>{{ $post->created_at->toFormattedDateString() ?? '' }}</td>
                                     <td>
                                         {{ $post->postcount }}
+                                    </td>
+                                    <td>
+                                        {{ $post->total_comments() }}
                                     </td>
                                     <td>
                                         @can('view-post')
