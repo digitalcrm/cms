@@ -303,11 +303,19 @@ class Post extends Model implements HasMedia
         return $post_date_value->action;
     }
 
+    /** below is used for relationships */
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+    /** below function is used for gettign the approved comments */
+    public function approvedComments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->where('isActive',true);
+    }
+
+    /** below function is used for gettign the approved comments */
     public function total_comments()
     {
         return $this->morphMany(Comment::class, 'commentable')->count();

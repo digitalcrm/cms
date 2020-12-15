@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->longText('body');
             $table->boolean('isActive')->default(false)->comment('comment by default is active');
+            $table->string('ip')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

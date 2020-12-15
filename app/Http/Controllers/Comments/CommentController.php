@@ -21,8 +21,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $all_comments = Comment::get();
-        return view('comments.index', compact('all_comments'));
+        return view('comments.index');
     }
 
     /**
@@ -95,8 +94,10 @@ class CommentController extends Controller
     {
         $data = $request->validated() + [
             'user_id' => auth()->user()->id,
+            'ip' => $request->ip(),
         ];
 
+        // dd($request->ip());
         $thread->comments()->create($data);
 
         return redirect()->back()->withMessage('Comment added successfully');

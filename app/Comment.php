@@ -10,7 +10,7 @@ class Comment extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable=['body','user_id', 'isActive'];
+    protected $fillable=['body','user_id', 'isActive','ip'];
 
     /**
      * Get the parent commentable model (post or other..).
@@ -23,5 +23,10 @@ class Comment extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeIsApproved($q)
+    {
+        return $q->where('isActive',true);
     }
 }

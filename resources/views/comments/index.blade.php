@@ -33,24 +33,14 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Comments</th>
                                     <th>Author</th>
-                                    {{-- <th>Status</th> --}}
+                                    <th>Comments</th>
+                                    <th>Approved</th>
+                                    <th>In response to</th>
                                     <th>Posted On</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @forelse($all_comments as $comment)
-                                <tr>
-                                    <td>{{ $comment->body }}</td>
-                                    <td>{{ $comment->user->name }}</td>
-                                    {{-- <td>{{ $comment->isActive }}</td> --}}
-                                    <td>{{ $comment->created_at->toFormattedDateString() }}</td>
-                                </tr>
-                                @empty
-                                    <td colspan="10" align="center">No Comments Available</td>                                    
-                                @endforelse
-                            </tbody>
+                            <livewire:comments.commentable />
                         </table>
                     </div>
                 </div>
