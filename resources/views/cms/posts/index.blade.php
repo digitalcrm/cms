@@ -78,7 +78,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="posttable" class="table table-bordered table-striped dt-responsive" style="width:100%">>
+                        <table id="posttable" class="table table-bordered table-striped dt-responsive" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Title</th>
@@ -93,6 +93,7 @@
                                     <th>Show</th>
                                     <th>Active/Inactive</th>
                                     <th>Featured</th>
+                                    <th>Comment Active</th>
                                     <th>Action</th>
                                     </tr>
                                 </thead>
@@ -195,6 +196,10 @@
                                     </form>
                                     </td>
 
+                                    <td>
+                                        {{ ($post->commentActive === 1) ? 'enabled' : 'disabled' }}
+                                    </td>
+                                    
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">

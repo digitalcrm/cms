@@ -73,10 +73,12 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
-
         // dd(request('postType'));
         $input = $request->validated();
 
+        $input['commentActive'] = $request->has('commentActive') ? true : false;
+
+        // dd($input);
         switch (request('postType')) {
             case 'draft':
                 $input['published'] = false;
@@ -106,9 +108,8 @@ class PostController extends Controller
 
             $posts->addMedia($request->featuredimage)
                     ->toMediaCollection('posts');
-
         }
-
+        
         return redirect(route('posts.index'))->withMessage('post 😊 created successfully');
     }
 
@@ -175,6 +176,8 @@ class PostController extends Controller
     {
         // dd($request->input('featuredimage', false));
         $input = $request->validated();
+
+        $input['commentActive'] = $request->has('commentActive') ? true : false;
 
         switch (request('postType')) {
             case 'draft':

@@ -80,7 +80,10 @@
                                     <small class="form-text text-red">{{ $message }}</small>
                                     @enderror
                                 </div>
-
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="commentActive" class="form-check-input" id="commentActive" checked>
+                                    <label class="form-check-label" for="commentActive">Comments?</label>
+                                </div>
                                 <div class="form-group">
                                     <label for="featuredimage">Featured Image</label>
                                     <input id="featuredimage"

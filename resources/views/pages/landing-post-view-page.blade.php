@@ -40,7 +40,7 @@
                     @include('includes.cms_partials.about-author')
                 @endif
 
-                @if($post->get_first_row_of_visibility('tool_comments') === 1)
+                @if(($post->get_first_row_of_visibility('tool_comments') === 1) && ($post->commentActive === 1))
                     @include('includes.cms_partials.article-comments')
                 @endif
 

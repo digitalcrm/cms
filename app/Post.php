@@ -32,6 +32,7 @@ class Post extends Model implements HasMedia
         'postcount',
         'isactive',
         'featured',
+        'commentActive',
     ];
 
     protected $appends = [
