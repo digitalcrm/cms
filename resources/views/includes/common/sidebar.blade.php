@@ -166,7 +166,7 @@
                     </li>
                 @endcan
 
-                
+                @hasanyrole('superadmin|admin')
                 <li class="nav-item">
                     <a href="{{ route('pages.index') }}" class="nav-link {{ request()->routeIs('pages*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
@@ -184,6 +184,7 @@
                         </p>
                     </a>
                 </li>
+                @endhasanyrole
 
                 {{-- Appearance --}}
                 @hasanyrole('superadmin|admin')
@@ -203,6 +204,8 @@
                                     <p>Themes</p>
                                 </a>
                             </li>
+                            
+                            @hasanyrole('superadmin|admin')
                             <li class="nav-item">
                                 <a href="{{ route('menus.index') }}" class="nav-link {{ request()->routeIs('menus*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-th"></i>
@@ -211,6 +214,8 @@
                                     </p>
                                 </a>
                             </li>
+                            @endhasanyrole
+
                             <li class="nav-item">
                                 <a href="{{ route('customize') }}"
                                     class="nav-link {{ request()->routeIs('customize') ? 'active' : '' }}">

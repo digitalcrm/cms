@@ -13,6 +13,7 @@ class CommentController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(['role:superadmin|admin']);
     }
     /**
      * Display a listing of the resource.
@@ -100,6 +101,6 @@ class CommentController extends Controller
         // dd($request->ip());
         $thread->comments()->create($data);
 
-        return redirect()->back()->withMessage('Comment added successfully');
+        return redirect()->back()->withMessage('Your comments has been added for reviewed!');
     }
 }

@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="form-group form-check">
                                     <input type="checkbox" name="commentActive" class="form-check-input" id="commentActive" checked>
-                                    <label class="form-check-label" for="commentActive">Comments?</label>
+                                    <label class="form-check-label" for="commentActive">Allow comments</label>
                                 </div>
                                 <div class="form-group">
                                     <label for="featuredimage">Featured Image</label>

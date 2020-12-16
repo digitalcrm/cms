@@ -1,4 +1,5 @@
 <div class="mb-3 mt-5">Comments {{ count($post->approvedComments) }}</div>
+{{-- Comment Lists --}}
 <div class="row mb-2">
     @foreach($post->approvedComments as $comment)
         <div class="col-12">
@@ -13,6 +14,17 @@
         </div>
     @endforeach
 </div>
+{{-- Success Message --}}
+@if (session()->has('message'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('message') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+
+{{-- Comment Box --}}
 <form method="post" action="{{ route('thread.comment', $post->slug) }}">
     @csrf
     <div class="form-group">
