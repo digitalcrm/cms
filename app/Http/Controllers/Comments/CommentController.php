@@ -43,7 +43,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->postId);
+        // dd($request->postId);
     }
 
     /**
@@ -54,7 +54,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        return view('comments.show', compact('comment'));
     }
 
     /**
@@ -95,7 +95,7 @@ class CommentController extends Controller
     {
         $data = $request->validated() + [
             'user_id' => auth()->user()->id,
-            'ip' => $request->ip(),
+            // 'ip' => $request->ip(),
         ];
 
         // dd($request->ip());

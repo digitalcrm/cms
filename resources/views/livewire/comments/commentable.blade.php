@@ -5,7 +5,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="replyModalLabel">{{ $this->commentTitle }}</h5>
+                        <h5>Author: {{ $this->commentAuthor }}</h5>
+                        <p><strong>Description: </strong>{{ $this->commentTitle }}</p>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -43,6 +44,8 @@
                 @forelse($all_comments as $comment)
                     <tr>
                         <td>
+                            <img src="{{ $comment->user->profile_photo_url }}" alt="{{ $comment->user->name }}"
+                            class="img-size-50 img-circle mr-3">
                             {{ $comment->user->name }}
                             <p><strong>{{ $comment->user->email }}</strong>,
                                 {{ $comment->ip ?? '' }}</p>
@@ -59,8 +62,11 @@
                         <td>
                             <button wire:click.prevent="commentId({{ $comment->id }})" type="button"
                                 class="btn btn-outline-primary" data-toggle="modal" data-target="#replyModal">
-                                Reply
-                            </button>
+                                Reply 
+                            </button> 
+                            <a class="float-right" href="{{ route('comments.show', $comment->id) }}">
+                                [{{ $comment->replies->count() }}]
+                            </a>
                         </td>
                         @endif
                         

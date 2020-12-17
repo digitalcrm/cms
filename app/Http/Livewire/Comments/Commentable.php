@@ -16,6 +16,7 @@ class Commentable extends Component
 
     public $replyText; // textarea
     public $commentTitle; // comment body
+    public $commentAuthor; // post Author
     public $comment_id; // comment id
     public $replyId; // post Id
 
@@ -23,8 +24,9 @@ class Commentable extends Component
     {
         $comment = Comment::findOrFail($id); // get comment from comments table
 
-        $this->commentTitle = $comment->body;
+        $this->commentTitle = $comment->comment_description();
         $this->comment_id = $comment->id;
+        $this->commentAuthor = $comment->user->name;
         
         $this->replyId = $comment->commentable->id; // get the post id for this individual comments
 
@@ -41,14 +43,15 @@ class Commentable extends Component
                 'user_id' => auth()->user()->id,
                 'body' => $this->replyText,
                 'isActive' => true,
-                'parent_id' => $this->comment_id
+                'parent_id' => $this->comment_id,
             ]);
 
             $this->reset();
 
             $this->emit('replyModal');
 
-            return redirect()->route('comments.index',['action'=>'replies']);
+            // return redirect()->route('comments.index',['action'=>'replies']);
+            return redirect()->route('comments.index');
         }
     }
 

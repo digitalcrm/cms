@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
+                    {{-- <div class="card-header">
                         <div class="row">
                             <div class="col-8">
                                 <a href="{{ route('comments.index') }}"
@@ -32,7 +32,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <livewire:comments.commentable />
                 </div>
             </div>
