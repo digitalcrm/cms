@@ -12,6 +12,19 @@
                 </div>
             </div>
         </div>
+        {{-- reply --}}
+        @foreach($comment->replies as $reply)
+        <div class="col-12">
+            <div class="media my-1 ml-5">
+                <img src="{{ $reply->user->profile_photo_url }}" class="img-fluid mr-3" alt="user-image"
+                    width="64" height="64">
+                <div class="media-body">
+                    <span class="mt-0 text-muted">Posted On: {{ $reply->created_at->diffForHumans() }}</span>
+                    <p>{{ $reply->body }}</p>
+                </div>
+            </div>
+        </div>
+        @endforeach
     @endforeach
 </div>
 {{-- Success Message --}}

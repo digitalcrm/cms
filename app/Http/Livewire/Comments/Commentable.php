@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Comments;
 
 use App\Comment;
+use App\Post;
 use Livewire\Component;
 
 class Commentable extends Component
@@ -12,6 +13,49 @@ class Commentable extends Component
     public $statusMessage;
 
     public $removeFlashMessage;
+
+    public $replyText; // textarea
+    public $commentTitle; // comment body
+    public $comment_id; // comment id
+    public $replyId; // post Id
+
+    public function commentId($id)
+    {
+        $comment = Comment::findOrFail($id); // get comment from comments table
+
+        $this->commentTitle = $comment->body;
+        $this->comment_id = $comment->id;
+        
+        $this->replyId = $comment->commentable->id; // get the post id for this individual comments
+
+        // dd($comment->id,$this->replyId);
+    }
+
+    public function reply()
+    {
+        if ($this->replyId) {
+
+            $replies = Post::findOrFail($this->replyId);
+            
+            $replies->comments()->create([
+                'user_id' => auth()->user()->id,
+                'body' => $this->replyText,
+                'isActive' => true,
+                'parent_id' => $this->comment_id
+            ]);
+
+            $this->reset();
+
+            $this->emit('replyModal');
+
+            return redirect()->route('comments.index',['action'=>'replies']);
+        }
+    }
+
+    public function close()
+    {
+        $this->reset();
+    }
 
     public function toggle($id)
     {
@@ -31,7 +75,7 @@ class Commentable extends Component
 
     public function render()
     {
-        $this->all_comments = Comment::get();
+        $this->all_comments = Comment::typeFilter(request('action'))->latest()->get();
 
         return view('livewire.comments.commentable');
     }

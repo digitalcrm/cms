@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('commentable_type');
             $table->foreignId('user_id')->constrained();
             $table->longText('body');
+            $table->integer('parent_id')->nullable()->comment('comment id sotre for related comment');
             $table->boolean('isActive')->default(false)->comment('comment by default is active');
             $table->string('ip')->nullable();
             $table->timestamps();

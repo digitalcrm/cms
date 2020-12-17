@@ -313,7 +313,9 @@ class Post extends Model implements HasMedia
     /** below function is used for gettign the approved comments */
     public function approvedComments()
     {
-        return $this->morphMany(Comment::class, 'commentable')->where('isActive',true);
+        return $this->morphMany(Comment::class, 'commentable')
+                    ->where('isActive',true)
+                    ->where('parent_id',null);
     }
 
     /** below function is used for gettign the approved comments */

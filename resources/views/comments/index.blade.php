@@ -19,34 +19,32 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    {{-- <div class="card-header">
+                    <div class="card-header">
                         <div class="row">
                             <div class="col-8">
-                                
-                            </div>
-                            <div class="col-4">
-                                
+                                <a href="{{ route('comments.index') }}"
+                                    class="btn btn-sm btn-outline-secondary mr-1 {{ request('action') == '' ? 'active' : '' }}">
+                                    Comments
+                                </a>
+                                <a href="{{ route('comments.index',['action'=>'replies']) }}"
+                                    class="btn btn-sm btn-outline-secondary mr-1 {{ request('action') == 'replies' ? 'active' : '' }}">
+                                    Replies
+                                </a>
                             </div>
                         </div>
-                    </div> --}}
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Author</th>
-                                    <th>Comments</th>
-                                    <th>Approved</th>
-                                    <th>In response to</th>
-                                    <th>Posted On</th>
-                                </tr>
-                            </thead>
-                            <livewire:comments.commentable />
-                        </table>
                     </div>
+                    <livewire:comments.commentable />
                 </div>
             </div>
         </div>
     </div>
 </section>
-
+@section('scripts')
+@parent
+<script>
+    window.livewire.on('replyModal', () => {
+        $('#replyModal').modal('hide');
+    })
+</script>
+@endsection
 @endsection
