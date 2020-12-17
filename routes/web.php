@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
     /* Favorite posts routes */
     Route::get('favorite/{posts:slug}/posts',[LandingPageController::class,'favoritePost'])->name('save.post');
     Route::get('unfavorite/{posts:slug}/posts',[LandingPageController::class,'unFavoritePost'])->name('unsaved.post');
+    Route::get('sitemap', [LandingPageController::class, 'sitemap'])->name('sitemap');
 
     ###################################################End Landing Page Post routes############################################################
     Auth::routes(['verify' => true]);

@@ -149,4 +149,9 @@ class LandingPageController extends Controller
                 break;
         }
     }
+
+    public function sitemap()
+    {
+        return view('sitemap');
+    }
 }

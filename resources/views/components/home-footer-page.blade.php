@@ -55,7 +55,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <p class="copyright">{{ date('Y') }} <a href="{{ env('APP_URL') }}">{{ env('APP_NAME') }}</a> All rights reserved.</p>
+                    <p class="copyright">{{ date('Y') }} <a href="{{ env('APP_URL') }}">{{ env('APP_NAME') }}</a> 
+                        All rights reserved. <a href="{{ route('sitemap') }}">Sitemap</a>
+                    </p>
                 </div>
                 <div class="col-md-6 text-right">
                     <div class="social-media-widget">
