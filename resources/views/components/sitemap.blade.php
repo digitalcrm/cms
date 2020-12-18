@@ -1,40 +1,53 @@
 @extends($current_theme)
 
-@section('title', 'Sitemap')
-
 @section('content')
-<div class="container" id="app">
+<div class="container">
     <div class="row">
-        <div class="col-md-6 mt-5">
-            <h3>Posts</h3>
-            @foreach($categories_having_post as $category)
-                <div class="media">
-                    <div class="media-body">
-                        <h5 class="mt-1">{{ $category->name }}</h5>
-                        @foreach($category->posts as $post)
-                            <div class="media mt-3">
-                                <div class="media-body">
-                                    <a class="mt-0 ml-3" href="{{ route('post.viewitem', $post->slug) }}">{{ $post->title }}</a>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endforeach
+        <div class="col-md-12">
+            <h3 class="block-title-internal mt-5 mb-4">{{ __('SiteMap') }}</h3>
         </div>
-        <div class="col-md-6 mt-5">
-            <h3>Pages</h3>
-            @foreach($pages as $page)
-                <div class="media">
-                    <div class="media-body">
-                        <div class="media mt-3">
-                            <div class="media-body">
-                                <a class="mt-0" href="{{ route('pages.show', $page->slug) }}">{{ $page->title }}</a>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Posts</h3>
+                    @foreach($categories_having_post as $category)
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-1"><a
+                                    href="{{ route('latest.latestpost',['category' => $category->name]) }}">{{ $category->name }} [{{ $category->posts->count() }}]</a>
+                            </h5>
+                            @foreach($category->posts as $post)
+                                <div class="media">
+                                    <div class="media-body">
+                                        <a class=""
+                                            href="{{ route('post.viewitem', $post->slug) }}"><i class="fas fa-angle-right p-2"></i>{{ $post->title }}</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    {!! $loop->last ? '' : '<hr>' !!}
+                @endforeach
+                </div>
+                <div class="col-md-6">
+                    <h3>Pages</h3>
+                    @foreach($pages as $page)
+                    <div class="media">
+                        <div class="media-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <a class=""
+                                        href="{{ route('pages.show', $page->slug) }}"><i class="fas fa-angle-right p-2"></i> {{ $page->title }}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                @endforeach
                 </div>
-            @endforeach
+            </div>
+        </div>
+        <!-- col-md-9 End -->
+        <div class="col-md-3">
         </div>
     </div>
 </div>
