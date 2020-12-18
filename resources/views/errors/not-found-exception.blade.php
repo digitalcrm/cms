@@ -1,0 +1,1 @@
+Theme is not active so please activate the theme first

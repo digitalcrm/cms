@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Theme1 Customize</h1>
+                    <h1 class="m-0 text-dark">Theme2 Customize</h1>
                 </div>
                 <!-- /.col -->
             </div>
@@ -25,14 +25,14 @@
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-colors"
                                         data-toggle="pill" href="#v-pills-colors" role="tab"
                                         aria-controls="v-pills-colors" aria-selected="true"><i
-                                            class="fas fa-palette"></i> Colors</a>
+                                            class="fas fa-palette"></i> Theme2</a>
 
                                     {{-- <a class="list-group-item list-group-item-action" id="v-pills-home-background-image"
                                         data-toggle="pill" href="#v-pills-background-image" role="tab"
                                         aria-controls="v-pills-background-image" aria-selected="true"><i
                                             class="fas fa-chalkboard"></i> Background Image</a> --}}
 
-                                    <a class="list-group-item list-group-item-action {{ (session()->has('tab')) ? 'active' : '' }}" id="v-pills-home-slider"
+                                    {{-- <a class="list-group-item list-group-item-action {{ (session()->has('tab')) ? 'active' : '' }}" id="v-pills-home-slider"
                                         data-toggle="pill" href="#v-pills-slider" role="tab"
                                         aria-controls="v-pills-slider" aria-selected="true"><i
                                             class="fas fa-sliders-h"></i> Slider</a>
@@ -89,7 +89,7 @@
                                     <a class="list-group-item list-group-item-action" id="v-pills-home-additional-css"
                                         data-toggle="pill" href="#v-pills-additional-css" role="tab"
                                         aria-controls="v-pills-additional-css" aria-selected="true"><i
-                                        class="fas fa-file-code"></i> Additional CSS</a>
+                                        class="fas fa-file-code"></i> Additional CSS</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -99,87 +99,74 @@
                             <!-- Site Colors -->
                             <div class="tab-pane fade show" id="v-pills-colors" role="tabpanel"
                                 aria-labelledby="v-pills-home-colors">
-                                <livewire:customization.homepage-style />
                             </div>
                             <!-- End -->
 
                             <!-- Site Background Image -->
-                            {{-- <div class="tab-pane fade" id="v-pills-background-image" role="tabpanel"
+                            <div class="tab-pane fade" id="v-pills-background-image" role="tabpanel"
                                 aria-labelledby="v-pills-home-background-image">
                                 <!-- Background Image -->
-                                <livewire:customization.background-image />
                                 <!-- End -->
-                            </div> --}}
+                            </div>
                             <!-- End -->
 
                             <!-- Site Slider -->
                             <div class="tab-pane fade {{ (session()->has('tab')) ? 'show active' : '' }}" id="v-pills-slider" role="tabpanel"
                                 aria-labelledby="v-pills-home-slider">
-                                <livewire:customization.slider />
                             </div>
                             <!-- End -->
                             <!-- Site Services -->
                             <div class="tab-pane fade" id="v-pills-services" role="tabpanel"
                                 aria-labelledby="v-pills-home-services">
                                 <!-- Services -->
-                                <livewire:customization.service />
                                 <!-- End -->
                             </div>
                             <!-- End -->
                             <!-- Site Intro -->
                             <div class="tab-pane fade" id="v-pills-intro" role="tabpanel"
                                 aria-labelledby="v-pills-home-intro">
-                                <livewire:customization.intro />
                             </div>
                             <!-- End -->
                             <!-- Site Who We Are -->
                             <div class="tab-pane fade" id="v-pills-who-we-are" role="tabpanel"
                                 aria-labelledby="v-pills-home-who-we-are">
-                                <livewire:customization.who-we-are />
                             </div>
                             <!-- End -->
 
                             <!-- Theme Headings -->
                             <div class="tab-pane fade" id="v-pills-headings" role="tabpanel"
                                 aria-labelledby="v-pills-home-headings">
-                                <livewire:customization.theme-heading />
                             </div>
                             <!-- End -->
 
                             <!-- Clients -->
                             <div class="tab-pane fade" id="v-pills-clients" role="tabpanel"
                                 aria-labelledby="v-pills-home-clients">
-                                <livewire:customization.client-setting />
                             </div>
                             <!-- End -->
                             <!-- Site Team -->
                             <div class="tab-pane fade" id="v-pills-team" role="tabpanel"
                                 aria-labelledby="v-pills-home-team">
-                                <livewire:customization.team-setting />
                             </div>
                             <!-- End -->
                             <!-- Site Testimonials -->
                             <div class="tab-pane fade" id="v-pills-testimonials" role="tabpanel"
                                 aria-labelledby="v-pills-home-testimonials">
-                                <livewire:customization.testimonial-setting />
                             </div>
                             <!-- End -->
                             <!-- Site Statistics -->
                             <div class="tab-pane fade" id="v-pills-statistics" role="tabpanel"
                                 aria-labelledby="v-pills-home-statistics">
-                                <livewire:customization.setting-stats />
                             </div>
                             <!-- End -->
                             <!-- Site Contact Us -->
                             <div class="tab-pane fade" id="v-pills-contact-us" role="tabpanel"
                                 aria-labelledby="v-pills-home-contact-us">
-                                <livewire:customization.contact-setting />
                             </div>
                             <!-- End -->
                             <!-- Site Say Hello -->
                             <div class="tab-pane fade" id="v-pills-say-hello" role="tabpanel"
                                 aria-labelledby="v-pills-home-say-hello">
-                                <livewire:customization.welcom-widget />
                             </div>
                             <!-- End -->
 

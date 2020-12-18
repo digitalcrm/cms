@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h3 class="block-title-internal mt-5 mb-4">{{ __('SiteMap') }}</h3>
+            <h3 class="mt-5 mb-4">{{ __('Sitemap') }}</h3>
         </div>
         <div class="col-md-9">
             <div class="row">

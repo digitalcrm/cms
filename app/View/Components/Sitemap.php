@@ -17,21 +17,26 @@ class Sitemap extends Component
      */
     public function __construct(Theme $themes)
     {
-        $themeId = $themes->isActive()->first();
-        
-        switch ($themeId->id) {
-            case 1:
-                $this->current_theme = 'layouts.app';
-                return $this->current_theme;
-                break;
-            case 2:
-                $this->current_theme = 'themes.theme2.layouts.main';
-                return $this->current_theme;
-                break;
-            default:
-                return 'layouts.app';
-                break;
+        try {
+            $themeId = $themes->isActive()->firstOrFail();
+            $this->current_theme = $themeId->id;
+            switch ($this->current_theme) {
+                case 1:
+                    $this->current_theme = 'layouts.app';
+                    return $this->current_theme;
+                    break;
+                case 2:
+                    $this->current_theme = 'themes.theme2.layouts.main';
+                    return $this->current_theme;
+                    break;
+                default:
+                    return view('errors.not-found-exception');
+                    break;
+            }
+        } catch (\Throwable $th) {
+            dd('something went wrong '.$th->getMessage());
         }
+       
     }
 
     /**

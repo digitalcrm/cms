@@ -9,16 +9,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ArticleLinkSendToFriend;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class LandingPageController extends Controller
 {
-    protected $first_themes;
-    protected $second_themes;
-    protected $get_active_theme_id;
+    // protected $get_active_theme_id;
+    protected $themeId;
 
     public function __construct(Theme $themes)
     {
-        $this->get_active_theme_id = $themes->isActive()->first();
+        try {
+            // $this->get_active_theme_id = $themes->isActive()->firstOrFail();
+            $theme_id_get = $themes->isActive()->firstOrFail();
+            $this->themeId = $theme_id_get->id;
+        } catch (ModelNotFoundException $e) {
+            return view('errors.not-found-exception');
+        }
     }
 
     public function index()
@@ -26,13 +32,16 @@ class LandingPageController extends Controller
         // dd($this->themes);
         $blogs = Post::whereIsactive(1)->latest()->limit(3)->get();
 
-        switch ($this->get_active_theme_id->id) {
+        switch ($this->themeId) {
             case 1:
                 return view('welcome',compact('blogs'));
                 break;
+            case 2:
+                return view('themes.theme2.home-page');
+                break;
 
             default:
-                return view('themes.theme2.home-page');
+                return view('errors.not-found-exception');
                 break;
         }
     }
@@ -43,26 +52,34 @@ class LandingPageController extends Controller
 
         $related_posts = $post->relatedPost()->orderBy('id', 'desc')->take(3)->get(['title','category_id','slug','body']);
         
-        switch ($this->get_active_theme_id->id) {
+        switch ($this->themeId) {
             case 1:
                 return view('pages.landing-post-view-page',compact('post','related_posts'));
                 break;
 
-            default:
+            case 2:
                 return view('themes.theme2.internal-view-page',compact('post','related_posts'));
+                break;
+
+            default:
+                return view('errors.not-found-exception');
                 break;
         }
     }
 
     public function latestpost()
     {
-        switch ($this->get_active_theme_id->id) {
+        switch ($this->themeId) {
             case 1:
                 return view('pages.landing-post-lists');
                 break;
 
-            default:
+            case 2:
                 return view('themes.theme2.internal-list-page');
+                break;
+
+            default:
+                return view('errors.not-found-exception');
                 break;
         }
     }
@@ -139,19 +156,32 @@ class LandingPageController extends Controller
         }])->where('slug',$pageslug)->isActive()->firstOrFail();
 
         // dd($menu_page->menus->name);
-        switch ($this->get_active_theme_id->id) {
+        switch ($this->themeId) {
             case 1:
                 return view('pages.menu-page',compact('menu_page'));
                 break;
 
-            default:
+            case 2:
                 return view('themes.theme2.partials.menu-page', compact('menu_page'));
+                break;
+
+            default:
+                return view('errors.not-found-exception');
                 break;
         }
     }
 
     public function sitemap()
     {
-        return view('sitemap');
+        switch ($this->themeId) {
+            case 1:
+            case 2:
+                return view('sitemap');
+                break;
+
+            default:
+                return view('errors.not-found-exception');
+                break;
+        }
     }
 }
