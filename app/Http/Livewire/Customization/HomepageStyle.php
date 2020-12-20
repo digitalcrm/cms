@@ -60,7 +60,7 @@ class HomepageStyle extends Component
             'stats_back_color' => 'required|string',
             'team_back_color' => 'required|string',
             'client_back_color' => 'required|string',
-        ]);            
+        ]);
         LandingpageStyle::create($validatedData);
 
         session()->flash('message', 'First Row Data Created Successfully');
