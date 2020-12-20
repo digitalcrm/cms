@@ -80,7 +80,7 @@ class Slider extends Component
     public function mount()
     {
         try {
-            $this->table_data = ThemeSlider::all();
+            $this->table_data = ThemeSlider::whereNull('fileType')->get();
         } catch (\Throwable $th) {
             $this->not_found = $th->getMessage();
         }

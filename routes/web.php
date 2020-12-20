@@ -185,3 +185,7 @@ use Illuminate\Support\Facades\Route;
         Artisan::call('view:clear');
         return 'cache cleared';
     })->middleware('auth');
+
+    Route::get('php-infos', function(){
+        return phpinfo(INFO_MODULES);
+    });

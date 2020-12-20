@@ -47,7 +47,7 @@
             </div>
             <div class="card-footer text-right">
                 <button type="submit"
-                    class="btn btn-primary">{{ ($notFoundData) ? 'Store' : 'Save' }}</button>
+                    class="btn btn-primary">Save</button>
             </div>
         </form>
     </div>

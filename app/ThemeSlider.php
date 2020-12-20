@@ -15,6 +15,8 @@ class ThemeSlider extends Model
     protected $table = 'theme_sliders';
 
     protected $fillable = [
+        'fileType',
+        'isActive',
         'image',
         'heading',
         'paragraph',
@@ -29,5 +31,10 @@ class ThemeSlider extends Model
         return $this->image
             ? Storage::disk($this->profilePhotoDisk())->url($this->image)
             : $this->defaultGravatar();
+    }
+
+    public function scopeIsActive($query)
+    {
+        $query->where('isActive',true);
     }
 }
