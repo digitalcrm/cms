@@ -1,4 +1,4 @@
-<footer class="footer bg-dark2 py-3 mt-4">
+<footer class="footer bg-dark2 py-3 mt-4 custom-bg-footer">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -14,7 +14,7 @@
         </div>
     </div>
 </footer>
-<footer class="footer bg-dark py-3">
+<footer class="footer bg-dark py-3 custom-bg-subfooter">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">

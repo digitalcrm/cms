@@ -1,5 +1,5 @@
 <header class="{{ request()->Is('/') ? 'header' : '' }}">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark custom-bg-header">
       <div class="container">
         @include('layouts.partials.homepage-logo')
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
