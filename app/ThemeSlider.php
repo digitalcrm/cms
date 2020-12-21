@@ -33,8 +33,30 @@ class ThemeSlider extends Model
             : $this->defaultGravatar();
     }
 
+    public function videoUrl()
+    {
+        return $this->image
+            ? Storage::disk($this->profilePhotoDisk())->url($this->image)
+            : asset('coverr.mp4');
+    }
+
     public function scopeIsActive($query)
     {
         $query->where('isActive',true);
+    }
+
+    public function scopeIsVideo($query)
+    {
+        $query->where('fileType','video');
+    }
+
+    public function videoTag($height = null, $width = null, $additionalParameter = null)
+    {
+        $tag = '
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" height="'.$height.'" width="'.$width.'" '.$additionalParameter.'>
+            <source src="'.$this->videoUrl().'" type="video/mp4">
+        </video>
+        ';
+        return $tag;
     }
 }

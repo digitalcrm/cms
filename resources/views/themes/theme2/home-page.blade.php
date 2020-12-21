@@ -3,7 +3,7 @@
 @section('content')
 
 @push('header-middle')
-    @include('themes.theme2.partials.homepage-header-middle')
+    <x-themes.theme2.header-middle />
 @endpush
 
 <div class="container">

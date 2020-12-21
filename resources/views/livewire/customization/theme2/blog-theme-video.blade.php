@@ -82,11 +82,7 @@
                         @forelse($slider_videos as $video)
                             <tr>
                                 <td>
-                                    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" width="50px" height="50px">
-                                        <source src="{{ $video->imageUrl() }}" type="video/mp4">
-                                    </video>
-                                    {{-- <img src="{{ $video->imageUrl() }}" alt="video-{{ $video->id }}"
-                                        width="35px" height="35px"> --}}
+                                    {!! $video->videoTag('50px','50px') !!}
                                 </td>
                                 <td>{{ $video->heading }}</td>
                                 <td>{{ $video->paragraph }}</td>
