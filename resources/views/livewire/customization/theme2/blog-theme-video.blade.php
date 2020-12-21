@@ -40,7 +40,13 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-6" 
+                            x-data="{ isUploading: false, progress: 0 }"
+                            x-on:livewire-upload-start="isUploading = true"
+                            x-on:livewire-upload-finish="isUploading = false"
+                            x-on:livewire-upload-error="isUploading = false"
+                            x-on:livewire-upload-progress="progress = $event.detail.progress"
+                            >
                                 <div class="form-group">
                                     <label for="image">Video</label>
                                     <input wire:model="image" type="file" class="form-control-file"
@@ -50,7 +56,9 @@
                                     @error('image')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                    <div wire:loading wire:target="image">Uploading...</div>
+                                    <div x-show="isUploading">
+                                        <progress max="100" x-bind:value="progress"></progress>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +68,7 @@
                             <button wire:click="resetAll" type="button" class="btn btn-outline-secondary">
                                 Cancel
                             </button>
-                            <button type="submit" class="btn btn-primary">
+                            <button wire:loading.attr="disabled" type="submit" class="btn btn-primary">
                                 {{ ($wants_to_update) ? 'Update' : 'Save' }}
                             </button>
                         </div>
