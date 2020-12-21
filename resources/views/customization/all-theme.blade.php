@@ -23,7 +23,8 @@
             @foreach($themes as $theme)
                 <div class="col-md-4 p-3">
                     <div class="card">
-                        <img src="{{ $theme->imageUrl() }}" class="card-img-top fit" alt="...">
+                        {{-- <img src="{{ $theme->imageUrl() }}" class="card-img-top fit" alt="..."> --}}
+                        <img src="{{ $theme->image_Screenshots($theme->id) }}" class="card-img-top fit" alt="...">
                         <div class="card-footer bg-dark">
                             <div class="float-left">{{ $theme->name }}</div>
                             <div class="float-right">

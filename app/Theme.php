@@ -34,4 +34,21 @@ class Theme extends Model
     {
         return $query->where('isActive', true);
     }
+
+    public function image_Screenshots($id)
+    {
+        switch ($id) {
+            case '1':
+                return asset('screenshots/company_theme.png');
+                break;
+
+            case '2':
+                return asset('screenshots/blog_theme.png');
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
 }
