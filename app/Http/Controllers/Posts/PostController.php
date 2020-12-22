@@ -194,7 +194,6 @@ class PostController extends Controller
                 $input['published'] = true;
                 break;
         }
-
         $post->update($input);
 
         $tags = [];

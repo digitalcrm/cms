@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Customization\UrlBasedCustomizationController;
-use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\Settings\SettingController;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\Settings\SettingController;
+use App\Http\Controllers\Customization\UrlBasedCustomizationController;
 
     ###################################################Landing Page Post routes############################################################
     Route::get('/', [LandingPageController::class, 'index'])->name('home');
@@ -178,6 +178,11 @@ use Illuminate\Support\Facades\Route;
     Route::resource('comments', Comments\CommentController::class);
     Route::post('post-comment/{thread}', 'Comments\CommentController@addCommentPost')->name('thread.comment');
 
+
+    ####################################################Gallary System###################################################
+    Route::resource('gallaries', Media\GallaryController::class);
+    
+    ######################################################################################################################
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');
         Artisan::call('cache:clear');
