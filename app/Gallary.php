@@ -44,4 +44,11 @@ class Gallary extends Model
                 ? round($size_in_kb).' Kb'
                 : '';
     }
+
+    public function scopeSearch($query, $val)
+    {
+        $searchInput = '%'.$val.'%';
+        return $query->where('name','like',$searchInput)
+                    ->orWhere('file_name','like',$searchInput);
+    }
 }
