@@ -33,7 +33,8 @@ class Gallary extends Model
     {
         [$width, $height] = getimagesize($this->imageUrl());
 
-        return $width.'x'.$height;
+        // return $width.'x'.$height;
+        return $width.' by '.$height.' pixels';
     }
 
     public function total_size()

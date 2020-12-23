@@ -20,9 +20,7 @@ class GallaryController extends Controller
      */
     public function index()
     {
-        $gallaries = Gallary::latest()->get();
-        // return view('gallary.index', compact('gallaries'));
-        return view('gallary.grid-media', compact('gallaries'));
+        return view('gallary.grid-media');
     }
 
     /**

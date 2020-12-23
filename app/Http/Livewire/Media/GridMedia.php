@@ -11,6 +11,7 @@ class GridMedia extends Component
     public $searchInput = '';
 
     public $file_name;
+    public $file_path;
     public $mime_type;
     public $created_at;
     public $size;
@@ -21,6 +22,7 @@ class GridMedia extends Component
         $row_media_data = Gallary::findOrFail($id);
         
         $this->file_name = $row_media_data->file_name;
+        $this->file_path = $row_media_data->imageUrl();
         $this->mime_type = $row_media_data->mime_type;
         $this->created_at = $row_media_data->created_at->toFormattedDateString();
         $this->size = $row_media_data->total_size();
