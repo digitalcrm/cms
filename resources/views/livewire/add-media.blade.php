@@ -1,7 +1,7 @@
 <div>
     <div wire:ignore.self class="modal fade" id="addmediamodal" tabindex="-1" aria-labelledby="addmediamodalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -82,10 +82,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div> --}}
             </div>
         </div>
     </div>
