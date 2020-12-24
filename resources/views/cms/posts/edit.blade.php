@@ -68,7 +68,6 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-
                             @livewire('dependentsubcategorydropdown', [
                                 'category'=>old('category_id',$post->category_id),
                                 'subcategory'=>old('subcategory_id',$post->subcategory_id)
@@ -147,6 +146,7 @@
 <!-- /.content -->
 @section('scripts')
 @parent
+{{-- <script src="{{ asset('js/tinymce-custom.js') }}"></script> --}}
 <script src="{{ asset('js/tinymce.js') }}"></script>
 <script>
     function copyClipboardUrl() {

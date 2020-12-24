@@ -132,6 +132,7 @@
 @section('scripts')
 @parent
 <script src="{{ asset('js/tinymce.js') }}"></script>
+{{-- <script src="{{ asset('js/tinymce-custom.js') }}"></script> --}}
 <script>
 function copyClipboardUrl() {
 

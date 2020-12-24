@@ -162,7 +162,7 @@ class PostController extends Controller
         // }
 
         Gate::authorize('update', $post);
-            return view('cms.posts.edit',compact('tags','post'));
+        return view('cms.posts.edit',compact('tags','post'));
     }
 
     /**

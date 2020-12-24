@@ -14,7 +14,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/status_toggle.js','public/ajax/js')
     .js('resources/js/bookingevent_toggle.js','public/ajax/js')
     .js('resources/js/fullcalendar.js','public/ajax/js')
-    // .js('resources/js/copy-clipboard.js','public/js')
+    .js('resources/js/tinymce-custom.js','public/js')
     .js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps();
 
 mix.browserSync('acl.test');
