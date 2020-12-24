@@ -100,8 +100,8 @@ class PostController extends Controller
             $tags = explode(',', request('tags'));
             foreach ($tags as $tag_name) {
                 $tag = Tag::firstOrCreate(['name' => $tag_name]);
+                $posts->tags()->attach($tag);
             }
-            $posts->tags()->attach($tag);
         }
 
         if($request->hasFile('featuredimage')){
