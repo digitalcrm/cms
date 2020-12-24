@@ -3,6 +3,7 @@ tinymce.init({
     branding: false,
     height: 300,
     menubar: false,
+    relative_urls : false,
     plugins: [
     "advlist autolink lists link image charmap print preview hr anchor pagebreak",
     "searchreplace wordcount visualblocks visualchars code fullscreen",
