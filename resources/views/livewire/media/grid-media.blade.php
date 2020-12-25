@@ -132,6 +132,13 @@
                 })
             }
         }
-
+    </script>
+    <script>
+        // console.log(window.innerHeight, window.scrollY);
+        window.onscroll = function(event) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                window.livewire.emit('mediaLoad');
+            }
+        };
     </script>
 </div>

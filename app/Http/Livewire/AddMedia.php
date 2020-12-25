@@ -17,6 +17,15 @@ class AddMedia extends Component
     public $size;
     public $dimension;
 
+    public $perPage = 10;
+
+    protected $listeners = ['mediaLoad' => 'scrollMore'];
+
+    public function scrollMore()
+    {
+        $this->perPage = $this->perPage + 6;
+    }
+    
     public function clickImage($id)
     {
         $this->isClicked = true;
@@ -40,7 +49,7 @@ class AddMedia extends Component
     public function render()
     {
         try {
-            $this->gallaries = Gallary::latest()->get();
+            $this->gallaries = Gallary::latest()->take($this->perPage)->get();
         } catch (\Throwable $th) {
             //throw $th;
         }

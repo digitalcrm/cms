@@ -44,6 +44,12 @@
                                                 <p>No Media Found</p>
                                             </div>
                                         @endforelse
+                                        <div class="col-12 text-center">
+                                            <button wire:click="$emit('mediaLoad')" class="btn btn-sm btn-outline-primary" type="button">
+                                                <span wire:loading class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                Load More
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-5 pl-5">

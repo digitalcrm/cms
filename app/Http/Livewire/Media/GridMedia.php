@@ -4,9 +4,12 @@ namespace App\Http\Livewire\Media;
 
 use App\Gallary;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class GridMedia extends Component
 {
+    use WithPagination;
+
     public $gallaries;
     public $searchInput = '';
 
@@ -16,6 +19,16 @@ class GridMedia extends Component
     public $created_at;
     public $size;
     public $dimension;
+
+    public $perPage = 15;
+
+    protected $listeners = ['mediaLoad' => 'scrollMore'];
+
+    public function scrollMore()
+    {
+        $this->perPage = $this->perPage + 6;
+    }
+
 
     public function click_modal($id)
     {
@@ -32,7 +45,8 @@ class GridMedia extends Component
     public function render()
     {
         try {
-            $this->gallaries = Gallary::search($this->searchInput)->latest()->take(50)->get();
+            $this->gallaries = Gallary::search($this->searchInput)->latest()->take($this->perPage)->get();
+            // $this->gallaries = Gallary::search($this->searchInput)->latest()->paginate($this->perPage);
         } catch (\Throwable $th) {
             //throw $th;
         }
