@@ -26,7 +26,11 @@
             <div class="col-md-12">
                 <ul class="list-unstyled">
                     <li class="media my-4">
-                        <a href="#"><img src="{{ optional($post->featured_image)->getFullUrl() ?? $post->default_image }}" class="mr-3 related-img-category" alt="{{ $post->slug }}"></a>
+                        @if($post->featured_image)
+                        <a href="#">
+                                <img src="{{ optional($post->featured_image)->getFullUrl() }}" class="mr-3 related-img-category" alt="{{ $post->slug }}">
+                            </a>
+                        @endif
                         <div class="media-body">
                             <h5 class="mt-0 mb-1"><a href="{{ route('post.viewitem', $post->slug) }}">{{ $post->title }}</a>
                             </h5>

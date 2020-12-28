@@ -16,8 +16,10 @@
     @forelse($featured_posts as $fpost)
         <div class="col-md-4">
             <div class="featured-post">
-                <a href="#"><img src="{{ optional($fpost->featured_image)->getFullUrl() ?? $fpost->default_image }}" class="img-fluid"
+                @if($fpost->featured_image)
+                <a href="#"><img src="{{ optional($fpost->featured_image)->getFullUrl() }}" class="img-fluid"
                         alt="..."></a>
+                @endif
                 <h5 class="c-title"><a href="{{ route('post.viewitem', $fpost->slug) }}">{{ $fpost->title }}</a></h5>
                 <p class="c-date">{{ $fpost->created_at->toFormattedDateString() }}</p>
             </div>

@@ -17,8 +17,10 @@
         </div>
         <div class="col-md-9">
             <div class="latest-post mb-4">
+                @if($post->featured_image)
                 <img src="{{ optional($post->featured_image)->getFullUrl() ?? $post->default_fake_image($post->slug,'720','540') }}"
                     class="img-fluid" alt="{{ $post->slug }}">
+                @endif
                 <div class="card-body">
                     <p class="blog-desc">{!! $post->body !!}</p>
                 </div>
@@ -58,12 +60,14 @@
                     @forelse($related_posts as $related)
                     <ul class="list-unstyled">
                         <li class="media">
+                            @if($related->featured_image)
                             <a href="{{ route('post.viewitem', $related->slug) }}">
                                 <img src="{{ optional($post->featured_image)->getFullUrl() ?? $post->default_fake_image($related->slug) }}"
                                     class="mr-3 related-img"
                                     alt="{{ $related->slug }}"
                                 >
                             </a>
+                            @endif
                             <div class="media-body">
                                     <h5 class="mt-0 mb-1">
                                         <a href="{{ route('post.viewitem', $related->slug) }}">
