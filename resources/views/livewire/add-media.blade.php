@@ -23,7 +23,23 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    @if(session('message'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('message') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <strong></strong>
+                        </div>
+                    @endif
+
+                    <script>
+                        $(".alert").alert();
+
+                    </script>
                     <div class="tab-content" id="pills-tabContent">
+
+                        {{-- Media Tab --}}
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
                             <div class="row">
@@ -45,8 +61,10 @@
                                             </div>
                                         @endforelse
                                         <div class="col-12 text-center">
-                                            <button wire:click="$emit('mediaLoad')" class="btn btn-sm btn-outline-primary" type="button">
-                                                <span wire:loading class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                            <button wire:click="$emit('mediaLoad')"
+                                                class="btn btn-sm btn-outline-primary" type="button">
+                                                <span wire:loading class="spinner-border spinner-border-sm"
+                                                    role="status" aria-hidden="true"></span>
                                                 Load More
                                             </button>
                                         </div>
@@ -82,9 +100,27 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- Upload Tab --}}
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                            aria-labelledby="pills-profile-tab">
-                            <input type="file" name="mediaupload" id="mediaupload">
+                            aria-labelledby="pills-profile-tab" x-data="{ isUploading: false, progress: 0 }"
+                            x-on:livewire-upload-start="isUploading = true"
+                            x-on:livewire-upload-finish="isUploading = false"
+                            x-on:livewire-upload-error="isUploading = false"
+                            x-on:livewire-upload-progress="progress = $event.detail.progress">
+                            <form wire:submit.prevent="save" enctype="multipart/form-data">
+                                <input wire:model="photos" type="file" name="mediaupload"
+                                    id="mediaupload{{ $iteration }}" multiple>
+                                @error('photos.*')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <!-- Progress Bar -->
+                                <div x-show="isUploading">
+                                    <progress max="100" x-bind:value="progress"></progress>
+                                </div>
+                                <button wire:loading.attr="disabled" type="submit"
+                                    class="btn btn-sm btn-outline-primary"
+                                    {{ ($photos) ? '' : 'disabled' }}>Upload</button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -70,13 +70,15 @@
 
                                 <div class="form-group">
                                     <label>Tags (Comma-separated)</label>
-                                    {{-- <select class="select2bs4" name="tags[]" multiple="multiple"
+                                    {{-- 
+                                        <select class="select2bs4" name="tags[]" multiple="multiple"
                                         data-placeholder="Select a Tag" style="width: 100%;">
                                         <option value="0">Select tags</option>
-@foreach($tags as $tag)
+                                        @foreach($tags as $tag)
                                             <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                            @endforeach
-                            </select> --}}
+                                        @endforeach
+                                        </select> 
+                                    --}}
                             <input type="text" name="tags" class="form-control"
                                 value="{{ old('tags') }}" />
                             @error('tags')
@@ -104,7 +106,8 @@
                 </div> <!-- row end-->
         </div>
         <!--card body end-->
-        {{-- <div class="card-footer custome-card-footer">
+        {{-- 
+            <div class="card-footer custome-card-footer">
                     <a name="" id="" class="btn btn-light" href="{{ route('posts.index') }}"
         role="button">Cancel</a>
         <div class="btn-group float-right">
@@ -120,7 +123,8 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div> 
+    --}}
     <!--card-footer end -->
     </form>
     </div>
@@ -165,5 +169,16 @@ function successMessage(variable) {
     }
 }
 </script>
+{{-- <script>
+const inputField = document.querySelector('[name="mediaupload"]');
+
+Window.addEventListener('click', () => {
+    // alert('Name updated to: ');
+    if(inputField.files.length > 0){
+        Livewire.emit('uploadImage')
+        console.log('loaded file');
+    }
+})
+</script> --}}
 @endsection
 @endsection
