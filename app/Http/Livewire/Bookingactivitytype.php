@@ -14,6 +14,15 @@ class Bookingactivitytype extends Component
     public $perPage = 5;
     public $search= '';
 
+    public $checked = [];
+
+    public function deleteAll()
+    {
+        BookingActivity::whereKey($this->checked)->delete();
+        $this->checked = [];
+        $this->successMessage = 'Items Deleted Successfully.';
+    }
+
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName, [
