@@ -109,7 +109,7 @@ class PostController extends Controller
             $posts->addMedia($request->featuredimage)
                     ->toMediaCollection('posts');
         }
-        
+
         return redirect(route('posts.index'))->withMessage('post 😊 created successfully');
     }
 
