@@ -20,7 +20,9 @@ class CreateMenusTable extends Migration
             $table->foreignId('page_id')->nullable()->constrained();
             $table->string('placed_in')->nullable();
             $table->string('sort_order')->nullable();
-            $table->boolean('isActive')->default(true);
+            $table->boolean('isActive')->default(true)->comment('for active inactive menu');
+            $table->string('url')->nullable();
+            $table->boolean('isChecked')->default(false)->comment('is used for target blank');
             $table->timestamps();
             $table->softDeletes();
         });

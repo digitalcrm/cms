@@ -16,12 +16,14 @@ class CreateThemeSlidersTable extends Migration
         Schema::create('theme_sliders', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
+            $table->string('fileType')->nullable()->comment('is video or image or null');
             $table->string('heading')->nullable();
             $table->longText('paragraph')->nullable();
             $table->string('button_text1')->nullable();
             $table->string('url1')->nullable();
             $table->string('button_text2')->nullable();
             $table->string('url2')->nullable();
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

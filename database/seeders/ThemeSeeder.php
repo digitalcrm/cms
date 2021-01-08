@@ -17,9 +17,11 @@ class ThemeSeeder extends Seeder
         $data = [
             [
                 'theme_name' => 'company_theme',
+                'isActive' => true,
             ],
             [
                 'theme_name' => 'blog_theme',
+                'isActive' => false,
             ],
         ];
 

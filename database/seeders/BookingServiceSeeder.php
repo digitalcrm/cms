@@ -16,7 +16,7 @@ class BookingServiceSeeder extends Seeder
     {
         // BookingService::factory()->times(1)->create();
         BookingService::create([
-            'name' => 'Appointment',
+            'service_name' => 'Appointment',
         ]);
     }
 }

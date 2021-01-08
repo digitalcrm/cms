@@ -59,7 +59,7 @@
                     <tbody>
                         @forelse($this->raw_data as $data)
                         <tr>
-                            <td>{!! $data->social_logo !!}</td>
+                            <td>{!! $data->socialLogo() !!}</td>
                             <td>{{ $data->social_link }}</td>
                             <td>
                                 <a wire:click="status({{$data->id}})" class="btn btn-link">

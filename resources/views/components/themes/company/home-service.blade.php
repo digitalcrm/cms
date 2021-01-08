@@ -11,7 +11,7 @@
         @forelse($all_services_except_first as $loop_services)
         <div class="col-md-4">
             <div class="featured-post">
-                {!! $loop_services->favicon !!}
+                {!! $loop_services->isFaviconAvailable() !!}
                 <h5 class="c-title">{{ $loop_services->heading }}</h5>
                 <p class="blog-desc">{{ $loop_services->paragraph }}</p>
             </div>

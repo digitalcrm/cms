@@ -62,7 +62,7 @@
                 <div class="col-md-6 text-right">
                     <div class="social-media-widget">
                         @forelse($social_icon as $social)
-                            <a href="{{ $social->social_link }}">{!! $social->social_logo !!}</a>
+                            <a href="{{ $social->social_link }}">{!! $social->socialLogo() !!}</a>
                         @empty
                             <a>No Icon</a>
                         @endforelse

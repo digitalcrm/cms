@@ -15,6 +15,7 @@ class AboutWidget extends Model
     protected $fillable = [
         'heading',
         'sub_heading',
+        'profile_path',
         'isActive',
     ];
 

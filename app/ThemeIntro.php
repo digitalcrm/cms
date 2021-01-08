@@ -23,7 +23,7 @@ class ThemeIntro extends Model
     {
         return $this->description
                 ? $this->description
-                : 'Aynsoft Classic has been the Largest Global Software Company for more than 18 years, making it the most trusted corporation in the world.';
+                : 'No Description Found! For Changing this text Contact Administrator';
     }
 
     public function font_color_of_intro_model()

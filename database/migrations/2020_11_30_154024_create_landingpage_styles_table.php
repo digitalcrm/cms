@@ -29,6 +29,7 @@ class CreateLandingpageStylesTable extends Migration
             $table->string('client_back_color')->nullable();
             $table->string('background_image')->nullable();
             $table->tinyInteger('backgroundstatus')->nullable();
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

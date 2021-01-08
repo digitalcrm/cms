@@ -17,6 +17,7 @@ class CreateAboutWidgetsTable extends Migration
             $table->id();
             $table->string('heading')->nullable();
             $table->string('sub_heading')->nullable();
+            $table->string('profile_path')->nullable();
             $table->boolean('isActive')->default(true);
             $table->timestamps();
             $table->softDeletes();

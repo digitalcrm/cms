@@ -15,7 +15,7 @@ class HomeCrousel extends Component
      */
     public function __construct(ThemeSlider $sliders)
     {
-        $this->sliders = $sliders->get();
+        $this->sliders = $sliders->whereNull('fileType')->isActive()->latest()->get();
     }
 
     /**

@@ -28,7 +28,7 @@
         .toggle.ios .toggle-handle { border-radius: 20px; }
     </style>
     @show
-
+    <livewire:styles />
     @livewireStyles
     </head>
     <body class="hold-transition sidebar-mini">
@@ -69,8 +69,7 @@
             <script src="{{ asset('assets/daterangepicker.min.js') }}"></script>
             <!-- Scripts -->
             <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
-            @livewireScripts
-
+            <livewire:scripts />
             <!-- for create part modal used in booking services-->
             <script type="text/javascript">
                 window.livewire.on('showModal', () => {

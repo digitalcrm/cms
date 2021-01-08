@@ -12,7 +12,11 @@ class Logo extends Model
 {
     use HasFactory, SoftDeletes, DefaultProfile;
 
-    protected $fillable = ['options', 'alt_text', 'logo_path'];
+    protected $fillable = [
+        'options', 
+        'alt_text', 
+        'logo_path'
+    ];
 
     protected $appends = [
         'profile_photo_url',
@@ -22,14 +26,14 @@ class Logo extends Model
     {
         return $this->logo_path
             ? Storage::disk($this->profilePhotoDisk())->url($this->logo_path)
-            : $this->defaultLogo();
+            : '';
     }
 
     public function faviconURL()
     {
         return $this->logo_path
             ? Storage::disk($this->profilePhotoDisk())->url($this->logo_path)
-            : $this->defaultFaviconUrl();
+            : '';
     }
 
     public function homepageLogoURL()
@@ -48,7 +52,7 @@ class Logo extends Model
 
     public function altText()
     {
-        return $this->alt_text ?? env('APP_NAME');
+        return $this->alt_text ?? config('app.name');
     }
 
 }

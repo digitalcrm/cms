@@ -17,31 +17,31 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'id'  => 1,
-                'name' => 'Framework',
+                'name' => 'Article',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id'  => 2,
-                'name' => 'Language',
+                'name' => 'Software',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id'  => 3,
-                'name' => 'Library',
+                'name' => 'Education',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id'  => 4,
-                'name' => 'Blog',
+                'name' => 'Health',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id'  => 5,
-                'name' => 'CMS',
+                'name' => 'Business',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

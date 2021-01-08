@@ -22,4 +22,11 @@ class SocialLink extends Model
     {
         return $query->where('isActive',true);
     }
+
+    public function socialLogo()
+    {
+        return $this->social_logo
+            ? '<i class="'.$this->social_logo.'" aria-hidden="true"></i>'
+            : '';
+    }
 }

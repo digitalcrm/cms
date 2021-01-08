@@ -19,14 +19,14 @@ class BookingService extends Model
     */
     protected $primaryKey = 'id';
 
-    protected $appends = [
-        'name',
-    ];
-
     /**
      * @var array
     */
     protected $fillable = ['service_name'];
+
+    protected $appends = [
+        'name',
+    ];
 
     public function bookingEvents() {
 

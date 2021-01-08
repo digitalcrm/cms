@@ -16,4 +16,12 @@ class ThemeService extends Model
         'paragraph',
         'favicon',
     ];
+
+    public function isFaviconAvailable()
+    {
+        return $this->favicon 
+                 ? '<i class="'.$this->favicon.'" aria-hidden="true"></i>'
+                 : '';
+                 
+    }
 }

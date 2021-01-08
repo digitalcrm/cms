@@ -28,9 +28,9 @@ class PostFactory extends Factory
             'title' => $this->faker->text(10),
             'user_id' => $this->faker->numberBetween(1, 3),
             'category_id'=> $this->faker->numberBetween(1, 5),
-            'body' => $this->faker->sentence(),
+            'body' => $this->faker->sentence(10),
             'postcount' => $this->faker->numberBetween(10,100),
-            'featured' => 1,
+            'featured' => rand(0,1),
         ];
     }
 }

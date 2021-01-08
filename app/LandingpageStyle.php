@@ -29,6 +29,7 @@ class LandingpageStyle extends Model
         'client_back_color',
         'background_image',
         'backgroundstatus',
+        'isActive',
     ];
 
     protected $appends = [
