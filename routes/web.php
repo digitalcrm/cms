@@ -90,9 +90,9 @@ use App\Http\Controllers\Customization\UrlBasedCustomizationController;
     }); /** verfied Routes End Here */
 
 
-/*##############################################################################################
-                            Booking Routes
-###############################################################################################*/
+    /*##############################################################################################
+                                Booking Routes
+    ###############################################################################################*/
 
     Route::group(['namespace' => 'Bookings'], function () {
 
@@ -145,9 +145,9 @@ use App\Http\Controllers\Customization\UrlBasedCustomizationController;
 
 
 
-/*##############################################################################################
-                        Booking Routes End /Newsletter Routes Start
-###############################################################################################*/
+    /*##############################################################################################
+                            Booking Routes End /Newsletter Routes Start
+    ###############################################################################################*/
 
     Route::get('subcripition-confirmed','Newsletter\NewsletterController@confirm_subscription')->name('confirmed.subscription');
     Route::get('newsletters','Newsletter\NewsletterController@subscriber_list')->name('subscribers');

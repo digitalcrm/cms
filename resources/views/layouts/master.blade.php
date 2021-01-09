@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title',env('APP_NAME'))</title>
+    @include('layouts.partials.meta-tags')
 
     @include('layouts.partials.favicons')
 
@@ -29,7 +29,6 @@
     </style>
     @show
     <livewire:styles />
-    @livewireStyles
     </head>
     <body class="hold-transition sidebar-mini">
 

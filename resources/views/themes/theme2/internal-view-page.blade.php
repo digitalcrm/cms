@@ -1,5 +1,9 @@
 @extends('themes.theme2.layouts.main')
 
+@section('title', meta_title($post->title))
+@section('url', meta_url() )
+@section('description', meta_description($post->body) )
+
 @section('content')
 <div class="container">
     <div class="row">

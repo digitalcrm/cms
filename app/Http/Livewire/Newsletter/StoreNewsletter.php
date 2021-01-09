@@ -14,8 +14,6 @@ class StoreNewsletter extends Component
 
     public $email;
 
-    public $successMessage;
-
     protected $rules = [
         'name' => ['required', 'string', 'max:50', 'unique:newsletters'],
         // 'email' => ['required', 'string', 'email', 'max:255', 'unique:newsletters'],
@@ -29,11 +27,6 @@ class StoreNewsletter extends Component
 
     public function saveSubscribedUser()
     {
-        // $validatedData = $this->validate([
-        //     'name' => 'required|max:25',
-        //     'email' => 'required|',
-        // ]);
-
         $validatedData = $this->validate();
 
         $validatedData['token'] = Str::random(60);
@@ -44,15 +37,17 @@ class StoreNewsletter extends Component
         {
             $userData = Newsletter::create($validatedData);
 
-            session()->flash('message', '<strong>We have sent an email with a confirmation link to your email address.</strong>!
+            session()->flash('newsletterSuccessMessage', '<strong>We have sent an email with a confirmation link to your email address.</strong>!
                                         In order to complete the subscription, please click the confirmation link.
                                         💡 Make sure you check your spam/junk folder to find confirmation email from.'.env('APP_NAME'));
 
             Mail::to($this->email)->send(new ConfirmedNewsletter($userData));
         } else {
-            session()->flash('message', '<strong>You already Subscribe our Newsletter</strong>! Thanks for showing your interest');
+            session()->flash('newsletterSuccessMessage', '<strong>You already Subscribe our Newsletter</strong>! Thanks for showing your interest');
         }
-        sleep(1);
+
+        // sleep(1);
+        
         $this->reset(['name', 'email']);
 
 

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', $post->title .' : '. $post->category->name )
+@section('title', meta_title($post->title))
+@section('url', meta_url() )
+@section('description', meta_description($post->body) )
 
 @section('content')
 <div class="container" id="app">

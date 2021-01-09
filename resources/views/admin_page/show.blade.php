@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title',  $page->slug )
+@section('title', meta_title($page->title))
+@section('url', meta_url() )
+@section('description', meta_description($page->body) )
 
 @section('content')
 <div class="container" id="app">
