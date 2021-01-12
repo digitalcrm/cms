@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Page;
 use App\Post;
 use App\Theme;
@@ -124,7 +125,15 @@ class LandingPageController extends Controller
 
         // dd($sites['feeds']['main']['description']);
 
-        $content = view('rss-feed', compact('rss_latest_posts','sites'));
+        $content = view('feeds.rss-feed', compact('rss_latest_posts','sites'));
+
+        return response($content, 200)->header('Content-Type', 'text/xml');
+    }
+
+    public function feed_category(Category $categories)
+    {
+        $sites = config('rss_config');
+        $content = view('feeds.category-feed', compact('categories','sites'));
 
         return response($content, 200)->header('Content-Type', 'text/xml');
     }
@@ -183,5 +192,5 @@ class LandingPageController extends Controller
                 return view('errors.not-found-exception');
                 break;
         }
-    }
+    }   
 }

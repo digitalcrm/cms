@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', env('APP_NAME') . ': All Articles' )
+@section('title', config('app.name') . ': All Articles' )
 
 @section('content')
 <div class="container">

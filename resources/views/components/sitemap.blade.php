@@ -9,13 +9,31 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Posts</h3>
+                    <div class="row">
+                        <div class="col">
+                            <h3>
+                                Posts
+                            </h3>
+                        </div>
+                        <div class="col">
+                            <a href="{{ route('rss_feed') }}" class="badge badge-primary">RSS</a>
+                        </div>
+                    </div>
                     @foreach($categories_having_post as $category)
                     <div class="media">
                         <div class="media-body">
-                            <h5 class="mt-1"><a
-                                    href="{{ route('latest.latestpost',['category' => $category->name]) }}">{{ $category->name }} [{{ $category->posts->count() }}]</a>
-                            </h5>
+                            <div class="row">
+                                <div class="col">
+                                    <a
+                                        href="{{ route('latest.latestpost',['category' => $category->name]) }}" class="h5">
+                                        {{ $category->name }} [{{ $category->posts->count() }}]
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a href="{{ route('feed.category', $category->name) }}" class="badge badge-primary">RSS</a>
+                                </div>
+                            </div>
+
                             @foreach($category->posts as $post)
                                 <div class="media">
                                     <div class="media-body">

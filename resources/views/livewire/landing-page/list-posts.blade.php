@@ -28,7 +28,9 @@
             @forelse($list_of_posts as $post)
             <div class="col-md-12 border-bottom pb-3 mb-3">
                 <div class="media">
-                    <img src="{{ optional($post->featured_image)->getFullUrl() ?? $post->default_image }}" width="175" class="mr-3 img-fluid rounded" alt="{{ $post->slug }}">
+                    @if($post->featured_image)
+                        <img src="{{ optional($post->featured_image)->getFullUrl() }}" width="175" class="mr-3 img-fluid rounded" alt="{{ $post->slug }}">
+                    @endif
                     <div class="media-body">
                         <h5 class="mt-0"><a href="{{ route('post.viewitem', $post->slug) }}">{{ $post->title }}</a></h5>
                         <div class="blog-info mb-3"><span>{{ $post->created_at->toFormattedDateString() }}</span> <span>{{ $post->category->name }}</span> <span>{{ $post->user->name }}</span></div>
