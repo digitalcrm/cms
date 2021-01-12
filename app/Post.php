@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use App\SettingCmsVisibility;
 use Spatie\Sluggable\HasSlug;
 use App\Traits\DefaultProfile;
+use App\Traits\Likeable;
+use App\Traits\Rateable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +21,13 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Post extends Model implements HasMedia
 {
-    use SoftDeletes, InteractsWithMedia, HasSlug, HasFactory, DefaultProfile;
+    use SoftDeletes, 
+        InteractsWithMedia, 
+        HasSlug, 
+        HasFactory, 
+        DefaultProfile, 
+        Rateable,
+        Likeable;
 
     protected $fillable = [
         'title',

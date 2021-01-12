@@ -8780,16 +8780,16 @@
         },
         {
             "name": "spatie/laravel-ray",
-            "version": "1.3.0",
+            "version": "1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ray.git",
-                "reference": "80f0efc17bc656857641e31f485a3fd3096129b1"
+                "reference": "a319f374dfd846e4cffefd170fd1e15fe2f37780"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/80f0efc17bc656857641e31f485a3fd3096129b1",
-                "reference": "80f0efc17bc656857641e31f485a3fd3096129b1",
+                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/a319f374dfd846e4cffefd170fd1e15fe2f37780",
+                "reference": "a319f374dfd846e4cffefd170fd1e15fe2f37780",
                 "shasum": ""
             },
             "require": {
@@ -8841,7 +8841,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-ray/issues",
-                "source": "https://github.com/spatie/laravel-ray/tree/1.3.0"
+                "source": "https://github.com/spatie/laravel-ray/tree/1.3.4"
             },
             "funding": [
                 {
@@ -8853,7 +8853,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-01-08T14:02:03+00:00"
+            "time": "2021-01-10T23:01:22+00:00"
         },
         {
             "name": "spatie/macroable",
@@ -8907,16 +8907,16 @@
         },
         {
             "name": "spatie/ray",
-            "version": "1.3.6",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ray.git",
-                "reference": "a1e02b9ad311bc43e88d72b1ccb9841adf3e1c51"
+                "reference": "e13babc5abd93e33c714ccf96354505f8c496ed9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ray/zipball/a1e02b9ad311bc43e88d72b1ccb9841adf3e1c51",
-                "reference": "a1e02b9ad311bc43e88d72b1ccb9841adf3e1c51",
+                "url": "https://api.github.com/repos/spatie/ray/zipball/e13babc5abd93e33c714ccf96354505f8c496ed9",
+                "reference": "e13babc5abd93e33c714ccf96354505f8c496ed9",
                 "shasum": ""
             },
             "require": {
@@ -8964,7 +8964,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/ray/issues",
-                "source": "https://github.com/spatie/ray/tree/1.3.6"
+                "source": "https://github.com/spatie/ray/tree/1.5.0"
             },
             "funding": [
                 {
@@ -8976,7 +8976,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-01-09T13:09:08+00:00"
+            "time": "2021-01-10T12:57:18+00:00"
         },
         {
             "name": "symfony/debug",

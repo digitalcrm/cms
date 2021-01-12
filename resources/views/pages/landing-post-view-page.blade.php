@@ -4,6 +4,11 @@
 @section('url', meta_url() )
 @section('description', meta_description($post->body) )
 
+@section('styles')
+<link href="{{ asset('css/star/star-rating.css') }}" rel="stylesheet">
+<link href="{{ asset('css/star/star-theme.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="container" id="app">
     <div class="row featured-post-heading">
@@ -36,6 +41,8 @@
             {{-- Toolbar path for this file is under includes/cms_partials/article... page --}}
             @include('includes.cms_partials.article-toolbar')
 
+            <livewire:rating.rate :post="$post"/>
+
             <div class="comments-section mt-5">
 
                 @if($post->get_first_row_of_visibility('tool_user') === 1)
@@ -63,6 +70,20 @@
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fbb79b6dfa2be74"></script>
 
+{{-- <script src="{{ asset('js/star/star-rating.js') }}"></script> --}}
+{{-- <script src="{{ asset('js/star/star-theme.js') }}"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js" integrity="sha512-4kpSNboTxdWYwnZCaqnuwO3gGFaZTAhBT6ygWNdpeNrpGnw/rjweaxQ2C9OgwERR5RBWlIQ+Yh9lLce5+jNpVA==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/themes/krajee-fas/theme.min.js" integrity="sha512-kEgX1va6Lb3BkbuOb9jrEqXCw7UmKVi054QvuxHIFtXzB5YJMua0M5yAy/QLxh0pV1/5cemoVcF9Ib7nubK7Cg==" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        $('.kv-ltr-theme-fas-star').rating({
+            hoverOnClear: false,
+            theme: 'krajee-fas',
+            containerClass: 'is-star'
+        });
+        $("#rate").rating();
+    });
+</script>
 @endsection
 
 @endsection

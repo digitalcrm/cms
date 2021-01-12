@@ -193,4 +193,4 @@ use App\Http\Controllers\Customization\UrlBasedCustomizationController;
 
     Route::get('php-infos', function(){
         return phpinfo(INFO_MODULES);
-    });
+    })->middleware('auth');

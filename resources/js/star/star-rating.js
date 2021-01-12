@@ -1,0 +1,1 @@
+import'bootstrap-star-rating/js/star-rating.min.js';

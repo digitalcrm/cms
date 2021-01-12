@@ -33,6 +33,8 @@
             @endif
         @endif
 
+        <livewire:likeable.like :post="$post"/>
+
         @if($post->get_first_row_of_visibility('tool_views') === 1)
             <li class="list-group-item">{{ $post->postcount }} Views</li>
         @endif
@@ -48,7 +50,6 @@
                     href="{{ route('article.print_article', $post->slug) }}" target="__blank">
                     {{ __('Print') }}</a></li>
         @endif
-
     </ul>
 
 

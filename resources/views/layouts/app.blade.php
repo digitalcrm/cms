@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/daterangepicker.css') }}">
@@ -42,6 +43,7 @@
     @section('scripts')
        <!-- Scripts -->
        <script src="{{ asset('js/home.js') }}"></script>
+       <script src="{{ asset('js/jquery.js') }}"></script>
     @show
 </body>
 </html>
