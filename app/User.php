@@ -24,10 +24,11 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'name',
-        'email',
-        'password',
         'firstname',
         'lastname',
+        'email',
+        'isActive',
+        'password',
         'profile_photo_path',
         'mobile_number',
         'address',
@@ -161,5 +162,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function favorites()
     {
         return $this->belongsToMany(Post::class, 'favorites', 'user_id', 'post_id')->withTimeStamps();
+    }
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('isActive', true);
     }
 }

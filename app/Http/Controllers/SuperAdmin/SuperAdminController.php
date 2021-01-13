@@ -16,24 +16,15 @@ class SuperAdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(['role:superadmin|admin'])->except('index');
     }
 
     public function index()
     {
-        foreach (auth()->user()->getRoleNames() as $role) {
-           $roleName = ucfirst($role);
-        }
-            /*
-            try {
-
-                return view('dashboard1',compact('roleName'));
-                } catch (InvalidArgumentException $e) {
-
-                return back()->withErrors('View Not Found ')->withInput();
-                }
-                */
-
-        return view('dashboard',compact('roleName'));
+        // foreach (auth()->user()->getRoleNames() as $role) {
+        //    $roleName = ucfirst($role);
+        // }
+        return view('dashboard');
     }
 
     public function create()

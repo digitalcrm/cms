@@ -45,16 +45,12 @@ use App\Http\Controllers\Customization\UrlBasedCustomizationController;
 
             Route::get('/dashboard','SuperAdminController@index')->name('dashboard');
 
-            Route::group(['middleware' => ['role:superadmin|admin']], function () {
-                # user create only by superADMIN and admin
+            # user create only by superADMIN and admin
+            Route::get('auth/create', 'SuperAdminController@create')->name('auth.create')->middleware('permission:user-create');
 
-                Route::get('auth/create', 'SuperAdminController@create')->name('auth.create')->middleware('permission:user-create');
+            Route::post('auth/create', 'SuperAdminController@store')->name('auth.store')->middleware('permission:user-create');
 
-                Route::post('auth/create', 'SuperAdminController@store')->name('auth.store')->middleware('permission:user-create');
-
-                Route::get('/all-users','SuperAdminController@getAllUsers')->name('all-users')->middleware('permission:all-users');
-            });
-
+            Route::get('/all-users','SuperAdminController@getAllUsers')->name('all-users')->middleware('permission:all-users');
 
         }); /** SuperAdmin route group End Here */
 
