@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Resources\Json\JsonResource;
-
+use ConsoleTVs\Charts\Registrar as Charts;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,8 +24,13 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Charts $charts)
     {
+        $charts->register([
+            \App\Charts\PostChart::class,
+            \App\Charts\CmsChart::class,
+        ]);
+
         View::composer(
             ['components.home-footer-page', 'livewire.landing-page.right-sidebar'], 'App\Http\View\Composers\PostComposer',
         );

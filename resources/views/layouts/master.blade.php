@@ -20,7 +20,6 @@
 
     {{-- custome css --}}
     <link href="{{ asset('css/userprofile_custome.css') }}" rel="stylesheet">
-
     <!--bootstrap toggle lib added-->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <style>

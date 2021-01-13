@@ -263,14 +263,31 @@ class Post extends Model implements HasMedia
         return $body;
     }
 
+    /** Scope some active/inactive/draft/trashed post */
+
     public function scopePopularPost($query)
     {
         return $query->orderBy('postcount', 'desc');
     }
+    
+    public function scopeActiveArticle($query)
+    {
+        return $query->where('isactive', true);
+    }
 
+    public function scopeInactiveArticle($query)
+    {
+        return $query->where('isactive', false);
+    }
+    
     public function scopeFeaturedPost($query)
     {
         return $query->where('featured', true);
+    }
+
+    public function scopeDraftArticle($query)
+    {
+        return $query->where('published', 0);
     }
 
     public function scopeRelatedPost($query)
@@ -281,10 +298,7 @@ class Post extends Model implements HasMedia
         });
     }
 
-    public function scopeActiveArticle($query)
-    {
-        return $query->where('isactive', true);
-    }
+
 
     public function scopeSearch($query, $val)
     {

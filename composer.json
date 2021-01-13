@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4.0",
+        "consoletvs/charts": "^7.2",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0.2",
         "guzzlehttp/guzzle": "^7.0.1",

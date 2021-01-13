@@ -20,6 +20,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/star/star-rating.js','public/js/star/')
     .js('resources/js/star/star-theme.js','public/js/star/')
     .js('resources/js/jquery.js','public/js')
+    .js('resources/js/chartjs/chart-js.js','public/js/chartjs/')
     .js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps();
 
 // mix.browserSync('acl.test');
