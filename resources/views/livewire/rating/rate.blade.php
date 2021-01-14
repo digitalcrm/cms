@@ -1,6 +1,7 @@
 <div>
     <span>
-        Total Reviews: {{ $review }}
+        Total Ratings: {{ $post->totalRatingCount() }}
+        {{-- @ray($post->averageRating()) --}}
     </span>
     <form wire:submit.prevent="rateSubmit" method="post">
         <div wire:ignore>
@@ -8,6 +9,7 @@
                 id="rate-1" 
                 name="rate-1" 
                 class="kv-ltr-theme-fas-star rating-loading"
+                value="0"
                 data-min="0" data-max="5" 
                 data-step="1">
         </div>

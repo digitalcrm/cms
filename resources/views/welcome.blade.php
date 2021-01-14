@@ -32,8 +32,6 @@
 <x-themes.company.home-client />
 {{-- </div> who-we-are Section End --}}
 
-
-
 <div class="container">
     <div class="row featured-post-heading">
         <div class="col-md-12 text-center mt-5">

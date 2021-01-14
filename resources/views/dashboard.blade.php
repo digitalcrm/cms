@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Dashboard')
+@section('title', $roleName.': Dashboard')
 
 @section('content')
 
@@ -27,7 +27,7 @@
 <div class="content">
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <x-dashboard.small-box />
+        <x-dashboard.small-box :roleName="$roleName"/>
         {{-- charts div --}}
         <div class="row">
             <section class="col-lg-7 connectedSortable">

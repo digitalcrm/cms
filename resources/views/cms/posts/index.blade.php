@@ -84,14 +84,15 @@
                                     <th>Title</th>
                                     <th>Author</th>
                                     <th>Category</th>
-                                    <th style="display: none">Date</th>
-                                    <th>Subcategory</th>
-                                    <th>Tags</th>
                                     <th>Date</th>
+                                    {{-- <th>Subcategory</th> --}}
+                                    {{-- <th>Tags</th> --}}
                                     <th>Views</th>
                                     <th>Comments</th>
+                                    <th>Likes</th>
+                                    <th>Avg Rating</th>
                                     <th>Show</th>
-                                    <th>Active/Inactive</th>
+                                    <th>Active</th>
                                     <th>Featured</th>
                                     <th>Comment Active</th>
                                     <th>Action</th>
@@ -114,19 +115,20 @@
                                     <td>{{ $post->user->name ?? '' }}</td>
                                     <td>{{ $post->category->name ?? '' }}</td>
 
-                                    <td style="display: none">{{ $post->created_at->toDateString() ?? '' }}</td>
+                                    <td>{{ $post->created_at->toDateString() ?? '' }}</td>
 
-                                    <td>{{ $post->subcategory->name ?? 'none' }}</td>
-                                    <td>
+                                    {{-- <td>{{ $post->subcategory->name ?? 'none' }}</td> --}}
+                                    {{-- <td>
                                         {{ $post->posts_having_tags ?? '' }}
-                                    </td>
-                                    <td>{{ $post->created_at->toFormattedDateString() ?? '' }}</td>
+                                    </td> --}}
                                     <td>
                                         {{ $post->postcount }}
                                     </td>
                                     <td>
                                         {{ $post->total_comments() }}
                                     </td>
+                                    <td>{{ $post->totalLikes() }}</td>
+                                    <td>{{ $post->averageRating() }}</td>
                                     <td>
                                         @can('view-post')
                                         {{-- <small> --}}
@@ -165,8 +167,7 @@
                                     @csrf
                                     @method('put')
                                     </form>
-                                    </td>
-
+                                    </td>                                    
                                     <td>
                                         <a
                                         data-toggle="tooltip"
@@ -194,8 +195,7 @@
                                     @csrf
                                     @method('put')
                                     </form>
-                                    </td>
-
+                                    </td>                                    
                                     <td>
                                         {{ ($post->commentActive === 1) ? 'enabled' : 'disabled' }}
                                     </td>
@@ -304,7 +304,7 @@
             $('#posttable').DataTable( {
                 "ordering": false,
                 initComplete: function () {
-                    this.api().columns([2,3]).every( function (d) {//THis is used for specific column
+                    this.api().columns([2,3,7]).every( function (d) {//THis is used for specific column
                         var column = this;
                         var theadname = $('#posttable th').eq([d]).text();
                         var select = $('<select class="form-control my-1"><option value="">'+theadname+': All</option></select>')

@@ -4,11 +4,8 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\User;
 use Illuminate\Http\Request;
-use InvalidArgumentException;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SuperAdminController extends Controller
@@ -21,10 +18,10 @@ class SuperAdminController extends Controller
 
     public function index()
     {
-        // foreach (auth()->user()->getRoleNames() as $role) {
-        //    $roleName = ucfirst($role);
-        // }
-        return view('dashboard');
+        foreach (auth()->user()->getRoleNames() as $role) {
+            $roleName = $role;
+        }
+        return view('dashboard', compact('roleName'));
     }
 
     public function create()

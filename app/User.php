@@ -63,8 +63,17 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
         'full_name',
-        'single_role_name',
+        // 'auth_role',
     ];
+
+    /** 
+     * get Single Role Name instead of collection getRoleNames() 
+     * some problem in this function
+    */
+    // public function getAuthRoleAttribute()
+    // {
+    //     return $this->getRoleNames()->last();
+    // }
 
     /**
      * Update the user's profile photo.
@@ -140,12 +149,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Post::class);
     }
 
-    /** get Single Role Name instead of collection getRoleNames() */
-
-    public function getSingleRoleNameAttribute()
-    {
-        return '@'.$this->getRoleNames()->last();
-    }
+    
 
     /** User has many BookingEvents */
 

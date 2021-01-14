@@ -40,9 +40,7 @@
 
             {{-- Toolbar path for this file is under includes/cms_partials/article... page --}}
             @include('includes.cms_partials.article-toolbar')
-
-            <livewire:rating.rate :post="$post"/>
-
+        
             <div class="comments-section mt-5">
 
                 @if($post->get_first_row_of_visibility('tool_user') === 1)

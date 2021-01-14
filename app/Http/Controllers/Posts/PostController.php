@@ -43,7 +43,7 @@ class PostController extends Controller
 
         if(auth()->user()->hasRole('superadmin')) {
 
-            $allPosts = $query->latest()->get();
+            $allPosts = $query->orderBy('id','desc')->get();
         } else {
 
             $allPosts = $query->where('user_id',auth()->user()->id)->latest()->get();

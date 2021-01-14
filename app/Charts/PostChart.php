@@ -22,12 +22,20 @@ class PostChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $activePost = Post::activeArticle()->count();
-        $inactivePost = Post::inactiveArticle()->count();
-        $draftPost = Post::draftArticle()->count();
-        $featuredPost = Post::featuredPost()->count();
-        
-        // ray($activePost, $inactivePost, $draftPost, $featuredPost);
+        foreach (auth()->user()->getRoleNames() as $role) {
+            $roleName = $role;
+        }
+        if ($roleName === 'superadmin') {
+            $activePost = Post::activeArticle()->count();
+            $inactivePost = Post::inactiveArticle()->count();
+            $draftPost = Post::draftArticle()->count();
+            $featuredPost = Post::featuredPost()->count();
+        } else {
+            $activePost = auth()->user()->posts()->activeArticle()->count();
+            $inactivePost = auth()->user()->posts()->inactiveArticle()->count();
+            $draftPost = auth()->user()->posts()->draftArticle()->count();
+            $featuredPost = auth()->user()->posts()->featuredPost()->count();
+        }
 
         return Chartisan::build()
             // ->labels(['Active', 'Inactive', 'Draft', 'Featured'])

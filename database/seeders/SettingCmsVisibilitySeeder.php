@@ -75,6 +75,14 @@ class SettingCmsVisibilitySeeder extends Seeder
                 'visibility_name' => 'tool_comments',
                 'created_at' => now(),
             ],
+            [
+                'visibility_name' => 'tool_likes',
+                'created_at' => now(),
+            ],
+            [
+                'visibility_name' => 'tool_ratings',
+                'created_at' => now(),
+            ],
         ];
 
         SettingCmsVisibility::insert($defaultValue);

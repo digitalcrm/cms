@@ -13,6 +13,9 @@
         </div>
     </div>
     <!-- ./col -->
+
+    {{-- For superadmin --}}
+    @hasanyrole('superadmin|admin')
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-success">
@@ -45,7 +48,7 @@
         <!-- small box -->
         <div class="small-box bg-danger">
             <div class="inner">
-                <h3>65</h3>
+                <h3>{{ $totalSubscribers }}</h3>
                 <p>Newsletter Subscribers</p>
             </div>
             <div class="icon">
@@ -55,4 +58,47 @@
         </div>
     </div>
     <!-- ./col -->
+    @endhasanyrole
+
+    @hasrole('user')
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>{{ $activePost }}</h3>
+                <p>Active Post</p>
+            </div>
+            <div class="icon">
+                <i class="far fa-file"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>{{ $inactivePost }}</h3>
+                <p>Inactive Post</p>
+            </div>
+            <div class="icon">
+                <i class="far fa-file"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>{{ $totalUserPostViews }}</h3>
+                <p>Total Views</p>
+            </div>
+            <div class="icon">
+                <i class="far fa-file"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    @endhasrole
 </div>

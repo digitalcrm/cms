@@ -33,7 +33,9 @@
             @endif
         @endif
 
-        <livewire:likeable.like :post="$post"/>
+        @if($post->get_first_row_of_visibility('tool_likes') === 1)
+            <livewire:likeable.like :post="$post"/>
+        @endif
 
         @if($post->get_first_row_of_visibility('tool_views') === 1)
             <li class="list-group-item">{{ $post->postcount }} Views</li>
@@ -51,5 +53,11 @@
                     {{ __('Print') }}</a></li>
         @endif
     </ul>
+
+    @if($post->get_first_row_of_visibility('tool_ratings') === 1)
+        @auth
+            <livewire:rating.rate :post="$post"/>
+        @endauth
+    @endif
 
 

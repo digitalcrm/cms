@@ -14,14 +14,14 @@
             <h2 class="mb-4">Say Hello</h2>
             <form>
                 <div class="form-group">
-                    <input type="text" placeholder="Full name" class="form-control" id="exampleInputEmail1"
+                    <input type="text" placeholder="Full name" class="form-control" id="name"
                         aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Email address" class="form-control" id="exampleInputPassword1">
+                    <input type="email" placeholder="Email address" class="form-control" id="email">
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Your contact" class="form-control" id="exampleInputPassword1">
+                    <input type="password" placeholder="Your contact" class="form-control" id="password">
                 </div>
                 <div class="form-group">
                     <textarea class="form-control" placeholder="Your message" id="exampleFormControlTextarea1"

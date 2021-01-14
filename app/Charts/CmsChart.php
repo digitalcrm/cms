@@ -24,14 +24,20 @@ class CmsChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
+        foreach (auth()->user()->getRoleNames() as $role) {
+            $roleName = $role;
+        }
+        if ($roleName === 'superadmin') {
+            $posts = Post::activeArticle()->count();
+        } else {
+            $posts = auth()->user()->posts()->activeArticle()->count();
+        }
         $pages = Page::isActive()->count();
         $categories = Category::count();
-        $posts = Post::activeArticle()->count();
         $tags = Tag::count();
 
-        ray($pages, $categories, $posts, $tags);
         return Chartisan::build()
             ->labels(['pages', 'posts', 'categories', 'tags'])
-            ->dataset('sets', [$pages, $categories, $posts, $tags]);
+            ->dataset('sets', [$pages, $posts, $categories, $tags]);
     }
 }

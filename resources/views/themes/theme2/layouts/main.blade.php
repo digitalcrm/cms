@@ -19,6 +19,7 @@
 
     @yield('content')
     
+    @include('includes.common.cookie-modal')
     <x-themes.theme2.footer />
 
     @include('themes.theme2.includes.theme2-scripts')

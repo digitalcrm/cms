@@ -17,14 +17,13 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cookie-content.css') }}">
     
     @include('themes.theme1.backend_css.internal-page-custom-style')
 
     @livewireStyles
 
-    @section('styles')
-
-    @show
+    @stack('styles')
 </head>
 <body>
 
@@ -35,15 +34,16 @@
     @show
 
     @yield('content')
-
+    
+    @include('includes.common.cookie-modal')
+    
    <x-home-footer-page />
 
    @livewireScripts
+   <script src="{{ asset('js/home.js') }}"></script>
+   <script src="{{ mix('js/popper.js') }}"></script>
+    
+   @stack('scripts')
 
-    @section('scripts')
-       <!-- Scripts -->
-       <script src="{{ asset('js/home.js') }}"></script>
-       <script src="{{ asset('js/jquery.js') }}"></script>
-    @show
 </body>
 </html>

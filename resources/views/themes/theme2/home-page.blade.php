@@ -13,4 +13,5 @@
 <div class="container">
     <x-themes.theme2.homepage-latest-post />
 </div>
+
 @endsection

@@ -103,20 +103,6 @@ class Post extends Model implements HasMedia
        return $this->getMedia('posts')->last();
     }
 
-
-    /**
-     *  Anonymous Global Scopes
-     *  https://laravel.com/docs/7.x/eloquent#query-scopes
-     * @return void
-     */
-
-    // protected static function booted()
-    // {
-    //     static::addGlobalScope('isactive', function (Builder $builder) {
-    //         $builder->where('isactive', 1);
-    //     });
-    // }
-
     /**
      * local scopes
      *
@@ -180,25 +166,20 @@ class Post extends Model implements HasMedia
 
     public function scopePopularFilter($query, $request)
     {
-        // dd($request);
         $query->when($request === 'most_visited', function($q){
             $q->orderBy('postcount', 'desc');
-            // dd('most-vist');
         });
     }
 
     public function scopeFeaturedFilter($query, $request)
     {
-        // dd($request);
         $query->when($request === 'featured', function($q){
             $q->where('featured', true);
-            // dd('most-vist');
         });
     }
 
     public function scopeAuthorFilter($query, $request)
     {
-        // dd($request);
         $query->when($request, function($q){
             $q->whereHas('user', function($q1){
                 $q1->where('name', request('author'));
@@ -259,7 +240,6 @@ class Post extends Model implements HasMedia
     public function getSummaryOfBodyAttribute()
     {
         $body =  Str::limit(strip_tags($this->body), 156, '...');
-        // dd($body);
         return $body;
     }
 
@@ -292,7 +272,6 @@ class Post extends Model implements HasMedia
 
     public function scopeRelatedPost($query)
     {
-        // dd($this->category_id);
         return $query->whereHas('category', function($query){
             $query->where('id', $this->category_id);
         });

@@ -12,6 +12,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/theme2-custom.scss', 'public/css')
     .sass('resources/sass/star/star-rating.scss', 'public/css/star/')
     .sass('resources/sass/star/star-theme.scss', 'public/css/star/')
+    .sass('resources/sass/cookie-content.scss', 'public/css/')
     .js('resources/js/home.js','public/js')
     .js('resources/js/status_toggle.js','public/ajax/js')
     .js('resources/js/bookingevent_toggle.js','public/ajax/js')
@@ -21,6 +22,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/star/star-theme.js','public/js/star/')
     .js('resources/js/jquery.js','public/js')
     .js('resources/js/chartjs/chart-js.js','public/js/chartjs/')
+    .js('resources/js/cookie-content.js', 'public/js/')
     .js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps();
 
 // mix.browserSync('acl.test');

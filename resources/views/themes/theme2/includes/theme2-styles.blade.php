@@ -11,24 +11,19 @@ try {
 <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet">
 <link href="{{ asset('css/theme2-custom.css') }}" rel="stylesheet">
 <link href="{{ asset('css/theme2-crousel.css') }}" rel="stylesheet">
-@ray(!empty($theme2_colors))
 @if(!empty($theme2_colors))
 <style type="text/css">
-
 	body {
 		background-color: {{ $theme2_colors->body_background_color ?? '' }};
-        
+		
 
 	}
-
 	.custom-bg-header {
 		background-color: {{ $theme2_colors->nav_head_color ?? '' }}!important;
 	}
-
 	.custom-bg-footer {
 		background-color: {{ $theme2_colors->firstfootercolor ?? '' }}!important;
 	}
-
 	.custom-bg-subfooter {
 		background-color: {{ $theme2_colors->secondfootercolor ?? '' }}!important;
 	}
@@ -36,4 +31,8 @@ try {
 </style>
 @endif
 
+<link rel="stylesheet" href="{{ asset('css/cookie-content.css') }}">
 @stack('styles')
+
+
+
