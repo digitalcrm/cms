@@ -20,7 +20,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link">
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Dashboard
@@ -310,11 +310,18 @@
                         @endhasanyrole
                     </ul>
                 </li>
-
-
                 
                 <li class="nav-item">
-                    <a href="{{ route('settings') }}" class="nav-link">
+                    <a href="{{ route('reports') }}" class="nav-link {{ request()->routeIs('reports') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Reports
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('settings') }}" class="nav-link {{ request()->is('setting*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Settings

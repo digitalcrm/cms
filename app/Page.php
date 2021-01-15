@@ -20,6 +20,8 @@ class Page extends Model
     'title',
     'slug',
     'body',
+    'user_id',
+    'views',
     'image',
     'isActive',
     ];
@@ -61,6 +63,11 @@ class Page extends Model
 
             $this->update(['image' => $image]);
         }
+    }
+
+    public function scopeTopViewed($query)
+    {
+        return $query->orderBy('views', 'desc');
     }
 
     public function menus()

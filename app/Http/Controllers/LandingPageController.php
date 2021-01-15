@@ -163,8 +163,9 @@ class LandingPageController extends Controller
         $menu_page = Page::with(['menus' => function ($q) use($menuslug){
             $q->where('slug',$menuslug);
         }])->where('slug',$pageslug)->isActive()->firstOrFail();
+        
+        $menu_page->increment('views');
 
-        // dd($menu_page->menus->name);
         switch ($this->themeId) {
             case 1:
                 return view('pages.menu-page',compact('menu_page'));

@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Settings\SettingController;
 use App\Http\Controllers\Customization\UrlBasedCustomizationController;
+use App\Http\Controllers\Report\ReportController;
 
-    ###################################################Landing Page Post routes############################################################
+###################################################Landing Page Post routes############################################################
     Route::get('/', [LandingPageController::class, 'index'])->name('home');
     Route::get('latest', [LandingPageController::class, 'latestpost'])->name('latest.latestpost');
     Route::get('blogs/{post:slug}', [LandingPageController::class, 'viewitem'])->name('post.viewitem');
@@ -177,8 +178,12 @@ use App\Http\Controllers\Customization\UrlBasedCustomizationController;
 
 
     ####################################################Gallary System###################################################
-    Route::resource('gallaries', Media\GallaryController::class);
-    
+    Route::resource('gallaries', Media\GallaryController::class);    
+
+    ################################################## Report Url #######################################################
+    Route::get('reports', Report\ReportController::class)->name('reports');
+
+
     ######################################################################################################################
     Route::get('cache_delete', function(){
         Artisan::call('config:clear');

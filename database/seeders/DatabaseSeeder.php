@@ -51,6 +51,7 @@ class DatabaseSeeder extends Seeder
 
             /** Dummy data for BookingEvents and Posts */ 
             PostSeeder::class,
+            PageSeeder::class,
             // BookingEventSeeder::class, 
             
 

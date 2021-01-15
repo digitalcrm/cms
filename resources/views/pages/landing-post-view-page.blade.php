@@ -4,10 +4,10 @@
 @section('url', meta_url() )
 @section('description', meta_description($post->body) )
 
-@section('styles')
+@push('styles')
 <link href="{{ asset('css/star/star-rating.css') }}" rel="stylesheet">
 <link href="{{ asset('css/star/star-theme.css') }}" rel="stylesheet">
-@endsection
+@endpush
 
 @section('content')
 <div class="container" id="app">
@@ -63,8 +63,7 @@
     </div>
  </div>
 
-@section('scripts')
-@parent
+@push('scripts')
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fbb79b6dfa2be74"></script>
 
@@ -82,6 +81,6 @@
         $("#rate").rating();
     });
 </script>
-@endsection
+@endpush
 
 @endsection

@@ -12,7 +12,7 @@ class PageController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['show']);
-        $this->middleware(['role:superadmin|admin']);
+        $this->middleware(['role:superadmin|admin'])->except('show');
     }
     /**
      * Display a listing of the resource.
@@ -61,6 +61,8 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
+        $page->increment('views');
+        $page = $page->isActive()->firstOrFail();
         return view('admin_page.show', compact('page'));
     }
 

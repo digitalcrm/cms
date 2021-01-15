@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
-@section('styles')
-    @parent
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-@endsection
+@push('styles')
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+@endpush
 
 @section('content')
 
@@ -41,8 +40,7 @@
     </div>
 </div>
 
-@section('scripts')
-    @parent
+@push('scripts')
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="http://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script>
@@ -54,7 +52,7 @@
             });
         } );
     </script>
-@endsection
+@endpush
 @endsection
 
 

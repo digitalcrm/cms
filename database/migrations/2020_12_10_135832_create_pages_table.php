@@ -21,7 +21,7 @@ class CreatePagesTable extends Migration
             $table->string('image')->nullable();
             $table->boolean('isActive')->default(true);
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->string('views')->nullable();
+            $table->integer('views')->default(0)->comment('page view count');
             $table->timestamps();
             $table->softDeletes();
         });

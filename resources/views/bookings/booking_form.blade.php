@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-    @section('styles')
-    @parent
+    @push('styles')
     <link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.min.css') }}">
     <style>
         .bootstrap-datetimepicker-widget table td.disabled, .bootstrap-datetimepicker-widget table td.disabled:hover {
@@ -10,7 +9,7 @@
             cursor: not-allowed;
         }
     </style>
-    @endsection
+    @endpush
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -215,8 +214,7 @@
 </div>
 {{-- Modal send link to friend --}}
 @include('bookings.includes.send-event-to-friend')
-@section('scripts')
-@parent
+@push('scripts')
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="{{ asset('assets/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/moment.min.js') }}"></script>
@@ -296,7 +294,7 @@
         });
     });
 </script>
-@endsection
+@endpush
 
 @endsection
 

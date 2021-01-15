@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
+        {{-- <div class="col-lg-4">
             <div class="card shadow card-danger card-outline">
                 <!--/.card-header-->
                 <div class="card-body">
@@ -47,7 +47,7 @@
                 </div>
                 <!-- /.card -->
             </div>
-        </div>
+        </div> --}}
 
       </div>
       <!-- /.row -->

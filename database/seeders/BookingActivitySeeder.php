@@ -17,9 +17,11 @@ class BookingActivitySeeder extends Seeder
         $defaultActivity = [
             [
                 'title' => 'call',
+                'created_at' => now(),
             ],
             [
                 'title' => 'email',
+                'created_at' => now(),
             ],
         ];
 

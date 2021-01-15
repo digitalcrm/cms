@@ -22,7 +22,9 @@ class PageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->text(5),
+            'body' => $this->faker->sentence(35),
+            'views' => $this->faker->numberBetween(10,100),
         ];
     }
 }

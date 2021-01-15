@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Page;
 use Illuminate\Database\Seeder;
 
 class PageSeeder extends Seeder
@@ -13,6 +14,6 @@ class PageSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Page::factory()->count(10)->create();
     }
 }
