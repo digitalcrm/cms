@@ -40,6 +40,11 @@
                                     data-toggle="pill" href="#v-pills-social-media" role="tab"
                                     aria-controls="v-pills-social-media" aria-selected="true"><i
                                     class="fas fa-share-square"></i> Social Media</a>
+
+                                <a class="list-group-item list-group-item-action" id="v-pills-home-cookie"
+                                    data-toggle="pill" href="#v-pills-cookie" role="tab"
+                                    aria-controls="v-pills-cookie" aria-selected="true"><i
+                                    class="fas fa-cookie"></i> Cookie Popup</a>
                                 
                             </div>
                         </div>
@@ -65,6 +70,10 @@
                         {{-- Social link --}}
                         <div class="tab-pane fade" id="v-pills-social-media" role="tabpanel" aria-labelledby="v-pills-home-social-media">
                             <livewire:customization.social-media-link />
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-cookie" role="tabpanel" aria-labelledby="v-pills-home-cookie">
+                            <livewire:customization.cookie />
                         </div>
                     </div>
                 </div>
