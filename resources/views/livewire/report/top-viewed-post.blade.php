@@ -1,6 +1,6 @@
 <div class="row" wire:poll>
     {{-- <button wire:click="$emit('postReport')">Click</button> --}}
-    <div class="col-md-6">
+    <div class="col-md-6" x-data="{isLiked: 'viewed'}">
         <div class="card">
             <div class="card-header">
                 <div class="row">
@@ -8,9 +8,10 @@
                         <select name="postReport" 
                                 id="postReport" 
                                 wire:model="selectValue"
+                                x-model="isLiked"
                                 class="form-control form-control-sm">
                             @foreach($filterArray as $value)
-                                <option>{{ $value }}</option>
+                                <option value="{{ $value }}">{{ $value }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -22,8 +23,8 @@
                     <thead>
                         <th>No.</th>
                         <th>Post Name</th>
-                        <th>Views</th>
-                        <th>Likes</th>
+                        <th x-show="isLiked != 'liked'">Views</th>
+                        <th x-show="isLiked == 'liked'">Likes</th>
                     </thead>
                     <tbody>
                         @forelse($topViewedPost as $post_viewed)
@@ -35,8 +36,8 @@
                                         {{ $post_viewed->title }}
                                     </a>
                                 </td>
-                                <td>{{ $post_viewed->postcount }}</td>
-                                <td>{{ $post_viewed->likes_count }}</td>
+                                <td x-show="isLiked != 'liked'">{{ $post_viewed->postcount }}</td>
+                                <td x-show="isLiked == 'liked'">{{ $post_viewed->likes_count }}</td>
                             </tr>
                         @empty
                             <tr>
