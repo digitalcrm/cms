@@ -1,7 +1,9 @@
 <div>
+
     <span>
         Average Rating: {{ $post->averageRating() }}/5 (votes: {{ $post->ratesCount() }} )
     </span>
+    {{-- If user has done rating otherwise else conditin run--}}
     @if($post->ratingFor(auth()->user()))
         <div>
             @foreach(range(1,5) as $i)

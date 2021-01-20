@@ -1,6 +1,4 @@
 <div>
-    @ray($post->liked())
-    @ray($post->totalLikes())
     @if(Auth::check())
         @if($post->liked())
             <li class="list-group-item">{{ $post->totalLikes() }} <a
