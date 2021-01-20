@@ -1,28 +1,35 @@
 <div>
     <span>
-        Total Ratings: {{ $post->totalRatingCount() }}
-        {{-- @ray($post->averageRating()) --}}
+        Average Rating: {{ $post->averageRating() }}/5 (votes: {{ $post->ratesCount() }} )
     </span>
-    <form wire:submit.prevent="rateSubmit" method="post">
-        <div wire:ignore>
-            <input 
-                id="rate-1" 
-                name="rate-1" 
-                class="kv-ltr-theme-fas-star rating-loading"
-                value="0"
-                data-min="0" data-max="5" 
-                data-step="1">
+    @if($post->ratingFor(auth()->user()))
+        <div>
+            @foreach(range(1,5) as $i)
+                @if($loop->iteration <= $post->ratingFor(auth()->user()))
+                    <i class="fas fa-star fa-2x text-warning"></i>
+                @else
+                    <i class="far fa-star fa-2x text-warning"></i>
+                @endif
+            @endforeach
+            <p>You Rated: {{ $post->ratingFor(auth()->user()) }}/5</p>
         </div>
-        <select wire:model="rate" name="rate">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <button type="submit" class="btn btn-sm btn-primary ml-2">Submit</button>
-        @error('rate')
-            <span class="d-block text-danger">{{ $message }}</span>
-        @enderror
-    </form>
+    @else
+        <div>
+            <a wire:click.prevent="rate(1)" href="#">
+                <i class="far fa-star fa-2x text-warning"></i>
+            </a>
+            <a wire:click.prevent="rate(2)" href="#">
+                <i class="far fa-star fa-2x text-warning"></i>
+            </a>
+            <a wire:click.prevent="rate(3)" href="#">
+                <i class="far fa-star fa-2x text-warning"></i>
+            </a>
+            <a wire:click.prevent="rate(4)" href="#">
+                <i class="far fa-star fa-2x text-warning"></i>
+            </a>
+            <a wire:click.prevent="rate(5)" href="#">
+                <i class="far fa-star fa-2x text-warning"></i>
+            </a>
+        </div>
+    @endif
 </div>
