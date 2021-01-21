@@ -169,7 +169,7 @@ class BookingEventController extends Controller
 
     public function calendarlist()
     {
-        $event = auth()->user()->bookingevents()->active()->get();
+        $event = auth()->user()->bookingEvents()->active()->get();
 
         return BookingEventResource::collection($event);
 

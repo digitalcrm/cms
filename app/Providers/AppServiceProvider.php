@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Charts $charts)
     {
+        JsonResource::withoutWrapping();
+
         $charts->register([
             \App\Charts\PostChart::class,
             \App\Charts\CmsChart::class,
@@ -45,7 +47,6 @@ class AppServiceProvider extends ServiceProvider
         View::composer('layouts.partials.homepage-logo', 'App\Http\View\Composers\HomePageLogoComposer');
         View::composer('layouts.partials.admin-panel-logo', 'App\Http\View\Composers\AdminPanelLogoComposer');
 
-        JsonResource::withoutWrapping();
         Paginator::useBootstrap();
         # this method is moved in User model with boot method
         // User::created(function ($user){

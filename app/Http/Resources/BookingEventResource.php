@@ -8,7 +8,7 @@ class BookingEventResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
+     * This resource is used for BookingEventController calendar
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
