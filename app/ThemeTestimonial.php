@@ -29,6 +29,6 @@ class ThemeTestimonial extends Model
     {
         return $this->profile_url
             ? Storage::disk($this->profilePhotoDisk())->url($this->profile_url)
-            : $this->defaultGravatar();
+            : '';
     }
 }

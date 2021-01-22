@@ -29,7 +29,7 @@ class ThemeTeam extends Model
     {
         return $this->logo
             ? Storage::disk($this->profilePhotoDisk())->url($this->logo)
-            : $this->defaultGravatar();
+            : '';
     }
 
     public function scopeIsActive($query)

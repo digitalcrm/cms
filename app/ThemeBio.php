@@ -29,6 +29,7 @@ class ThemeBio extends Model
     {
         return $this->image
             ? Storage::disk($this->profilePhotoDisk())->url($this->image)
-            : $this->defaultGravatar();
+            // : $this->defaultGravatar();
+            : '';
     }
 }
