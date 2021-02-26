@@ -51,22 +51,23 @@ class SuperAdminController extends Controller
 
     public function getAllUsers() {
 
-        $roles = Role::has('users')->pluck('name');
+        // $roles = Role::has('users')->pluck('name');
 
-        $query = User::query()->has('roles');
+        // $query = User::query()->has('roles');
 
-        if (request('roles')) {
-            $userRole = request('roles');
+        // if (request('roles')) {
+        //     $userRole = request('roles');
 
-            $allUsers = $query->when($userRole, function ($query, $userRole){
-                $query->withRolesFilter($userRole);
-            })->get();
+        //     $allUsers = $query->when($userRole, function ($query, $userRole){
+        //         $query->withRolesFilter($userRole);
+        //     })->get();
 
-        } else {
-            // $allUsers = $query->withoutSuperAdmin()->get();
+        // } else {
+        //     // $allUsers = $query->withoutSuperAdmin()->get();
 
-            $allUsers = $query->get_All_User_WithDoesntHave_SuperAdmin_Role()->get();
-        }
-        return view('users.lists',compact('allUsers','roles'));
+        //     $allUsers = $query->get_All_User_WithDoesntHave_SuperAdmin_Role()->get();
+        // }
+        // return view('users.lists',compact('allUsers','roles'));
+        return view('users.lists');
     }
 }

@@ -1,38 +1,34 @@
-@extends('layouts.master')
-
-@section('content')
-
-
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Add Users</h1>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    {{-- <section class="content">
+<div>
+    <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <!-- /.card -->
                     <div class="card">
                         <div class="card-header">
-                            @foreach ($roles as $role)
+                            @foreach($roles as $role)
                                 <a href="{{ route('all-users', ['roles' => $role]) }}"
                                     class="btn btn-sm btn-outline-secondary mr-1 {{ request('roles') == $role ? 'active' : '' }}">
                                     {{ $role }}
                                 </a>
-
-                            @endforeach
+                                @endforeach
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <div class="row">
+                                <div class="col-1 mb-2">
+                                    <select id="fetch-list" wire:model="limit" class="form-control">
+                                        <option>10</option>
+                                        <option>25</option>
+                                        <option>50</option>
+                                        <option>100</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <input type="search" class="form-control" wire:model="searchKeyword" placeholder="eg: John Doe" />
+                                </div>
+                            </div>
+                            <table id="livewire-table" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>
@@ -48,24 +44,27 @@
                                     @forelse($allUsers as $user)
                                         <tr>
                                             <td>
-                                                <img src="{{ $user->profile_photo_url }}" alt="{{ $user->full_name }}"
-                                                    class="img-size-50 img-circle mr-3">
-                                                    <span class="text-sm">{{ $user->name ?? '' }}</span>
+                                                <img src="{{ $user->profile_photo_url }}"
+                                                    alt="{{ $user->full_name }}" class="img-size-50 img-circle mr-3">
+                                                <span
+                                                    class="text-sm">{{ $user->name ?? '' }}</span>
                                             </td>
                                             <td>{{ $user->email ?? '' }}</td>
 
-                                            <td>{{ $user->bookingevents->count()  }}</td>
+                                            <td>{{ $user->bookingevents->count() }}</td>
 
                                             <td>
                                                 <input data-id="{{ $user->id }}" class="toggle-class" type="checkbox"
                                                     data-onstyle="info" data-style="ios" data-offstyle="warning"
-                                                    data-toggle="toggle" data-on="Active" data-size="small" data-off="Block"
+                                                    data-toggle="toggle" data-on="Active" data-size="small"
+                                                    data-off="Block"
                                                     {{ $user->isActive ? 'checked' : '' }}>
                                             </td>
 
                                             <td>
                                                 @forelse($user->getRoleNames() as $rolename)
-                                                    <label class="badge badge-success">{{ $rolename ?? '' }}</label>
+                                                    <label
+                                                        class="badge badge-success">{{ $rolename ?? '' }}</label>
                                                 @empty
                                                     <label>{{ 'No Roles Available' }}</label>
                                                 @endforelse
@@ -81,6 +80,9 @@
                                     @endforelse
                                 </tbody>
                             </table>
+                            <div class="mt-2 float-right">
+                                {{ $allUsers->links() }}
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -91,13 +93,5 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
-    </section> --}}
-    <livewire:dashboard.all-user-index />
-    <!-- /.content -->
-
-    @section('scripts')
-        @parent
-        <!--script for active/inactive-->
-        <script src="{{ asset('ajax/js/status_toggle.js') }}"></script>
-    @endsection
-@endsection
+    </section>
+</div>
