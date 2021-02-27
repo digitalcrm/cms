@@ -324,5 +324,4 @@ class Post extends Model implements HasMedia
     {
         return $this->morphMany(Comment::class, 'commentable')->count();
     }
-
 }

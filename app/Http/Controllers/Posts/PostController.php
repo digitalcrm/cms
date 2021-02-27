@@ -30,26 +30,28 @@ class PostController extends Controller
     public function index()
     {
         // dd(auth()->user()->hasRole('superadmin'));
-        $query = Post::query();
+        // $query = Post::query();
 
-        //Refactor code
-        $query->activePost(request('filterByactive'));
+        // //Refactor code
+        // $query->activePost(request('filterByactive'));
 
-        $query->inactivePost(request('filterByinactive'));
+        // $query->inactivePost(request('filterByinactive'));
 
-        $query->draftPost(request('draftPost'));
+        // $query->draftPost(request('draftPost'));
 
-        $query->trashPost(request('trashPost'));
+        // $query->trashPost(request('trashPost'));
 
-        if(auth()->user()->hasRole('superadmin')) {
+        // if(auth()->user()->hasRole('superadmin')) {
 
-            $allPosts = $query->orderBy('id','desc')->get();
-        } else {
+        //     $allPosts = $query->orderBy('id','desc')->get();
+        // } else {
 
-            $allPosts = $query->where('user_id',auth()->user()->id)->latest()->get();
-        }
+        //     $allPosts = $query->where('user_id',auth()->user()->id)->latest()->get();
+        // }
 
-        return view('cms.posts.index',compact('allPosts'));
+        // return view('cms.posts.index',compact('allPosts'));
+        return view('cms.posts.index');
+
     }
 
     /**
