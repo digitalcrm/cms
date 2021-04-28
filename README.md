@@ -3,6 +3,9 @@
 - [Installation & Configuration](#installation--configuration)
 - [Features](#features)
 - [Technology](#technology)
+- [Next Future Update](#next-future-update)
+- [Contribution](#contribution)
+- [Changelog](#changelog)
 
 # Requirements
   - SERVER: Apache 2 or NGINX.
@@ -100,3 +103,12 @@
 - `jquery`
 - `bootstrap 4.x`
 - `admint-lte` for backend dashboard section.
+
+# Next Future Update
+- Plan shift front-end page to `interia` OR `react` and also uses the `laravel-livewire`.
+- Testing cases will be added in future.
+
+# Contribution
+Please see [CONTRIBUTING](https://github.com/digitalcrm/cms/blob/main/CONTRIBUTING.md) for details.
+# Changelog
+Please see [CHANGELOG](https://github.com/digitalcrm/cms/blob/main/CHANGELOG.md) for more information on what has changed.
