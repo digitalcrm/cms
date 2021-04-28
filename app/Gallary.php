@@ -31,10 +31,14 @@ class Gallary extends Model
 
     public function image_widht_height()
     {
-        [$width, $height] = getimagesize($this->imageUrl());
-
-        // return $width.'x'.$height;
-        return $width.' by '.$height.' pixels';
+        try {
+            [$width, $height] = getimagesize($this->imageUrl());
+            return $this->size 
+            ? $width.' by '.$height.' pixels' 
+            : null;
+        } catch (\Throwable $th) {
+            return $this->size ? $this->size : null;
+        }
     }
 
     public function total_size()
