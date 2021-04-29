@@ -39,7 +39,7 @@ class StoreNewsletter extends Component
 
             session()->flash('newsletterSuccessMessage', '<strong>We have sent an email with a confirmation link to your email address.</strong>!
                                         In order to complete the subscription, please click the confirmation link.
-                                        💡 Make sure you check your spam/junk folder to find confirmation email from.'.env('APP_NAME'));
+                                        💡 Make sure you check your spam/junk folder to find confirmation email from.'.config('app.name'));
 
             Mail::to($this->email)->send(new ConfirmedNewsletter($userData));
         } else {

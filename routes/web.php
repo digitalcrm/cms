@@ -185,14 +185,14 @@ use App\Http\Controllers\Report\ReportController;
 
 
     ######################################################################################################################
-    Route::get('cache_delete', function(){
-        Artisan::call('config:clear');
-        Artisan::call('cache:clear');
-        Artisan::call('route:clear');
-        Artisan::call('view:clear');
-        return 'cache cleared';
-    })->middleware('auth');
+    // Route::get('cache_delete', function(){
+    //     Artisan::call('config:clear');
+    //     Artisan::call('cache:clear');
+    //     Artisan::call('route:clear');
+    //     Artisan::call('view:clear');
+    //     return 'cache cleared';
+    // })->middleware('auth');
 
-    Route::get('php-infos', function(){
-        return phpinfo(INFO_MODULES);
-    })->middleware('auth');
+    // Route::get('php-infos', function(){
+    //     return phpinfo(INFO_MODULES);
+    // })->middleware('auth');

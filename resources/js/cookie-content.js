@@ -2,7 +2,7 @@ let acceptCookie = document.getElementById('acceptModal');
 
 const getCookieValueFromStorage = localStorage.getItem('cookieAccepted');
 
-console.log(getCookieValueFromStorage);
+// console.log(getCookieValueFromStorage);
 
 function toggle() {
     if(acceptCookie.click) {
