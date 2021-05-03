@@ -9,8 +9,9 @@
 - [Changelog](#changelog)
 
 # Demo
+
 **Dashboard**
-<img src="https://i.imgur.com/2bMcRHI.png" height="350px">
+<img src="https://i.imgur.com/2bMcRHI.png">
 
 **All Sidebar Menu**
 <img src="https://i.imgur.com/Rtz6Blk.png">
